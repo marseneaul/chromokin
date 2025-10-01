@@ -9,10 +9,10 @@ export function formatChromosomeName(chromosome: string): string {
   if (chromosome === 'X') return 'X';
   if (chromosome === 'Y') return 'Y';
   if (chromosome === 'MT') return 'Mitochondrial';
-  
+
   const num = parseInt(chromosome, 10);
   if (isNaN(num)) return chromosome;
-  
+
   return `Chromosome ${num}`;
 }
 

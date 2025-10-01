@@ -1,12 +1,12 @@
-import React from 'react';
+import { type JSX } from 'react';
 import { Dna, Info } from 'lucide-react';
-import { type Chromosome, type Track } from '@/types';
+import { type Chromosome, type TrackSpec } from '@/types';
 import { formatChromosomeName } from '@/lib/utils';
 
 interface GenomeViewerProps {
   chromosomes: Chromosome[];
   selectedChromosome: string | null;
-  tracks: Track[];
+  tracks: TrackSpec[];
 }
 
 export function GenomeViewer({
@@ -26,8 +26,9 @@ export function GenomeViewer({
               Welcome to ChromoKin
             </h3>
             <p className="text-muted-foreground max-w-md">
-              Select a chromosome from the sidebar to begin exploring the genome.
-              Each chromosome contains thousands of genes and genetic information.
+              Select a chromosome from the sidebar to begin exploring the
+              genome. Each chromosome contains thousands of genes and genetic
+              information.
             </p>
           </div>
         </div>
@@ -73,8 +74,8 @@ export function GenomeViewer({
                 base pairs of DNA.
               </p>
               <p>
-                It includes genes, regulatory regions, and other functional elements
-                that are essential for life.
+                It includes genes, regulatory regions, and other functional
+                elements that are essential for life.
               </p>
             </div>
           </div>
@@ -85,7 +86,7 @@ export function GenomeViewer({
               <Info className="h-5 w-5 text-primary" />
               <h3 className="text-lg font-semibold">Data Tracks</h3>
             </div>
-            
+
             {tracks.length === 0 ? (
               <div className="text-center py-12 text-muted-foreground">
                 <p>No tracks loaded yet.</p>
@@ -95,7 +96,7 @@ export function GenomeViewer({
               </div>
             ) : (
               <div className="space-y-2">
-                {tracks.map((track) => (
+                {tracks.map(track => (
                   <div key={track.id} className="track-item">
                     <div className="flex items-center gap-2">
                       <div
@@ -119,7 +120,9 @@ export function GenomeViewer({
               <div className="w-full h-32 bg-gradient-to-r from-sky-100 to-sky-200 rounded-lg flex items-center justify-center">
                 <div className="text-muted-foreground">
                   <Dna className="h-8 w-8 mx-auto mb-2" />
-                  <p className="text-sm">Chromosome visualization will appear here</p>
+                  <p className="text-sm">
+                    Chromosome visualization will appear here
+                  </p>
                 </div>
               </div>
             </div>

@@ -1,3 +1,7 @@
+// Re-export all types from core
+export * from './core';
+
+// Legacy types for backward compatibility (can be removed later)
 export interface Chromosome {
   id: string;
   name: string;
@@ -33,7 +37,7 @@ export interface GenomeViewerState {
   sidebarCollapsed: boolean;
 }
 
-export interface AppState {
+export interface LegacyAppState {
   genomeViewer: GenomeViewerState;
   theme: 'light' | 'dark';
   isLoading: boolean;

@@ -1,6 +1,4 @@
-import React from 'react';
-import { ChevronLeft, ChevronRight, Dna } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { type JSX } from 'react';
 import { type Chromosome } from '@/types';
 import { formatChromosomeName } from '@/lib/utils';
 
@@ -25,15 +23,13 @@ export function Sidebar({
     >
       <div className="p-4 border-b border-border">
         {!collapsed && (
-          <h2 className="text-lg font-semibold text-foreground">
-            Chromosomes
-          </h2>
+          <h2 className="text-lg font-semibold text-foreground">Chromosomes</h2>
         )}
       </div>
 
       <div className="flex-1 overflow-y-auto p-2">
         <div className="space-y-1">
-          {chromosomes.map((chromosome) => (
+          {chromosomes.map(chromosome => (
             <button
               key={chromosome.id}
               onClick={() => onSelectChromosome(chromosome.id)}
@@ -42,7 +38,9 @@ export function Sidebar({
                   ? 'bg-primary text-primary-foreground shadow-sm'
                   : 'hover:bg-accent text-foreground'
               } ${collapsed ? 'justify-center' : 'justify-start'}`}
-              title={collapsed ? formatChromosomeName(chromosome.name) : undefined}
+              title={
+                collapsed ? formatChromosomeName(chromosome.name) : undefined
+              }
             >
               <div
                 className="w-4 h-4 rounded-full flex-shrink-0"
