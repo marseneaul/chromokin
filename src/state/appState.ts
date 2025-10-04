@@ -158,7 +158,36 @@ export const useAppStore = create<AppStore>()(
         set({ copyLevel: level }, false, 'setCopyLevel'),
 
       setActiveChromosome: (chromosome: string | null) =>
-        set({ activeChromosome: chromosome }, false, 'setActiveChromosome'),
+        set(
+          state => {
+            // Initialize zoom state for new chromosome if it doesn't exist
+            if (chromosome && !state.chromosomeZoomStates[chromosome]) {
+              const chromosomeLength =
+                CHROMOSOME_LENGTHS[
+                  chromosome as keyof typeof CHROMOSOME_LENGTHS
+                ];
+              const defaultCenterPosition = chromosomeLength
+                ? chromosomeLength / 2
+                : 0;
+
+              return {
+                activeChromosome: chromosome,
+                chromosomeZoomStates: {
+                  ...state.chromosomeZoomStates,
+                  [chromosome]: {
+                    bpPerPx: state.globalBpPerPx,
+                    centerPosition: defaultCenterPosition,
+                    chromosome: chromosome,
+                  },
+                },
+              };
+            }
+
+            return { activeChromosome: chromosome };
+          },
+          false,
+          'setActiveChromosome'
+        ),
 
       setGlobalBpPerPx: (bpPerPx: number) =>
         set({ globalBpPerPx: bpPerPx }, false, 'setGlobalBpPerPx'),
@@ -309,13 +338,7 @@ export const useTracks = () => useAppStore(state => state.config.tracks);
 export const useZoomState = () =>
   useAppStore(state => {
     if (!state.activeChromosome) return null;
-    return (
-      state.chromosomeZoomStates[state.activeChromosome] || {
-        bpPerPx: state.globalBpPerPx,
-        centerPosition: 0,
-        chromosome: state.activeChromosome,
-      }
-    );
+    return state.chromosomeZoomStates[state.activeChromosome] || null;
   });
 
 // Individual action selectors to prevent object recreation

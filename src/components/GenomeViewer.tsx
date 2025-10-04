@@ -2,6 +2,9 @@ import { type JSX } from 'react';
 import { Dna, Info } from 'lucide-react';
 import { type Chromosome, type TrackSpec } from '@/types';
 import { formatChromosomeName } from '@/lib/utils';
+import { Ruler } from '@/components/Ruler';
+import { ChromosomeGrid } from '@/components/ChromosomeGrid';
+import { ZoomControls } from '@/components/ZoomControls';
 
 interface GenomeViewerProps {
   chromosomes: Chromosome[];
@@ -114,16 +117,20 @@ export function GenomeViewer({
             )}
           </div>
 
-          {/* Placeholder for future chromosome visualization */}
-          <div className="chromosome-column p-6">
-            <div className="text-center space-y-4">
-              <div className="w-full h-32 bg-gradient-to-r from-sky-100 to-sky-200 rounded-lg flex items-center justify-center">
-                <div className="text-muted-foreground">
-                  <Dna className="h-8 w-8 mx-auto mb-2" />
-                  <p className="text-sm">
-                    Chromosome visualization will appear here
-                  </p>
-                </div>
+          {/* Chromosome Visualization */}
+          <div className="chromosome-column">
+            <div className="border border-border rounded-lg overflow-hidden bg-background">
+              {/* Zoom Controls */}
+              <div className="p-4 border-b border-border bg-muted/20">
+                <ZoomControls />
+              </div>
+
+              {/* Ruler */}
+              <Ruler width={800} height={50} />
+
+              {/* Grid and Chromosome Visualization */}
+              <div className="relative">
+                <ChromosomeGrid width={800} height={400} />
               </div>
             </div>
           </div>
