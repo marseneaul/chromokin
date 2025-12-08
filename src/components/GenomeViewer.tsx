@@ -43,16 +43,21 @@ export function GenomeViewer({
     <div className="h-full flex flex-col bg-background">
       {/* Chromosome Header */}
       <div className="p-6 border-b border-border bg-card">
-        <div className="flex items-center gap-4">
+        <div className="flex items-start gap-4">
           <div
-            className="w-8 h-8 rounded-full"
+            className="w-8 h-8 rounded-full flex-shrink-0"
             style={{ backgroundColor: selectedChr.color }}
           />
-          <div>
+          <div className="flex-1">
             <h2 className="text-2xl font-bold text-foreground">
               {formatChromosomeName(selectedChr.name)}
             </h2>
-            <p className="text-muted-foreground">
+            {selectedChr.displayName && (
+              <h3 className="text-xl font-semibold text-primary mt-1">
+                {selectedChr.displayName}
+              </h3>
+            )}
+            <p className="text-sm text-muted-foreground mt-2">
               Length: {Math.round(selectedChr.length / 1000000)}M base pairs
             </p>
           </div>
@@ -76,10 +81,14 @@ export function GenomeViewer({
                 </span>{' '}
                 base pairs of DNA.
               </p>
-              <p>
-                It includes genes, regulatory regions, and other functional
-                elements that are essential for life.
-              </p>
+              {selectedChr.description ? (
+                <p>{selectedChr.description}</p>
+              ) : (
+                <p>
+                  It includes genes, regulatory regions, and other functional
+                  elements that are essential for life.
+                </p>
+              )}
             </div>
           </div>
 

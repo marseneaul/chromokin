@@ -7,6 +7,8 @@ export interface Chromosome {
   name: string;
   length: number;
   color: string;
+  displayName?: string; // Friendly name like "The Small But Mighty"
+  description?: string; // Description of the chromosome
 }
 
 export interface Track {

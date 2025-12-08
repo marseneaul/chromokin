@@ -51,6 +51,11 @@ export function Sidebar({
                   <div className="font-medium">
                     {formatChromosomeName(chromosome.name)}
                   </div>
+                  {chromosome.displayName && (
+                    <div className="text-xs font-medium opacity-90 mt-0.5">
+                      {chromosome.displayName}
+                    </div>
+                  )}
                   <div className="text-xs opacity-70">
                     {Math.round(chromosome.length / 1000000)}M bp
                   </div>
