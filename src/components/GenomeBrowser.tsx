@@ -19,10 +19,13 @@ import {
   useZoomState,
   useLoadTraits,
   useTraitsLoaded,
+  useLoadGenomicFeatures,
+  useGenomicFeaturesLoaded,
 } from '@/state/appState';
 import { CHROMOSOME_LENGTHS } from '@/types/core';
 import { Scale } from '@/scales/scale';
 import { getGenesInRange } from '@/data/traitsLoader';
+import { getFeaturesInRange } from '@/data/genomicFeaturesLoader';
 import { getGeneDisplayName } from '@/lib/content';
 import { Tooltip } from '@/components/interaction/Tooltip';
 import { DetailPanel } from '@/components/interaction/DetailPanel';
@@ -45,14 +48,19 @@ export function GenomeBrowser({
   const globalBpPerPx = useAppStore(state => state.globalBpPerPx);
   const viewMode = useAppStore(state => state.viewMode);
   const setHoveredGene = useAppStore(state => state.setHoveredGene);
+  const setHoveredFeature = useAppStore(state => state.setHoveredFeature);
   const selectGene = useAppStore(state => state.selectGene);
+  const selectFeature = useAppStore(state => state.selectFeature);
   const traitsLoaded = useTraitsLoaded();
   const loadTraits = useLoadTraits();
+  const genomicFeaturesLoaded = useGenomicFeaturesLoaded();
+  const loadGenomicFeatures = useLoadGenomicFeatures();
 
-  // Load traits on mount
+  // Load traits and genomic features on mount
   useEffect(() => {
     if (!traitsLoaded) loadTraits();
-  }, [traitsLoaded, loadTraits]);
+    if (!genomicFeaturesLoaded) loadGenomicFeatures();
+  }, [traitsLoaded, loadTraits, genomicFeaturesLoaded, loadGenomicFeatures]);
 
   // Get chromosome length
   const chromosomeLength = activeChromosome
@@ -238,6 +246,16 @@ export function GenomeBrowser({
       visibleRange.end
     );
   }, [activeChromosome, visibleRange, traitsLoaded]);
+
+  // Get genomic features in visible range
+  const visibleFeatures = useMemo(() => {
+    if (!activeChromosome || !genomicFeaturesLoaded) return [];
+    return getFeaturesInRange(
+      activeChromosome,
+      visibleRange.start,
+      visibleRange.end
+    );
+  }, [activeChromosome, visibleRange, genomicFeaturesLoaded]);
 
   // Format position for ruler
   const formatBp = (bp: number): string => {
@@ -448,17 +466,6 @@ export function GenomeBrowser({
                         opacity={0.6}
                       />
                     )}
-                    {/* Trait badge */}
-                    {gene.traitIds.length > 0 && (
-                      <circle
-                        cx={x + width - 4}
-                        cy={28}
-                        r={4}
-                        fill="#10b981"
-                        stroke="white"
-                        strokeWidth={1}
-                      />
-                    )}
                     {/* Label */}
                     {width > 50 && (
                       <text
@@ -478,6 +485,159 @@ export function GenomeBrowser({
                   </g>
                 );
               })
+            )}
+          </g>
+
+          {/* Genomic Features track (HERVs, transposons, etc.) */}
+          <g transform="translate(0, 130)">
+            <rect
+              x={0}
+              y={0}
+              width={dimensions.width}
+              height={80}
+              fill="#fef7ed"
+            />
+            <text x={8} y={14} fontSize={11} fill="#888" fontWeight={500}>
+              Genomic Oddities{' '}
+              {visibleFeatures.length > 0 && `(${visibleFeatures.length})`}
+            </text>
+
+            {visibleFeatures.length === 0 ? (
+              <text
+                x={dimensions.width / 2}
+                y={45}
+                textAnchor="middle"
+                fontSize={12}
+                fill="#bbb"
+              >
+                {effectiveZoom.bpPerPx > 500000
+                  ? 'Zoom in to see genomic features'
+                  : 'No quirky features in this region'}
+              </text>
+            ) : (
+              visibleFeatures.map(feature => {
+                const x = scale.scale(feature.start);
+                const width = Math.max(6, scale.scale(feature.end) - x);
+                const displayName =
+                  viewMode === 'play' && feature.nickname
+                    ? feature.nickname
+                    : feature.name;
+
+                return (
+                  <g
+                    key={feature.id}
+                    className="cursor-pointer"
+                    onMouseEnter={e => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      setHoveredFeature(feature.id, {
+                        x: rect.left + rect.width / 2,
+                        y: rect.top,
+                      });
+                    }}
+                    onMouseLeave={() => setHoveredFeature(null)}
+                    onClick={() => selectFeature(feature.id)}
+                  >
+                    {/* Feature body */}
+                    <rect
+                      x={x}
+                      y={24}
+                      width={width}
+                      height={18}
+                      rx={feature.type === 'herv' ? 0 : 2}
+                      fill={feature.color}
+                      opacity={0.8}
+                      className="hover:opacity-100 transition-opacity"
+                    />
+                    {/* HERV LTR markers */}
+                    {feature.type === 'herv' && width > 12 && (
+                      <>
+                        <rect
+                          x={x}
+                          y={24}
+                          width={3}
+                          height={18}
+                          fill={feature.color}
+                        />
+                        <rect
+                          x={x + width - 3}
+                          y={24}
+                          width={3}
+                          height={18}
+                          fill={feature.color}
+                        />
+                      </>
+                    )}
+                    {/* Pseudogene "broken" indicator */}
+                    {feature.type === 'pseudogene' && width > 15 && (
+                      <g opacity={0.6}>
+                        <line
+                          x1={x + 4}
+                          y1={26}
+                          x2={x + 10}
+                          y2={40}
+                          stroke="white"
+                          strokeWidth={1.5}
+                        />
+                        <line
+                          x1={x + 10}
+                          y1={26}
+                          x2={x + 4}
+                          y2={40}
+                          stroke="white"
+                          strokeWidth={1.5}
+                        />
+                      </g>
+                    )}
+                    {/* Label */}
+                    {width > 50 && (
+                      <text
+                        x={x + width / 2}
+                        y={37}
+                        textAnchor="middle"
+                        fontSize={Math.min(9, width / 6)}
+                        fill="white"
+                        fontWeight={500}
+                        className="pointer-events-none"
+                        style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+                      >
+                        {displayName.length > width / 6
+                          ? displayName.slice(0, Math.floor(width / 6)) + '...'
+                          : displayName}
+                      </text>
+                    )}
+                  </g>
+                );
+              })
+            )}
+
+            {/* Feature type mini-legend */}
+            {visibleFeatures.length > 0 && (
+              <g transform={`translate(${dimensions.width - 280}, 60)`}>
+                {[
+                  { type: 'herv', label: 'Virus DNA', color: '#dc2626' },
+                  { type: 'line', label: 'LINEs', color: '#2563eb' },
+                  {
+                    type: 'pseudogene',
+                    label: 'Fossil Genes',
+                    color: '#78716c',
+                  },
+                ].map((item, i) => (
+                  <g key={item.type} transform={`translate(${i * 90}, 0)`}>
+                    <rect
+                      x={0}
+                      y={0}
+                      width={10}
+                      height={10}
+                      rx={1}
+                      fill={item.color}
+                      opacity={0.8}
+                    />
+                    <text x={14} y={8} fontSize={8} fill="#888">
+                      {item.label}
+                    </text>
+                  </g>
+                ))}
+              </g>
             )}
           </g>
 

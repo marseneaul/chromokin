@@ -16,7 +16,9 @@ import {
   CHROMOSOME_NAMES,
 } from '@/types/core';
 import type { TraitsDatabase } from '@/types/traits';
+import type { GenomicFeaturesDatabase } from '@/types/genomicFeatures';
 import { getTraitsDatabase } from '@/data/traitsLoader';
+import { getGenomicFeaturesDatabase } from '@/data/genomicFeaturesLoader';
 
 /**
  * Trait interaction state for hover/select behaviors
@@ -24,11 +26,15 @@ import { getTraitsDatabase } from '@/data/traitsLoader';
 interface TraitInteractionState {
   traitsLoaded: boolean;
   traitsDatabase: TraitsDatabase | null;
+  genomicFeaturesLoaded: boolean;
+  genomicFeaturesDatabase: GenomicFeaturesDatabase | null;
   hoveredGeneId: string | null;
   hoveredTraitId: string | null;
+  hoveredFeatureId: string | null;
   tooltipPosition: { x: number; y: number } | null;
   selectedGeneId: string | null;
   selectedTraitId: string | null;
+  selectedFeatureId: string | null;
   detailPanelOpen: boolean;
 }
 
@@ -121,11 +127,15 @@ const defaultSidePanel: SidePanelState = {
 const defaultTraitInteraction: TraitInteractionState = {
   traitsLoaded: false,
   traitsDatabase: null,
+  genomicFeaturesLoaded: false,
+  genomicFeaturesDatabase: null,
   hoveredGeneId: null,
   hoveredTraitId: null,
+  hoveredFeatureId: null,
   tooltipPosition: null,
   selectedGeneId: null,
   selectedTraitId: null,
+  selectedFeatureId: null,
   detailPanelOpen: false,
 };
 
@@ -174,6 +184,7 @@ interface AppStore extends AppState, TraitInteractionState {
 
   // Trait interaction actions
   loadTraits: () => void;
+  loadGenomicFeatures: () => void;
   setHoveredGene: (
     geneId: string | null,
     position?: { x: number; y: number }
@@ -182,8 +193,13 @@ interface AppStore extends AppState, TraitInteractionState {
     traitId: string | null,
     position?: { x: number; y: number }
   ) => void;
+  setHoveredFeature: (
+    featureId: string | null,
+    position?: { x: number; y: number }
+  ) => void;
   selectGene: (geneId: string | null) => void;
   selectTrait: (traitId: string | null) => void;
+  selectFeature: (featureId: string | null) => void;
   closeDetailPanel: () => void;
   clearInteractions: () => void;
 }
@@ -365,6 +381,15 @@ export const useAppStore = create<AppStore>()(
         set({ traitsLoaded: true, traitsDatabase }, false, 'loadTraits');
       },
 
+      loadGenomicFeatures: () => {
+        const genomicFeaturesDatabase = getGenomicFeaturesDatabase();
+        set(
+          { genomicFeaturesLoaded: true, genomicFeaturesDatabase },
+          false,
+          'loadGenomicFeatures'
+        );
+      },
+
       setHoveredGene: (
         geneId: string | null,
         position?: { x: number; y: number }
@@ -391,6 +416,19 @@ export const useAppStore = create<AppStore>()(
           'setHoveredTrait'
         ),
 
+      setHoveredFeature: (
+        featureId: string | null,
+        position?: { x: number; y: number }
+      ) =>
+        set(
+          {
+            hoveredFeatureId: featureId,
+            tooltipPosition: featureId && position ? position : null,
+          },
+          false,
+          'setHoveredFeature'
+        ),
+
       selectGene: (geneId: string | null) =>
         set(
           {
@@ -411,11 +449,22 @@ export const useAppStore = create<AppStore>()(
           'selectTrait'
         ),
 
+      selectFeature: (featureId: string | null) =>
+        set(
+          {
+            selectedFeatureId: featureId,
+            detailPanelOpen: featureId !== null,
+          },
+          false,
+          'selectFeature'
+        ),
+
       closeDetailPanel: () =>
         set(
           {
             selectedGeneId: null,
             selectedTraitId: null,
+            selectedFeatureId: null,
             detailPanelOpen: false,
           },
           false,
@@ -427,9 +476,11 @@ export const useAppStore = create<AppStore>()(
           {
             hoveredGeneId: null,
             hoveredTraitId: null,
+            hoveredFeatureId: null,
             tooltipPosition: null,
             selectedGeneId: null,
             selectedTraitId: null,
+            selectedFeatureId: null,
             detailPanelOpen: false,
           },
           false,
@@ -500,26 +551,39 @@ export const useVisibleTracks = () =>
 export const useTraitsLoaded = () => useAppStore(state => state.traitsLoaded);
 export const useTraitsDatabase = () =>
   useAppStore(state => state.traitsDatabase);
+export const useGenomicFeaturesLoaded = () =>
+  useAppStore(state => state.genomicFeaturesLoaded);
+export const useGenomicFeaturesDatabase = () =>
+  useAppStore(state => state.genomicFeaturesDatabase);
 export const useHoveredGeneId = () => useAppStore(state => state.hoveredGeneId);
 export const useHoveredTraitId = () =>
   useAppStore(state => state.hoveredTraitId);
+export const useHoveredFeatureId = () =>
+  useAppStore(state => state.hoveredFeatureId);
 export const useTooltipPosition = () =>
   useAppStore(state => state.tooltipPosition);
 export const useSelectedGeneId = () =>
   useAppStore(state => state.selectedGeneId);
 export const useSelectedTraitId = () =>
   useAppStore(state => state.selectedTraitId);
+export const useSelectedFeatureId = () =>
+  useAppStore(state => state.selectedFeatureId);
 export const useDetailPanelOpen = () =>
   useAppStore(state => state.detailPanelOpen);
 
 // Trait interaction action selectors
 export const useLoadTraits = () => useAppStore(state => state.loadTraits);
+export const useLoadGenomicFeatures = () =>
+  useAppStore(state => state.loadGenomicFeatures);
 export const useSetHoveredGene = () =>
   useAppStore(state => state.setHoveredGene);
 export const useSetHoveredTrait = () =>
   useAppStore(state => state.setHoveredTrait);
+export const useSetHoveredFeature = () =>
+  useAppStore(state => state.setHoveredFeature);
 export const useSelectGene = () => useAppStore(state => state.selectGene);
 export const useSelectTrait = () => useAppStore(state => state.selectTrait);
+export const useSelectFeature = () => useAppStore(state => state.selectFeature);
 export const useCloseDetailPanel = () =>
   useAppStore(state => state.closeDetailPanel);
 export const useClearInteractions = () =>

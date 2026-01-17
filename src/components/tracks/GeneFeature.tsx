@@ -39,7 +39,6 @@ export function GeneFeature({
 
   const isHovered = hoveredGeneId === gene.id || localHover;
   const isSelected = selectedGeneId === gene.id;
-  const hasTraits = gene.traitIds.length > 0;
 
   const handleMouseEnter = useCallback(
     (e: React.MouseEvent) => {
@@ -107,31 +106,6 @@ export function GeneFeature({
           fill="white"
           opacity={0.7}
         />
-      )}
-
-      {/* Trait indicator badge */}
-      {hasTraits && (
-        <g>
-          <circle
-            cx={x + width - 5}
-            cy={y + 5}
-            r={5}
-            fill="#10b981"
-            stroke="white"
-            strokeWidth={1}
-          />
-          <text
-            x={x + width - 5}
-            y={y + 5}
-            textAnchor="middle"
-            dominantBaseline="central"
-            fill="white"
-            fontSize={7}
-            fontWeight="bold"
-          >
-            {gene.traitIds.length}
-          </text>
-        </g>
       )}
 
       {/* Gene label */}

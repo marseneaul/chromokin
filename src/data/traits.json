@@ -810,6 +810,1602 @@
       "kidFriendly": true,
       "minCopyLevel": 3,
       "tags": ["ear", "anatomy", "classic trait"]
+    },
+    {
+      "id": "skin_pigmentation",
+      "name": "Skin Color",
+      "category": "physical",
+      "subcategory": "pigmentation",
+      "icon": "Hand",
+      "color": "#D2691E",
+      "shortDescription": {
+        "level3": "How light or dark your skin is!",
+        "level4": "Skin color depends on how much melanin pigment you have.",
+        "level5": "Skin pigmentation is controlled by multiple genes affecting melanin production.",
+        "level6": "Skin color results from melanin concentration, determined by several key pigmentation genes.",
+        "level7": "Cutaneous pigmentation is polygenic, with SLC24A5 and SLC45A2 being major determinants.",
+        "level8": "Skin pigmentation involves multiple loci including SLC24A5, SLC45A2, TYR, OCA2, and KITLG affecting melanocyte function."
+      },
+      "longDescription": {
+        "level3": "Everyone's skin has a special color made by melanin. People from different parts of the world have different amounts of melanin!",
+        "level4": "Skin color comes from melanin, a pigment made by special cells. More melanin means darker skin, which helps protect against sun damage in sunny places.",
+        "level5": "Skin color evolved as humans spread around the world. People in sunny places evolved more melanin for sun protection, while people in less sunny places evolved lighter skin to help make vitamin D.",
+        "level6": "Skin pigmentation is determined by several major genes including SLC24A5, which has one of the largest effects. A single variant in this gene accounts for much of the skin color difference between European and African populations.",
+        "level7": "The SLC24A5 A111T variant shows one of the strongest signals of positive selection in Europeans, reaching near-fixation within ~10,000 years, representing one of the most rapid known evolutionary changes.",
+        "level8": "Skin pigmentation involves ~15 major loci with SLC24A5 rs1426654 showing derived allele frequency >98% in Europeans but <5% in Africans, representing extreme population differentiation (FST >0.9)."
+      },
+      "funFact": {
+        "level3": "All humans started with dark skin in Africa!",
+        "level4": "Light skin evolved only about 10,000 years ago as humans moved to places with less sunshine.",
+        "level5": "The gene variant for light skin spread incredibly fast through European populations - one of the fastest known evolutionary changes in humans!",
+        "level6": "Light skin independently evolved at least twice - once in Europeans and once in East Asians - using different genetic mechanisms.",
+        "level7": "Convergent evolution of light skin in Europeans (SLC24A5) and East Asians (OCA2, different variants) demonstrates independent adaptive solutions.",
+        "level8": "Depigmentation evolved convergently via distinct loci: European populations fixed SLC24A5 A111T while East Asian populations show selection on MFSD12 and OCA2."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000188467",
+          "geneSymbol": "SLC24A5",
+          "chromosome": "15",
+          "start": 48120984,
+          "end": 48142637,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000164175",
+          "geneSymbol": "SLC45A2",
+          "chromosome": "5",
+          "start": 33951693,
+          "end": 33984780,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs1426654",
+          "rsId": "rs1426654",
+          "chromosome": "15",
+          "position": 48134287,
+          "referenceAllele": "G",
+          "alternateAllele": "A",
+          "effect": "A/A = lighter skin (European variant)",
+          "frequency": 0.42
+        }
+      ],
+      "inheritancePattern": "polygenic",
+      "inheritanceExplanation": {
+        "level3": "Skin color comes from both parents and many genes!",
+        "level4": "Your skin color is a blend of genes from both parents, involving many different genes.",
+        "level5": "Skin pigmentation is polygenic, meaning many genes contribute. Children often have intermediate skin tones between their parents.",
+        "level6": "Skin color shows additive polygenic inheritance, with offspring typically intermediate between parents due to multiple contributing loci.",
+        "level7": "Skin pigmentation follows quantitative inheritance with ~15 major-effect loci showing largely additive effects.",
+        "level8": "Cutaneous pigmentation is a model polygenic trait with additive effects across multiple loci explaining ~35-40% of phenotypic variance in admixed populations."
+      },
+      "prevalence": "Continuous variation worldwide, correlated with geographic ancestry",
+      "relatedTraits": ["eye_color", "hair_color", "freckles"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["skin", "pigmentation", "melanin", "ancestry"]
+    },
+    {
+      "id": "alcohol_flush",
+      "name": "Alcohol Flush Reaction",
+      "category": "health",
+      "subcategory": "metabolism",
+      "icon": "Wine",
+      "color": "#DC143C",
+      "shortDescription": {
+        "level3": "Whether your face turns red from alcohol!",
+        "level4": "Some people's faces turn red when they drink alcohol.",
+        "level5": "The alcohol flush reaction is caused by a variant that makes it harder to break down alcohol.",
+        "level6": "ALDH2 deficiency causes acetaldehyde accumulation after alcohol consumption, leading to facial flushing.",
+        "level7": "The ALDH2*2 variant causes accumulation of acetaldehyde, triggering histamine release and vasodilation.",
+        "level8": "ALDH2 rs671 (E504K) dramatically reduces enzyme activity, causing acetaldehyde accumulation and the 'Asian flush' phenotype."
+      },
+      "longDescription": {
+        "level3": "Some people's faces get really red after drinking even a tiny bit of alcohol. This happens because their body has trouble breaking down alcohol.",
+        "level4": "When you drink alcohol, your body breaks it down in two steps. Some people are missing an enzyme for the second step, so a toxic chemical builds up and makes their face red.",
+        "level5": "The ALDH2 gene makes an enzyme that breaks down acetaldehyde, a toxic byproduct of alcohol. About 40% of East Asians have a variant that makes this enzyme work poorly, causing facial flushing.",
+        "level6": "The ALDH2*2 variant is nearly unique to East Asian populations, causing reduced acetaldehyde metabolism. This leads to the 'Asian flush' and also provides some protection against alcoholism.",
+        "level7": "ALDH2 deficiency results in acetaldehyde accumulation after ethanol consumption, causing facial erythema, tachycardia, and nausea. The ALDH2*2 allele reaches ~30-40% frequency in East Asia.",
+        "level8": "ALDH2*2 (rs671 G>A, E504K) creates a dominant-negative subunit that inactivates the tetrameric enzyme, reducing activity by ~70-80% in heterozygotes and eliminating activity in homozygotes."
+      },
+      "funFact": {
+        "level3": "This gene may protect against drinking too much alcohol!",
+        "level4": "People with alcohol flush often drink less because it makes them feel bad, which can protect against alcohol problems.",
+        "level5": "Having alcohol flush is associated with lower rates of alcoholism, but if people with it do drink heavily, they have higher cancer risk.",
+        "level6": "ALDH2 deficiency reduces alcoholism risk but increases esophageal cancer risk in drinkers due to acetaldehyde's carcinogenic effects.",
+        "level7": "ALDH2*2 carriers who drink have ~6-10 fold increased esophageal cancer risk due to chronic acetaldehyde exposure.",
+        "level8": "The ALDH2*2 allele shows evidence of positive selection, possibly due to reduced alcoholism rates, despite increased cancer risk in drinkers."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000111275",
+          "geneSymbol": "ALDH2",
+          "chromosome": "12",
+          "start": 111766887,
+          "end": 111817532,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs671",
+          "rsId": "rs671",
+          "chromosome": "12",
+          "position": 111803962,
+          "referenceAllele": "G",
+          "alternateAllele": "A",
+          "effect": "G/A or A/A = alcohol flush reaction",
+          "frequency": 0.17
+        }
+      ],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "If one parent has alcohol flush, you might get it too!",
+        "level4": "The alcohol flush gene is dominant, so you only need one copy to turn red from alcohol.",
+        "level5": "Alcohol flush follows dominant inheritance - one copy of the variant from either parent causes the reaction.",
+        "level6": "ALDH2*2 shows dominant-negative inheritance; heterozygotes have ~70-80% reduced enzyme activity.",
+        "level7": "The ALDH2*2 allele acts as a dominant-negative, inactivating tetrameric enzyme even in heterozygotes.",
+        "level8": "ALDH2*2 incorporates into tetramers and inactivates them, causing dominant-negative inheritance with heterozygotes showing severe enzyme deficiency."
+      },
+      "prevalence": "~36% of East Asians carry ALDH2*2; rare in other populations",
+      "relatedTraits": [],
+      "kidFriendly": false,
+      "minCopyLevel": 5,
+      "tags": ["alcohol", "metabolism", "Asian", "ancestry"]
+    },
+    {
+      "id": "hair_texture",
+      "name": "Hair Texture",
+      "category": "physical",
+      "subcategory": "hair",
+      "icon": "Waves",
+      "color": "#4B0082",
+      "shortDescription": {
+        "level3": "Whether your hair is straight, wavy, or curly!",
+        "level4": "Hair can be straight, wavy, curly, or very tightly coiled.",
+        "level5": "Hair texture is determined by the shape of your hair follicles and several genes.",
+        "level6": "Hair curvature results from asymmetric keratin distribution in the hair shaft, influenced by TCHH and other genes.",
+        "level7": "Hair morphology is polygenic with TCHH, EDAR, and FGFR2 variants affecting follicle shape and keratin distribution.",
+        "level8": "Hair texture involves multiple loci affecting follicle geometry, keratin cross-linking, and trichohyalin (TCHH) function."
+      },
+      "longDescription": {
+        "level3": "Some people have straight hair, some have wavy hair, and some have really curly hair. It all depends on the shape of the tiny holes in your skin where hair grows!",
+        "level4": "Hair grows from follicles in your skin. Round follicles make straight hair, while oval or flat follicles make curly hair. Genes control the shape of your follicles.",
+        "level5": "Hair texture depends on the shape of hair follicles and how proteins are arranged in each hair strand. The TCHH gene affects hair structure and is involved in making hair curly or straight.",
+        "level6": "Hair curvature results from asymmetric distribution of keratin proteins in the hair cortex. TCHH (trichohyalin) variants affect hair fiber structure, while EDAR variants influence follicle development.",
+        "level7": "Hair texture is polygenic, with TCHH variants affecting trichohyalin structure, EDAR variants influencing follicle morphology, and additional loci controlling keratin expression patterns.",
+        "level8": "Hair morphology involves TCHH (trichohyalin cross-linking), EDAR (follicle development), KRT genes (keratin structure), and FGFR2 (follicle geometry) among ~20 identified loci."
+      },
+      "funFact": {
+        "level3": "Your hair shape can change when you get older!",
+        "level4": "Babies often have different hair texture than they will as adults - straight baby hair can become curly!",
+        "level5": "Hair texture can change during puberty and pregnancy due to hormonal effects on hair follicles.",
+        "level6": "Hormonal changes during puberty, pregnancy, and aging can alter follicle shape and hair texture, showing environmental influence on this genetic trait.",
+        "level7": "Hair phenotype can shift across the lifespan due to hormonal modulation of follicle stem cells and keratinocyte gene expression.",
+        "level8": "Androgen and estrogen receptors in dermal papilla cells can modify follicle geometry and keratin expression, causing lifelong changes in hair texture."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000159450",
+          "geneSymbol": "TCHH",
+          "chromosome": "1",
+          "start": 152078522,
+          "end": 152088415,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000157911",
+          "geneSymbol": "EDAR",
+          "chromosome": "2",
+          "start": 108894471,
+          "end": 108989220,
+          "strand": "-",
+          "contributionType": "modifier",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs3827760",
+          "rsId": "rs3827760",
+          "chromosome": "2",
+          "position": 108962124,
+          "referenceAllele": "A",
+          "alternateAllele": "G",
+          "effect": "G/G = thicker, straighter hair (East Asian variant)",
+          "frequency": 0.17
+        }
+      ],
+      "inheritancePattern": "polygenic",
+      "inheritanceExplanation": {
+        "level3": "Hair type comes from both parents!",
+        "level4": "Your hair texture comes from a mix of genes from both parents.",
+        "level5": "Hair texture is polygenic, meaning many genes contribute. Children often have hair texture between their parents'.",
+        "level6": "Hair morphology follows complex polygenic inheritance with different genes predominant in different populations.",
+        "level7": "Hair texture shows population-specific genetic architecture, with different loci showing largest effects in European, African, and Asian populations.",
+        "level8": "Hair texture exhibits highly stratified genetic architecture with minimal overlap in major-effect loci between continental populations."
+      },
+      "prevalence": "Varies greatly by population; straight hair common in East Asia, curly/coily hair common in Africa",
+      "relatedTraits": ["hair_color"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["hair", "texture", "anatomy"]
+    },
+    {
+      "id": "neanderthal_immunity",
+      "name": "Neanderthal Immune Genes",
+      "category": "ancestry",
+      "subcategory": "archaic",
+      "icon": "Shield",
+      "color": "#8B4513",
+      "shortDescription": {
+        "level3": "Immune system genes from ancient Neanderthals!",
+        "level4": "Some of your immune genes may have come from Neanderthals.",
+        "level5": "Neanderthal DNA contributed important immune system genes to modern humans.",
+        "level6": "Introgressed Neanderthal variants in immune genes like OAS1 and TLR genes persist in modern populations.",
+        "level7": "Neanderthal haplotypes at innate immunity loci show signatures of adaptive introgression in Eurasian populations.",
+        "level8": "Neanderthal-derived haplotypes at OAS1, TLR1-6-10 cluster, and other innate immunity loci show strong signals of positive selection post-introgression."
+      },
+      "longDescription": {
+        "level3": "When modern humans met Neanderthals long ago, they had babies together. Some Neanderthal genes that helped fight germs are still in people today!",
+        "level4": "About 50,000 years ago, humans and Neanderthals had children together. Some Neanderthal genes that help fight diseases were so useful that they spread and are still in many people today.",
+        "level5": "Neanderthals had lived in Europe and Asia for hundreds of thousands of years and evolved immune genes suited to local diseases. When humans interbred with them, we inherited some of these helpful immune variants.",
+        "level6": "Neanderthal-derived immune gene variants, particularly in the OAS1 gene cluster and Toll-like receptor genes, show evidence of positive selection in modern Eurasian populations, suggesting they provided disease resistance advantages.",
+        "level7": "Adaptive introgression from Neanderthals is most evident at innate immunity loci including OAS1 (antiviral response), the TLR1-6-10 cluster (pathogen recognition), and HLA genes (adaptive immunity).",
+        "level8": "Neanderthal haplotypes at OAS1 (antiviral), TLR1-6-10 (pathogen recognition), and STAT2 (interferon signaling) show selection coefficients of 0.01-0.02, representing ~3-4% of Eurasian genomes."
+      },
+      "funFact": {
+        "level3": "About 2% of your DNA might be from Neanderthals!",
+        "level4": "People with European or Asian ancestry carry about 1-4% Neanderthal DNA, but different people have different Neanderthal genes.",
+        "level5": "While each person has ~2% Neanderthal DNA, about 40% of the Neanderthal genome survives in fragments scattered across modern human populations.",
+        "level6": "Neanderthal DNA was initially harmful (most was eliminated by selection) but immune genes were beneficial and increased in frequency.",
+        "level7": "Most Neanderthal variants were deleterious and purged by purifying selection, but adaptive introgression at immunity loci led to positive selection.",
+        "level8": "Post-introgression selection eliminated ~50% of Neanderthal ancestry from the genome while positively selecting specific immunity and skin pigmentation haplotypes."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000089127",
+          "geneSymbol": "OAS1",
+          "chromosome": "12",
+          "start": 112906981,
+          "end": 112921588,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000174125",
+          "geneSymbol": "TLR1",
+          "chromosome": "4",
+          "start": 38797027,
+          "end": 38810018,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [],
+      "inheritancePattern": "complex",
+      "inheritanceExplanation": {
+        "level3": "Neanderthal genes are scattered in pieces across your DNA!",
+        "level4": "Different people inherited different pieces of Neanderthal DNA from their ancestors.",
+        "level5": "Neanderthal ancestry comes in scattered segments across the genome, inherited differently in each person.",
+        "level6": "Neanderthal ancestry is distributed as haplotype blocks of varying length, with immune gene regions showing enrichment.",
+        "level7": "Neanderthal introgression segments are inherited as discrete haplotype blocks averaging ~50-100 kb, with population-specific patterns.",
+        "level8": "Neanderthal ancestry exists as introgressed haplotype tracts with mean length ~50 kb, subject to recombination and selection over ~2000 generations."
+      },
+      "prevalence": "~1-4% Neanderthal ancestry in non-African populations",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["Neanderthal", "ancestry", "immune", "archaic"]
+    },
+    {
+      "id": "edar_variant",
+      "name": "EDAR East Asian Traits",
+      "category": "ancestry",
+      "subcategory": "population",
+      "icon": "Users",
+      "color": "#FF8C00",
+      "shortDescription": {
+        "level3": "A gene that affects hair, teeth, and sweat glands in East Asians!",
+        "level4": "One gene variant affects several traits common in East Asian populations.",
+        "level5": "The EDAR V370A variant affects hair thickness, tooth shape, and sweat glands.",
+        "level6": "EDAR V370A is a pleiotropic variant affecting ectodermal tissue development, common in East Asians.",
+        "level7": "The EDAR 370A allele shows evidence of strong positive selection in East Asia, affecting multiple ectodermal phenotypes.",
+        "level8": "EDAR V370A (rs3827760) shows one of the strongest selection signals in East Asians, with pleiotropic effects on hair follicle, tooth, and eccrine gland morphogenesis."
+      },
+      "longDescription": {
+        "level3": "One special gene variant that's very common in East Asian people affects several things: thicker hair, differently shaped teeth, and more sweat glands!",
+        "level4": "The EDAR gene helps build hair, teeth, and sweat glands before you're born. A variant called V370A, found mostly in East Asians, makes all these tissues develop differently.",
+        "level5": "The EDAR V370A variant is found in over 90% of East Asians but is rare elsewhere. It causes thicker individual hair strands, shovel-shaped front teeth, and different sweat gland density.",
+        "level6": "EDAR V370A affects ectodysplasin A receptor signaling during development, influencing hair follicle size, incisor morphology, and mammary/eccrine gland development. It spread rapidly through East Asian populations.",
+        "level7": "The EDAR 370A allele shows a selection coefficient of ~0.05, among the strongest recent positive selection signals. The selected phenotype remains debated - possibly sweat gland density for thermoregulation.",
+        "level8": "EDAR V370A modifies NF-κB signaling in ectodermal appendage development. The allele reached >90% frequency in East Asia ~30,000 years ago, with proposed selection on mammary gland ductal branching or thermoregulation."
+      },
+      "funFact": {
+        "level3": "This one gene change affects your hair, teeth, and how much you sweat!",
+        "level4": "Scientists can tell from ancient DNA that this variant became common in East Asia about 30,000 years ago.",
+        "level5": "No one knows for sure why this variant was selected - it might have been for better sweat cooling, or even for milk production in mothers!",
+        "level6": "Mouse studies show EDAR 370A increases mammary gland ductal branching, leading to hypotheses about selection for improved infant feeding.",
+        "level7": "The EDAR variant's selection driver remains contentious: candidates include thermoregulation, lactation, or even sexual selection on hair phenotype.",
+        "level8": "Transgenic mouse studies confirm EDAR 370A increases eccrine gland density and mammary ductal branching, but the precise selection pressure in ancestral East Asians remains unresolved."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000157911",
+          "geneSymbol": "EDAR",
+          "chromosome": "2",
+          "start": 108894471,
+          "end": 108989220,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs3827760",
+          "rsId": "rs3827760",
+          "chromosome": "2",
+          "position": 108962124,
+          "referenceAllele": "A",
+          "alternateAllele": "G",
+          "effect": "G/G = thicker hair, shovel-shaped incisors, more sweat glands",
+          "frequency": 0.17
+        }
+      ],
+      "inheritancePattern": "codominant",
+      "inheritanceExplanation": {
+        "level3": "You get different amounts of the effect depending on your gene copies!",
+        "level4": "Having two copies of the variant gives stronger effects than having one copy.",
+        "level5": "EDAR V370A shows additive effects - two copies produce thicker hair than one copy, which is thicker than zero copies.",
+        "level6": "EDAR 370A shows additive effects on hair diameter and other phenotypes, with heterozygotes intermediate between homozygotes.",
+        "level7": "EDAR V370A exhibits additive effects on ectodermal phenotypes with approximately linear genotype-phenotype relationship.",
+        "level8": "EDAR 370A shows dose-dependent effects on hair cross-sectional area, incisor shoveling score, and eccrine gland density."
+      },
+      "prevalence": ">90% in East Asians, ~70% in Native Americans, rare in Europeans and Africans",
+      "relatedTraits": ["hair_texture", "earwax_type"],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["ancestry", "East Asian", "hair", "teeth", "development"]
+    },
+    {
+      "id": "duffy_antigen",
+      "name": "Duffy Blood Group",
+      "category": "ancestry",
+      "subcategory": "population",
+      "icon": "Droplet",
+      "color": "#8B0000",
+      "shortDescription": {
+        "level3": "A blood protein that affects malaria resistance in Africa!",
+        "level4": "A gene that's different in African populations protects against one type of malaria.",
+        "level5": "The Duffy-negative blood type, common in Africa, provides resistance to vivax malaria.",
+        "level6": "The Duffy-null phenotype results from a promoter variant that prevents ACKR1 expression on red blood cells.",
+        "level7": "The ACKR1 -67T>C variant eliminates erythroid GATA-1 binding, preventing Duffy antigen expression and P. vivax infection.",
+        "level8": "ACKR1 rs2814778 disrupts a GATA-1 binding site, eliminating erythroid expression while maintaining endothelial expression, conferring P. vivax resistance."
+      },
+      "longDescription": {
+        "level3": "In Africa, most people are missing a protein on their blood cells that a type of malaria parasite needs to get inside. This protects them from that malaria!",
+        "level4": "The Duffy antigen is a protein on red blood cells. One type of malaria parasite (P. vivax) uses it to enter blood cells. Most Africans don't make Duffy antigen on their blood cells, so they're protected.",
+        "level5": "The Duffy-negative trait arose in Africa as protection against Plasmodium vivax malaria. A single mutation prevents the Duffy protein from appearing on red blood cells, blocking the parasite's entry.",
+        "level6": "The ACKR1 gene encodes the Duffy antigen. A promoter variant (-67T>C) disrupts GATA-1 transcription factor binding, eliminating expression specifically on red blood cells while preserving it on other cell types.",
+        "level7": "The Duffy-null allele (FY*O or ACKR1 rs2814778 C) reached near-fixation in sub-Saharan Africa due to malaria selection, representing one of the strongest known selective sweeps in human evolution.",
+        "level8": "The ACKR1 -67C allele disrupts a GATA-1 binding site in the erythroid-specific promoter, eliminating Fy glycoprotein on RBCs. This prevents P. vivax merozoite invasion via DARC-DBP interaction."
+      },
+      "funFact": {
+        "level3": "This is why one type of malaria is rare in Africa!",
+        "level4": "Almost 100% of people in West Africa are Duffy-negative, which is why P. vivax malaria is rare there.",
+        "level5": "The Duffy-negative trait is one of the strongest examples of natural selection in humans - it became almost universal in malaria-endemic Africa.",
+        "level6": "Interestingly, Duffy-negative individuals can still be infected by P. vivax in some cases, suggesting the parasite may be evolving alternative invasion pathways.",
+        "level7": "Recent evidence of P. vivax infections in Duffy-negative Africans suggests the parasite may be evolving DARC-independent invasion mechanisms.",
+        "level8": "P. vivax infections in Duffy-negative individuals, particularly in Madagascar and Ethiopia, suggest ongoing parasite evolution of alternative erythrocyte invasion pathways."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000213088",
+          "geneSymbol": "ACKR1",
+          "chromosome": "1",
+          "start": 159173802,
+          "end": 159176289,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs2814778",
+          "rsId": "rs2814778",
+          "chromosome": "1",
+          "position": 159174683,
+          "referenceAllele": "T",
+          "alternateAllele": "C",
+          "effect": "C/C = Duffy-negative (malaria resistance)",
+          "frequency": 0.22
+        }
+      ],
+      "inheritancePattern": "recessive",
+      "inheritanceExplanation": {
+        "level3": "You need two copies of the gene variant to be fully protected from this malaria!",
+        "level4": "Duffy-negative is recessive - you need two copies to lack the protein on your blood cells.",
+        "level5": "Full Duffy-negative status (and malaria protection) requires inheriting the variant from both parents.",
+        "level6": "The Duffy-negative phenotype shows recessive inheritance; heterozygotes express reduced but detectable Duffy antigen on erythrocytes.",
+        "level7": "Duffy-negative inheritance is recessive for erythroid expression; heterozygotes have reduced Fy antigen and partial P. vivax susceptibility.",
+        "level8": "Erythroid ACKR1 expression shows recessive inheritance for the null phenotype, though heterozygotes express ~50% Duffy antigen with reduced but present P. vivax susceptibility."
+      },
+      "prevalence": "~100% in West Africa, ~90% in East Africa, rare outside Africa",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["blood type", "malaria", "Africa", "ancestry", "resistance"]
+    },
+    {
+      "id": "sickle_cell",
+      "name": "Sickle Cell Trait",
+      "category": "disease",
+      "subcategory": "blood",
+      "icon": "Activity",
+      "color": "#DC143C",
+      "shortDescription": {
+        "level3": "A blood condition that can protect against malaria!",
+        "level4": "A gene variant that affects red blood cells - harmful with two copies but protective against malaria with one.",
+        "level5": "The sickle cell variant changes hemoglobin shape, causing disease with two copies but malaria resistance with one.",
+        "level6": "HBB E6V causes hemoglobin polymerization in deoxygenated conditions, leading to red cell sickling.",
+        "level7": "The HBB rs334 variant causes sickle cell disease in homozygotes while conferring heterozygote advantage against P. falciparum malaria.",
+        "level8": "HBB E6V (rs334) causes HbS polymerization under deoxygenation, triggering erythrocyte sickling. Heterozygotes show ~90% reduced severe malaria mortality."
+      },
+      "longDescription": {
+        "level3": "Sickle cell is caused by a change in the protein that carries oxygen in your blood. Having one copy protects against malaria. Having two copies causes sickle cell disease, which makes blood cells become crescent-shaped.",
+        "level4": "The HBB gene makes hemoglobin, which carries oxygen in red blood cells. The sickle cell variant makes hemoglobin clump together, distorting blood cells. One copy provides malaria protection; two copies cause serious disease.",
+        "level5": "The sickle cell variant changes a single amino acid in hemoglobin. This causes hemoglobin to form fibers when oxygen is low, distorting red cells into sickle shapes. One copy (sickle cell trait) provides malaria resistance; two copies cause sickle cell disease with anemia and pain crises.",
+        "level6": "HBB E6V substitution creates hemoglobin S (HbS), which polymerizes when deoxygenated. Homozygotes suffer chronic hemolytic anemia and vaso-occlusive crises, while heterozygotes have a survival advantage in malaria-endemic regions.",
+        "level7": "The HBB sickle variant (rs334) is maintained by balancing selection: heterozygotes have ~90% reduced severe malaria risk, offsetting the fitness cost of homozygous sickle cell disease.",
+        "level8": "HBB E6V (Glu→Val) causes HbS polymerization via hydrophobic interactions between β6 Val and a complementary pocket on adjacent HbS molecules, forming fibers that distort erythrocyte morphology."
+      },
+      "funFact": {
+        "level3": "This gene change has been protecting people from malaria for thousands of years!",
+        "level4": "The sickle cell variant arose independently at least 5 times in different parts of Africa and Asia where malaria is common.",
+        "level5": "Sickle cell is a famous example of 'balancing selection' - the variant stays in the population because carriers have an advantage even though the disease is harmful.",
+        "level6": "The sickle mutation arose on at least 5 distinct haplotype backgrounds (Senegal, Benin, Bantu, Cameroon, Arab-Indian), suggesting convergent evolution under malaria selection.",
+        "level7": "Multiple independent origins of the sickle mutation on different haplotypes demonstrate convergent evolution under strong malaria selection pressure.",
+        "level8": "The HbS mutation arose independently on 5+ haplotype backgrounds, with each showing strong positive selection coefficients (~0.05-0.10) in malaria-endemic regions."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000244734",
+          "geneSymbol": "HBB",
+          "chromosome": "11",
+          "start": 5225464,
+          "end": 5229395,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs334",
+          "rsId": "rs334",
+          "chromosome": "11",
+          "position": 5227002,
+          "referenceAllele": "T",
+          "alternateAllele": "A",
+          "effect": "A/A = sickle cell disease; T/A = sickle cell trait (malaria resistance)",
+          "frequency": 0.06
+        }
+      ],
+      "inheritancePattern": "recessive",
+      "inheritanceExplanation": {
+        "level3": "You need two copies to have sickle cell disease, but one copy protects against malaria!",
+        "level4": "Sickle cell disease is recessive - you need two copies for the full disease. But one copy gives you the sickle cell 'trait' which protects against malaria.",
+        "level5": "Sickle cell shows co-dominant inheritance: heterozygotes (one copy) have mild effects and malaria protection, while homozygotes (two copies) have sickle cell disease.",
+        "level6": "HbS shows recessive inheritance for disease but co-dominant for malaria protection, creating balancing selection maintaining the allele.",
+        "level7": "Sickle cell inheritance is recessive for disease (HbSS required) but co-dominant for the cellular phenotype, with heterozygotes (HbAS) showing trait characteristics.",
+        "level8": "HbS shows molecular co-dominance with HbAS erythrocytes containing ~40% HbS, sufficient for malaria protection but below the ~50% threshold for significant sickling under normal conditions."
+      },
+      "prevalence": "HbAS (trait): ~10-25% in sub-Saharan Africa; HbSS (disease): ~1-2% in endemic areas",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["blood", "disease", "malaria", "Africa", "hemoglobin"]
+    },
+    {
+      "id": "cystic_fibrosis",
+      "name": "Cystic Fibrosis",
+      "category": "disease",
+      "subcategory": "respiratory",
+      "icon": "Wind",
+      "color": "#4682B4",
+      "shortDescription": {
+        "level3": "A condition that makes thick, sticky mucus in the lungs!",
+        "level4": "Cystic fibrosis affects the lungs and digestion by making mucus too thick.",
+        "level5": "CF is caused by variants in the CFTR gene, which controls salt and water balance in mucus.",
+        "level6": "CFTR mutations disrupt chloride transport, leading to dehydrated mucus in airways and pancreas.",
+        "level7": "CFTR dysfunction impairs epithelial chloride/bicarbonate transport, causing thick mucus accumulation in multiple organs.",
+        "level8": "CFTR (cystic fibrosis transmembrane conductance regulator) is an ABC transporter functioning as a chloride channel; loss-of-function causes defective mucociliary clearance."
+      },
+      "longDescription": {
+        "level3": "Cystic fibrosis is a disease that makes the mucus in your lungs and stomach very thick and sticky. This makes it hard to breathe and digest food.",
+        "level4": "The CFTR gene makes a protein that helps control salt and water in mucus. When this gene doesn't work, mucus becomes too thick, causing breathing problems and digestive issues.",
+        "level5": "Cystic fibrosis is caused by mutations in the CFTR gene. The most common mutation (F508del) is a deletion of three DNA letters that removes one amino acid. This causes the protein to fold incorrectly and get destroyed.",
+        "level6": "CFTR encodes a chloride channel in epithelial cells. The F508del mutation causes protein misfolding and ER-associated degradation. Over 2,000 CFTR variants are known, with variable clinical severity.",
+        "level7": "CFTR mutations are classified by mechanism: Class I (no protein), II (misfolded, like F508del), III (gating defects), IV (conductance defects), V (reduced expression), VI (destabilized protein).",
+        "level8": "F508del causes NBD1 misfolding, triggering ERAD via CHIP-mediated ubiquitination. Elexacaftor-tezacaftor-ivacaftor partially corrects folding and potentiates channel function in F508del patients."
+      },
+      "funFact": {
+        "level3": "Scientists have found over 2,000 different mutations that can cause CF!",
+        "level4": "New medicines called 'modulators' can now help the CFTR protein work better in many CF patients.",
+        "level5": "CF is most common in people of Northern European ancestry, affecting about 1 in 2,500 births. About 1 in 25 Europeans carries one CF mutation.",
+        "level6": "The high carrier frequency of CF mutations in Europeans has led to hypotheses about heterozygote advantage, possibly for resistance to cholera or typhoid.",
+        "level7": "The ~4% CF carrier frequency in Europeans exceeds mutation-selection balance, suggesting past heterozygote advantage, possibly against secretory diarrheal diseases.",
+        "level8": "Elevated CF carrier frequency may reflect heterozygote protection against Salmonella typhi, which uses CFTR for cell entry, or reduced chloride secretion during cholera."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000001626",
+          "geneSymbol": "CFTR",
+          "chromosome": "7",
+          "start": 117287120,
+          "end": 117715971,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs113993960",
+          "rsId": "rs113993960",
+          "chromosome": "7",
+          "position": 117559593,
+          "referenceAllele": "ATCT",
+          "alternateAllele": "A",
+          "effect": "Deletion causes F508del, the most common CF mutation",
+          "frequency": 0.01
+        }
+      ],
+      "inheritancePattern": "recessive",
+      "inheritanceExplanation": {
+        "level3": "You need two broken copies of the gene to have CF.",
+        "level4": "CF is recessive - carriers with one working copy are healthy. Two broken copies cause disease.",
+        "level5": "Cystic fibrosis requires inheriting a mutation from both parents. Carriers (one mutation) are unaffected but can pass it on.",
+        "level6": "CF follows autosomal recessive inheritance. Carrier couples have a 25% chance of affected offspring with each pregnancy.",
+        "level7": "CF shows classic autosomal recessive inheritance with ~4% carrier frequency in European populations and 1/2500 affected birth prevalence.",
+        "level8": "CF demonstrates autosomal recessive inheritance with variable expressivity depending on specific CFTR mutation combinations and modifier genes."
+      },
+      "prevalence": "~1 in 2,500 births in Northern Europeans; ~1 in 25 carrier frequency",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["disease", "lungs", "digestion", "European"]
+    },
+    {
+      "id": "brca_genes",
+      "name": "BRCA Cancer Risk Genes",
+      "category": "disease",
+      "subcategory": "cancer",
+      "icon": "AlertTriangle",
+      "color": "#FF1493",
+      "shortDescription": {
+        "level3": "Genes that help protect against breast and ovarian cancer!",
+        "level4": "BRCA1 and BRCA2 are tumor suppressor genes that repair damaged DNA.",
+        "level5": "Mutations in BRCA genes significantly increase risk of breast and ovarian cancer.",
+        "level6": "BRCA1/2 are involved in homologous recombination DNA repair; loss-of-function increases cancer susceptibility.",
+        "level7": "BRCA1/2 encode proteins essential for homologous recombination; pathogenic variants confer 40-85% lifetime breast cancer risk.",
+        "level8": "BRCA1/2 function in HR-mediated DSB repair; heterozygous loss-of-function variants cause haploinsufficiency and tumor suppressor LOH."
+      },
+      "longDescription": {
+        "level3": "BRCA genes are like spell-checkers for your DNA. They fix mistakes when cells copy their DNA. When these genes don't work, mistakes can build up and cause cancer.",
+        "level4": "BRCA1 and BRCA2 are genes that help repair damaged DNA. If you inherit a broken version, your cells can't fix DNA damage as well, which increases the chance of developing breast or ovarian cancer.",
+        "level5": "BRCA1 and BRCA2 encode proteins that repair double-strand breaks in DNA through a process called homologous recombination. Inherited mutations in these genes significantly increase the risk of breast, ovarian, and other cancers.",
+        "level6": "BRCA1/2 are tumor suppressors involved in DNA double-strand break repair. Pathogenic variants confer 40-85% lifetime breast cancer risk and 15-45% ovarian cancer risk, with options for risk-reducing surgery and enhanced screening.",
+        "level7": "BRCA1 (chr17) and BRCA2 (chr13) encode proteins essential for RAD51-mediated homologous recombination. Heterozygous pathogenic variants show autosomal dominant inheritance of cancer predisposition.",
+        "level8": "BRCA1/2 function in HR-mediated DSB repair via RAD51 filament formation. Penetrance estimates are 40-85% for breast and 15-45% for ovarian cancer, modified by genetic background and lifestyle factors."
+      },
+      "funFact": {
+        "level3": "Actress Angelina Jolie had preventive surgery after learning she had a BRCA mutation!",
+        "level4": "BRCA testing became famous when Angelina Jolie shared publicly that she had a BRCA1 mutation and chose preventive surgery.",
+        "level5": "BRCA mutations are more common in certain populations, including Ashkenazi Jewish individuals, where about 1 in 40 carry a mutation.",
+        "level6": "Three specific BRCA mutations are much more common in Ashkenazi Jewish populations due to founder effects, enabling targeted screening.",
+        "level7": "The Ashkenazi Jewish population has three founder mutations (185delAG, 5382insC in BRCA1; 6174delT in BRCA2) with ~2.5% combined carrier frequency.",
+        "level8": "Ashkenazi founder mutations show strong linkage disequilibrium with flanking markers, dating their origins to ~30-40 generations ago during population bottlenecks."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000012048",
+          "geneSymbol": "BRCA1",
+          "chromosome": "17",
+          "start": 43044295,
+          "end": 43170245,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000139618",
+          "geneSymbol": "BRCA2",
+          "chromosome": "13",
+          "start": 32315474,
+          "end": 32400266,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "If one parent has a BRCA mutation, children have a 50% chance of inheriting it.",
+        "level4": "BRCA mutations are dominant for cancer risk - one mutated copy significantly increases cancer risk.",
+        "level5": "BRCA cancer risk follows autosomal dominant inheritance. A single inherited mutation dramatically increases lifetime cancer risk.",
+        "level6": "BRCA-associated cancer predisposition shows autosomal dominant inheritance with high but incomplete penetrance, modified by other genetic and environmental factors.",
+        "level7": "BRCA cancer susceptibility is inherited as autosomal dominant with age-dependent penetrance of 40-85% for breast and 15-45% for ovarian cancer.",
+        "level8": "BRCA cancer predisposition follows autosomal dominant inheritance at the phenotypic level, with tumor development requiring somatic second-hit LOH following Knudson's two-hit model."
+      },
+      "prevalence": "~1 in 400 in general population; ~1 in 40 in Ashkenazi Jewish population",
+      "relatedTraits": [],
+      "kidFriendly": false,
+      "minCopyLevel": 5,
+      "tags": ["cancer", "breast", "ovarian", "DNA repair", "inherited"]
+    },
+    {
+      "id": "apoe_alzheimers",
+      "name": "APOE and Alzheimer's Risk",
+      "category": "disease",
+      "subcategory": "neurological",
+      "icon": "Brain",
+      "color": "#9370DB",
+      "shortDescription": {
+        "level3": "A gene that affects brain health as you get older!",
+        "level4": "The APOE gene affects cholesterol in the brain and Alzheimer's disease risk.",
+        "level5": "APOE has three versions (ε2, ε3, ε4) with different effects on Alzheimer's risk.",
+        "level6": "APOE ε4 is the strongest common genetic risk factor for late-onset Alzheimer's disease.",
+        "level7": "APOE ε4 increases Alzheimer's risk ~3-fold per allele through effects on amyloid-β clearance and aggregation.",
+        "level8": "APOE isoforms differentially affect Aβ clearance, aggregation kinetics, and tau pathology; ε4 impairs microglial Aβ phagocytosis and promotes neuroinflammation."
+      },
+      "longDescription": {
+        "level3": "APOE is a gene that helps move fats around in your body and brain. One version of this gene makes it more likely to develop Alzheimer's disease when you're older.",
+        "level4": "The APOE gene has three versions: ε2, ε3, and ε4. The ε4 version increases the chance of developing Alzheimer's disease, while ε2 may be protective. Most people have ε3.",
+        "level5": "APOE encodes a protein that transports cholesterol, including in the brain. The ε4 variant is associated with earlier onset and higher risk of Alzheimer's disease, affecting how the brain clears toxic proteins.",
+        "level6": "APOE ε4 is the strongest common genetic risk factor for Alzheimer's. One copy increases risk ~3-fold; two copies increase risk ~12-fold. The ε2 allele appears protective.",
+        "level7": "APOE ε4 impairs amyloid-β clearance and promotes its aggregation into plaques. The variant also affects tau pathology, synaptic function, and neuroinflammatory responses.",
+        "level8": "APOE4 reduces microglial Aβ phagocytosis, accelerates Aβ fibril formation, and promotes neuroinflammatory TREM2 signaling. Effects on tau pathology and synaptic integrity are partially Aβ-independent."
+      },
+      "funFact": {
+        "level3": "Having the risky gene version doesn't mean you'll definitely get Alzheimer's!",
+        "level4": "Many people with APOE ε4 never develop Alzheimer's, and many people without it do. It's just one risk factor among many.",
+        "level5": "APOE ε4 may have been beneficial to our ancestors - some evidence suggests it helped with survival in environments with high infectious disease burden.",
+        "level6": "The ε4 allele may have been ancestral and beneficial for immune function, with ε3 and ε2 arising as derived alleles as human lifespan extended.",
+        "level7": "APOE ε4 is ancestral in primates and may have conferred immune advantages; the Alzheimer's association only becomes relevant with modern extended lifespans.",
+        "level8": "The ε4 allele shows geographic variation potentially related to ancestral infectious disease exposure, with higher frequencies in some African and Oceanian populations."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000130203",
+          "geneSymbol": "APOE",
+          "chromosome": "19",
+          "start": 44905796,
+          "end": 44909393,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs429358",
+          "rsId": "rs429358",
+          "chromosome": "19",
+          "position": 44908684,
+          "referenceAllele": "T",
+          "alternateAllele": "C",
+          "effect": "C allele = part of ε4 haplotype (increased Alzheimer's risk)",
+          "frequency": 0.15
+        },
+        {
+          "variantId": "rs7412",
+          "rsId": "rs7412",
+          "chromosome": "19",
+          "position": 44908822,
+          "referenceAllele": "C",
+          "alternateAllele": "T",
+          "effect": "T allele = part of ε2 haplotype (decreased Alzheimer's risk)",
+          "frequency": 0.08
+        }
+      ],
+      "inheritancePattern": "complex",
+      "inheritanceExplanation": {
+        "level3": "Your Alzheimer's risk depends on which APOE versions you got from your parents!",
+        "level4": "Having two copies of ε4 gives higher risk than one copy. Having ε2 may lower your risk.",
+        "level5": "APOE shows additive effects on Alzheimer's risk: each ε4 copy increases risk, while ε2 appears protective.",
+        "level6": "APOE genotype effects on Alzheimer's are roughly multiplicative: ε4/ε4 ~12x risk, ε3/ε4 ~3x, ε2/ε3 ~0.6x compared to ε3/ε3.",
+        "level7": "APOE shows dose-dependent effects on Alzheimer's risk with age-dependent penetrance; ε4/ε4 homozygotes have ~50% risk by age 75.",
+        "level8": "APOE genotype modifies Alzheimer's risk in a roughly log-additive manner, with effects modified by sex, ancestry, and other genetic variants."
+      },
+      "prevalence": "ε4 allele: ~14% globally; ε4/ε4: ~2% of population",
+      "relatedTraits": [],
+      "kidFriendly": false,
+      "minCopyLevel": 5,
+      "tags": ["Alzheimer's", "brain", "cholesterol", "aging", "dementia"]
+    },
+    {
+      "id": "huntington",
+      "name": "Huntington's Disease",
+      "category": "disease",
+      "subcategory": "neurological",
+      "icon": "Activity",
+      "color": "#800080",
+      "shortDescription": {
+        "level3": "A brain disease caused by a gene with too many repeats!",
+        "level4": "Huntington's is caused by a repeated DNA sequence that's too long.",
+        "level5": "HTT gene CAG repeat expansion causes a neurodegenerative disease affecting movement and cognition.",
+        "level6": "Huntington's disease results from CAG trinucleotide repeat expansion in HTT, causing toxic polyglutamine protein.",
+        "level7": "HTT CAG repeat expansion (>35 repeats) causes dominant neurodegeneration with age of onset inversely correlated with repeat length.",
+        "level8": "HTT exon 1 CAG expansion produces polyglutamine-expanded huntingtin, forming toxic aggregates and disrupting transcription, proteostasis, and mitochondrial function."
+      },
+      "longDescription": {
+        "level3": "The HTT gene has a part that repeats itself. If it repeats too many times (more than 35), it causes Huntington's disease, which affects movement and thinking.",
+        "level4": "In the HTT gene, three DNA letters (CAG) repeat over and over. Normal genes have 10-35 repeats. More than 35 repeats cause Huntington's disease, which usually appears in adulthood.",
+        "level5": "Huntington's disease is caused by an expansion of CAG repeats in the HTT gene. These repeats code for the amino acid glutamine. An expanded string of glutamines makes the huntingtin protein toxic to brain cells.",
+        "level6": "HTT CAG repeat expansion creates a polyglutamine tract that causes protein misfolding and aggregation. Longer expansions cause earlier onset; >60 repeats typically cause juvenile-onset disease.",
+        "level7": "The HTT polyglutamine tract normally has 10-26 glutamines. Expansions of 36+ cause disease, with age of onset inversely correlated with repeat length following an exponential relationship.",
+        "level8": "Expanded polyglutamine in huntingtin disrupts interactions with multiple partners, impairs autophagy and proteasomal degradation, causes transcriptional dysregulation, and triggers mitochondrial dysfunction and excitotoxicity."
+      },
+      "funFact": {
+        "level3": "This was one of the first genetic diseases where scientists found the exact gene!",
+        "level4": "Scientists spent 10 years searching for the Huntington's gene, finally finding it in 1993 in a collaborative effort.",
+        "level5": "Huntington's disease was mapped using families from Venezuela where the disease is unusually common due to a founder effect.",
+        "level6": "The Lake Maracaibo kindred in Venezuela, with ~18,000 related individuals including many HD cases, was crucial for mapping the HTT gene.",
+        "level7": "The Lake Maracaibo HD cluster traces to a single 19th-century woman; this large pedigree enabled linkage mapping before the CAG repeat was identified.",
+        "level8": "HD gene mapping leveraged RFLPs in the Lake Maracaibo kindred, with fine mapping revealing the CAG repeat expansion in 1993 by the HD Collaborative Research Group."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000197386",
+          "geneSymbol": "HTT",
+          "chromosome": "4",
+          "start": 3074681,
+          "end": 3243959,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "If one parent has Huntington's, children have a 50% chance of getting it.",
+        "level4": "Huntington's is dominant - you only need one copy of the expanded gene to develop the disease.",
+        "level5": "Huntington's disease follows autosomal dominant inheritance with complete penetrance for expansions of 40+ repeats.",
+        "level6": "HD shows autosomal dominant inheritance with age-dependent but complete penetrance. Repeat lengths of 36-39 show reduced penetrance.",
+        "level7": "HTT CAG expansions show autosomal dominant inheritance with anticipation - repeats can expand during transmission, especially through paternal inheritance.",
+        "level8": "HD exhibits meiotic instability with somatic mosaicism and anticipation; paternal transmission shows greater expansion due to CAG instability during spermatogenesis."
+      },
+      "prevalence": "~1 in 10,000 in European ancestry populations; rarer in Asian and African populations",
+      "relatedTraits": [],
+      "kidFriendly": false,
+      "minCopyLevel": 5,
+      "tags": [
+        "neurological",
+        "brain",
+        "movement",
+        "repeat expansion",
+        "dominant"
+      ]
+    },
+    {
+      "id": "sprinter_gene",
+      "name": "Sprinter vs Endurance Gene",
+      "category": "physical",
+      "subcategory": "athletic",
+      "icon": "Zap",
+      "color": "#FF4500",
+      "shortDescription": {
+        "level3": "Whether you're built for sprinting or long-distance running!",
+        "level4": "A gene that affects if your muscles are better for speed or endurance.",
+        "level5": "ACTN3 determines your ratio of fast-twitch to slow-twitch muscle fibers.",
+        "level6": "ACTN3 encodes α-actinin-3 in fast-twitch muscle fibers; a common null variant affects athletic performance.",
+        "level7": "The ACTN3 R577X polymorphism eliminates α-actinin-3 from fast fibers, shifting muscle toward endurance phenotype.",
+        "level8": "ACTN3 577XX homozygotes lack α-actinin-3, causing metabolic shift toward oxidative metabolism and improved endurance at the cost of sprint power."
+      },
+      "longDescription": {
+        "level3": "Your muscles can be built for quick bursts of speed or for running a long time. A gene called ACTN3 helps decide which type you have more of!",
+        "level4": "ACTN3 makes a protein found in fast-twitch muscle fibers - the kind used for sprinting. Some people have a version that doesn't work, so their muscles are better at endurance activities instead.",
+        "level5": "The ACTN3 gene makes α-actinin-3, a protein in fast-twitch muscles. About 18% of people have two copies of a variant that stops this protein from working. These people tend to be better at endurance sports than sprinting.",
+        "level6": "ACTN3 R577X creates a premature stop codon. The XX genotype is virtually absent in elite sprinters but common in endurance athletes. The α-actinin-3 protein is specific to fast type II fibers.",
+        "level7": "ACTN3 577XX causes complete α-actinin-3 deficiency, shifting muscle metabolism toward oxidative pathways. This genotype is found in <1% of Olympic sprinters but ~25% of elite endurance athletes.",
+        "level8": "α-actinin-3 deficiency causes slow fiber metabolic adaptation via calcineurin signaling, increased glycogen storage, and enhanced fatigue resistance at the expense of power output."
+      },
+      "funFact": {
+        "level3": "No Olympic 100m finalist has ever had two copies of the 'endurance' version!",
+        "level4": "Almost every Olympic sprinter has at least one working copy of ACTN3, while many marathon runners don't.",
+        "level5": "The 'endurance' version of ACTN3 became common as humans migrated to colder climates where endurance was more important than speed.",
+        "level6": "ACTN3 577X shows evidence of positive selection in European and East Asian populations, possibly for metabolic efficiency in cold climates.",
+        "level7": "The ACTN3 577X allele increased from ~10% to ~50% in Europeans over the last 30,000 years, suggesting selection for endurance/thermoregulation.",
+        "level8": "ACTN3 577X shows latitudinal gradient suggesting selection for improved thermogenesis and endurance metabolism in cold environments."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000204217",
+          "geneSymbol": "ACTN3",
+          "chromosome": "11",
+          "start": 66546117,
+          "end": 66563149,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs1815739",
+          "rsId": "rs1815739",
+          "chromosome": "11",
+          "position": 66560624,
+          "referenceAllele": "C",
+          "alternateAllele": "T",
+          "effect": "C/C = power/sprint; T/T = endurance; C/T = intermediate",
+          "frequency": 0.42
+        }
+      ],
+      "inheritancePattern": "codominant",
+      "inheritanceExplanation": {
+        "level3": "You get muscle-type genes from both parents!",
+        "level4": "Having one sprint gene and one endurance gene gives you a mix of both muscle types.",
+        "level5": "ACTN3 shows codominant effects - heterozygotes have intermediate muscle fiber characteristics.",
+        "level6": "The R577X polymorphism shows additive effects on muscle phenotype, with heterozygotes intermediate in fiber composition.",
+        "level7": "ACTN3 exhibits codominant inheritance with genotype-dependent α-actinin-3 protein levels and proportional phenotypic effects.",
+        "level8": "ACTN3 shows additive effects on fast fiber percentage, power output, and muscle metabolism with heterozygotes intermediate."
+      },
+      "prevalence": "RR (sprint): ~30%, RX (mixed): ~50%, XX (endurance): ~18-20% in Europeans",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["athletic", "muscles", "sports", "sprinting", "endurance"]
+    },
+    {
+      "id": "caffeine_metabolism",
+      "name": "Caffeine Metabolism Speed",
+      "category": "health",
+      "subcategory": "metabolism",
+      "icon": "Coffee",
+      "color": "#6F4E37",
+      "shortDescription": {
+        "level3": "How fast your body breaks down coffee!",
+        "level4": "Some people process caffeine quickly, others slowly.",
+        "level5": "CYP1A2 determines how fast you metabolize caffeine from coffee and tea.",
+        "level6": "CYP1A2 variants affect caffeine half-life, influencing tolerance and health effects.",
+        "level7": "CYP1A2 -163C>A polymorphism affects enzyme inducibility, with AA genotype showing faster caffeine clearance.",
+        "level8": "CYP1A2*1F (rs762551 A>C) affects AhR-mediated enzyme induction, with C allele reducing inducibility and slowing caffeine metabolism."
+      },
+      "longDescription": {
+        "level3": "When you drink coffee, your body has to break down the caffeine. Some people do this fast and can drink coffee at night, while others do it slowly and feel jittery all day!",
+        "level4": "The CYP1A2 gene makes an enzyme that breaks down caffeine. Fast metabolizers can drink coffee late without trouble, while slow metabolizers may feel wired for hours from one cup.",
+        "level5": "CYP1A2 is responsible for ~95% of caffeine metabolism. Fast metabolizers (AA genotype) clear caffeine quickly and may need more coffee for effects. Slow metabolizers (C carriers) feel effects longer and may have health risks from high intake.",
+        "level6": "The CYP1A2 -163A>C variant affects enzyme induction. Slow metabolizers who drink 3+ cups daily have increased heart attack risk, while fast metabolizers show no increased risk or even protective effects.",
+        "level7": "CYP1A2*1F shows gene-diet interaction: slow metabolizers have increased MI risk with high caffeine intake, while fast metabolizers may benefit from caffeine's antioxidant effects.",
+        "level8": "CYP1A2 inducibility affects caffeine pharmacokinetics with half-life ranging from 2-12 hours. Slow metabolizers show impaired exercise ergogenic response and elevated cardiovascular risk markers."
+      },
+      "funFact": {
+        "level3": "About half of people are slow caffeine metabolizers!",
+        "level4": "Slow metabolizers who drink lots of coffee have higher heart attack risk, but fast metabolizers don't!",
+        "level5": "Whether coffee is 'good' or 'bad' for your heart partly depends on how fast you metabolize it - the research was confusing until scientists accounted for this gene.",
+        "level6": "The conflicting research on coffee and heart disease was partly resolved by finding that CYP1A2 genotype moderates the association.",
+        "level7": "CYP1A2 genotype explains ~15% of the variance in caffeine clearance rates between individuals.",
+        "level8": "Caffeine pharmacokinetics show 40-fold inter-individual variation, with CYP1A2 genotype, smoking status, and oral contraceptive use as major determinants."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000140465",
+          "geneSymbol": "CYP1A2",
+          "chromosome": "15",
+          "start": 74748846,
+          "end": 74756607,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs762551",
+          "rsId": "rs762551",
+          "chromosome": "15",
+          "position": 74749576,
+          "referenceAllele": "C",
+          "alternateAllele": "A",
+          "effect": "A/A = fast metabolizer; A/C or C/C = slow metabolizer",
+          "frequency": 0.32
+        }
+      ],
+      "inheritancePattern": "codominant",
+      "inheritanceExplanation": {
+        "level3": "You inherit caffeine speed from both parents!",
+        "level4": "Having one fast and one slow gene gives you medium caffeine metabolism.",
+        "level5": "CYP1A2 metabolism speed is additive - two fast copies means fastest metabolism.",
+        "level6": "CYP1A2 activity shows additive inheritance with heterozygotes having intermediate metabolism rates.",
+        "level7": "CYP1A2 phenotype is polygenic but the -163C>A polymorphism explains a substantial proportion of inter-individual variation.",
+        "level8": "CYP1A2 activity is determined by genetic polymorphisms plus environmental inducers (smoking, cruciferous vegetables) in a multiplicative model."
+      },
+      "prevalence": "Fast metabolizers (AA): ~45%, Slow metabolizers (AC/CC): ~55%",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["coffee", "caffeine", "metabolism", "diet", "heart"]
+    },
+    {
+      "id": "short_sleeper",
+      "name": "Natural Short Sleeper",
+      "category": "physical",
+      "subcategory": "sleep",
+      "icon": "Moon",
+      "color": "#191970",
+      "shortDescription": {
+        "level3": "Some people only need 4-6 hours of sleep!",
+        "level4": "Rare gene variants let some people thrive on less sleep.",
+        "level5": "DEC2/BHLHE41 mutations cause 'natural short sleep' - needing only 4-6 hours.",
+        "level6": "Rare BHLHE41 variants reduce sleep need without cognitive deficits seen in sleep deprivation.",
+        "level7": "BHLHE41 P384R and other mutations affect circadian regulation, reducing total sleep need to 4-6 hours.",
+        "level8": "BHLHE41 mutations impair repressor activity on CLOCK/BMAL1 targets, altering circadian gene expression and reducing homeostatic sleep drive."
+      },
+      "longDescription": {
+        "level3": "Most people need 7-9 hours of sleep, but some lucky people have a special gene that lets them feel great with only 4-6 hours!",
+        "level4": "Natural short sleepers have a rare mutation that makes their bodies need less sleep. They wake up refreshed after only 4-6 hours and don't feel tired during the day - unlike people who just don't get enough sleep.",
+        "level5": "The DEC2 gene (also called BHLHE41) helps control your body's internal clock. Rare mutations in this gene reduce the need for sleep without the negative effects of sleep deprivation. These people are truly refreshed on less sleep.",
+        "level6": "BHLHE41 encodes a transcriptional repressor in the circadian clock. The P384R mutation was discovered in a family that habitually slept only 6 hours without impairment. Mice with this mutation also sleep less.",
+        "level7": "Natural short sleep mutations in BHLHE41, ADRB1, and NPSR1 have been identified. These affect circadian/sleep homeostasis pathways and confer resistance to sleep deprivation effects.",
+        "level8": "BHLHE41 P384R reduces transcriptional repression of circadian targets including PER genes. ADRB1 A187V affects noradrenergic signaling in the pons, reducing NREM sleep."
+      },
+      "funFact": {
+        "level3": "Famous short sleepers include Elon Musk and Margaret Thatcher!",
+        "level4": "True natural short sleepers are very rare - only about 1-3% of people who claim to need little sleep actually have the gene.",
+        "level5": "Scientists found this gene by studying a mother and daughter who both slept only 6 hours and woke naturally with no alarm clock.",
+        "level6": "Most people who think they're short sleepers actually have accumulated sleep debt. True genetic short sleepers show no cognitive decline on 4-6 hours.",
+        "level7": "The familial natural short sleep phenotype was first mapped in 2009. Multiple genes have now been implicated (BHLHE41, ADRB1, NPSR1, GRM1).",
+        "level8": "Identified short sleep mutations affect distinct pathways: circadian (BHLHE41), arousal (ADRB1, NPSR1), and neuronal excitability (GRM1), suggesting multiple routes to reduced sleep need."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000123095",
+          "geneSymbol": "BHLHE41",
+          "chromosome": "12",
+          "start": 26277781,
+          "end": 26283161,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000118432",
+          "geneSymbol": "ADRB1",
+          "chromosome": "10",
+          "start": 114044047,
+          "end": 114047590,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "If one parent is a natural short sleeper, children might be too!",
+        "level4": "Short sleep mutations are dominant - you only need one copy to need less sleep.",
+        "level5": "Natural short sleep follows dominant inheritance - affected families show the trait across generations.",
+        "level6": "Familial natural short sleep is autosomal dominant with high penetrance in identified pedigrees.",
+        "level7": "Short sleep mutations show dominant inheritance with full penetrance; identified mutations are private to individual families.",
+        "level8": "Identified short sleep mutations are rare, often private variants showing autosomal dominant inheritance with complete penetrance."
+      },
+      "prevalence": "Extremely rare (<0.5% of population); most 'short sleepers' are sleep deprived",
+      "relatedTraits": ["chronotype"],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["sleep", "circadian", "rare", "superpower"]
+    },
+    {
+      "id": "chronotype",
+      "name": "Morning Lark vs Night Owl",
+      "category": "physical",
+      "subcategory": "sleep",
+      "icon": "Sunrise",
+      "color": "#FFD700",
+      "shortDescription": {
+        "level3": "Whether you're naturally an early bird or a night person!",
+        "level4": "Your genes help determine if you're a morning person or a night owl.",
+        "level5": "Clock genes like PER2 and CLOCK influence your natural sleep-wake preferences.",
+        "level6": "Chronotype is influenced by circadian gene variants affecting your endogenous rhythm period.",
+        "level7": "PER2, PER3, CLOCK, and CRY variants affect circadian period length and phase preference.",
+        "level8": "Chronotype is polygenic with GWAS identifying 351 loci; PER2/3 variants alter phosphorylation-dependent protein stability affecting period length."
+      },
+      "longDescription": {
+        "level3": "Are you bright and happy in the morning, or do you come alive at night? It's partly in your genes!",
+        "level4": "Your body has an internal clock that tells you when to sleep and wake. Some people's clocks run a bit fast (morning larks), while others run slow (night owls).",
+        "level5": "Genes like PER2, PER3, and CLOCK control your circadian rhythm - your body's 24-hour cycle. Variants in these genes can make your natural schedule earlier or later than average.",
+        "level6": "Chronotype is ~50% heritable. Key clock genes form transcription-translation feedback loops with ~24-hour periodicity. Genetic variants can shorten (morningness) or lengthen (eveningness) this period.",
+        "level7": "The PER3 VNTR (4/4 vs 5/5 repeats) is associated with morningness and sleep homeostasis. Extreme morning types may carry PER2 or CRY mutations causing Familial Advanced Sleep Phase.",
+        "level8": "Circadian period is determined by the phosphorylation-dependent degradation rate of PER proteins. CK1ε mutations in FASPS accelerate PER2 degradation, shortening period by ~4 hours."
+      },
+      "funFact": {
+        "level3": "Teenagers naturally become night owls - it's biology, not laziness!",
+        "level4": "Circadian rhythms shift later during puberty, which is why teens want to sleep late. It shifts back as adults.",
+        "level5": "Studies forcing teenagers to start school later show improved grades, fewer car accidents, and better mental health.",
+        "level6": "Adolescent circadian phase delay is driven by hormonal changes affecting clock gene expression, not just social factors.",
+        "level7": "Pubertal hormones modulate circadian photosensitivity and period length, causing ~2-hour phase delay in adolescents.",
+        "level8": "Adolescent chronotype shift involves altered melatonin sensitivity, changed PER2 expression patterns, and modified light input to the SCN."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000132326",
+          "geneSymbol": "PER2",
+          "chromosome": "2",
+          "start": 238244432,
+          "end": 238292703,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000134852",
+          "geneSymbol": "CLOCK",
+          "chromosome": "4",
+          "start": 55426865,
+          "end": 55540611,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs55694368",
+          "rsId": "rs55694368",
+          "chromosome": "2",
+          "position": 238278812,
+          "referenceAllele": "G",
+          "alternateAllele": "A",
+          "effect": "Associated with morningness",
+          "frequency": 0.25
+        }
+      ],
+      "inheritancePattern": "polygenic",
+      "inheritanceExplanation": {
+        "level3": "Being a morning or night person comes from many genes!",
+        "level4": "Your chronotype is influenced by many genes working together.",
+        "level5": "Chronotype is about 50% genetic, involving hundreds of genes that affect your internal clock.",
+        "level6": "GWAS have identified 351 loci associated with chronotype, explaining ~12% of variance.",
+        "level7": "Chronotype is highly polygenic with many small-effect variants; heritability estimates range from 21-52%.",
+        "level8": "Chronotype GWAS signal is enriched in brain-expressed genes and retinal phototransduction pathways, reflecting central clock and light input roles."
+      },
+      "prevalence": "Morning types: ~25%, Evening types: ~25%, Intermediate: ~50%",
+      "relatedTraits": ["short_sleeper"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["sleep", "circadian", "morning", "night", "lifestyle"]
+    },
+    {
+      "id": "photic_sneeze",
+      "name": "Photic Sneeze Reflex",
+      "category": "sensory",
+      "subcategory": "reflex",
+      "icon": "Sun",
+      "color": "#FFA500",
+      "shortDescription": {
+        "level3": "Sneezing when you look at bright light!",
+        "level4": "Some people sneeze when they walk from dark to bright light.",
+        "level5": "The photic sneeze reflex (ACHOO syndrome) makes people sneeze when exposed to bright light.",
+        "level6": "Photic sneezing is an autosomal dominant trait affecting 18-35% of the population.",
+        "level7": "ACHOO syndrome involves cross-activation between optic and trigeminal nerve pathways.",
+        "level8": "Photic sneeze reflex results from parasympathetic cross-wiring between visual and sneeze reflex pathways, possibly in the lateral medulla."
+      },
+      "longDescription": {
+        "level3": "Do you sneeze when you walk outside into bright sunlight? About 1 in 4 people do! Scientists call it ACHOO syndrome.",
+        "level4": "The photic sneeze reflex makes people sneeze when suddenly exposed to bright light. It's completely harmless and runs in families.",
+        "level5": "ACHOO stands for 'Autosomal dominant Compelling Helio-Ophthalmic Outburst.' About 18-35% of people have it. The bright light triggers the same nerves that make you sneeze.",
+        "level6": "Photic sneezing results from parasympathetic generalization - bright light stimulates pupil constriction and the nearby sneeze reflex gets cross-activated.",
+        "level7": "The reflex involves the optic nerve (vision) cross-activating the trigeminal nerve (sneeze reflex) at the level of the brainstem, likely due to nerve proximity.",
+        "level8": "Proposed mechanisms include ephaptic transmission between optic and trigeminal pathways, or central parasympathetic overflow at the superior salivatory nucleus."
+      },
+      "funFact": {
+        "level3": "Aristotle wrote about sun-sneezing over 2,000 years ago!",
+        "level4": "The funny ACHOO acronym was invented by scientists in the 1970s as a joke that stuck.",
+        "level5": "Fighter pilots with photic sneeze reflex can be dangerous during combat, so militaries screen for it.",
+        "level6": "Photic sneeze is a concern in aviation and military contexts where sudden sneezing during bright light exposure could be hazardous.",
+        "level7": "The genetic basis remains unmapped despite the clear dominant inheritance pattern, suggesting complex or heterogeneous etiology.",
+        "level8": "Despite ~40% heritability and clear Mendelian segregation, no specific locus for photic sneeze reflex has been identified in GWAS."
+      },
+      "genes": [],
+      "variants": [],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "If your mom or dad sneezes at light, you probably do too!",
+        "level4": "Sun-sneezing is dominant - you only need one copy of the gene to have it.",
+        "level5": "Photic sneeze follows autosomal dominant inheritance with high penetrance.",
+        "level6": "Family studies confirm autosomal dominant inheritance with ~67% penetrance in first-degree relatives.",
+        "level7": "Photic sneeze shows autosomal dominant inheritance but no causative gene has been identified.",
+        "level8": "The phenotype segregates as autosomal dominant in pedigrees, but genetic heterogeneity or reduced penetrance has hampered gene identification."
+      },
+      "prevalence": "18-35% of population",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["sneeze", "sun", "light", "reflex", "quirky"]
+    },
+    {
+      "id": "asparagus_smell",
+      "name": "Asparagus Urine Smell",
+      "category": "sensory",
+      "subcategory": "smell",
+      "icon": "Salad",
+      "color": "#7CFC00",
+      "shortDescription": {
+        "level3": "Whether you can smell the funny smell after eating asparagus!",
+        "level4": "Some people can smell asparagus metabolites in urine, while others can't.",
+        "level5": "The ability to smell asparagus metabolites in urine is genetic, involving olfactory receptor genes.",
+        "level6": "OR2M7 gene variants determine ability to detect asparagus-derived methanethiol and related compounds.",
+        "level7": "A cluster of olfactory receptor genes near OR2M7 determines asparagus anosmia, affecting ~40% of people.",
+        "level8": "GWAS identified rs4481887 near OR2M7 as strongly associated with asparagus anosmia, affecting odor threshold for methanethiol."
+      },
+      "longDescription": {
+        "level3": "After eating asparagus, some people notice a strong smell when they pee. But other people can't smell it at all - even though everyone makes the smelly chemical!",
+        "level4": "Almost everyone produces smelly chemicals in their urine after eating asparagus. But about 40% of people have olfactory receptor variants that make them unable to detect the smell.",
+        "level5": "Asparagus contains compounds that break down into sulfur-containing chemicals like methanethiol. Whether you can smell them depends on variants in olfactory receptor genes near OR2M7.",
+        "level6": "The asparagus urine smell comes from S-methyl thioesters produced during metabolism. Detection ability is determined by olfactory receptor variants on chromosome 1, with ~40% of people having specific anosmia.",
+        "level7": "GWAS identified variants near OR2M7 explaining asparagus-specific anosmia. Interestingly, early studies focused on who produces the smell, but production is nearly universal - detection is the variable.",
+        "level8": "The rs4481887 variant near OR2M7 on chromosome 1 shows OR = 2.4 for asparagus anosmia. The olfactory receptor cluster shows signatures of balancing selection in human populations."
+      },
+      "funFact": {
+        "level3": "Everyone makes the smelly pee - but only some people can smell it!",
+        "level4": "Scientists used to think only some people made the smell. Now we know almost everyone makes it, but only some can detect it!",
+        "level5": "Benjamin Franklin wrote about asparagus pee in 1781, noting it gives urine 'a disagreeable odour.'",
+        "level6": "Marcel Proust famously wrote that asparagus 'transforms my chamber-pot into a flask of perfume.'",
+        "level7": "The metabolites responsible include methanethiol, dimethyl sulfide, and dimethyl sulfoxide, produced within 15-30 minutes of ingestion.",
+        "level8": "Asparagusic acid is the precursor, converted to volatile sulfur compounds. Detection threshold for methanethiol varies 1000-fold between individuals based on genotype."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000279159",
+          "geneSymbol": "OR2M7",
+          "chromosome": "1",
+          "start": 248100291,
+          "end": 248101240,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs4481887",
+          "rsId": "rs4481887",
+          "chromosome": "1",
+          "position": 248458410,
+          "referenceAllele": "G",
+          "alternateAllele": "A",
+          "effect": "A allele = more likely to smell asparagus urine",
+          "frequency": 0.42
+        }
+      ],
+      "inheritancePattern": "complex",
+      "inheritanceExplanation": {
+        "level3": "Smelling asparagus pee runs in families in complicated ways!",
+        "level4": "Multiple genes affect whether you can smell asparagus urine.",
+        "level5": "The ability to smell asparagus metabolites involves multiple olfactory receptor genes.",
+        "level6": "Asparagus anosmia shows complex inheritance with multiple contributing OR gene variants.",
+        "level7": "GWAS identifies a major locus near OR2M7 but additional variants likely contribute to the phenotype.",
+        "level8": "Asparagus detection shows complex genetics with OR2M7 region explaining ~17% of variance in detection ability."
+      },
+      "prevalence": "Can smell: ~60%, Cannot smell (anosmia): ~40%",
+      "relatedTraits": ["cilantro_taste"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["smell", "food", "quirky", "olfactory"]
+    },
+    {
+      "id": "body_odor",
+      "name": "Body Odor Intensity",
+      "category": "physical",
+      "subcategory": "secretion",
+      "icon": "Droplets",
+      "color": "#9ACD32",
+      "shortDescription": {
+        "level3": "Some people have almost no body odor!",
+        "level4": "The same gene that controls earwax type also affects body odor.",
+        "level5": "ABCC11 variants that cause dry earwax also greatly reduce body odor.",
+        "level6": "ABCC11 538G>A eliminates apocrine gland odor precursor secretion, reducing body odor.",
+        "level7": "ABCC11 538A/A genotype produces minimal body odor due to absent apocrine odor precursor secretion.",
+        "level8": "ABCC11 transports odor precursors (16-androstene steroids, short-chain fatty acids) into apocrine sweat; 538A eliminates transport function."
+      },
+      "longDescription": {
+        "level3": "The same gene that decides if your earwax is wet or dry also controls body odor. People with dry earwax have almost no body odor!",
+        "level4": "ABCC11 is the earwax gene, but it also affects your sweat glands. People with two copies of the dry earwax variant produce much less body odor.",
+        "level5": "The ABCC11 gene controls what gets secreted by apocrine sweat glands (found in armpits). The variant that causes dry earwax also stops the secretion of chemicals that bacteria turn into body odor.",
+        "level6": "ABCC11 transports odor precursors into apocrine sweat. The 538A variant eliminates this transport, so bacteria have nothing to convert to odorous compounds. This is why most East Asians don't need deodorant.",
+        "level7": "ABCC11 538A/A individuals secrete minimal 3M2H and other odor precursors. Axillary microbiome composition also differs, with reduced Corynebacterium colonization.",
+        "level8": "ABCC11 exports glutathione conjugates of odorant precursors. 538A causes ER retention and proteasomal degradation, eliminating secretion of 3-methyl-2-hexenoic acid and androstenone/androstenol precursors."
+      },
+      "funFact": {
+        "level3": "Deodorant was invented in America and Europe - most people in East Asia don't need it!",
+        "level4": "About 80-95% of East Asians have the variant for dry earwax and low body odor, compared to only ~2% of Europeans.",
+        "level5": "In Japan and Korea, having body odor was historically so unusual that it was classified as a medical condition (osmidrosis) that could exempt men from military service.",
+        "level6": "The global deodorant market reflects genetics: East Asian markets are much smaller per capita because most people don't need these products.",
+        "level7": "The ABCC11 538A allele was positively selected in East Asia ~2000 generations ago, possibly due to pleiotropic effects or sexual selection.",
+        "level8": "Population genetics suggest ABCC11 538A swept to near-fixation in East Asia during the last glacial maximum, possibly due to effects on thermoregulation or pathogen resistance."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000154734",
+          "geneSymbol": "ABCC11",
+          "chromosome": "16",
+          "start": 48171844,
+          "end": 48251966,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs17822931",
+          "rsId": "rs17822931",
+          "chromosome": "16",
+          "position": 48224287,
+          "referenceAllele": "G",
+          "alternateAllele": "A",
+          "effect": "G/G or G/A = normal body odor; A/A = minimal body odor",
+          "frequency": 0.15
+        }
+      ],
+      "inheritancePattern": "recessive",
+      "inheritanceExplanation": {
+        "level3": "You need two copies of the gene to have almost no body odor!",
+        "level4": "Minimal body odor is recessive - you need two copies of the variant.",
+        "level5": "Like dry earwax, minimal body odor requires two copies (A/A) of the variant.",
+        "level6": "Body odor reduction follows recessive inheritance; heterozygotes have intermediate but still functional ABCC11.",
+        "level7": "The body odor phenotype parallels earwax: A/A = minimal odor, G/A = intermediate, G/G = normal.",
+        "level8": "Heterozygotes produce ~50% functional ABCC11, secreting intermediate levels of odor precursors."
+      },
+      "prevalence": "Minimal body odor (A/A): ~2% Europeans, ~80-95% East Asians",
+      "relatedTraits": ["earwax_type"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["sweat", "body odor", "deodorant", "ancestry"]
+    },
+    {
+      "id": "color_blindness",
+      "name": "Red-Green Color Blindness",
+      "category": "sensory",
+      "subcategory": "vision",
+      "icon": "Eye",
+      "color": "#DC143C",
+      "shortDescription": {
+        "level3": "When reds and greens look similar!",
+        "level4": "Color blindness makes it hard to tell red and green apart.",
+        "level5": "Red-green color blindness is caused by mutations in cone pigment genes on the X chromosome.",
+        "level6": "OPN1LW and OPN1MW encode red and green cone opsins; deletions or mutations cause color vision deficiency.",
+        "level7": "Red-green CVD results from unequal crossing-over in the OPN1LW-OPN1MW gene array, causing deletion or hybrid genes.",
+        "level8": "The OPN1LW/MW tandem array is prone to unequal recombination due to high sequence similarity, causing deuteranopia/protanopia."
+      },
+      "longDescription": {
+        "level3": "Color blindness usually means having trouble telling red and green apart. It's much more common in boys because it's carried on the X chromosome.",
+        "level4": "Your eyes have three types of cone cells for color: red, green, and blue. Color blindness happens when the red or green cones don't work properly. Boys are affected more because they only have one X chromosome.",
+        "level5": "The genes for red and green light detection (OPN1LW and OPN1MW) are on the X chromosome. Because males have only one X, a single mutation causes color blindness. Females need mutations on both X chromosomes.",
+        "level6": "Red-green CVD affects ~8% of males but only ~0.5% of females due to X-linkage. The OPN1LW-OPN1MW gene cluster undergoes frequent unequal recombination, creating deletions or hybrid genes.",
+        "level7": "Deuteranomaly (weak green) and protanomaly (weak red) result from hybrid pigment genes; deuteranopia and protanopia result from gene deletions. Gene conversion between OPN1LW/MW causes spectral shifts.",
+        "level8": "The high mutation rate results from the tandem array structure with 98% sequence identity promoting unequal crossing over. Each male conception has ~4% de novo CVD mutation risk."
+      },
+      "funFact": {
+        "level3": "About 1 in 12 boys is color blind, but only 1 in 200 girls!",
+        "level4": "Color blind people often have enhanced night vision and can sometimes spot camouflaged objects better than normal vision people.",
+        "level5": "During WWII, color blind soldiers were valued as spotters because they could see through some types of camouflage.",
+        "level6": "Daltonism is named after John Dalton, who described his own color blindness in 1794 - his preserved eyeball was later genetically tested.",
+        "level7": "Analysis of John Dalton's preserved eyes in 1995 showed he had deuteranopia (missing green pigment), not the protanopia he had hypothesized.",
+        "level8": "Gene therapy trials (CRISPR-based opsin delivery to cones) have shown partial color vision restoration in primate models."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000102076",
+          "geneSymbol": "OPN1LW",
+          "chromosome": "X",
+          "start": 154182596,
+          "end": 154196861,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000269386",
+          "geneSymbol": "OPN1MW",
+          "chromosome": "X",
+          "start": 154210331,
+          "end": 154224633,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [],
+      "inheritancePattern": "recessive",
+      "inheritanceExplanation": {
+        "level3": "Boys are color blind more often because they only have one X chromosome!",
+        "level4": "Color blindness is X-linked recessive. Boys have one X, so one mutation causes color blindness. Girls have two X chromosomes and usually have a backup.",
+        "level5": "Red-green color blindness is X-linked recessive. Males (XY) express the phenotype with one mutation, while females (XX) are usually carriers.",
+        "level6": "X-linked recessive inheritance means affected males inherit the mutation from carrier mothers. Affected females are rare and require affected father + carrier mother.",
+        "level7": "Manifesting heterozygotes (color blind females) can occur due to skewed X-inactivation, but full CVD requires homozygosity.",
+        "level8": "Carrier females may show subtle CVD on anomaloscopy due to X-inactivation mosaicism in retinal cone populations."
+      },
+      "prevalence": "Males: ~8%, Females: ~0.5%",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["vision", "color", "X-linked", "common"]
+    },
+    {
+      "id": "pain_insensitivity",
+      "name": "Congenital Pain Insensitivity",
+      "category": "sensory",
+      "subcategory": "pain",
+      "icon": "ShieldOff",
+      "color": "#FF6347",
+      "shortDescription": {
+        "level3": "Some rare people feel no pain at all!",
+        "level4": "Extremely rare mutations can make people unable to feel pain.",
+        "level5": "SCN9A gene mutations can cause complete inability to feel pain.",
+        "level6": "SCN9A encodes Nav1.7, a sodium channel in pain neurons; loss-of-function causes pain insensitivity.",
+        "level7": "SCN9A loss-of-function mutations prevent action potential initiation in nociceptors, causing congenital insensitivity to pain.",
+        "level8": "Nav1.7 is required for odor perception and nociceptor function; null mutations cause CIP with anosmia while preserving mechanosensation."
+      },
+      "longDescription": {
+        "level3": "A very small number of people are born unable to feel any pain. While that might sound like a superpower, it's actually dangerous because pain warns us of injury.",
+        "level4": "The SCN9A gene makes a protein needed for pain signals to reach your brain. Rare mutations that break this gene make people completely unable to feel pain.",
+        "level5": "SCN9A encodes a sodium channel (Nav1.7) found in pain-sensing nerves. Without working Nav1.7, pain signals can't travel to the brain. These individuals also often can't smell, because the same channel is used in the nose.",
+        "level6": "Congenital insensitivity to pain (CIP) is extremely rare. Affected individuals suffer frequent injuries, burns, and broken bones because they can't feel pain warnings. Most also have anosmia (no sense of smell).",
+        "level7": "SCN9A loss-of-function mutations prevent action potential generation in nociceptive neurons. Interestingly, gain-of-function mutations in the same gene cause extreme pain disorders like erythromelalgia.",
+        "level8": "Nav1.7 is the threshold channel for nociceptor activation. Complete loss causes CIP; partial loss is being explored as a target for non-addictive analgesics."
+      },
+      "funFact": {
+        "level3": "People with no pain sense often get lots of injuries without noticing!",
+        "level4": "Pain-free people often bite their tongues, burn themselves, and break bones without realizing it. Pain actually protects us!",
+        "level5": "Drug companies are trying to make painkillers that partially block Nav1.7, to reduce pain without completely eliminating the protective warnings.",
+        "level6": "The opposite mutation (hyperactive Nav1.7) causes burning pain disorders. The same gene controls both extremes.",
+        "level7": "SCN9A gain-of-function causes paroxysmal extreme pain disorder or erythromelalgia - showing the gene's critical role in pain signaling.",
+        "level8": "Nav1.7 inhibitors are in development as non-opioid analgesics, though achieving full analgesia without side effects has been challenging."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000169432",
+          "geneSymbol": "SCN9A",
+          "chromosome": "2",
+          "start": 166195483,
+          "end": 166375610,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [],
+      "inheritancePattern": "recessive",
+      "inheritanceExplanation": {
+        "level3": "You need two broken copies of the gene to feel no pain.",
+        "level4": "Pain insensitivity is recessive - carriers with one working copy are normal.",
+        "level5": "Complete loss of pain sensation requires inheriting mutations from both parents.",
+        "level6": "CIP follows autosomal recessive inheritance; heterozygotes have normal pain sensitivity.",
+        "level7": "SCN9A loss-of-function shows recessive inheritance, unlike the gain-of-function mutations which are dominant.",
+        "level8": "Recessive inheritance is consistent with haploinsufficiency not affecting nociceptor function; 50% Nav1.7 is sufficient for normal pain perception."
+      },
+      "prevalence": "Extremely rare (<1 in 1,000,000)",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["pain", "rare", "superpower", "sodium channel"]
+    },
+    {
+      "id": "muscle_growth",
+      "name": "Myostatin and Muscle Growth",
+      "category": "physical",
+      "subcategory": "athletic",
+      "icon": "Dumbbell",
+      "color": "#B8860B",
+      "shortDescription": {
+        "level3": "A gene that normally limits how big muscles can grow!",
+        "level4": "Myostatin is a natural brake on muscle growth. Rare mutations remove this brake.",
+        "level5": "Myostatin inhibits muscle growth; loss-of-function mutations cause dramatically increased muscle mass.",
+        "level6": "MSTN encodes myostatin, a muscle growth inhibitor. Null mutations cause 'double muscling' in cattle and extreme muscularity in humans.",
+        "level7": "Myostatin is a TGF-β family member that inhibits myoblast proliferation; loss-of-function causes muscle hypertrophy.",
+        "level8": "Myostatin signals through ActRIIB to activate SMAD2/3, inhibiting MyoD expression. Null mutations cause 40-100% increases in muscle mass in mammals."
+      },
+      "longDescription": {
+        "level3": "Your body makes a protein called myostatin that tells your muscles when to stop growing. In rare cases, this protein doesn't work and people become extremely muscular naturally!",
+        "level4": "Myostatin is like a brake pedal for muscle growth. Animals and rare humans with broken myostatin genes develop huge muscles with little exercise. This is called 'double muscling.'",
+        "level5": "The MSTN gene makes myostatin, which limits muscle growth. 'Belgian Blue' cattle and 'Bully' whippets have myostatin mutations, making them extremely muscular. Rare humans with these mutations show similar effects.",
+        "level6": "Myostatin is a negative regulator of muscle mass. A German child with homozygous MSTN mutation was extraordinarily muscular at birth. Cattle breeds selected for 'double muscling' carry myostatin mutations.",
+        "level7": "Myostatin signals through activin type II receptors to inhibit satellite cell activation. Blockade increases both muscle fiber size (hypertrophy) and number (hyperplasia).",
+        "level8": "Myostatin inhibition therapies are being developed for muscular dystrophy and sarcopenia. Approaches include follistatin overexpression, anti-myostatin antibodies, and ActRIIB decoys."
+      },
+      "funFact": {
+        "level3": "Belgian Blue cattle have so much muscle they sometimes need C-sections to give birth!",
+        "level4": "A German boy with a myostatin mutation could hold 7-pound weights with arms extended at age 4!",
+        "level5": "'Bully' whippets with one myostatin mutation are actually faster than normal whippets. Two mutations make them too bulky to run well.",
+        "level6": "Myostatin inhibitors are banned in sports. Some athletes have been caught using experimental myostatin-blocking drugs.",
+        "level7": "Heterozygous myostatin mutations may enhance athletic performance; elite athletes show lower myostatin levels and rare variants.",
+        "level8": "Myostatin polymorphisms (K153R) associate with muscle strength differences in normal populations, though effects are modest compared to null mutations."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000138379",
+          "geneSymbol": "MSTN",
+          "chromosome": "2",
+          "start": 190055697,
+          "end": 190062821,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [],
+      "inheritancePattern": "codominant",
+      "inheritanceExplanation": {
+        "level3": "Even one copy of the mutation makes muscles bigger!",
+        "level4": "One myostatin mutation increases muscles somewhat. Two mutations cause extreme muscle growth.",
+        "level5": "Myostatin mutations show dose effects: one copy increases muscle somewhat, two copies cause dramatic muscling.",
+        "level6": "MSTN shows codominant inheritance; heterozygotes have intermediate muscle hypertrophy compared to homozygotes.",
+        "level7": "Haploinsufficiency causes partial muscle hypertrophy; homozygous loss causes ~40-100% muscle mass increase.",
+        "level8": "Gene dosage effects are evident: 50% myostatin reduction (heterozygotes) increases lean mass ~20-30%, while null causes more dramatic effects."
+      },
+      "prevalence": "Extremely rare in humans; common in some cattle breeds bred for it",
+      "relatedTraits": ["sprinter_gene"],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["muscles", "strength", "rare", "athletic"]
+    },
+    {
+      "id": "celiac_disease",
+      "name": "Celiac Disease Susceptibility",
+      "category": "disease",
+      "subcategory": "autoimmune",
+      "icon": "Wheat",
+      "color": "#DAA520",
+      "shortDescription": {
+        "level3": "When gluten makes your immune system attack your gut!",
+        "level4": "Celiac disease is when eating gluten damages your intestines.",
+        "level5": "HLA-DQ2 and HLA-DQ8 genes are necessary but not sufficient for celiac disease.",
+        "level6": "Celiac disease requires specific HLA genotypes plus environmental trigger (gluten).",
+        "level7": "HLA-DQ2.5/DQ8 present gluten-derived deamidated peptides to T cells, triggering autoimmune enteropathy.",
+        "level8": "Tissue transglutaminase deamidates gliadin peptides, increasing HLA-DQ2/8 binding affinity and triggering CD4+ T cell responses."
+      },
+      "longDescription": {
+        "level3": "Celiac disease happens when eating gluten (found in wheat, bread, and pasta) makes your immune system attack your own intestines. It runs in families.",
+        "level4": "People with celiac disease can't eat gluten because their immune system mistakes it for an invader and damages their intestines. Specific genes (HLA-DQ2/DQ8) make this possible.",
+        "level5": "Celiac disease requires inheriting specific HLA genes (DQ2 or DQ8) that present gluten fragments to the immune system in a way that triggers an attack. However, only ~3% of people with these genes develop celiac disease.",
+        "level6": "HLA-DQ2 (specifically DQ2.5) and HLA-DQ8 are necessary for celiac disease. The HLA molecules present deamidated gluten peptides to T cells, but additional genetic and environmental factors determine who develops disease.",
+        "level7": "~95% of celiac patients carry HLA-DQ2.5 (DQA1*05/DQB1*02) or HLA-DQ8 (DQA1*03/DQB1*03:02). Tissue transglutaminase deamidates gluten, increasing DQ binding affinity.",
+        "level8": "Celiac pathogenesis involves TG2-mediated gliadin deamidation, HLA-DQ2/8-restricted CD4+ T cell activation, IFN-γ production, and cytotoxic CD8+ IEL expansion causing villous atrophy."
+      },
+      "funFact": {
+        "level3": "Celiac disease has become much more common in the last 50 years!",
+        "level4": "Celiac disease has increased 4-fold since the 1950s, and no one knows exactly why. The genes haven't changed that fast!",
+        "level5": "Having the celiac risk genes without disease might actually be protective against certain infections, which could explain why the genes are common.",
+        "level6": "The 'hygiene hypothesis' suggests reduced infections may allow autoimmune diseases like celiac to manifest in genetically susceptible people.",
+        "level7": "Environmental factors triggering celiac in HLA-DQ2+ individuals may include early gluten introduction timing, viral infections (especially reovirus), and gut microbiome composition.",
+        "level8": "Reovirus infection may trigger loss of oral tolerance to gluten in genetically susceptible individuals by promoting TH1 responses and blocking regulatory T cell induction."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000196126",
+          "geneSymbol": "HLA-DQA1",
+          "chromosome": "6",
+          "start": 32605183,
+          "end": 32612140,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000179344",
+          "geneSymbol": "HLA-DQB1",
+          "chromosome": "6",
+          "start": 32627241,
+          "end": 32634466,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [],
+      "inheritancePattern": "complex",
+      "inheritanceExplanation": {
+        "level3": "Having the genes doesn't mean you'll get celiac - other things matter too!",
+        "level4": "You need the HLA genes AND something else (maybe a virus?) to develop celiac disease.",
+        "level5": "Celiac has complex inheritance: HLA genes are necessary but only ~3% of carriers develop disease. Other genes and environment matter.",
+        "level6": "HLA-DQ2/8 are necessary but not sufficient; ~40% of the population carries risk alleles but only 1% develops celiac disease.",
+        "level7": "HLA explains ~40% of genetic risk; GWAS has identified 40+ additional non-HLA loci with small effects.",
+        "level8": "Celiac risk is polygenic (40+ loci) with HLA as the major determinant; environmental triggers (gluten exposure, infections) modulate penetrance."
+      },
+      "prevalence": "~1% in Europeans; HLA-DQ2/8: ~40% of population",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["autoimmune", "gluten", "digestion", "common"]
+    },
+    {
+      "id": "hemochromatosis",
+      "name": "Hereditary Hemochromatosis",
+      "category": "disease",
+      "subcategory": "metabolic",
+      "icon": "Droplet",
+      "color": "#8B0000",
+      "shortDescription": {
+        "level3": "When your body absorbs too much iron!",
+        "level4": "Hemochromatosis makes your body store too much iron, which can damage organs.",
+        "level5": "HFE gene mutations cause excess iron absorption and accumulation.",
+        "level6": "HFE C282Y disrupts hepcidin regulation, causing uncontrolled intestinal iron absorption.",
+        "level7": "HFE mutations impair hepcidin signaling, leading to increased ferroportin-mediated iron export and systemic iron overload.",
+        "level8": "HFE normally regulates hepcidin transcription via BMP/SMAD signaling; C282Y disrupts HFE-TfR2 interaction, reducing hepcidin and increasing iron absorption."
+      },
+      "longDescription": {
+        "level3": "Iron is important for your blood, but too much iron is dangerous. Some people's bodies absorb too much iron from food, and it builds up in their organs.",
+        "level4": "Hereditary hemochromatosis makes your body absorb too much iron from food. Over time, iron builds up in the liver, heart, and pancreas, causing damage. It's treatable if caught early.",
+        "level5": "The HFE gene controls how much iron your body absorbs. A common mutation (C282Y) breaks this regulation, causing iron overload. About 1 in 200 people of Northern European descent are affected.",
+        "level6": "HFE mutations disrupt hepcidin production. Hepcidin normally limits iron absorption; without it, excess iron accumulates. C282Y homozygotes absorb 2-3x normal iron, but penetrance is incomplete.",
+        "level7": "HFE C282Y is the most common Mendelian disorder in Europeans. Despite high allele frequency (~6%), clinical penetrance is only 10-30% due to modifying factors (diet, blood loss, alcohol).",
+        "level8": "The C282Y mutation disrupts HFE disulfide bonding, preventing β2-microglobulin association and surface expression. This impairs TfR2-mediated iron sensing and hepcidin induction."
+      },
+      "funFact": {
+        "level3": "The treatment is simply giving blood regularly to remove the extra iron!",
+        "level4": "Hemochromatosis is called the 'Celtic Curse' because it's most common in Irish and Northern European people.",
+        "level5": "The hemochromatosis mutation may have been selected for during times of iron-poor diets or helped women survive childbirth blood loss.",
+        "level6": "The C282Y mutation arose ~60-70 generations ago and spread in Northern Europe, possibly due to heterozygote advantage during iron-scarce conditions.",
+        "level7": "Phlebotomy (bloodletting) effectively treats hemochromatosis - an ironic validation of the historical practice for very different reasons.",
+        "level8": "The C282Y frequency shows founder effect from a single mutation ~4000 years ago in Celtic/Viking populations, with selection possibly driven by iron deficiency protection."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000010704",
+          "geneSymbol": "HFE",
+          "chromosome": "6",
+          "start": 26087509,
+          "end": 26096117,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs1800562",
+          "rsId": "rs1800562",
+          "chromosome": "6",
+          "position": 26092913,
+          "referenceAllele": "G",
+          "alternateAllele": "A",
+          "effect": "A/A (C282Y) = iron overload risk",
+          "frequency": 0.06
+        }
+      ],
+      "inheritancePattern": "recessive",
+      "inheritanceExplanation": {
+        "level3": "You need two copies of the iron-absorbing gene to have problems.",
+        "level4": "Hemochromatosis is recessive - you need mutations from both parents. But even then, not everyone gets sick.",
+        "level5": "HFE hemochromatosis requires two C282Y copies, but only 10-30% of homozygotes develop clinical disease.",
+        "level6": "Classic recessive inheritance but with incomplete penetrance; modifiers include sex (men higher risk), alcohol, diet, and other genes.",
+        "level7": "Penetrance is ~28% in men and ~1% in women, reflecting iron loss through menstruation protecting females.",
+        "level8": "C282Y homozygosity shows sex-dependent penetrance: elevated ferritin in ~80% but cirrhosis in only 5-10%, modified by HAMP, HJV, and TfR2 variants."
+      },
+      "prevalence": "C282Y homozygotes: ~1 in 200 Europeans; clinical disease: 1 in 500-1000",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 4,
+      "tags": ["iron", "metabolic", "European", "treatable"]
     }
   ],
   "genes": [
@@ -1001,6 +2597,594 @@
       "color": "#4A2C2A",
       "displayPriority": 1,
       "traitIds": ["bitter_taste"]
+    },
+    {
+      "id": "ENSG00000188467",
+      "symbol": "SLC24A5",
+      "name": "Solute Carrier Family 24 Member 5",
+      "chromosome": "15",
+      "start": 48120984,
+      "end": 48142637,
+      "strand": "-",
+      "nickname": "The Skin Color Gene",
+      "shortDescription": {
+        "level3": "Affects how light or dark your skin is!",
+        "level4": "This gene plays a major role in skin color differences.",
+        "level5": "SLC24A5 affects melanin production and is a major determinant of skin color.",
+        "level6": "SLC24A5 encodes a melanosomal cation exchanger; the A111T variant is nearly fixed in Europeans.",
+        "level7": "SLC24A5 encodes a K-dependent Na/Ca exchanger affecting melanosome pH and melanin synthesis.",
+        "level8": "SLC24A5 is a melanosomal NCKX5 exchanger; rs1426654 (A111T) shows extreme population differentiation (FST >0.9)."
+      },
+      "color": "#D2691E",
+      "displayPriority": 1,
+      "traitIds": ["skin_pigmentation"]
+    },
+    {
+      "id": "ENSG00000164175",
+      "symbol": "SLC45A2",
+      "name": "Solute Carrier Family 45 Member 2",
+      "chromosome": "5",
+      "start": 33951693,
+      "end": 33984780,
+      "strand": "+",
+      "nickname": "The European Skin Gene",
+      "shortDescription": {
+        "level3": "Another gene that affects skin color!",
+        "level4": "This gene helps determine how much melanin your skin makes.",
+        "level5": "SLC45A2 affects melanin transport in skin cells.",
+        "level6": "SLC45A2 encodes a melanosomal transporter affecting melanin synthesis and pigmentation.",
+        "level7": "SLC45A2 (MATP) is a melanosomal sucrose transporter affecting melanin synthesis.",
+        "level8": "SLC45A2 mutations cause OCA4; the L374F variant shows positive selection in Europeans."
+      },
+      "color": "#DEB887",
+      "displayPriority": 2,
+      "traitIds": ["skin_pigmentation"]
+    },
+    {
+      "id": "ENSG00000111275",
+      "symbol": "ALDH2",
+      "name": "Aldehyde Dehydrogenase 2",
+      "chromosome": "12",
+      "start": 111766887,
+      "end": 111817532,
+      "strand": "+",
+      "nickname": "The Asian Flush Gene",
+      "shortDescription": {
+        "level3": "Breaks down alcohol - some people's version doesn't work well!",
+        "level4": "This gene helps your body process alcohol.",
+        "level5": "ALDH2 breaks down a toxic byproduct of alcohol; variants cause flushing.",
+        "level6": "ALDH2 metabolizes acetaldehyde from ethanol; the ALDH2*2 variant causes deficiency.",
+        "level7": "ALDH2 is the mitochondrial aldehyde dehydrogenase metabolizing acetaldehyde; E504K causes dominant-negative inactivation.",
+        "level8": "ALDH2*2 (E504K) disrupts the active site and acts as a dominant-negative in the tetrameric enzyme."
+      },
+      "color": "#DC143C",
+      "displayPriority": 1,
+      "traitIds": ["alcohol_flush"]
+    },
+    {
+      "id": "ENSG00000159450",
+      "symbol": "TCHH",
+      "name": "Trichohyalin",
+      "chromosome": "1",
+      "start": 152078522,
+      "end": 152088415,
+      "strand": "-",
+      "nickname": "The Hair Curl Gene",
+      "shortDescription": {
+        "level3": "Helps determine if your hair is straight or curly!",
+        "level4": "This gene affects how your hair is shaped.",
+        "level5": "TCHH encodes a protein that cross-links hair fibers, affecting texture.",
+        "level6": "TCHH (trichohyalin) is cross-linked by transglutaminases, affecting hair fiber structure.",
+        "level7": "TCHH encodes trichohyalin, an intermediate filament-associated protein affecting hair fiber morphology.",
+        "level8": "TCHH provides mechanical strength to the inner root sheath; variants affect hair cross-sectional shape."
+      },
+      "color": "#4B0082",
+      "displayPriority": 1,
+      "traitIds": ["hair_texture"]
+    },
+    {
+      "id": "ENSG00000157911",
+      "symbol": "EDAR",
+      "name": "Ectodysplasin A Receptor",
+      "chromosome": "2",
+      "start": 108894471,
+      "end": 108989220,
+      "strand": "-",
+      "nickname": "The Asian Feature Gene",
+      "shortDescription": {
+        "level3": "Affects hair, teeth, and sweat glands!",
+        "level4": "This gene affects several traits at once.",
+        "level5": "EDAR affects hair thickness, tooth shape, and sweat glands.",
+        "level6": "EDAR is a TNF receptor family member affecting ectodermal development.",
+        "level7": "EDAR V370A affects NF-κB signaling in hair follicle, tooth, and eccrine gland development.",
+        "level8": "EDAR V370A increases receptor signaling, affecting multiple ectodermal appendage phenotypes."
+      },
+      "color": "#FF8C00",
+      "displayPriority": 1,
+      "traitIds": ["edar_variant", "hair_texture"]
+    },
+    {
+      "id": "ENSG00000089127",
+      "symbol": "OAS1",
+      "name": "2'-5'-Oligoadenylate Synthetase 1",
+      "chromosome": "12",
+      "start": 112906981,
+      "end": 112921588,
+      "strand": "-",
+      "nickname": "The Neanderthal Virus Fighter",
+      "shortDescription": {
+        "level3": "Helps fight viruses - came from Neanderthals!",
+        "level4": "This antiviral gene may have come from our Neanderthal ancestors.",
+        "level5": "OAS1 activates antiviral defenses and shows Neanderthal-derived haplotypes.",
+        "level6": "OAS1 synthesizes 2-5A activating RNase L; a Neanderthal haplotype shows adaptive introgression.",
+        "level7": "OAS1 activates the 2-5A/RNase L antiviral pathway; Neanderthal haplotypes show positive selection.",
+        "level8": "Neanderthal-derived OAS1 haplotypes show protective effects against flavivirus infection and COVID-19 severity."
+      },
+      "color": "#8B4513",
+      "displayPriority": 1,
+      "traitIds": ["neanderthal_immunity"]
+    },
+    {
+      "id": "ENSG00000174125",
+      "symbol": "TLR1",
+      "name": "Toll-Like Receptor 1",
+      "chromosome": "4",
+      "start": 38797027,
+      "end": 38810018,
+      "strand": "-",
+      "nickname": "The Pathogen Sensor",
+      "shortDescription": {
+        "level3": "Helps your body detect germs!",
+        "level4": "This gene helps your immune system recognize pathogens.",
+        "level5": "TLR1 recognizes bacterial components and triggers immune responses.",
+        "level6": "TLR1 detects triacylated lipopeptides and forms heterodimers with TLR2.",
+        "level7": "TLR1 forms pattern recognition complexes with TLR2 for bacterial lipoprotein detection.",
+        "level8": "TLR1 shows Neanderthal introgression in the TLR1-6-10 cluster with adaptive immune implications."
+      },
+      "color": "#2E8B57",
+      "displayPriority": 2,
+      "traitIds": ["neanderthal_immunity"]
+    },
+    {
+      "id": "ENSG00000213088",
+      "symbol": "ACKR1",
+      "name": "Atypical Chemokine Receptor 1 (Duffy Blood Group)",
+      "chromosome": "1",
+      "start": 159173802,
+      "end": 159176289,
+      "strand": "+",
+      "nickname": "The Malaria Shield",
+      "shortDescription": {
+        "level3": "Protects many Africans from one type of malaria!",
+        "level4": "This gene affects a blood cell protein that malaria parasites use.",
+        "level5": "ACKR1 encodes the Duffy antigen, required for P. vivax malaria infection.",
+        "level6": "ACKR1 (Duffy) is a chemokine receptor; the null allele prevents P. vivax erythrocyte invasion.",
+        "level7": "ACKR1 encodes Duffy antigen/DARC; P. vivax DBP binds DARC for merozoite invasion.",
+        "level8": "ACKR1 -67C disrupts GATA-1 binding in the erythroid promoter, eliminating RBC Duffy expression."
+      },
+      "color": "#8B0000",
+      "displayPriority": 1,
+      "traitIds": ["duffy_antigen"]
+    },
+    {
+      "id": "ENSG00000244734",
+      "symbol": "HBB",
+      "name": "Hemoglobin Subunit Beta",
+      "chromosome": "11",
+      "start": 5225464,
+      "end": 5229395,
+      "strand": "-",
+      "nickname": "The Sickle Cell Gene",
+      "shortDescription": {
+        "level3": "Carries oxygen in your blood - changes can cause sickle cell!",
+        "level4": "This gene makes part of hemoglobin, which carries oxygen.",
+        "level5": "HBB encodes beta-globin; the E6V mutation causes sickle cell disease.",
+        "level6": "HBB encodes β-globin for adult hemoglobin; HbS (E6V) causes sickling under deoxygenation.",
+        "level7": "HBB E6V creates HbS which polymerizes under low oxygen, causing erythrocyte sickling.",
+        "level8": "HBB E6V replaces a surface glutamate with valine, creating a hydrophobic patch that drives HbS fiber formation."
+      },
+      "color": "#DC143C",
+      "displayPriority": 1,
+      "traitIds": ["sickle_cell"]
+    },
+    {
+      "id": "ENSG00000001626",
+      "symbol": "CFTR",
+      "name": "CF Transmembrane Conductance Regulator",
+      "chromosome": "7",
+      "start": 117287120,
+      "end": 117715971,
+      "strand": "+",
+      "nickname": "The Cystic Fibrosis Gene",
+      "shortDescription": {
+        "level3": "Controls salt and water in mucus!",
+        "level4": "This gene makes a protein that moves salt across cell surfaces.",
+        "level5": "CFTR is a chloride channel; mutations cause cystic fibrosis.",
+        "level6": "CFTR is an ABC transporter functioning as a chloride channel in epithelial cells.",
+        "level7": "CFTR conducts chloride and bicarbonate, regulating airway surface liquid volume.",
+        "level8": "CFTR is a PKA-activated chloride channel; F508del causes misfolding and ER-associated degradation."
+      },
+      "color": "#4682B4",
+      "displayPriority": 1,
+      "traitIds": ["cystic_fibrosis"]
+    },
+    {
+      "id": "ENSG00000012048",
+      "symbol": "BRCA1",
+      "name": "BRCA1 DNA Repair Associated",
+      "chromosome": "17",
+      "start": 43044295,
+      "end": 43170245,
+      "strand": "-",
+      "nickname": "The Breast Cancer Gene 1",
+      "shortDescription": {
+        "level3": "Fixes broken DNA to prevent cancer!",
+        "level4": "This gene repairs DNA damage and protects against cancer.",
+        "level5": "BRCA1 repairs double-strand DNA breaks through homologous recombination.",
+        "level6": "BRCA1 is a tumor suppressor essential for homologous recombination DNA repair.",
+        "level7": "BRCA1 functions in HR repair, cell cycle checkpoints, and transcription regulation.",
+        "level8": "BRCA1 is an E3 ubiquitin ligase and scaffolds RAD51-mediated strand invasion during HR."
+      },
+      "color": "#FF1493",
+      "displayPriority": 1,
+      "traitIds": ["brca_genes"]
+    },
+    {
+      "id": "ENSG00000139618",
+      "symbol": "BRCA2",
+      "name": "BRCA2 DNA Repair Associated",
+      "chromosome": "13",
+      "start": 32315474,
+      "end": 32400266,
+      "strand": "+",
+      "nickname": "The Breast Cancer Gene 2",
+      "shortDescription": {
+        "level3": "Another gene that fixes DNA to prevent cancer!",
+        "level4": "This gene works with BRCA1 to repair DNA damage.",
+        "level5": "BRCA2 helps RAD51 repair double-strand DNA breaks.",
+        "level6": "BRCA2 mediates RAD51 loading onto ssDNA for homologous recombination repair.",
+        "level7": "BRCA2 is a RAD51 mediator essential for HR-mediated DSB repair.",
+        "level8": "BRCA2 contains BRC repeats that bind RAD51 monomers, delivering them to RPA-coated ssDNA."
+      },
+      "color": "#FF69B4",
+      "displayPriority": 1,
+      "traitIds": ["brca_genes"]
+    },
+    {
+      "id": "ENSG00000130203",
+      "symbol": "APOE",
+      "name": "Apolipoprotein E",
+      "chromosome": "19",
+      "start": 44905796,
+      "end": 44909393,
+      "strand": "+",
+      "nickname": "The Alzheimer's Risk Gene",
+      "shortDescription": {
+        "level3": "Moves fats around your body and brain!",
+        "level4": "This gene affects how your body handles cholesterol.",
+        "level5": "APOE transports lipids and affects Alzheimer's disease risk.",
+        "level6": "APOE transports cholesterol in the brain; ε4 is the strongest AD genetic risk factor.",
+        "level7": "APOE mediates lipoprotein clearance; ε4 impairs Aβ clearance and promotes aggregation.",
+        "level8": "APOE isoforms differ at residues 112/158, affecting receptor binding and Aβ metabolism."
+      },
+      "color": "#9370DB",
+      "displayPriority": 1,
+      "traitIds": ["apoe_alzheimers"]
+    },
+    {
+      "id": "ENSG00000197386",
+      "symbol": "HTT",
+      "name": "Huntingtin",
+      "chromosome": "4",
+      "start": 3074681,
+      "end": 3243959,
+      "strand": "+",
+      "nickname": "The Huntington's Gene",
+      "shortDescription": {
+        "level3": "A gene where repeats can cause brain disease!",
+        "level4": "Too many repeats in this gene cause Huntington's disease.",
+        "level5": "HTT CAG repeat expansion causes Huntington's disease.",
+        "level6": "HTT encodes huntingtin; polyglutamine expansion causes neurodegeneration.",
+        "level7": "HTT polyQ expansion causes toxic protein aggregation and neuronal dysfunction.",
+        "level8": "Expanded huntingtin disrupts transcription, autophagy, vesicle trafficking, and mitochondrial function."
+      },
+      "color": "#800080",
+      "displayPriority": 1,
+      "traitIds": ["huntington"]
+    },
+    {
+      "id": "ENSG00000204217",
+      "symbol": "ACTN3",
+      "name": "Actinin Alpha 3",
+      "chromosome": "11",
+      "start": 66546117,
+      "end": 66563149,
+      "strand": "+",
+      "nickname": "The Speed Gene",
+      "shortDescription": {
+        "level3": "Makes a protein for fast, powerful muscles!",
+        "level4": "This gene affects whether you're built for speed or endurance.",
+        "level5": "ACTN3 makes a protein found only in fast-twitch muscle fibers.",
+        "level6": "ACTN3 encodes α-actinin-3, specific to fast type II muscle fibers.",
+        "level7": "α-actinin-3 stabilizes the contractile apparatus in fast fibers; loss shifts muscle toward slow phenotype.",
+        "level8": "ACTN3 R577X creates null allele; XX homozygotes lack α-actinin-3 and show enhanced endurance capacity."
+      },
+      "color": "#FF4500",
+      "displayPriority": 1,
+      "traitIds": ["sprinter_gene"]
+    },
+    {
+      "id": "ENSG00000140465",
+      "symbol": "CYP1A2",
+      "name": "Cytochrome P450 1A2",
+      "chromosome": "15",
+      "start": 74748846,
+      "end": 74756607,
+      "strand": "-",
+      "nickname": "The Coffee Gene",
+      "shortDescription": {
+        "level3": "Breaks down caffeine from coffee!",
+        "level4": "This gene controls how fast you process caffeine.",
+        "level5": "CYP1A2 metabolizes ~95% of caffeine in your body.",
+        "level6": "CYP1A2 is the primary caffeine-metabolizing enzyme in the liver.",
+        "level7": "CYP1A2 -163C>A affects enzyme inducibility and caffeine clearance rate.",
+        "level8": "CYP1A2*1F affects AhR-mediated transcriptional induction, modulating caffeine pharmacokinetics."
+      },
+      "color": "#6F4E37",
+      "displayPriority": 1,
+      "traitIds": ["caffeine_metabolism"]
+    },
+    {
+      "id": "ENSG00000123095",
+      "symbol": "BHLHE41",
+      "name": "Basic Helix-Loop-Helix Family Member E41",
+      "chromosome": "12",
+      "start": 26277781,
+      "end": 26283161,
+      "strand": "-",
+      "nickname": "The Short Sleeper Gene",
+      "shortDescription": {
+        "level3": "Controls how much sleep you need!",
+        "level4": "Rare mutations let some people thrive on less sleep.",
+        "level5": "BHLHE41 (DEC2) regulates circadian rhythms and sleep need.",
+        "level6": "BHLHE41 is a circadian transcriptional repressor; mutations reduce sleep requirement.",
+        "level7": "BHLHE41 P384R reduces repression of CLOCK/BMAL1 targets, shortening sleep need.",
+        "level8": "BHLHE41 mutations affect circadian gene expression and reduce homeostatic sleep drive."
+      },
+      "color": "#191970",
+      "displayPriority": 1,
+      "traitIds": ["short_sleeper"]
+    },
+    {
+      "id": "ENSG00000118432",
+      "symbol": "ADRB1",
+      "name": "Adrenoceptor Beta 1",
+      "chromosome": "10",
+      "start": 114044047,
+      "end": 114047590,
+      "strand": "+",
+      "nickname": "The Wakefulness Gene",
+      "shortDescription": {
+        "level3": "Helps control sleep and wakefulness!",
+        "level4": "This gene affects how alert you feel.",
+        "level5": "ADRB1 is involved in arousal; rare variants reduce sleep need.",
+        "level6": "ADRB1 A187V affects noradrenergic signaling in the brainstem.",
+        "level7": "ADRB1 variants affect pontine noradrenergic neurons controlling NREM sleep.",
+        "level8": "ADRB1 A187V enhances receptor activity, increasing arousal and reducing sleep need."
+      },
+      "color": "#4169E1",
+      "displayPriority": 2,
+      "traitIds": ["short_sleeper"]
+    },
+    {
+      "id": "ENSG00000132326",
+      "symbol": "PER2",
+      "name": "Period Circadian Regulator 2",
+      "chromosome": "2",
+      "start": 238244432,
+      "end": 238292703,
+      "strand": "+",
+      "nickname": "The Body Clock Gene",
+      "shortDescription": {
+        "level3": "Runs your body's internal clock!",
+        "level4": "This gene helps control your sleep-wake cycle.",
+        "level5": "PER2 is a core component of the circadian clock.",
+        "level6": "PER2 is a negative regulator in the circadian transcription-translation feedback loop.",
+        "level7": "PER2 phosphorylation rate determines circadian period length.",
+        "level8": "CK1-mediated PER2 phosphorylation triggers ubiquitination and degradation, setting period."
+      },
+      "color": "#FFD700",
+      "displayPriority": 1,
+      "traitIds": ["chronotype"]
+    },
+    {
+      "id": "ENSG00000134852",
+      "symbol": "CLOCK",
+      "name": "Clock Circadian Regulator",
+      "chromosome": "4",
+      "start": 55426865,
+      "end": 55540611,
+      "strand": "+",
+      "nickname": "The Master Clock Gene",
+      "shortDescription": {
+        "level3": "The master switch for your body clock!",
+        "level4": "CLOCK is essential for your circadian rhythm.",
+        "level5": "CLOCK is a core circadian transcription factor.",
+        "level6": "CLOCK forms heterodimers with BMAL1 to drive circadian gene expression.",
+        "level7": "CLOCK/BMAL1 activates E-box-containing genes including PER and CRY.",
+        "level8": "CLOCK has histone acetyltransferase activity important for circadian chromatin remodeling."
+      },
+      "color": "#FFA500",
+      "displayPriority": 2,
+      "traitIds": ["chronotype"]
+    },
+    {
+      "id": "ENSG00000279159",
+      "symbol": "OR2M7",
+      "name": "Olfactory Receptor Family 2 Subfamily M Member 7",
+      "chromosome": "1",
+      "start": 248100291,
+      "end": 248101240,
+      "strand": "-",
+      "nickname": "The Asparagus Smell Gene",
+      "shortDescription": {
+        "level3": "Detects the smell of asparagus pee!",
+        "level4": "This gene affects if you can smell asparagus urine.",
+        "level5": "OR2M7 variants determine ability to detect asparagus metabolites.",
+        "level6": "OR2M7 is an olfactory receptor detecting sulfur-containing asparagus metabolites.",
+        "level7": "Variants near OR2M7 affect detection threshold for methanethiol and related compounds.",
+        "level8": "OR2M7 region shows specific anosmia for asparagus-derived volatile sulfur compounds."
+      },
+      "color": "#7CFC00",
+      "displayPriority": 1,
+      "traitIds": ["asparagus_smell"]
+    },
+    {
+      "id": "ENSG00000102076",
+      "symbol": "OPN1LW",
+      "name": "Opsin 1 Long Wave Sensitive",
+      "chromosome": "X",
+      "start": 154182596,
+      "end": 154196861,
+      "strand": "+",
+      "nickname": "The Red Vision Gene",
+      "shortDescription": {
+        "level3": "Lets you see red colors!",
+        "level4": "This gene makes the protein that detects red light.",
+        "level5": "OPN1LW encodes the red-sensitive cone pigment for color vision.",
+        "level6": "OPN1LW encodes the L-cone opsin; mutations cause protan color vision defects.",
+        "level7": "OPN1LW is in a tandem array with OPN1MW prone to unequal recombination.",
+        "level8": "OPN1LW spectral tuning is determined by residues at positions 180, 277, and 285."
+      },
+      "color": "#DC143C",
+      "displayPriority": 1,
+      "traitIds": ["color_blindness"]
+    },
+    {
+      "id": "ENSG00000269386",
+      "symbol": "OPN1MW",
+      "name": "Opsin 1 Medium Wave Sensitive",
+      "chromosome": "X",
+      "start": 154210331,
+      "end": 154224633,
+      "strand": "+",
+      "nickname": "The Green Vision Gene",
+      "shortDescription": {
+        "level3": "Lets you see green colors!",
+        "level4": "This gene makes the protein that detects green light.",
+        "level5": "OPN1MW encodes the green-sensitive cone pigment.",
+        "level6": "OPN1MW encodes the M-cone opsin; deletions or hybrids cause deutan CVD.",
+        "level7": "OPN1MW and OPN1LW have 98% sequence identity, promoting gene conversion.",
+        "level8": "Unequal crossing-over between OPN1LW and OPN1MW creates hybrid genes or deletions."
+      },
+      "color": "#228B22",
+      "displayPriority": 1,
+      "traitIds": ["color_blindness"]
+    },
+    {
+      "id": "ENSG00000169432",
+      "symbol": "SCN9A",
+      "name": "Sodium Voltage-Gated Channel Alpha Subunit 9",
+      "chromosome": "2",
+      "start": 166195483,
+      "end": 166375610,
+      "strand": "+",
+      "nickname": "The Pain Gate Gene",
+      "shortDescription": {
+        "level3": "Controls pain signals to your brain!",
+        "level4": "This gene is essential for feeling pain.",
+        "level5": "SCN9A encodes Nav1.7, a sodium channel required for pain sensation.",
+        "level6": "Nav1.7 sets the threshold for action potential firing in nociceptors.",
+        "level7": "SCN9A loss-of-function causes pain insensitivity; gain-of-function causes pain disorders.",
+        "level8": "Nav1.7 is required for nociceptor activation; it's a target for novel non-opioid analgesics."
+      },
+      "color": "#FF6347",
+      "displayPriority": 1,
+      "traitIds": ["pain_insensitivity"]
+    },
+    {
+      "id": "ENSG00000138379",
+      "symbol": "MSTN",
+      "name": "Myostatin",
+      "chromosome": "2",
+      "start": 190055697,
+      "end": 190062821,
+      "strand": "+",
+      "nickname": "The Muscle Brake Gene",
+      "shortDescription": {
+        "level3": "Tells muscles when to stop growing!",
+        "level4": "This gene limits how big muscles can get.",
+        "level5": "Myostatin inhibits muscle growth; loss causes extreme muscularity.",
+        "level6": "MSTN encodes myostatin, a TGF-β family member inhibiting myogenesis.",
+        "level7": "Myostatin signals through ActRIIB to inhibit satellite cell proliferation.",
+        "level8": "Myostatin activates SMAD2/3, repressing MyoD and limiting muscle mass."
+      },
+      "color": "#B8860B",
+      "displayPriority": 1,
+      "traitIds": ["muscle_growth"]
+    },
+    {
+      "id": "ENSG00000196126",
+      "symbol": "HLA-DQA1",
+      "name": "HLA Class II DQ Alpha 1",
+      "chromosome": "6",
+      "start": 32605183,
+      "end": 32612140,
+      "strand": "-",
+      "nickname": "The Immune Presenter Gene",
+      "shortDescription": {
+        "level3": "Helps your immune system recognize things!",
+        "level4": "This gene shows your immune system what's in your cells.",
+        "level5": "HLA-DQA1 encodes part of an immune presentation molecule.",
+        "level6": "HLA-DQA1 forms heterodimers with HLA-DQB1 for antigen presentation.",
+        "level7": "Specific HLA-DQA1 alleles (DQA1*05) are required for celiac disease.",
+        "level8": "DQA1*05/DQB1*02 (DQ2.5) presents deamidated gluten peptides to CD4+ T cells."
+      },
+      "color": "#DAA520",
+      "displayPriority": 1,
+      "traitIds": ["celiac_disease"]
+    },
+    {
+      "id": "ENSG00000179344",
+      "symbol": "HLA-DQB1",
+      "name": "HLA Class II DQ Beta 1",
+      "chromosome": "6",
+      "start": 32627241,
+      "end": 32634466,
+      "strand": "+",
+      "nickname": "The Gluten Presenter Gene",
+      "shortDescription": {
+        "level3": "Shows gluten to your immune cells!",
+        "level4": "This gene can present gluten in a way that causes celiac disease.",
+        "level5": "HLA-DQB1 alleles determine celiac disease susceptibility.",
+        "level6": "HLA-DQB1*02 (DQ2) and DQB1*03:02 (DQ8) present gluten peptides.",
+        "level7": "DQB1*02 encodes the beta chain of DQ2, essential for celiac pathogenesis.",
+        "level8": "The DQ2 peptide-binding groove preferentially binds negatively charged deamidated gluten peptides."
+      },
+      "color": "#CD853F",
+      "displayPriority": 2,
+      "traitIds": ["celiac_disease"]
+    },
+    {
+      "id": "ENSG00000010704",
+      "symbol": "HFE",
+      "name": "Homeostatic Iron Regulator",
+      "chromosome": "6",
+      "start": 26087509,
+      "end": 26096117,
+      "strand": "+",
+      "nickname": "The Iron Controller Gene",
+      "shortDescription": {
+        "level3": "Controls how much iron your body absorbs!",
+        "level4": "Mutations in this gene cause iron overload.",
+        "level5": "HFE regulates iron absorption; C282Y mutation causes hemochromatosis.",
+        "level6": "HFE regulates hepcidin expression to control dietary iron uptake.",
+        "level7": "HFE interacts with TfR2 to sense iron levels and regulate hepcidin transcription.",
+        "level8": "HFE C282Y disrupts β2-microglobulin binding, preventing surface expression and iron sensing."
+      },
+      "color": "#8B0000",
+      "displayPriority": 1,
+      "traitIds": ["hemochromatosis"]
     }
   ]
 }
