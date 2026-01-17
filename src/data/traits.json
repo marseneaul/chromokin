@@ -1,0 +1,1006 @@
+{
+  "version": "1.0.0",
+  "build": "GRCh38",
+  "lastUpdated": "2025-01-16",
+  "traits": [
+    {
+      "id": "eye_color",
+      "name": "Eye Color",
+      "category": "physical",
+      "subcategory": "pigmentation",
+      "icon": "Eye",
+      "color": "#4A90D9",
+      "shortDescription": {
+        "level3": "What color your eyes are!",
+        "level4": "The color of the part of your eye called the iris.",
+        "level5": "Eye color is determined by how much melanin pigment is in your iris.",
+        "level6": "The amount and type of melanin in the iris determines eye color, ranging from brown to blue.",
+        "level7": "Iris pigmentation results from melanin concentration and distribution, with OCA2 and HERC2 genes playing primary roles.",
+        "level8": "Iris color phenotype is a polygenic trait primarily influenced by OCA2/HERC2 polymorphisms affecting melanocyte melanin synthesis."
+      },
+      "longDescription": {
+        "level3": "Your eyes can be brown, blue, green, or other colors. It depends on special stuff inside your eyes that your parents passed down to you.",
+        "level4": "Your eye color comes from a colored ring called the iris. Brown eyes have lots of a color called melanin. Blue eyes have less melanin.",
+        "level5": "Eye color is controlled by genes you inherited from your parents. The OCA2 gene is especially important for making the melanin pigment that colors your iris.",
+        "level6": "Eye color is determined by multiple genes that control melanin production in the iris. The OCA2 gene on chromosome 15 is the primary determinant, regulated by nearby HERC2.",
+        "level7": "Eye color is a polygenic trait with OCA2 and HERC2 on chromosome 15 being major contributors. HERC2 contains a regulatory element that controls OCA2 expression, affecting melanin production.",
+        "level8": "Ocular pigmentation is governed by complex epistatic interactions. The HERC2 rs12913832 SNP affects an enhancer controlling OCA2 transcription, with the G allele associated with reduced melanin and blue eye phenotype."
+      },
+      "funFact": {
+        "level3": "All babies are born with blue or gray eyes!",
+        "level4": "Babies often have blue eyes at first because melanin takes time to build up.",
+        "level5": "Babies may start with blue eyes that darken over months as melanin accumulates in the iris.",
+        "level6": "Infant eye color often appears blue or gray due to low melanin, which increases over 6-12 months post-birth.",
+        "level7": "Neonatal irises typically appear blue-gray due to minimal melanin; pigmentation develops postnatally as melanocytes mature.",
+        "level8": "Postnatal melanogenesis in the iris causes phenotypic eye color changes in the first year of life due to melanocyte maturation."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000104044",
+          "geneSymbol": "OCA2",
+          "chromosome": "15",
+          "start": 27754875,
+          "end": 28099338,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000119979",
+          "geneSymbol": "HERC2",
+          "chromosome": "15",
+          "start": 28111042,
+          "end": 28322180,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs12913832",
+          "rsId": "rs12913832",
+          "chromosome": "15",
+          "position": 28120472,
+          "referenceAllele": "A",
+          "alternateAllele": "G",
+          "effect": "G/G = blue eyes more likely; A/A = brown eyes more likely",
+          "frequency": 0.236
+        }
+      ],
+      "inheritancePattern": "polygenic",
+      "inheritanceExplanation": {
+        "level3": "Eye color comes from both your mom and dad!",
+        "level4": "You get eye color genes from both parents, and they mix together.",
+        "level5": "Eye color is inherited from both parents through multiple genes that work together.",
+        "level6": "Eye color follows polygenic inheritance with brown generally dominant over blue, though multiple genes interact.",
+        "level7": "Eye color inheritance is polygenic with incomplete dominance. Brown alleles are generally dominant but multiple loci contribute.",
+        "level8": "Ocular pigmentation exhibits polygenic inheritance with epistatic interactions between OCA2, HERC2, TYR, TYRP1, and other loci."
+      },
+      "prevalence": "Brown eyes: ~79% worldwide, Blue eyes: ~8-10%",
+      "relatedTraits": ["hair_color", "skin_pigmentation", "freckles"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["eye", "pigmentation", "melanin", "visible"]
+    },
+    {
+      "id": "hair_color",
+      "name": "Hair Color",
+      "category": "physical",
+      "subcategory": "pigmentation",
+      "icon": "Sparkles",
+      "color": "#8B4513",
+      "shortDescription": {
+        "level3": "What color your hair is!",
+        "level4": "The natural color of the hair on your head.",
+        "level5": "Hair color depends on two types of melanin: eumelanin (brown/black) and pheomelanin (red/yellow).",
+        "level6": "Hair color is determined by the ratio of eumelanin to pheomelanin pigments produced by follicle melanocytes.",
+        "level7": "Hair pigmentation results from melanocyte activity in hair follicles, with MC1R gene variants affecting the eumelanin/pheomelanin ratio.",
+        "level8": "Hair color phenotype is determined by melanocyte-specific expression of pigmentation genes, particularly MC1R polymorphisms affecting melanocortin-1 receptor function."
+      },
+      "longDescription": {
+        "level3": "Your hair can be black, brown, blonde, or red. The color comes from tiny color-makers in your hair.",
+        "level4": "Hair gets its color from melanin, the same stuff that colors your eyes and skin. More melanin means darker hair.",
+        "level5": "Hair color comes from two pigments: eumelanin makes hair brown or black, while pheomelanin makes it red or blonde. The MC1R gene controls which type you make more of.",
+        "level6": "The MC1R gene on chromosome 16 is crucial for hair color. When it works normally, you produce more eumelanin (dark pigment). Certain variants cause more pheomelanin, leading to red hair.",
+        "level7": "Hair pigmentation involves the MC1R gene encoding melanocortin-1 receptor. Loss-of-function MC1R variants shift melanogenesis toward pheomelanin, producing red hair and fair skin.",
+        "level8": "MC1R encodes a Gs-coupled receptor that, when activated by α-MSH, upregulates eumelanin synthesis via cAMP-PKA-MITF pathway. Hypomorphic variants reduce eumelanin, favoring pheomelanin synthesis."
+      },
+      "funFact": {
+        "level3": "Red hair is the rarest hair color in the world!",
+        "level4": "Only about 1-2% of people have natural red hair.",
+        "level5": "Red hair is most common in people with Irish and Scottish ancestry, occurring in about 10% of those populations.",
+        "level6": "Red hair requires two copies of MC1R variants and is most prevalent in populations of Northern European descent.",
+        "level7": "The red hair phenotype requires homozygosity or compound heterozygosity for MC1R loss-of-function variants, with highest frequency in Celtic populations.",
+        "level8": "Red hair results from biallelic MC1R hypomorphic alleles (e.g., R151C, R160W, D294H), with allele frequencies highest in populations of Irish/Scottish origin."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000258839",
+          "geneSymbol": "MC1R",
+          "chromosome": "16",
+          "start": 89912909,
+          "end": 89920738,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000077498",
+          "geneSymbol": "TYR",
+          "chromosome": "11",
+          "start": 89177603,
+          "end": 89295759,
+          "strand": "+",
+          "contributionType": "modifier",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs1805007",
+          "rsId": "rs1805007",
+          "chromosome": "16",
+          "position": 89919709,
+          "referenceAllele": "C",
+          "alternateAllele": "T",
+          "effect": "T/T = red hair more likely",
+          "frequency": 0.086
+        }
+      ],
+      "inheritancePattern": "polygenic",
+      "inheritanceExplanation": {
+        "level3": "Hair color comes from both parents!",
+        "level4": "You get hair color genes from both mom and dad.",
+        "level5": "Multiple genes from both parents combine to determine your hair color.",
+        "level6": "Hair color is polygenic, with red hair being recessive and requiring variants from both parents.",
+        "level7": "Hair color follows complex inheritance patterns. Red hair is recessive, requiring two MC1R variant copies.",
+        "level8": "Hair pigmentation is polygenic with MC1R variants showing recessive inheritance for red hair phenotype."
+      },
+      "prevalence": "Black/brown: ~75-85%, Blonde: ~2-3%, Red: ~1-2%",
+      "relatedTraits": ["eye_color", "skin_pigmentation", "freckles"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["hair", "pigmentation", "melanin", "visible"]
+    },
+    {
+      "id": "freckles",
+      "name": "Freckles",
+      "category": "physical",
+      "subcategory": "pigmentation",
+      "icon": "Circle",
+      "color": "#D2691E",
+      "shortDescription": {
+        "level3": "Little brown spots on your skin!",
+        "level4": "Small brown spots that appear on skin, especially in sunny weather.",
+        "level5": "Freckles are clusters of melanin that form in response to sun exposure, more common in fair-skinned people.",
+        "level6": "Freckles result from localized melanin accumulation in keratinocytes, strongly associated with MC1R variants.",
+        "level7": "Freckling is caused by uneven melanin distribution triggered by UV exposure, with MC1R variants increasing susceptibility.",
+        "level8": "Ephelides result from focal melanin accumulation without melanocyte proliferation, strongly associated with MC1R hypomorphic alleles."
+      },
+      "longDescription": {
+        "level3": "Freckles are cute little dots on your skin. They often show up more when you play outside in the sun!",
+        "level4": "Freckles are small spots of melanin on your skin. People with lighter skin and red or blonde hair are more likely to have them.",
+        "level5": "Freckles happen when melanin clumps together in one spot instead of spreading evenly. The same gene that affects red hair (MC1R) also makes you more likely to have freckles.",
+        "level6": "Freckles are caused by the MC1R gene variants that affect melanin production. These variants reduce the protective spreading of melanin, causing it to cluster in spots when exposed to UV light.",
+        "level7": "MC1R variants associated with red hair also predispose to freckling by altering melanocyte response to UV radiation, causing focal rather than diffuse melanin distribution.",
+        "level8": "MC1R loss-of-function variants impair melanocyte dendricity and melanin transfer to keratinocytes, resulting in focal melanin accumulation (ephelides) upon UV exposure."
+      },
+      "funFact": {
+        "level3": "Freckles can fade in winter and come back in summer!",
+        "level4": "Freckles get darker in summer because the sun makes more melanin.",
+        "level5": "Freckles are temporary - they darken with sun exposure and fade in winter when there's less UV light.",
+        "level6": "Unlike moles, freckles are not permanent. They darken with UV exposure and fade when UV exposure decreases.",
+        "level7": "Ephelides (freckles) differ from lentigines in that they are UV-dependent and reversible, fading when UV exposure decreases.",
+        "level8": "Ephelides represent reversible UV-induced melanin accumulation, distinct from lentigines which involve permanent melanocyte hyperplasia."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000258839",
+          "geneSymbol": "MC1R",
+          "chromosome": "16",
+          "start": 89912909,
+          "end": 89920738,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs1805007",
+          "rsId": "rs1805007",
+          "chromosome": "16",
+          "position": 89919709,
+          "referenceAllele": "C",
+          "alternateAllele": "T",
+          "effect": "Increased freckling",
+          "frequency": 0.086
+        }
+      ],
+      "inheritancePattern": "polygenic",
+      "inheritanceExplanation": {
+        "level3": "Freckles run in families!",
+        "level4": "If your parents have freckles, you might have them too.",
+        "level5": "Freckling tendency is inherited, especially along with fair skin and red hair genes.",
+        "level6": "Freckling is associated with inherited MC1R variants and is more common in families with red hair.",
+        "level7": "Freckling shows complex inheritance linked to MC1R genotype and UV exposure history.",
+        "level8": "Freckling susceptibility is heritable, strongly associated with MC1R genotype in epistasis with IRF4 and other pigmentation loci."
+      },
+      "prevalence": "Common in fair-skinned individuals, especially those of Northern European descent",
+      "relatedTraits": ["hair_color", "eye_color", "skin_pigmentation"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["skin", "pigmentation", "melanin", "sun"]
+    },
+    {
+      "id": "earwax_type",
+      "name": "Earwax Type",
+      "category": "physical",
+      "subcategory": "secretion",
+      "icon": "Ear",
+      "color": "#DAA520",
+      "shortDescription": {
+        "level3": "Whether your earwax is wet or dry!",
+        "level4": "Earwax comes in two types: wet and sticky, or dry and flaky.",
+        "level5": "A single gene determines if you have wet (sticky) or dry (flaky) earwax.",
+        "level6": "The ABCC11 gene controls earwax type through its effect on cerumen gland secretion.",
+        "level7": "ABCC11 gene variants determine cerumen phenotype by affecting apocrine gland secretion composition.",
+        "level8": "ABCC11 encodes an ATP-binding cassette transporter affecting apocrine secretion; the rs17822931 SNP determines wet vs. dry cerumen phenotype."
+      },
+      "longDescription": {
+        "level3": "Earwax protects your ears! Some people have wet earwax and some have dry earwax. It's one of the simplest genetic traits.",
+        "level4": "Everyone makes earwax to protect their ear canals. One tiny change in a gene decides if your earwax is wet and sticky or dry and crumbly.",
+        "level5": "The ABCC11 gene controls whether you have wet or dry earwax. Wet earwax is more common in people from Europe and Africa, while dry earwax is common in East Asia.",
+        "level6": "A single nucleotide change in the ABCC11 gene on chromosome 16 determines earwax type. The ancestral allele produces wet earwax, while a derived allele common in East Asia produces dry earwax.",
+        "level7": "The ABCC11 gene encodes an ABC transporter in apocrine glands. The rs17822931 G>A variant disrupts protein function, converting wet to dry cerumen phenotype.",
+        "level8": "ABCC11 538G>A (rs17822931) introduces a premature stop codon disrupting transporter function, eliminating lipid and odor precursor secretion, producing the dry cerumen phenotype."
+      },
+      "funFact": {
+        "level3": "Your earwax type can tell scientists where your ancestors came from!",
+        "level4": "Almost everyone in Japan and Korea has dry earwax, while most people in Europe have wet earwax.",
+        "level5": "The dry earwax gene spread through East Asian populations about 2,000 generations ago and is now found in over 95% of people there.",
+        "level6": "The dry earwax allele also reduces body odor and affects breast milk composition, explaining its positive selection in East Asian populations.",
+        "level7": "The ABCC11 538A allele shows evidence of strong positive selection in East Asia, possibly due to pleiotropic effects on body odor in cold climates.",
+        "level8": "ABCC11 538A shows one of the strongest signals of positive selection in East Asian populations, likely driven by pleiotropic effects on axillary odor."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000154734",
+          "geneSymbol": "ABCC11",
+          "chromosome": "16",
+          "start": 48171844,
+          "end": 48251966,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs17822931",
+          "rsId": "rs17822931",
+          "chromosome": "16",
+          "position": 48224287,
+          "referenceAllele": "G",
+          "alternateAllele": "A",
+          "effect": "G/G or G/A = wet earwax; A/A = dry earwax",
+          "frequency": 0.15
+        }
+      ],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "You get this from your parents - wet earwax wins over dry!",
+        "level4": "Wet earwax is dominant, so you only need one copy from either parent to have wet earwax.",
+        "level5": "Wet earwax is dominant over dry. You need two copies of the dry earwax gene (one from each parent) to have dry earwax.",
+        "level6": "Wet earwax follows dominant inheritance - the G allele is dominant over A. Dry earwax requires homozygosity for the A allele.",
+        "level7": "The wet earwax phenotype is dominant; dry earwax requires homozygosity for the loss-of-function 538A allele.",
+        "level8": "Cerumen type shows complete dominance: wet (G/G, G/A) vs. dry (A/A). The A allele is functionally null."
+      },
+      "prevalence": "Wet: ~95% in Africa/Europe, ~5% in East Asia; Dry: ~95% in East Asia, ~5% elsewhere",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["ear", "secretion", "simple trait"]
+    },
+    {
+      "id": "cilantro_taste",
+      "name": "Cilantro Taste Perception",
+      "category": "sensory",
+      "subcategory": "taste",
+      "icon": "Leaf",
+      "color": "#228B22",
+      "shortDescription": {
+        "level3": "Whether cilantro tastes yummy or like soap to you!",
+        "level4": "Some people love cilantro, but others think it tastes like soap.",
+        "level5": "A smell receptor gene determines whether cilantro tastes fresh and citrusy or soapy and unpleasant.",
+        "level6": "OR6A2 gene variants affect perception of aldehyde compounds in cilantro, causing some people to detect a soapy taste.",
+        "level7": "The OR6A2 olfactory receptor gene variants alter sensitivity to cilantro aldehydes, explaining the bimodal taste perception.",
+        "level8": "OR6A2 polymorphisms affect binding affinity for cilantro aldehydes (decanal, dodecanal), with certain variants conferring hypersensitivity to these compounds."
+      },
+      "longDescription": {
+        "level3": "Cilantro is an herb used in food. To some people it's delicious, but to others it tastes like soap! Your genes decide which group you're in.",
+        "level4": "Cilantro contains chemicals called aldehydes. Some people have smell receptors that detect these strongly, making cilantro taste soapy. Others don't detect them as much.",
+        "level5": "The OR6A2 gene makes a smell receptor in your nose. Different versions of this gene affect how strongly you smell the aldehyde compounds in cilantro, which can make it taste soapy.",
+        "level6": "OR6A2 encodes an olfactory receptor that detects aldehyde compounds. Variants near this gene are associated with cilantro aversion, with some people being highly sensitive to its soapy-tasting aldehydes.",
+        "level7": "The rs72921001 SNP near OR6A2 is associated with cilantro aversion. This receptor detects unsaturated aldehydes in cilantro that some perceive as soapy.",
+        "level8": "OR6A2 variants affect binding kinetics for (E)-2-decenal and related aldehydes in cilantro, with certain haplotypes showing increased sensitivity contributing to aversive taste perception."
+      },
+      "funFact": {
+        "level3": "About 1 in 10 people think cilantro tastes like soap!",
+        "level4": "Famous chef Julia Child hated cilantro! She said she would pick it out and throw it on the floor.",
+        "level5": "The cilantro-soap gene is more common in some populations - about 21% of East Asians have it compared to 17% of Europeans.",
+        "level6": "Cilantro aversion has a genetic basis but can sometimes be overcome through repeated exposure, suggesting environmental factors also play a role.",
+        "level7": "While OR6A2 variants explain part of cilantro aversion, twin studies suggest genetics accounts for only about 50% of the variance.",
+        "level8": "Cilantro aversion heritability is estimated at 0.38-0.52, with OR6A2 explaining only a portion of variance, suggesting additional genetic and environmental factors."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000181481",
+          "geneSymbol": "OR6A2",
+          "chromosome": "11",
+          "start": 6934190,
+          "end": 6935620,
+          "strand": "+",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs72921001",
+          "rsId": "rs72921001",
+          "chromosome": "11",
+          "position": 6968938,
+          "referenceAllele": "C",
+          "alternateAllele": "A",
+          "effect": "A allele = more likely to taste soap",
+          "frequency": 0.15
+        }
+      ],
+      "inheritancePattern": "complex",
+      "inheritanceExplanation": {
+        "level3": "It partly comes from your parents, but other things matter too!",
+        "level4": "Genes play a role, but your experiences with food also affect how you taste cilantro.",
+        "level5": "Cilantro taste preference is partly genetic but also influenced by how often you've eaten it and cultural food exposure.",
+        "level6": "Cilantro perception shows complex inheritance with moderate heritability. Environmental factors and repeated exposure can modify the phenotype.",
+        "level7": "Cilantro aversion has moderate heritability (~0.5) with OR6A2 being the strongest single genetic factor, but environmental conditioning can alter perception.",
+        "level8": "Cilantro perception is a complex trait with OR6A2 as the largest-effect locus (odds ratio ~1.4-1.9), but substantial non-genetic variance suggests epigenetic and experiential modulation."
+      },
+      "prevalence": "~4-14% of population reports cilantro tastes soapy",
+      "relatedTraits": ["bitter_taste"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["taste", "smell", "food", "sensory"]
+    },
+    {
+      "id": "lactose_tolerance",
+      "name": "Lactose Tolerance",
+      "category": "health",
+      "subcategory": "digestion",
+      "icon": "Milk",
+      "color": "#FFFAF0",
+      "shortDescription": {
+        "level3": "Whether you can drink milk without a tummy ache!",
+        "level4": "Some people can digest milk sugar easily, while others get stomach problems.",
+        "level5": "Lactose tolerance means your body keeps making lactase enzyme into adulthood, allowing you to digest dairy.",
+        "level6": "Lactase persistence is caused by regulatory variants that keep the LCT gene active in adults.",
+        "level7": "LCT gene regulatory variants maintain lactase expression post-weaning, enabling adult lactose digestion.",
+        "level8": "Lactase persistence results from cis-acting enhancer variants upstream of LCT that prevent developmental downregulation of lactase-phlorizin hydrolase."
+      },
+      "longDescription": {
+        "level3": "Milk has a sugar called lactose. Most babies can digest it easily, but some people lose this ability as they grow up and get tummy aches from milk.",
+        "level4": "Your body makes an enzyme called lactase to break down milk sugar. Some people stop making it as adults, which causes stomach problems when they drink milk.",
+        "level5": "Lactose tolerance is actually the unusual trait! Most humans naturally stop producing lactase after childhood. A genetic change lets some people keep making lactase as adults.",
+        "level6": "A regulatory variant near the LCT gene keeps lactase production active in adults. This mutation arose independently in dairy-farming populations and spread due to nutritional advantages.",
+        "level7": "The -13910 C>T variant in the MCM6 gene acts as an enhancer maintaining LCT transcription in adults. This adaptation arose ~7,500 years ago in European dairy cultures.",
+        "level8": "The MCM6 -13910*T allele (rs4988235) disrupts Oct-1 binding, maintaining LCT enhancer activity post-weaning. This represents one of the strongest recent positive selection signals in Europeans."
+      },
+      "funFact": {
+        "level3": "Most people in the world actually can't digest milk as adults!",
+        "level4": "About 65% of adults worldwide are lactose intolerant - being able to drink milk is the mutation!",
+        "level5": "Lactose tolerance evolved separately in European and African cattle-herding cultures, showing parallel evolution.",
+        "level6": "Different lactase persistence mutations arose independently in Europe (-13910*T), East Africa (-14010*C), and Middle East, all in pastoralist populations.",
+        "level7": "Lactase persistence shows convergent evolution with at least 5 independent mutations in different pastoralist populations, representing strong recent positive selection.",
+        "level8": "Lactase persistence is a textbook example of gene-culture coevolution, with independent LCT enhancer mutations under selection coefficients of 0.02-0.09 in pastoral populations."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000115850",
+          "geneSymbol": "LCT",
+          "chromosome": "2",
+          "start": 135787848,
+          "end": 135837180,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        },
+        {
+          "geneId": "ENSG00000076003",
+          "geneSymbol": "MCM6",
+          "chromosome": "2",
+          "start": 135837554,
+          "end": 135875270,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs4988235",
+          "rsId": "rs4988235",
+          "chromosome": "2",
+          "position": 135851076,
+          "referenceAllele": "G",
+          "alternateAllele": "A",
+          "effect": "A/A or A/G = lactose tolerant (European variant)",
+          "frequency": 0.25
+        }
+      ],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "If one parent can drink milk, you probably can too!",
+        "level4": "Being able to digest milk is dominant - you only need one copy of the gene to drink milk comfortably.",
+        "level5": "Lactose tolerance is dominant. One copy of the persistence allele from either parent is enough to digest lactose as an adult.",
+        "level6": "Lactase persistence shows dominant inheritance. Heterozygotes express sufficient lactase for dairy digestion.",
+        "level7": "Lactase persistence is inherited as a dominant trait, with heterozygotes showing intermediate lactase levels sufficient for dairy tolerance.",
+        "level8": "Lactase persistence shows autosomal dominant inheritance with the -13910*T allele conferring dominant enhancer activity maintaining LCT expression."
+      },
+      "prevalence": "Lactose tolerant: ~35% worldwide, >90% in Northern Europe, <10% in East Asia",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["digestion", "milk", "enzyme", "diet"]
+    },
+    {
+      "id": "bitter_taste",
+      "name": "Bitter Taste Sensitivity",
+      "category": "sensory",
+      "subcategory": "taste",
+      "icon": "Coffee",
+      "color": "#4A2C2A",
+      "shortDescription": {
+        "level3": "How strongly you taste bitter things!",
+        "level4": "Some people taste bitter foods much more strongly than others.",
+        "level5": "TAS2R38 gene variants determine how sensitive you are to bitter compounds like those in broccoli.",
+        "level6": "The TAS2R38 gene encodes a bitter taste receptor with variants causing 'supertaster' to 'non-taster' phenotypes.",
+        "level7": "TAS2R38 polymorphisms affect receptor binding to PROP and PTC compounds, creating a spectrum of bitter taste sensitivity.",
+        "level8": "TAS2R38 haplotypes (PAV/AVI) determine PTC/PROP tasting ability through differential receptor activation kinetics."
+      },
+      "longDescription": {
+        "level3": "Some people are 'supertasters' who find broccoli, coffee, and grapefruit really bitter. Others barely taste the bitterness!",
+        "level4": "A gene called TAS2R38 controls how strongly you taste bitter chemicals. People with certain versions taste bitter things much more strongly.",
+        "level5": "The TAS2R38 gene makes a receptor on your tongue that detects bitter compounds. Different versions of this gene make some people supertasters who find vegetables like Brussels sprouts very bitter.",
+        "level6": "TAS2R38 encodes a G-protein coupled receptor that detects PROP, PTC, and similar bitter compounds found in cruciferous vegetables. The PAV haplotype confers strong tasting ability.",
+        "level7": "The TAS2R38 PAV (taster) and AVI (non-taster) haplotypes differ at three amino acid positions, dramatically affecting receptor binding and activation by glucosinolates.",
+        "level8": "TAS2R38 haplotype effects on PROP/PTC detection result from altered receptor-ligand binding kinetics, with PAV showing higher affinity and efficacy than AVI variants."
+      },
+      "funFact": {
+        "level3": "Supertasters often don't like vegetables because they taste too bitter!",
+        "level4": "About 25% of people are supertasters, 50% are medium tasters, and 25% are non-tasters.",
+        "level5": "Scientists test bitter taste ability with special paper strips containing PTC chemical. Supertasters find it extremely bitter while non-tasters taste nothing!",
+        "level6": "The ability to taste PTC was discovered in 1931 when a chemist noticed some lab workers could smell PTC dust while others couldn't.",
+        "level7": "PTC tasting was one of the first genetic traits discovered after blood types, and has been used as a genetic marker since the 1930s.",
+        "level8": "TAS2R38 was among the first taste receptor genes cloned (2003), resolving 70 years of PTC/PROP tasting genetics research."
+      },
+      "genes": [
+        {
+          "geneId": "ENSG00000257138",
+          "geneSymbol": "TAS2R38",
+          "chromosome": "7",
+          "start": 141972905,
+          "end": 141973921,
+          "strand": "-",
+          "contributionType": "primary",
+          "evidenceLevel": "high"
+        }
+      ],
+      "variants": [
+        {
+          "variantId": "rs713598",
+          "rsId": "rs713598",
+          "chromosome": "7",
+          "position": 141972804,
+          "referenceAllele": "G",
+          "alternateAllele": "C",
+          "effect": "Part of PAV (taster) vs AVI (non-taster) haplotype",
+          "frequency": 0.45
+        }
+      ],
+      "inheritancePattern": "codominant",
+      "inheritanceExplanation": {
+        "level3": "You get taste genes from both parents, and both matter!",
+        "level4": "If you have one taster gene and one non-taster gene, you taste bitter things at a medium level.",
+        "level5": "Bitter taste sensitivity shows codominant inheritance - heterozygotes have intermediate tasting ability.",
+        "level6": "TAS2R38 shows codominant inheritance: PAV/PAV homozygotes are supertasters, AVI/AVI are non-tasters, and PAV/AVI heterozygotes have intermediate sensitivity.",
+        "level7": "TAS2R38 exhibits codominance with three distinct phenotypic classes corresponding to PAV/PAV, PAV/AVI, and AVI/AVI genotypes.",
+        "level8": "Bitter taste phenotype follows an additive genetic model at TAS2R38, with heterozygotes showing intermediate receptor activation."
+      },
+      "prevalence": "Supertasters: ~25%, Medium tasters: ~50%, Non-tasters: ~25%",
+      "relatedTraits": ["cilantro_taste"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["taste", "bitter", "food", "sensory"]
+    },
+    {
+      "id": "tongue_rolling",
+      "name": "Tongue Rolling",
+      "category": "physical",
+      "subcategory": "anatomy",
+      "icon": "Smile",
+      "color": "#FF69B4",
+      "shortDescription": {
+        "level3": "Whether you can roll your tongue into a tube!",
+        "level4": "Some people can curl their tongue into a U-shape, while others can't.",
+        "level5": "Tongue rolling ability was once thought to be a simple genetic trait, but it's actually more complex.",
+        "level6": "Despite being taught as a Mendelian trait, tongue rolling has incomplete penetrance and can be learned.",
+        "level7": "Tongue rolling shows variable expressivity and incomplete penetrance, suggesting polygenic inheritance with environmental influence.",
+        "level8": "Tongue rolling is a polygenic trait with significant non-genetic variance; identical twins show only ~70% concordance."
+      },
+      "longDescription": {
+        "level3": "Can you roll your tongue into a tube shape? Some people can do it easily, and some can't no matter how hard they try!",
+        "level4": "Tongue rolling is a famous genetic trait. For years, scientists thought one gene controlled it, but now we know it's more complicated.",
+        "level5": "Tongue rolling was long used as a textbook example of simple genetics, but studies show that some people can learn to roll their tongues with practice.",
+        "level6": "Twin studies show that identical twins don't always match for tongue rolling ability, suggesting the trait involves multiple genes and possibly learned components.",
+        "level7": "Tongue rolling fails to show simple Mendelian inheritance patterns in pedigree studies, with ~30% discordance in monozygotic twins indicating significant non-genetic factors.",
+        "level8": "Tongue rolling exhibits complex inheritance with moderate heritability (~0.7). The lack of identified causative variants and MZ twin discordance suggest polygenic architecture with stochastic developmental effects."
+      },
+      "funFact": {
+        "level3": "Some people who couldn't roll their tongue learned how with practice!",
+        "level4": "In 1940, a scientist found that 7 out of 33 kids who couldn't roll their tongues learned to do it later!",
+        "level5": "Tongue rolling was dropped from genetics textbooks after studies showed it doesn't follow simple inheritance rules.",
+        "level6": "Alfred Sturtevant, who first proposed tongue rolling as a genetic trait in 1940, later admitted it was probably wrong.",
+        "level7": "Tongue rolling is now a classic example of a trait incorrectly assumed to be Mendelian, taught as a cautionary tale in genetics education.",
+        "level8": "The tongue rolling myth persists in education despite Philip Matlock's 1952 refutation showing non-Mendelian segregation ratios."
+      },
+      "genes": [],
+      "variants": [],
+      "inheritancePattern": "complex",
+      "inheritanceExplanation": {
+        "level3": "It's complicated! It partly comes from your family but other things matter too.",
+        "level4": "Tongue rolling involves many genes and you might even be able to learn it.",
+        "level5": "Unlike what textbooks used to say, tongue rolling doesn't follow simple inheritance. Multiple genes and practice may both play a role.",
+        "level6": "Tongue rolling inheritance is complex and doesn't follow Mendelian patterns. Environmental factors and learning may contribute.",
+        "level7": "Tongue rolling exhibits complex inheritance with polygenic architecture and significant environmental/stochastic components.",
+        "level8": "Tongue rolling shows complex non-Mendelian inheritance with estimated heritability of 0.6-0.7, no identified major-effect loci, and evidence for developmental plasticity."
+      },
+      "prevalence": "~65-81% of people can roll their tongue",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["tongue", "anatomy", "classic trait"]
+    },
+    {
+      "id": "dimples",
+      "name": "Cheek Dimples",
+      "category": "physical",
+      "subcategory": "anatomy",
+      "icon": "SmilePlus",
+      "color": "#FFB6C1",
+      "shortDescription": {
+        "level3": "Little dents in your cheeks when you smile!",
+        "level4": "Dimples are small indentations that appear on some people's cheeks when they smile.",
+        "level5": "Dimples are caused by variations in facial muscle structure and are considered a dominant trait.",
+        "level6": "Cheek dimples result from shorter zygomaticus major muscles that create visible indentations during facial expression.",
+        "level7": "Dimples arise from anatomical variation in zygomaticus major muscle insertion, with dominant inheritance patterns observed in family studies.",
+        "level8": "Dimples result from bifurcation or shortened insertion of the zygomaticus major muscle, showing autosomal dominant inheritance with variable expressivity."
+      },
+      "longDescription": {
+        "level3": "Dimples are cute little dents that appear on some people's cheeks when they smile. They're caused by how your face muscles are built!",
+        "level4": "Dimples happen when a face muscle called the zygomaticus major is a little shorter than usual. When you smile, the short muscle pulls on your skin and makes a dent.",
+        "level5": "Cheek dimples are caused by a variation in the zygomaticus major muscle, which helps you smile. When this muscle is shorter or split, it creates visible dimples.",
+        "level6": "Dimples result from anatomical variation where the zygomaticus major muscle has a double or bifid structure, causing the skin to be pulled inward during contraction.",
+        "level7": "Dimples arise from bifurcation of the zygomaticus major muscle or variations in its dermal insertion points, creating visible depressions during facial expression.",
+        "level8": "Cheek dimples represent a dominant trait resulting from zygomaticus major bifurcation or aberrant dermal tethering, causing focal skin invagination during contraction."
+      },
+      "funFact": {
+        "level3": "In many cultures, dimples are considered lucky!",
+        "level4": "Some people have dimples on just one cheek, and some have them on both.",
+        "level5": "Dimples can sometimes fade or become less noticeable as people age because facial fat and muscle structure change.",
+        "level6": "Dimpleplasty is a cosmetic surgery that creates artificial dimples, showing how culturally valued this trait is.",
+        "level7": "Unilateral dimples occur when the muscle variation is present on only one side, demonstrating the anatomical rather than purely genetic basis.",
+        "level8": "The variable expressivity of dimples, including unilateral presentation and age-related changes, reflects the complex developmental etiology of this anatomical variant."
+      },
+      "genes": [],
+      "variants": [],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "If your mom or dad has dimples, you might have them too!",
+        "level4": "Dimples are dominant - you only need one dimple gene from one parent to have them.",
+        "level5": "Dimples follow a dominant inheritance pattern, meaning you only need to inherit the trait from one parent.",
+        "level6": "Dimples are inherited as an autosomal dominant trait with incomplete penetrance, meaning carriers don't always show dimples.",
+        "level7": "Dimples show autosomal dominant inheritance with variable penetrance and expressivity in family studies.",
+        "level8": "Dimples exhibit autosomal dominant inheritance with incomplete penetrance (~80-90%) and variable expressivity (unilateral vs. bilateral)."
+      },
+      "prevalence": "About 20-30% of people have cheek dimples",
+      "relatedTraits": ["cleft_chin"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["face", "anatomy", "smile"]
+    },
+    {
+      "id": "cleft_chin",
+      "name": "Cleft Chin",
+      "category": "physical",
+      "subcategory": "anatomy",
+      "icon": "User",
+      "color": "#DEB887",
+      "shortDescription": {
+        "level3": "A little dent in the middle of your chin!",
+        "level4": "A cleft chin has a small groove or dimple in the center.",
+        "level5": "Cleft chins result from incomplete fusion of the jaw bones during development.",
+        "level6": "Cleft chin is caused by a gap in the mentalis muscle where the two halves of the jaw didn't fully fuse.",
+        "level7": "The cleft chin phenotype results from incomplete fusion of the mandibular symphysis and overlying mentalis muscle during fetal development.",
+        "level8": "Cleft chin arises from incomplete mandibular symphyseal fusion and mentalis muscle midline dehiscence, showing dominant inheritance with reduced penetrance."
+      },
+      "longDescription": {
+        "level3": "A cleft chin has a little groove in the middle. It happens when your chin bones don't quite meet in the middle before you're born!",
+        "level4": "Your chin is made of two halves that join together before birth. A cleft chin happens when these halves don't completely fuse, leaving a small gap.",
+        "level5": "During development, the jaw forms from two sides that normally fuse in the middle. Incomplete fusion creates a cleft chin, affecting both the bone and the muscle above it.",
+        "level6": "Cleft chin results from incomplete fusion of the lower jaw (mandible) at the symphysis and the overlying mentalis muscle, creating the characteristic groove.",
+        "level7": "The mandible develops from bilateral primordia that normally fuse at the midline symphysis. Incomplete osseous or soft tissue fusion creates the cleft chin phenotype.",
+        "level8": "Cleft chin phenotype results from variable penetrance of mandibular symphyseal and mentalis muscle fusion defects, showing autosomal dominant inheritance."
+      },
+      "funFact": {
+        "level3": "Many famous movie stars have cleft chins!",
+        "level4": "John Travolta, Ben Affleck, and Sandra Bullock all have cleft chins.",
+        "level5": "Cleft chins are sometimes called 'superhero chins' because many comic book heroes were drawn with them.",
+        "level6": "The depth of a cleft chin can vary greatly, from barely noticeable to a deep Y-shaped groove.",
+        "level7": "Cleft chin expressivity ranges from subtle soft tissue dimpling to pronounced osseous clefting visible on imaging.",
+        "level8": "Cleft chin shows continuous variation in expressivity, from minimal soft tissue dimpling to complete symphyseal clefting demonstrable on CT imaging."
+      },
+      "genes": [],
+      "variants": [],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "Cleft chins run in families!",
+        "level4": "If one of your parents has a cleft chin, you have a good chance of having one too.",
+        "level5": "Cleft chin is generally considered dominant, but not everyone with the gene shows it.",
+        "level6": "Cleft chin follows dominant inheritance with variable penetrance - not all carriers display the trait.",
+        "level7": "Cleft chin shows autosomal dominant inheritance with incomplete penetrance, complicating simple pedigree analysis.",
+        "level8": "Cleft chin exhibits autosomal dominant inheritance with estimated penetrance of 0.6-0.8 and significant phenotypic variability."
+      },
+      "prevalence": "About 25-35% of people have some degree of cleft chin",
+      "relatedTraits": ["dimples"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["face", "anatomy", "chin"]
+    },
+    {
+      "id": "widow_peak",
+      "name": "Widow's Peak",
+      "category": "physical",
+      "subcategory": "anatomy",
+      "icon": "Crown",
+      "color": "#2F4F4F",
+      "shortDescription": {
+        "level3": "When your hairline makes a V shape on your forehead!",
+        "level4": "A widow's peak is a V-shaped point in the hairline at the center of the forehead.",
+        "level5": "Widow's peak is a hairline pattern where hair grows to a point at the forehead center.",
+        "level6": "Widow's peak results from lower expression of hair suppression signals at the frontal midline.",
+        "level7": "The widow's peak phenotype is thought to result from altered signaling gradients affecting the frontal hairline boundary.",
+        "level8": "Widow's peak likely results from modified BMP/Wnt signaling gradients at the anterior hairline, though specific causative variants remain uncharacterized."
+      },
+      "longDescription": {
+        "level3": "A widow's peak is when your hair grows in a V-shape on your forehead, like a little point. The name comes from old-fashioned pointed hoods that widows used to wear.",
+        "level4": "Some people's hairlines make a V-shape at the center of their forehead. This is called a widow's peak and it runs in families.",
+        "level5": "The widow's peak hairline pattern is thought to be a dominant trait, though its genetics are not fully understood. It's named after the pointed hoods worn by widows in the past.",
+        "level6": "Widow's peak appears to follow dominant inheritance in family studies, though the specific genes involved haven't been definitively identified.",
+        "level7": "While commonly cited as a Mendelian dominant trait, widow's peak inheritance patterns are variable and likely involve multiple genetic factors.",
+        "level8": "Widow's peak is frequently cited as a simple dominant trait, but formal genetic studies are limited and suggest incomplete penetrance and possible polygenic inheritance."
+      },
+      "funFact": {
+        "level3": "Many vampires in movies have widow's peaks!",
+        "level4": "Dracula is almost always drawn with a widow's peak, making it a 'spooky' feature in movies.",
+        "level5": "The widow's peak got its name because it resembles the pointed hoods that widows wore in mourning during the 1500s.",
+        "level6": "Despite its association with villains in movies, widow's peaks are equally common in both males and females.",
+        "level7": "The cultural association of widow's peak with villainy in media has no biological basis and varies across cultures.",
+        "level8": "The widow's peak phenotype has been subject to popular misconceptions about simple Mendelian inheritance, similar to tongue rolling."
+      },
+      "genes": [],
+      "variants": [],
+      "inheritancePattern": "dominant",
+      "inheritanceExplanation": {
+        "level3": "If your parents have a widow's peak, you might have one too!",
+        "level4": "Widow's peak seems to be dominant, but genetics is complicated.",
+        "level5": "Widow's peak appears to be inherited as a dominant trait, but the genes responsible haven't been found.",
+        "level6": "Widow's peak is traditionally described as autosomal dominant, though formal genetic studies are limited.",
+        "level7": "While commonly cited as dominant, widow's peak inheritance hasn't been confirmed with molecular studies.",
+        "level8": "Widow's peak inheritance remains poorly characterized at the molecular level despite its common use as a Mendelian trait example."
+      },
+      "prevalence": "About 35% of people have a widow's peak",
+      "relatedTraits": ["hair_color"],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["hair", "hairline", "anatomy"]
+    },
+    {
+      "id": "hitchhiker_thumb",
+      "name": "Hitchhiker's Thumb",
+      "category": "physical",
+      "subcategory": "anatomy",
+      "icon": "ThumbsUp",
+      "color": "#8FBC8F",
+      "shortDescription": {
+        "level3": "When you can bend your thumb way back!",
+        "level4": "Some people can bend their thumbs backward at a big angle.",
+        "level5": "Hitchhiker's thumb is the ability to bend the thumb backward beyond 50 degrees.",
+        "level6": "Distal thumb hyperextensibility is caused by ligament laxity at the interphalangeal joint.",
+        "level7": "Hitchhiker's thumb results from increased joint laxity at the distal interphalangeal joint, showing variable expressivity.",
+        "level8": "Distal thumb hyperextensibility (>50°) results from ligamentous laxity with possible polygenic inheritance and incomplete penetrance."
+      },
+      "longDescription": {
+        "level3": "When you stick out your thumb, can it bend way back? That's called hitchhiker's thumb because it looks like someone thumbing for a ride!",
+        "level4": "Hitchhiker's thumb means your thumb tip can bend backward more than 50 degrees. It's caused by loose joints and runs in families.",
+        "level5": "Some people have more flexible thumb joints that allow the tip to bend backward at an angle. This is sometimes called hitchhiker's thumb and appears to be inherited.",
+        "level6": "Hitchhiker's thumb (distal thumb hyperextensibility) is caused by increased laxity in the joint ligaments. While often taught as a simple Mendelian trait, its inheritance is likely more complex.",
+        "level7": "Distal thumb hyperextensibility results from interphalangeal joint laxity, traditionally taught as recessive but showing continuous variation and incomplete penetrance.",
+        "level8": "Hitchhiker's thumb exhibits continuous phenotypic variation rather than discrete categories, suggesting polygenic inheritance with environmental factors affecting joint laxity."
+      },
+      "funFact": {
+        "level3": "About 1 in 4 people can do the hitchhiker's thumb bend!",
+        "level4": "The 'hitchhiker' name comes from the old way of getting a car ride by sticking out your bent thumb.",
+        "level5": "Like tongue rolling, hitchhiker's thumb was once taught as a simple genetic trait but is now known to be more complex.",
+        "level6": "The angle of thumb extension actually varies continuously in the population, rather than being simply 'present' or 'absent.'",
+        "level7": "Thumb hyperextensibility shows continuous distribution, making dichotomous classification arbitrary at any particular angle cutoff.",
+        "level8": "Population studies show thumb extension angle follows roughly normal distribution, challenging the traditional recessive inheritance model."
+      },
+      "genes": [],
+      "variants": [],
+      "inheritancePattern": "complex",
+      "inheritanceExplanation": {
+        "level3": "It's complicated - flexibility runs in families in tricky ways!",
+        "level4": "Thumb flexibility seems to run in families, but the exact way it's inherited is complicated.",
+        "level5": "Hitchhiker's thumb was once thought to be a simple recessive trait, but studies show it's more complex.",
+        "level6": "Though traditionally taught as recessive, hitchhiker's thumb shows continuous variation suggesting polygenic inheritance.",
+        "level7": "Hitchhiker's thumb inheritance doesn't fit simple Mendelian patterns, likely involving multiple genes affecting connective tissue.",
+        "level8": "Distal thumb hyperextensibility shows complex inheritance inconsistent with single-gene models, likely involving polygenic determination of ligamentous laxity."
+      },
+      "prevalence": "About 25-35% of people can extend thumb >50°",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["thumb", "flexibility", "anatomy", "joint"]
+    },
+    {
+      "id": "earlobe_attachment",
+      "name": "Earlobe Attachment",
+      "category": "physical",
+      "subcategory": "anatomy",
+      "icon": "Ear",
+      "color": "#F5DEB3",
+      "shortDescription": {
+        "level3": "Whether your earlobes hang free or attach to your head!",
+        "level4": "Earlobes can either hang free (detached) or attach directly to the head (attached).",
+        "level5": "Earlobe attachment is a classic genetic trait, though it shows continuous variation.",
+        "level6": "Earlobe attachment type results from variations in auricular cartilage and skin development.",
+        "level7": "Earlobe phenotype shows continuous variation and polygenic inheritance rather than simple Mendelian patterns.",
+        "level8": "Earlobe attachment exhibits quantitative variation with multiple contributing loci identified in GWAS, refuting simple recessive inheritance."
+      },
+      "longDescription": {
+        "level3": "Look at your earlobes! If they hang down like a little flap, they're 'free.' If they connect right to your head, they're 'attached.'",
+        "level4": "Earlobes come in two main types: free earlobes that dangle, and attached earlobes that connect directly to the head. Most people have something in between!",
+        "level5": "Earlobe attachment was once taught as a simple genetic trait, but studies show there's actually a range of attachment types, not just two.",
+        "level6": "While traditionally classified as discrete traits, earlobe attachment shows continuous variation and is now known to involve multiple genes.",
+        "level7": "GWAS studies have identified multiple loci associated with earlobe attachment, confirming polygenic inheritance rather than single-gene control.",
+        "level8": "Earlobe attachment GWAS identified variants near EDAR, SP5, MRPS22, and other genes, establishing polygenic architecture for this classic 'Mendelian' trait."
+      },
+      "funFact": {
+        "level3": "Your earlobes keep growing your whole life!",
+        "level4": "Earlobes never stop growing, so old people tend to have bigger earlobes than young people.",
+        "level5": "Ear cartilage continues to grow throughout life, which is why elderly people often have noticeably larger ears.",
+        "level6": "The continuous growth of ear cartilage is one reason why earlobe phenotype can change with age.",
+        "level7": "Age-related auricular cartilage growth can modify the earlobe attachment phenotype, adding environmental variance to genetic studies.",
+        "level8": "Ongoing auricular cartilage growth complicates phenotyping for genetic studies, as attachment classification may shift with age."
+      },
+      "genes": [],
+      "variants": [],
+      "inheritancePattern": "polygenic",
+      "inheritanceExplanation": {
+        "level3": "Earlobes come from genes from both parents!",
+        "level4": "Earlobe type comes from multiple genes, not just one.",
+        "level5": "Earlobe attachment involves many genes working together, making it more complex than once thought.",
+        "level6": "GWAS studies confirm earlobe attachment is polygenic with at least 49 contributing loci identified.",
+        "level7": "Earlobe attachment has been recharacterized as polygenic following GWAS identification of multiple contributing variants.",
+        "level8": "Earlobe attachment is polygenic with ~49 genome-wide significant loci explaining ~10% of phenotypic variance in recent GWAS."
+      },
+      "prevalence": "Free earlobes: ~60-70%, Attached earlobes: ~30-40%",
+      "relatedTraits": [],
+      "kidFriendly": true,
+      "minCopyLevel": 3,
+      "tags": ["ear", "anatomy", "classic trait"]
+    }
+  ],
+  "genes": [
+    {
+      "id": "ENSG00000104044",
+      "symbol": "OCA2",
+      "name": "OCA2 Melanosomal Transmembrane Protein",
+      "chromosome": "15",
+      "start": 27754875,
+      "end": 28099338,
+      "strand": "+",
+      "nickname": "The Eye Color Gene",
+      "shortDescription": {
+        "level3": "Helps decide your eye color!",
+        "level4": "This gene helps make the color in your eyes.",
+        "level5": "OCA2 controls how much melanin pigment is made in your eyes.",
+        "level6": "The OCA2 gene encodes a protein involved in melanin synthesis, affecting eye and skin color.",
+        "level7": "OCA2 encodes a melanosomal transmembrane protein essential for melanin biosynthesis.",
+        "level8": "OCA2 encodes a 12-transmembrane domain protein localized to melanosomes, functioning in melanin synthesis via pH regulation."
+      },
+      "color": "#4A90D9",
+      "displayPriority": 1,
+      "traitIds": ["eye_color"]
+    },
+    {
+      "id": "ENSG00000119979",
+      "symbol": "HERC2",
+      "name": "HECT And RLD Domain Containing E3 Ubiquitin Protein Ligase 2",
+      "chromosome": "15",
+      "start": 28111042,
+      "end": 28322180,
+      "strand": "-",
+      "nickname": "The Eye Color Switch",
+      "shortDescription": {
+        "level3": "Turns the eye color gene on or off!",
+        "level4": "This gene controls whether the eye color gene is active.",
+        "level5": "HERC2 contains a switch that controls OCA2, affecting eye color.",
+        "level6": "HERC2 contains an enhancer element that regulates OCA2 expression and eye pigmentation.",
+        "level7": "HERC2 harbors an intronic enhancer controlling OCA2 transcription levels.",
+        "level8": "HERC2 intron 86 contains a conserved enhancer with an OCT1 binding site that regulates OCA2 expression."
+      },
+      "color": "#5B9BD5",
+      "displayPriority": 2,
+      "traitIds": ["eye_color"]
+    },
+    {
+      "id": "ENSG00000258839",
+      "symbol": "MC1R",
+      "name": "Melanocortin 1 Receptor",
+      "chromosome": "16",
+      "start": 89912909,
+      "end": 89920738,
+      "strand": "-",
+      "nickname": "The Red Hair Gene",
+      "shortDescription": {
+        "level3": "Decides if you might have red hair and freckles!",
+        "level4": "This gene affects hair color, skin color, and freckles.",
+        "level5": "MC1R controls which type of melanin your body makes - the kind for dark hair or the kind for red hair.",
+        "level6": "MC1R encodes a receptor that determines the eumelanin/pheomelanin ratio in skin and hair.",
+        "level7": "MC1R encodes the melanocortin-1 receptor controlling melanogenesis switching between eumelanin and pheomelanin.",
+        "level8": "MC1R encodes a Gs-coupled receptor that activates adenylyl cyclase, upregulating MITF and eumelanin synthesis pathway genes."
+      },
+      "color": "#8B4513",
+      "displayPriority": 1,
+      "traitIds": ["hair_color", "freckles"]
+    },
+    {
+      "id": "ENSG00000077498",
+      "symbol": "TYR",
+      "name": "Tyrosinase",
+      "chromosome": "11",
+      "start": 89177603,
+      "end": 89295759,
+      "strand": "+",
+      "nickname": "The Melanin Maker",
+      "shortDescription": {
+        "level3": "Makes the melanin that colors your hair and skin!",
+        "level4": "This gene makes an enzyme that produces melanin pigment.",
+        "level5": "TYR encodes tyrosinase, the key enzyme for making melanin.",
+        "level6": "TYR encodes tyrosinase, the rate-limiting enzyme in melanin biosynthesis.",
+        "level7": "TYR encodes tyrosinase, catalyzing the initial steps of melanin synthesis from tyrosine.",
+        "level8": "TYR encodes tyrosinase, a copper-containing enzyme catalyzing tyrosine hydroxylation and DOPA oxidation in melanogenesis."
+      },
+      "color": "#A0522D",
+      "displayPriority": 3,
+      "traitIds": ["hair_color"]
+    },
+    {
+      "id": "ENSG00000154734",
+      "symbol": "ABCC11",
+      "name": "ATP Binding Cassette Subfamily C Member 11",
+      "chromosome": "16",
+      "start": 48171844,
+      "end": 48251966,
+      "strand": "+",
+      "nickname": "The Earwax Gene",
+      "shortDescription": {
+        "level3": "Decides if your earwax is wet or dry!",
+        "level4": "This gene controls your earwax type.",
+        "level5": "ABCC11 determines whether you have wet or dry earwax.",
+        "level6": "ABCC11 encodes a transporter that affects cerumen composition and body odor.",
+        "level7": "ABCC11 encodes an ABC transporter affecting apocrine gland secretion composition.",
+        "level8": "ABCC11 encodes an ABC transporter that exports lipophilic compounds from apocrine glands, affecting cerumen and axillary odor."
+      },
+      "color": "#DAA520",
+      "displayPriority": 1,
+      "traitIds": ["earwax_type"]
+    },
+    {
+      "id": "ENSG00000181481",
+      "symbol": "OR6A2",
+      "name": "Olfactory Receptor Family 6 Subfamily A Member 2",
+      "chromosome": "11",
+      "start": 6934190,
+      "end": 6935620,
+      "strand": "+",
+      "nickname": "The Cilantro Gene",
+      "shortDescription": {
+        "level3": "Helps you smell cilantro - and decide if it's yummy or soapy!",
+        "level4": "This gene affects how you smell cilantro.",
+        "level5": "OR6A2 is a smell receptor that detects compounds in cilantro.",
+        "level6": "OR6A2 encodes an olfactory receptor sensitive to aldehyde compounds found in cilantro.",
+        "level7": "OR6A2 encodes an olfactory receptor that binds unsaturated aldehydes in cilantro.",
+        "level8": "OR6A2 encodes a class II olfactory receptor with high affinity for (E)-2-decenal and related aldehydes in cilantro."
+      },
+      "color": "#228B22",
+      "displayPriority": 1,
+      "traitIds": ["cilantro_taste"]
+    },
+    {
+      "id": "ENSG00000115850",
+      "symbol": "LCT",
+      "name": "Lactase",
+      "chromosome": "2",
+      "start": 135787848,
+      "end": 135837180,
+      "strand": "-",
+      "nickname": "The Milk Gene",
+      "shortDescription": {
+        "level3": "Makes the enzyme that digests milk sugar!",
+        "level4": "This gene makes lactase, which breaks down milk sugar.",
+        "level5": "LCT produces the enzyme that digests lactose in dairy products.",
+        "level6": "LCT encodes lactase-phlorizin hydrolase, which cleaves lactose into glucose and galactose.",
+        "level7": "LCT encodes lactase-phlorizin hydrolase, the brush border enzyme responsible for lactose digestion.",
+        "level8": "LCT encodes a β-galactosidase that hydrolyzes lactose at the intestinal brush border, with expression normally declining post-weaning."
+      },
+      "color": "#FFFAF0",
+      "displayPriority": 1,
+      "traitIds": ["lactose_tolerance"]
+    },
+    {
+      "id": "ENSG00000076003",
+      "symbol": "MCM6",
+      "name": "Minichromosome Maintenance Complex Component 6",
+      "chromosome": "2",
+      "start": 135837554,
+      "end": 135875270,
+      "strand": "-",
+      "nickname": "The Milk Tolerance Switch",
+      "shortDescription": {
+        "level3": "Contains a switch that keeps the milk gene on in adults!",
+        "level4": "This gene has a special switch that controls milk digestion in adults.",
+        "level5": "MCM6 contains an enhancer that keeps lactase production active in adults.",
+        "level6": "MCM6 harbors the enhancer variant that maintains LCT expression in lactase-persistent adults.",
+        "level7": "MCM6 intron 13 contains the -13910*T enhancer variant controlling adult LCT transcription.",
+        "level8": "MCM6 intron 13 contains a cis-regulatory element with the -13910*T variant that prevents developmental LCT downregulation."
+      },
+      "color": "#F0FFF0",
+      "displayPriority": 2,
+      "traitIds": ["lactose_tolerance"]
+    },
+    {
+      "id": "ENSG00000257138",
+      "symbol": "TAS2R38",
+      "name": "Taste 2 Receptor Member 38",
+      "chromosome": "7",
+      "start": 141972905,
+      "end": 141973921,
+      "strand": "-",
+      "nickname": "The Bitter Taste Gene",
+      "shortDescription": {
+        "level3": "Decides how bitter things taste to you!",
+        "level4": "This gene affects how strongly you taste bitter flavors.",
+        "level5": "TAS2R38 is a bitter taste receptor that varies in sensitivity between people.",
+        "level6": "TAS2R38 encodes a bitter taste receptor with common variants affecting sensitivity to PTC/PROP.",
+        "level7": "TAS2R38 encodes a GPCR detecting thiourea compounds, with PAV/AVI haplotypes determining taster status.",
+        "level8": "TAS2R38 encodes a bitter taste receptor with three functional polymorphisms (P49A, A262V, V296I) determining PTC/PROP sensitivity."
+      },
+      "color": "#4A2C2A",
+      "displayPriority": 1,
+      "traitIds": ["bitter_taste"]
+    }
+  ]
+}

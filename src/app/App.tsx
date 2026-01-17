@@ -1,12 +1,11 @@
 import { type JSX, useMemo } from 'react';
 import { Header } from '@/components/Header';
 import { Sidebar } from '@/components/Sidebar';
-import { GenomeViewer } from '@/components/GenomeViewer';
+import { GenomeBrowser } from '@/components/GenomeBrowser';
 import {
   useAppStore,
   useSidePanel,
   useActiveChromosome,
-  useConfig,
 } from '@/state/appState';
 import { CHROMOSOME_LENGTHS, CHROMOSOME_NAMES } from '@/types/core';
 
@@ -191,7 +190,6 @@ const generateChromosomeData = () => {
 export function App(): JSX.Element {
   const sidePanel = useSidePanel();
   const activeChromosome = useActiveChromosome();
-  const config = useConfig();
   const toggleSidePanel = useAppStore(state => state.toggleSidePanel);
   const setActiveChromosome = useAppStore(state => state.setActiveChromosome);
 
@@ -211,11 +209,7 @@ export function App(): JSX.Element {
           collapsed={!sidePanel.isOpen}
         />
         <main className="flex-1 overflow-hidden">
-          <GenomeViewer
-            chromosomes={chromosomes}
-            selectedChromosome={activeChromosome}
-            tracks={config.tracks}
-          />
+          <GenomeBrowser className="h-full" />
         </main>
       </div>
     </div>

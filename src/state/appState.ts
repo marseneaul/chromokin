@@ -15,6 +15,22 @@ import {
   CHROMOSOME_LENGTHS,
   CHROMOSOME_NAMES,
 } from '@/types/core';
+import type { TraitsDatabase } from '@/types/traits';
+import { getTraitsDatabase } from '@/data/traitsLoader';
+
+/**
+ * Trait interaction state for hover/select behaviors
+ */
+interface TraitInteractionState {
+  traitsLoaded: boolean;
+  traitsDatabase: TraitsDatabase | null;
+  hoveredGeneId: string | null;
+  hoveredTraitId: string | null;
+  tooltipPosition: { x: number; y: number } | null;
+  selectedGeneId: string | null;
+  selectedTraitId: string | null;
+  detailPanelOpen: boolean;
+}
 
 // Default configuration
 const defaultConfig: ChromoKinConfig = {
@@ -101,8 +117,20 @@ const defaultSidePanel: SidePanelState = {
   width: 256,
 };
 
+// Default trait interaction state
+const defaultTraitInteraction: TraitInteractionState = {
+  traitsLoaded: false,
+  traitsDatabase: null,
+  hoveredGeneId: null,
+  hoveredTraitId: null,
+  tooltipPosition: null,
+  selectedGeneId: null,
+  selectedTraitId: null,
+  detailPanelOpen: false,
+};
+
 // Initial state
-const initialState: AppState = {
+const initialState: AppState & TraitInteractionState = {
   config: defaultConfig,
   viewMode: 'play',
   copyLevel: 5,
@@ -112,10 +140,11 @@ const initialState: AppState = {
   sidePanel: defaultSidePanel,
   isLoading: false,
   error: null,
+  ...defaultTraitInteraction,
 };
 
 // State store interface
-interface AppStore extends AppState {
+interface AppStore extends AppState, TraitInteractionState {
   // Actions
   setViewMode: (mode: ViewMode) => void;
   setCopyLevel: (level: CopyLevel) => void;
@@ -142,6 +171,21 @@ interface AppStore extends AppState {
   ) => void;
   toggleSidePanel: () => void;
   resetToDefaults: () => void;
+
+  // Trait interaction actions
+  loadTraits: () => void;
+  setHoveredGene: (
+    geneId: string | null,
+    position?: { x: number; y: number }
+  ) => void;
+  setHoveredTrait: (
+    traitId: string | null,
+    position?: { x: number; y: number }
+  ) => void;
+  selectGene: (geneId: string | null) => void;
+  selectTrait: (traitId: string | null) => void;
+  closeDetailPanel: () => void;
+  clearInteractions: () => void;
 }
 
 // Create the store
@@ -314,6 +358,83 @@ export const useAppStore = create<AppStore>()(
         ),
 
       resetToDefaults: () => set(initialState, false, 'resetToDefaults'),
+
+      // Trait interaction actions
+      loadTraits: () => {
+        const traitsDatabase = getTraitsDatabase();
+        set({ traitsLoaded: true, traitsDatabase }, false, 'loadTraits');
+      },
+
+      setHoveredGene: (
+        geneId: string | null,
+        position?: { x: number; y: number }
+      ) =>
+        set(
+          {
+            hoveredGeneId: geneId,
+            tooltipPosition: geneId && position ? position : null,
+          },
+          false,
+          'setHoveredGene'
+        ),
+
+      setHoveredTrait: (
+        traitId: string | null,
+        position?: { x: number; y: number }
+      ) =>
+        set(
+          {
+            hoveredTraitId: traitId,
+            tooltipPosition: traitId && position ? position : null,
+          },
+          false,
+          'setHoveredTrait'
+        ),
+
+      selectGene: (geneId: string | null) =>
+        set(
+          {
+            selectedGeneId: geneId,
+            detailPanelOpen: geneId !== null,
+          },
+          false,
+          'selectGene'
+        ),
+
+      selectTrait: (traitId: string | null) =>
+        set(
+          {
+            selectedTraitId: traitId,
+            detailPanelOpen: traitId !== null,
+          },
+          false,
+          'selectTrait'
+        ),
+
+      closeDetailPanel: () =>
+        set(
+          {
+            selectedGeneId: null,
+            selectedTraitId: null,
+            detailPanelOpen: false,
+          },
+          false,
+          'closeDetailPanel'
+        ),
+
+      clearInteractions: () =>
+        set(
+          {
+            hoveredGeneId: null,
+            hoveredTraitId: null,
+            tooltipPosition: null,
+            selectedGeneId: null,
+            selectedTraitId: null,
+            detailPanelOpen: false,
+          },
+          false,
+          'clearInteractions'
+        ),
     })),
     {
       name: 'chromokin-app-store',
@@ -374,6 +495,35 @@ export const useTrackById = (trackId: string) =>
 
 export const useVisibleTracks = () =>
   useAppStore(state => state.config.tracks.filter(track => track.visible));
+
+// Trait interaction selectors
+export const useTraitsLoaded = () => useAppStore(state => state.traitsLoaded);
+export const useTraitsDatabase = () =>
+  useAppStore(state => state.traitsDatabase);
+export const useHoveredGeneId = () => useAppStore(state => state.hoveredGeneId);
+export const useHoveredTraitId = () =>
+  useAppStore(state => state.hoveredTraitId);
+export const useTooltipPosition = () =>
+  useAppStore(state => state.tooltipPosition);
+export const useSelectedGeneId = () =>
+  useAppStore(state => state.selectedGeneId);
+export const useSelectedTraitId = () =>
+  useAppStore(state => state.selectedTraitId);
+export const useDetailPanelOpen = () =>
+  useAppStore(state => state.detailPanelOpen);
+
+// Trait interaction action selectors
+export const useLoadTraits = () => useAppStore(state => state.loadTraits);
+export const useSetHoveredGene = () =>
+  useAppStore(state => state.setHoveredGene);
+export const useSetHoveredTrait = () =>
+  useAppStore(state => state.setHoveredTrait);
+export const useSelectGene = () => useAppStore(state => state.selectGene);
+export const useSelectTrait = () => useAppStore(state => state.selectTrait);
+export const useCloseDetailPanel = () =>
+  useAppStore(state => state.closeDetailPanel);
+export const useClearInteractions = () =>
+  useAppStore(state => state.clearInteractions);
 
 // Development helpers
 if (process.env.NODE_ENV === 'development') {

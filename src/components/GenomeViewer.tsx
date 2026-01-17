@@ -1,10 +1,15 @@
-import { type JSX } from 'react';
+import { type JSX, useState, useRef, useEffect } from 'react';
 import { Dna, Info } from 'lucide-react';
 import { type Chromosome, type TrackSpec } from '@/types';
 import { formatChromosomeName } from '@/lib/utils';
 import { Ruler } from '@/components/Ruler';
 import { ChromosomeGrid } from '@/components/ChromosomeGrid';
 import { ZoomControls } from '@/components/ZoomControls';
+import { TrackContainer } from '@/components/tracks/TrackContainer';
+import { Tooltip } from '@/components/interaction/Tooltip';
+import { DetailPanel } from '@/components/interaction/DetailPanel';
+import { useZoomState, useAppStore } from '@/state/appState';
+import { CHROMOSOME_LENGTHS } from '@/types/core';
 
 interface GenomeViewerProps {
   chromosomes: Chromosome[];
@@ -18,6 +23,39 @@ export function GenomeViewer({
   tracks,
 }: GenomeViewerProps): JSX.Element {
   const selectedChr = chromosomes.find(chr => chr.id === selectedChromosome);
+  const zoomState = useZoomState();
+  const globalBpPerPx = useAppStore(state => state.globalBpPerPx);
+
+  // Container width ref for responsive track rendering
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState(800);
+
+  // Update container width on resize
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.clientWidth);
+      }
+    };
+
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
+  // Get chromosome length for the selected chromosome
+  const chromosomeLength = selectedChromosome
+    ? CHROMOSOME_LENGTHS[
+        selectedChromosome as keyof typeof CHROMOSOME_LENGTHS
+      ] || 0
+    : 0;
+
+  // Create a default zoom state if none exists
+  const effectiveZoomState = zoomState || {
+    bpPerPx: globalBpPerPx,
+    centerPosition: chromosomeLength / 2,
+    chromosome: selectedChromosome || '',
+  };
 
   if (!selectedChr) {
     return (
@@ -92,42 +130,8 @@ export function GenomeViewer({
             </div>
           </div>
 
-          {/* Tracks Section */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Info className="h-5 w-5 text-primary" />
-              <h3 className="text-lg font-semibold">Data Tracks</h3>
-            </div>
-
-            {tracks.length === 0 ? (
-              <div className="text-center py-12 text-muted-foreground">
-                <p>No tracks loaded yet.</p>
-                <p className="text-sm mt-1">
-                  Tracks will appear here when data is loaded.
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-2">
-                {tracks.map(track => (
-                  <div key={track.id} className="track-item">
-                    <div className="flex items-center gap-2">
-                      <div
-                        className="w-3 h-3 rounded-full"
-                        style={{ backgroundColor: track.color }}
-                      />
-                      <span className="font-medium">{track.name}</span>
-                      <span className="text-xs text-muted-foreground">
-                        ({track.type})
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
           {/* Chromosome Visualization */}
-          <div className="chromosome-column">
+          <div className="chromosome-column" ref={containerRef}>
             <div className="border border-border rounded-lg overflow-hidden bg-background">
               {/* Zoom Controls */}
               <div className="p-4 border-b border-border bg-muted/20">
@@ -135,16 +139,60 @@ export function GenomeViewer({
               </div>
 
               {/* Ruler */}
-              <Ruler width={800} height={50} />
+              <Ruler width={containerWidth} height={50} />
+
+              {/* Trait-associated Genes and Traits Tracks */}
+              {selectedChromosome && (
+                <div className="border-b border-border">
+                  <TrackContainer
+                    chromosome={selectedChromosome}
+                    chromosomeLength={chromosomeLength}
+                    zoomState={effectiveZoomState}
+                    containerWidth={containerWidth}
+                    tracks={tracks}
+                  />
+                </div>
+              )}
 
               {/* Grid and Chromosome Visualization */}
               <div className="relative">
-                <ChromosomeGrid width={800} height={400} />
+                <ChromosomeGrid width={containerWidth} height={300} />
               </div>
+            </div>
+          </div>
+
+          {/* Track Legend */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Info className="h-5 w-5 text-primary" />
+              <h3 className="text-lg font-semibold">Active Tracks</h3>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {tracks
+                .filter(t => t.visible)
+                .map(track => (
+                  <div
+                    key={track.id}
+                    className="flex items-center gap-2 px-3 py-1.5 bg-muted/50 rounded-full"
+                  >
+                    <div
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: track.color }}
+                    />
+                    <span className="text-sm font-medium">{track.name}</span>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Tooltip for hover info */}
+      <Tooltip />
+
+      {/* Detail Panel for click info */}
+      <DetailPanel />
     </div>
   );
 }
