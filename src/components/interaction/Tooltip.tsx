@@ -342,6 +342,10 @@ function getFeatureTypeLabel(type: string): string {
     dna_transposon: 'Cut-and-Paste Gene',
     satellite: 'Repetitive DNA',
     segmental_duplication: 'Duplicated Region',
+    numt: 'Mitochondrial Ghost',
+    har: 'Human Accelerated Region',
+    neanderthal: 'Neanderthal DNA',
+    gene_desert: 'Gene Desert',
   };
   return labels[type] || type;
 }

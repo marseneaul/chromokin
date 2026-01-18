@@ -1,0 +1,1799 @@
+{
+  "profile": {
+    "id": "demo_user_001",
+    "name": "Demo User",
+    "source": "23andme",
+    "buildVersion": "GRCh38",
+    "isPhased": true,
+    "createdAt": "2024-01-15"
+  },
+  "composition": [
+    {
+      "population": "british_irish",
+      "category": "european",
+      "percentage": 35.2,
+      "displayName": "British & Irish"
+    },
+    {
+      "population": "french_german",
+      "category": "european",
+      "percentage": 18.5,
+      "displayName": "French & German"
+    },
+    {
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "percentage": 12.3,
+      "displayName": "Ashkenazi Jewish"
+    },
+    {
+      "population": "scandinavian",
+      "category": "european",
+      "percentage": 8.1,
+      "displayName": "Scandinavian"
+    },
+    {
+      "population": "eastern_european",
+      "category": "european",
+      "percentage": 6.4,
+      "displayName": "Eastern European"
+    },
+    {
+      "population": "west_african",
+      "category": "african",
+      "percentage": 5.8,
+      "displayName": "West African"
+    },
+    {
+      "population": "native_american",
+      "category": "native_american",
+      "percentage": 4.2,
+      "displayName": "Native American"
+    },
+    {
+      "population": "southern_european",
+      "category": "european",
+      "percentage": 3.9,
+      "displayName": "Southern European"
+    },
+    {
+      "population": "chinese",
+      "category": "east_asian",
+      "percentage": 2.1,
+      "displayName": "Chinese"
+    },
+    {
+      "population": "neanderthal",
+      "category": "archaic",
+      "percentage": 2.4,
+      "displayName": "Neanderthal"
+    },
+    {
+      "population": "unassigned",
+      "category": "unassigned",
+      "percentage": 1.1,
+      "displayName": "Unassigned"
+    }
+  ],
+  "segments": [
+    {
+      "chromosome": "1",
+      "start": 0,
+      "end": 15000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 15000000,
+      "end": 45000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 45000000,
+      "end": 85000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 85000000,
+      "end": 125000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.97,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 125000000,
+      "end": 180000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 180000000,
+      "end": 248956422,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.85,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "1",
+      "start": 0,
+      "end": 25000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.96,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 25000000,
+      "end": 70000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 70000000,
+      "end": 120000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 120000000,
+      "end": 160000000,
+      "population": "west_african",
+      "category": "african",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 160000000,
+      "end": 200000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "1",
+      "start": 200000000,
+      "end": 248956422,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "2",
+      "start": 0,
+      "end": 30000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "2",
+      "start": 30000000,
+      "end": 80000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.94,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "2",
+      "start": 80000000,
+      "end": 130000000,
+      "population": "native_american",
+      "category": "native_american",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "2",
+      "start": 130000000,
+      "end": 180000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "2",
+      "start": 180000000,
+      "end": 242193529,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "2",
+      "start": 0,
+      "end": 50000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "2",
+      "start": 50000000,
+      "end": 95000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "2",
+      "start": 95000000,
+      "end": 140000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "2",
+      "start": 140000000,
+      "end": 190000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "2",
+      "start": 190000000,
+      "end": 242193529,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "3",
+      "start": 0,
+      "end": 40000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "3",
+      "start": 40000000,
+      "end": 90000000,
+      "population": "southern_european",
+      "category": "european",
+      "confidence": 0.85,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "3",
+      "start": 90000000,
+      "end": 140000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "3",
+      "start": 140000000,
+      "end": 198295559,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "3",
+      "start": 0,
+      "end": 45000000,
+      "population": "west_african",
+      "category": "african",
+      "confidence": 0.89,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "3",
+      "start": 45000000,
+      "end": 100000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "3",
+      "start": 100000000,
+      "end": 150000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.94,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "3",
+      "start": 150000000,
+      "end": 198295559,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "4",
+      "start": 0,
+      "end": 50000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "4",
+      "start": 50000000,
+      "end": 100000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "4",
+      "start": 100000000,
+      "end": 150000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "4",
+      "start": 150000000,
+      "end": 190214555,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "4",
+      "start": 0,
+      "end": 60000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.96,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "4",
+      "start": 60000000,
+      "end": 110000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "4",
+      "start": 110000000,
+      "end": 160000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "4",
+      "start": 160000000,
+      "end": 190214555,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "5",
+      "start": 0,
+      "end": 45000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.94,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "5",
+      "start": 45000000,
+      "end": 90000000,
+      "population": "chinese",
+      "category": "east_asian",
+      "confidence": 0.82,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "5",
+      "start": 90000000,
+      "end": 140000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "5",
+      "start": 140000000,
+      "end": 181538259,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "5",
+      "start": 0,
+      "end": 55000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "5",
+      "start": 55000000,
+      "end": 100000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "5",
+      "start": 100000000,
+      "end": 145000000,
+      "population": "west_african",
+      "category": "african",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "5",
+      "start": 145000000,
+      "end": 181538259,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "6",
+      "start": 0,
+      "end": 40000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "6",
+      "start": 40000000,
+      "end": 85000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "6",
+      "start": 85000000,
+      "end": 130000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "6",
+      "start": 130000000,
+      "end": 170805979,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "6",
+      "start": 0,
+      "end": 50000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "6",
+      "start": 50000000,
+      "end": 95000000,
+      "population": "native_american",
+      "category": "native_american",
+      "confidence": 0.85,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "6",
+      "start": 95000000,
+      "end": 140000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "6",
+      "start": 140000000,
+      "end": 170805979,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "7",
+      "start": 0,
+      "end": 35000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "7",
+      "start": 35000000,
+      "end": 80000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.94,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "7",
+      "start": 80000000,
+      "end": 120000000,
+      "population": "southern_european",
+      "category": "european",
+      "confidence": 0.84,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "7",
+      "start": 120000000,
+      "end": 159345973,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "7",
+      "start": 0,
+      "end": 45000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.97,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "7",
+      "start": 45000000,
+      "end": 90000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "7",
+      "start": 90000000,
+      "end": 130000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "7",
+      "start": 130000000,
+      "end": 159345973,
+      "population": "west_african",
+      "category": "african",
+      "confidence": 0.86,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "8",
+      "start": 0,
+      "end": 40000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "8",
+      "start": 40000000,
+      "end": 80000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "8",
+      "start": 80000000,
+      "end": 120000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "8",
+      "start": 120000000,
+      "end": 145138636,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "8",
+      "start": 0,
+      "end": 50000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "8",
+      "start": 50000000,
+      "end": 90000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "8",
+      "start": 90000000,
+      "end": 130000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "8",
+      "start": 130000000,
+      "end": 145138636,
+      "population": "native_american",
+      "category": "native_american",
+      "confidence": 0.83,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "9",
+      "start": 0,
+      "end": 35000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "9",
+      "start": 35000000,
+      "end": 70000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "9",
+      "start": 70000000,
+      "end": 110000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.94,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "9",
+      "start": 110000000,
+      "end": 138394717,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "9",
+      "start": 0,
+      "end": 45000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "9",
+      "start": 45000000,
+      "end": 85000000,
+      "population": "west_african",
+      "category": "african",
+      "confidence": 0.88,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "9",
+      "start": 85000000,
+      "end": 120000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "9",
+      "start": 120000000,
+      "end": 138394717,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "10",
+      "start": 0,
+      "end": 35000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "10",
+      "start": 35000000,
+      "end": 75000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "10",
+      "start": 75000000,
+      "end": 110000000,
+      "population": "southern_european",
+      "category": "european",
+      "confidence": 0.84,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "10",
+      "start": 110000000,
+      "end": 133797422,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "10",
+      "start": 0,
+      "end": 40000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.96,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "10",
+      "start": 40000000,
+      "end": 80000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "10",
+      "start": 80000000,
+      "end": 115000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "10",
+      "start": 115000000,
+      "end": 133797422,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "11",
+      "start": 0,
+      "end": 30000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "11",
+      "start": 30000000,
+      "end": 70000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "11",
+      "start": 70000000,
+      "end": 105000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "11",
+      "start": 105000000,
+      "end": 135086622,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.85,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "11",
+      "start": 0,
+      "end": 35000000,
+      "population": "chinese",
+      "category": "east_asian",
+      "confidence": 0.84,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "11",
+      "start": 35000000,
+      "end": 75000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.94,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "11",
+      "start": 75000000,
+      "end": 110000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "11",
+      "start": 110000000,
+      "end": 135086622,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "12",
+      "start": 0,
+      "end": 35000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "12",
+      "start": 35000000,
+      "end": 70000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "12",
+      "start": 70000000,
+      "end": 105000000,
+      "population": "native_american",
+      "category": "native_american",
+      "confidence": 0.86,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "12",
+      "start": 105000000,
+      "end": 133275309,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "12",
+      "start": 0,
+      "end": 40000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "12",
+      "start": 40000000,
+      "end": 80000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "12",
+      "start": 80000000,
+      "end": 115000000,
+      "population": "west_african",
+      "category": "african",
+      "confidence": 0.89,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "12",
+      "start": 115000000,
+      "end": 133275309,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "13",
+      "start": 0,
+      "end": 30000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "13",
+      "start": 30000000,
+      "end": 60000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "13",
+      "start": 60000000,
+      "end": 90000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.85,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "13",
+      "start": 90000000,
+      "end": 114364328,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "13",
+      "start": 0,
+      "end": 35000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.94,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "13",
+      "start": 35000000,
+      "end": 70000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "13",
+      "start": 70000000,
+      "end": 95000000,
+      "population": "southern_european",
+      "category": "european",
+      "confidence": 0.83,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "13",
+      "start": 95000000,
+      "end": 114364328,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "14",
+      "start": 0,
+      "end": 30000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "14",
+      "start": 30000000,
+      "end": 60000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "14",
+      "start": 60000000,
+      "end": 85000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "14",
+      "start": 85000000,
+      "end": 107043718,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "14",
+      "start": 0,
+      "end": 35000000,
+      "population": "west_african",
+      "category": "african",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "14",
+      "start": 35000000,
+      "end": 65000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "14",
+      "start": 65000000,
+      "end": 90000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "14",
+      "start": 90000000,
+      "end": 107043718,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "15",
+      "start": 0,
+      "end": 25000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "15",
+      "start": 25000000,
+      "end": 55000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "15",
+      "start": 55000000,
+      "end": 80000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "15",
+      "start": 80000000,
+      "end": 101991189,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "15",
+      "start": 0,
+      "end": 30000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.96,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "15",
+      "start": 30000000,
+      "end": 60000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "15",
+      "start": 60000000,
+      "end": 85000000,
+      "population": "native_american",
+      "category": "native_american",
+      "confidence": 0.84,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "15",
+      "start": 85000000,
+      "end": 101991189,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "16",
+      "start": 0,
+      "end": 25000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "16",
+      "start": 25000000,
+      "end": 50000000,
+      "population": "southern_european",
+      "category": "european",
+      "confidence": 0.84,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "16",
+      "start": 50000000,
+      "end": 75000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "16",
+      "start": 75000000,
+      "end": 90338345,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "16",
+      "start": 0,
+      "end": 30000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "16",
+      "start": 30000000,
+      "end": 55000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "16",
+      "start": 55000000,
+      "end": 80000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "16",
+      "start": 80000000,
+      "end": 90338345,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "17",
+      "start": 0,
+      "end": 22000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "17",
+      "start": 22000000,
+      "end": 45000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "17",
+      "start": 45000000,
+      "end": 65000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.85,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "17",
+      "start": 65000000,
+      "end": 83257441,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "17",
+      "start": 0,
+      "end": 25000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "17",
+      "start": 25000000,
+      "end": 50000000,
+      "population": "west_african",
+      "category": "african",
+      "confidence": 0.88,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "17",
+      "start": 50000000,
+      "end": 70000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.94,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "17",
+      "start": 70000000,
+      "end": 83257441,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "18",
+      "start": 0,
+      "end": 20000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "18",
+      "start": 20000000,
+      "end": 45000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "18",
+      "start": 45000000,
+      "end": 65000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "18",
+      "start": 65000000,
+      "end": 80373285,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "18",
+      "start": 0,
+      "end": 25000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "18",
+      "start": 25000000,
+      "end": 50000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "18",
+      "start": 50000000,
+      "end": 70000000,
+      "population": "native_american",
+      "category": "native_american",
+      "confidence": 0.83,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "18",
+      "start": 70000000,
+      "end": 80373285,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "19",
+      "start": 0,
+      "end": 15000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "19",
+      "start": 15000000,
+      "end": 30000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.85,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "19",
+      "start": 30000000,
+      "end": 45000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "19",
+      "start": 45000000,
+      "end": 58617616,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "19",
+      "start": 0,
+      "end": 18000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.96,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "19",
+      "start": 18000000,
+      "end": 35000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "19",
+      "start": 35000000,
+      "end": 50000000,
+      "population": "southern_european",
+      "category": "european",
+      "confidence": 0.83,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "19",
+      "start": 50000000,
+      "end": 58617616,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "20",
+      "start": 0,
+      "end": 18000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "20",
+      "start": 18000000,
+      "end": 35000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "20",
+      "start": 35000000,
+      "end": 50000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.94,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "20",
+      "start": 50000000,
+      "end": 64444167,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "20",
+      "start": 0,
+      "end": 20000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "20",
+      "start": 20000000,
+      "end": 40000000,
+      "population": "west_african",
+      "category": "african",
+      "confidence": 0.87,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "20",
+      "start": 40000000,
+      "end": 55000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "20",
+      "start": 55000000,
+      "end": 64444167,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "21",
+      "start": 0,
+      "end": 15000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "21",
+      "start": 15000000,
+      "end": 30000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.85,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "21",
+      "start": 30000000,
+      "end": 46709983,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "21",
+      "start": 0,
+      "end": 18000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "21",
+      "start": 18000000,
+      "end": 35000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.9,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "21",
+      "start": 35000000,
+      "end": 46709983,
+      "population": "native_american",
+      "category": "native_american",
+      "confidence": 0.82,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "22",
+      "start": 0,
+      "end": 15000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.96,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "22",
+      "start": 15000000,
+      "end": 30000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "22",
+      "start": 30000000,
+      "end": 50818468,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.88,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "22",
+      "start": 0,
+      "end": 18000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "22",
+      "start": 18000000,
+      "end": 35000000,
+      "population": "eastern_european",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "22",
+      "start": 35000000,
+      "end": 50818468,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "paternal"
+    },
+
+    {
+      "chromosome": "X",
+      "start": 0,
+      "end": 40000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.93,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "X",
+      "start": 40000000,
+      "end": 80000000,
+      "population": "ashkenazi_jewish",
+      "category": "european",
+      "confidence": 0.95,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "X",
+      "start": 80000000,
+      "end": 120000000,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.89,
+      "parent": "maternal"
+    },
+    {
+      "chromosome": "X",
+      "start": 120000000,
+      "end": 156040895,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.91,
+      "parent": "maternal"
+    },
+
+    {
+      "chromosome": "X",
+      "start": 0,
+      "end": 45000000,
+      "population": "scandinavian",
+      "category": "european",
+      "confidence": 0.86,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "X",
+      "start": 45000000,
+      "end": 90000000,
+      "population": "british_irish",
+      "category": "european",
+      "confidence": 0.92,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "X",
+      "start": 90000000,
+      "end": 130000000,
+      "population": "native_american",
+      "category": "native_american",
+      "confidence": 0.84,
+      "parent": "paternal"
+    },
+    {
+      "chromosome": "X",
+      "start": 130000000,
+      "end": 156040895,
+      "population": "french_german",
+      "category": "european",
+      "confidence": 0.87,
+      "parent": "paternal"
+    }
+  ]
+}

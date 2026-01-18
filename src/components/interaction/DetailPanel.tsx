@@ -13,6 +13,10 @@ import {
   Bug,
   Skull,
   Repeat,
+  Zap,
+  Brain,
+  Users,
+  Map,
 } from 'lucide-react';
 import {
   useDetailPanelOpen,
@@ -784,6 +788,10 @@ function getFeatureTypeLabel(type: string): string {
     dna_transposon: 'Cut-and-Paste Gene',
     satellite: 'Repetitive DNA',
     segmental_duplication: 'Duplicated Region',
+    numt: 'Mitochondrial Ghost',
+    har: 'Human Accelerated Region',
+    neanderthal: 'Neanderthal DNA',
+    gene_desert: 'Gene Desert',
   };
   return labels[type] || type;
 }
@@ -797,6 +805,10 @@ function getFeatureIcon(type: string) {
     dna_transposon: Repeat,
     satellite: Repeat,
     segmental_duplication: Repeat,
+    numt: Zap,
+    har: Brain,
+    neanderthal: Users,
+    gene_desert: Map,
   };
   return icons[type] || Info;
 }

@@ -20,6 +20,10 @@ export type GenomicFeatureType =
   | 'pseudogene' // Non-functional gene copies
   | 'satellite' // Repetitive DNA at centromeres
   | 'segmental_duplication' // Large duplicated regions
+  | 'numt' // Nuclear mitochondrial DNA segment
+  | 'har' // Human Accelerated Region
+  | 'neanderthal' // Neanderthal introgression region
+  | 'gene_desert' // Large regions with no genes
   | 'other'; // Other interesting features
 
 /**
