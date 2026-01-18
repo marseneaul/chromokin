@@ -4,15 +4,26 @@
  */
 
 import { type JSX, useEffect, useCallback, useMemo } from 'react';
-import { X, ExternalLink, Dna, Sparkles, Info } from 'lucide-react';
+import {
+  X,
+  ExternalLink,
+  Dna,
+  Sparkles,
+  Info,
+  Bug,
+  Skull,
+  Repeat,
+} from 'lucide-react';
 import {
   useDetailPanelOpen,
   useSelectedGeneId,
   useSelectedTraitId,
+  useSelectedFeatureId,
   useCloseDetailPanel,
   useCopyLevel,
   useViewMode,
   useTraitsDatabase,
+  useGenomicFeaturesDatabase,
 } from '@/state/appState';
 import {
   getContentForLevel,
@@ -22,15 +33,18 @@ import {
 } from '@/lib/content';
 import { getTraitsForGene } from '@/data/traitsLoader';
 import { Button } from '@/components/ui/button';
+import type { GenomicFeature } from '@/types/genomicFeatures';
 
 export function DetailPanel(): JSX.Element | null {
   const isOpen = useDetailPanelOpen();
   const selectedGeneId = useSelectedGeneId();
   const selectedTraitId = useSelectedTraitId();
+  const selectedFeatureId = useSelectedFeatureId();
   const closePanel = useCloseDetailPanel();
   const copyLevel = useCopyLevel();
   const viewMode = useViewMode();
   const traitsDatabase = useTraitsDatabase();
+  const genomicFeaturesDatabase = useGenomicFeaturesDatabase();
 
   const settings = getViewModeSettings(viewMode);
 
@@ -48,9 +62,7 @@ export function DetailPanel(): JSX.Element | null {
 
   // Get content for panel
   const content = useMemo(() => {
-    if (!traitsDatabase) return null;
-
-    if (selectedGeneId) {
+    if (selectedGeneId && traitsDatabase) {
       const gene = traitsDatabase.genes.get(selectedGeneId);
       if (!gene) return null;
 
@@ -69,7 +81,7 @@ export function DetailPanel(): JSX.Element | null {
       };
     }
 
-    if (selectedTraitId) {
+    if (selectedTraitId && traitsDatabase) {
       const trait = traitsDatabase.traits.get(selectedTraitId);
       if (!trait) return null;
 
@@ -85,8 +97,31 @@ export function DetailPanel(): JSX.Element | null {
       };
     }
 
+    if (selectedFeatureId && genomicFeaturesDatabase) {
+      const feature = genomicFeaturesDatabase.features.get(selectedFeatureId);
+      if (!feature) return null;
+
+      const displayName =
+        viewMode === 'play' && feature.nickname
+          ? feature.nickname
+          : feature.name;
+
+      return {
+        type: 'feature' as const,
+        feature,
+        displayName,
+      };
+    }
+
     return null;
-  }, [selectedGeneId, selectedTraitId, traitsDatabase, viewMode]);
+  }, [
+    selectedGeneId,
+    selectedTraitId,
+    selectedFeatureId,
+    traitsDatabase,
+    genomicFeaturesDatabase,
+    viewMode,
+  ]);
 
   const handleBackdropClick = useCallback(
     (e: React.MouseEvent) => {
@@ -158,7 +193,7 @@ function PlayModeContent({
         <div className="flex justify-between items-start mb-4">
           <div className="flex items-center gap-3">
             <div
-              className="w-12 h-12 rounded-full flex items-center justify-center"
+              className="w-12 h-12 rounded-lg flex items-center justify-center"
               style={{ backgroundColor: gene.color || '#3b82f6' }}
             >
               <Dna className="w-6 h-6 text-white" />
@@ -212,6 +247,82 @@ function PlayModeContent({
           </h3>
           <p className="text-blue-700">
             This gene is found on chromosome {gene.chromosome}!
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (content.type === 'feature') {
+    const { feature, displayName } = content;
+    const FeatureIcon = getFeatureIcon(feature.type);
+
+    return (
+      <div className="p-6">
+        <div className="flex justify-between items-start mb-4">
+          <div className="flex items-center gap-3">
+            <div
+              className="w-12 h-12 rounded-lg flex items-center justify-center"
+              style={{ backgroundColor: feature.color }}
+            >
+              <FeatureIcon className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">{displayName}</h2>
+              <p className="text-sm text-gray-500">
+                {getFeatureTypeLabel(feature.type)}
+              </p>
+            </div>
+          </div>
+          <Button variant="ghost" size="sm" onClick={onClose}>
+            <X className="w-5 h-5" />
+          </Button>
+        </div>
+
+        <p className="text-gray-700 text-lg leading-relaxed mb-6">
+          {getContentForLevel(
+            feature.shortDescription,
+            copyLevel as 3 | 4 | 5 | 6 | 7 | 8
+          )}
+        </p>
+
+        {feature.funFact && (
+          <div className="bg-amber-50 rounded-xl p-4 mb-4">
+            <h3 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
+              <Sparkles className="w-4 h-4" />
+              Fun Fact
+            </h3>
+            <p className="text-amber-700">
+              {getContentForLevel(
+                feature.funFact,
+                copyLevel as 3 | 4 | 5 | 6 | 7 | 8
+              )}
+            </p>
+          </div>
+        )}
+
+        {feature.isActive && (
+          <div className="bg-orange-50 rounded-xl p-4 mb-4">
+            <h3 className="font-semibold text-orange-800 mb-2 flex items-center gap-2">
+              <Info className="w-4 h-4" />
+              Still Active!
+            </h3>
+            <p className="text-orange-700">
+              This element can still move around in the genome today!
+            </p>
+          </div>
+        )}
+
+        <div className="bg-gray-50 rounded-xl p-4">
+          <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+            <Info className="w-4 h-4" />
+            About This Type
+          </h3>
+          <p className="text-gray-700">
+            Found on chromosome {feature.chromosome}
+            {feature.ageEstimate &&
+              ` - approximately ${feature.ageEstimate} old`}
+            .
           </p>
         </div>
       </div>
@@ -407,6 +518,110 @@ function SlideoutContent({
     );
   }
 
+  if (content.type === 'feature') {
+    const { feature, displayName } = content;
+    const FeatureIcon = getFeatureIcon(feature.type);
+
+    return (
+      <div className="h-full flex flex-col">
+        {/* Header */}
+        <div className="p-4 border-b flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div
+              className="w-8 h-8 rounded flex items-center justify-center"
+              style={{ backgroundColor: feature.color }}
+            >
+              <FeatureIcon className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <h2 className={`font-semibold ${isPro ? 'font-mono' : ''}`}>
+                {isPro ? feature.name : displayName}
+              </h2>
+              <p className="text-xs text-gray-500">
+                {getFeatureTypeLabel(feature.type)}
+              </p>
+            </div>
+          </div>
+          <Button variant="ghost" size="sm" onClick={onClose}>
+            <X className="w-4 h-4" />
+          </Button>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-auto p-4 space-y-4">
+          {/* Description */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-500 mb-1">
+              Description
+            </h3>
+            <p className={`text-sm ${isPro ? 'font-mono text-xs' : ''}`}>
+              {getContentForLevel(
+                feature.shortDescription,
+                copyLevel as 3 | 4 | 5 | 6 | 7 | 8
+              )}
+            </p>
+          </div>
+
+          {/* Coordinates */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-500 mb-1">Location</h3>
+            <p className={`text-sm ${isPro ? 'font-mono text-xs' : ''}`}>
+              chr{feature.chromosome}:{formatPosition(feature.start, viewMode)}-
+              {formatPosition(feature.end, viewMode)}
+            </p>
+            {feature.strand && feature.strand !== '.' && (
+              <p className="text-xs text-gray-400 mt-1">
+                Strand: {feature.strand === '+' ? 'Forward (+)' : 'Reverse (-)'}
+              </p>
+            )}
+          </div>
+
+          {/* Age estimate */}
+          {feature.ageEstimate && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-500 mb-1">Age</h3>
+              <p className="text-sm">{feature.ageEstimate}</p>
+            </div>
+          )}
+
+          {/* Active status */}
+          {feature.isActive && (
+            <div className="bg-orange-50 rounded p-3">
+              <p className="text-sm font-medium text-orange-800">
+                This element is still active in the genome!
+              </p>
+            </div>
+          )}
+
+          {/* Fun fact */}
+          {feature.funFact && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-500 mb-1">
+                Fun Fact
+              </h3>
+              <p className={`text-sm ${isPro ? 'text-xs' : ''}`}>
+                {getContentForLevel(
+                  feature.funFact,
+                  copyLevel as 3 | 4 | 5 | 6 | 7 | 8
+                )}
+              </p>
+            </div>
+          )}
+
+          {/* Known function */}
+          {feature.functionKnown && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-500 mb-1">
+                Known Function
+              </h3>
+              <p className="text-sm">{feature.functionKnown}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   // Trait content for slideout
   const { trait, genes } = content;
 
@@ -538,7 +753,13 @@ type TraitContent = {
   genes: (ReturnType<TraitsDatabase['genes']['get']> | undefined)[];
 };
 
-type ContentType = GeneContent | TraitContent;
+type FeatureContent = {
+  type: 'feature';
+  feature: GenomicFeature;
+  displayName: string;
+};
+
+type ContentType = GeneContent | TraitContent | FeatureContent;
 
 function getContent(): ContentType | null {
   return null; // Type helper only
@@ -552,6 +773,32 @@ function getCategoryColor(category: string): string {
     fun: '#f59e0b',
   };
   return colors[category] || '#6b7280';
+}
+
+function getFeatureTypeLabel(type: string): string {
+  const labels: Record<string, string> = {
+    herv: 'Ancient Virus DNA',
+    line: 'Jumping Gene (LINE)',
+    sine: 'Alu Element',
+    pseudogene: 'Fossil Gene',
+    dna_transposon: 'Cut-and-Paste Gene',
+    satellite: 'Repetitive DNA',
+    segmental_duplication: 'Duplicated Region',
+  };
+  return labels[type] || type;
+}
+
+function getFeatureIcon(type: string) {
+  const icons: Record<string, typeof Bug> = {
+    herv: Bug,
+    line: Repeat,
+    sine: Repeat,
+    pseudogene: Skull,
+    dna_transposon: Repeat,
+    satellite: Repeat,
+    segmental_duplication: Repeat,
+  };
+  return icons[type] || Info;
 }
 
 // Type import for the TraitsDatabase
