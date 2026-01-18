@@ -603,13 +603,15 @@ export function GenomeBrowser({
                         strokeWidth={isHovered ? 1 : 0}
                         className="cursor-pointer transition-opacity"
                         onMouseEnter={e => {
-                          const rect = e.currentTarget.getBoundingClientRect();
                           setAncestryTooltip({
                             segment,
-                            position: {
-                              x: rect.left + rect.width / 2,
-                              y: rect.top - 10,
-                            },
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseMove={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
                           });
                         }}
                         onMouseLeave={() => setAncestryTooltip(null)}
@@ -655,13 +657,15 @@ export function GenomeBrowser({
                         strokeWidth={isHovered ? 1 : 0}
                         className="cursor-pointer transition-opacity"
                         onMouseEnter={e => {
-                          const rect = e.currentTarget.getBoundingClientRect();
                           setAncestryTooltip({
                             segment,
-                            position: {
-                              x: rect.left + rect.width / 2,
-                              y: rect.top - 10,
-                            },
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseMove={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
                           });
                         }}
                         onMouseLeave={() => setAncestryTooltip(null)}
@@ -695,13 +699,15 @@ export function GenomeBrowser({
                       strokeWidth={isHovered ? 1 : 0}
                       className="cursor-pointer transition-opacity"
                       onMouseEnter={e => {
-                        const rect = e.currentTarget.getBoundingClientRect();
                         setAncestryTooltip({
                           segment,
-                          position: {
-                            x: rect.left + rect.width / 2,
-                            y: rect.top - 10,
-                          },
+                          position: { x: e.clientX, y: e.clientY },
+                        });
+                      }}
+                      onMouseMove={e => {
+                        setAncestryTooltip({
+                          segment,
+                          position: { x: e.clientX, y: e.clientY },
                         });
                       }}
                       onMouseLeave={() => setAncestryTooltip(null)}
@@ -788,13 +794,15 @@ export function GenomeBrowser({
                     key={snp.rsid}
                     className="cursor-pointer"
                     onMouseEnter={e => {
-                      const rect = e.currentTarget.getBoundingClientRect();
                       setSnpTooltip({
                         snp,
-                        position: {
-                          x: rect.left + rect.width / 2,
-                          y: rect.top - 10,
-                        },
+                        position: { x: e.clientX, y: e.clientY },
+                      });
+                    }}
+                    onMouseMove={e => {
+                      setSnpTooltip({
+                        snp,
+                        position: { x: e.clientX, y: e.clientY },
                       });
                     }}
                     onMouseLeave={() => setSnpTooltip(null)}
@@ -1133,14 +1141,14 @@ export function GenomeBrowser({
         <div
           className="fixed z-50 pointer-events-none"
           style={{
-            left: Math.max(
-              10,
-              Math.min(
-                ancestryTooltip.position.x - 120,
-                window.innerWidth - 250
-              )
+            left: Math.min(
+              ancestryTooltip.position.x + 15,
+              window.innerWidth - 240
             ),
-            top: Math.max(10, ancestryTooltip.position.y - 100),
+            top: Math.min(
+              ancestryTooltip.position.y + 15,
+              window.innerHeight - 200
+            ),
           }}
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-3 min-w-[220px]">
@@ -1223,11 +1231,8 @@ export function GenomeBrowser({
         <div
           className="fixed z-50 pointer-events-none"
           style={{
-            left: Math.max(
-              10,
-              Math.min(snpTooltip.position.x - 140, window.innerWidth - 300)
-            ),
-            top: Math.max(10, snpTooltip.position.y - 180),
+            left: Math.min(snpTooltip.position.x + 15, window.innerWidth - 290),
+            top: Math.min(snpTooltip.position.y + 15, window.innerHeight - 280),
           }}
         >
           <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-3 min-w-[260px] max-w-[300px]">
