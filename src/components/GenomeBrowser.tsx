@@ -121,22 +121,29 @@ export function GenomeBrowser({
     return () => resizeObserver.disconnect();
   }, []);
 
+  // Use fallback dimensions if not yet measured
+  const effectiveWidth = dimensions.width || 800;
+  const effectiveHeight = dimensions.height || 400;
+
   // Calculate visible range
   const visibleRange = useMemo(() => {
-    const halfWidth = (dimensions.width * effectiveZoom.bpPerPx) / 2;
+    const halfWidth = (effectiveWidth * effectiveZoom.bpPerPx) / 2;
     return {
       start: Math.max(0, effectiveZoom.centerPosition - halfWidth),
-      end: Math.min(chromosomeLength, effectiveZoom.centerPosition + halfWidth),
+      end: Math.min(
+        chromosomeLength || 1,
+        effectiveZoom.centerPosition + halfWidth
+      ),
     };
-  }, [effectiveZoom, dimensions.width, chromosomeLength]);
+  }, [effectiveZoom, effectiveWidth, chromosomeLength]);
 
   // Create scale for coordinate transformation
   const scale = useMemo(() => {
     return new Scale(
       [visibleRange.start, visibleRange.end],
-      [0, dimensions.width]
+      [0, effectiveWidth]
     );
-  }, [visibleRange, dimensions.width]);
+  }, [visibleRange, effectiveWidth]);
 
   // Handle wheel zoom
   const handleWheel = useCallback(
@@ -148,7 +155,7 @@ export function GenomeBrowser({
       const newBpPerPx = Math.max(
         100, // Min zoom (very zoomed in)
         Math.min(
-          chromosomeLength / dimensions.width, // Max zoom (whole chromosome)
+          chromosomeLength / effectiveWidth, // Max zoom (whole chromosome)
           effectiveZoom.bpPerPx * zoomFactor
         )
       );
@@ -157,13 +164,13 @@ export function GenomeBrowser({
       const rect = containerRef.current?.getBoundingClientRect();
       if (rect) {
         const mouseX = e.clientX - rect.left;
-        const mouseRatio = mouseX / dimensions.width;
+        const mouseRatio = mouseX / effectiveWidth;
         const mouseBp =
           visibleRange.start +
           mouseRatio * (visibleRange.end - visibleRange.start);
 
         // Adjust center to keep mouse position stable
-        const newHalfWidth = (dimensions.width * newBpPerPx) / 2;
+        const newHalfWidth = (effectiveWidth * newBpPerPx) / 2;
         const newCenter = mouseBp - (mouseRatio - 0.5) * 2 * newHalfWidth;
 
         setChromosomeZoom(activeChromosome, {
@@ -208,7 +215,7 @@ export function GenomeBrowser({
       const deltaBp = -deltaX * effectiveZoom.bpPerPx;
       const newCenter = dragStart.centerPosition + deltaBp;
 
-      const halfWidth = (dimensions.width * effectiveZoom.bpPerPx) / 2;
+      const halfWidth = (effectiveWidth * effectiveZoom.bpPerPx) / 2;
       const clampedCenter = Math.max(
         halfWidth,
         Math.min(chromosomeLength - halfWidth, newCenter)
@@ -224,7 +231,7 @@ export function GenomeBrowser({
       activeChromosome,
       dragStart,
       effectiveZoom,
-      dimensions.width,
+      effectiveWidth,
       chromosomeLength,
       setChromosomeZoom,
     ]
@@ -253,7 +260,7 @@ export function GenomeBrowser({
 
   const handleZoomOut = () => {
     if (!activeChromosome) return;
-    const maxBpPerPx = chromosomeLength / dimensions.width;
+    const maxBpPerPx = chromosomeLength / effectiveWidth;
     const newBpPerPx = Math.min(maxBpPerPx, effectiveZoom.bpPerPx * 2);
     setChromosomeZoom(activeChromosome, {
       ...effectiveZoom,
@@ -264,7 +271,7 @@ export function GenomeBrowser({
   const handleReset = () => {
     if (!activeChromosome) return;
     setChromosomeZoom(activeChromosome, {
-      bpPerPx: chromosomeLength / dimensions.width,
+      bpPerPx: chromosomeLength / effectiveWidth,
       centerPosition: chromosomeLength / 2,
       chromosome: activeChromosome,
     });
@@ -431,700 +438,680 @@ export function GenomeBrowser({
       {/* Main browser area */}
       <div
         ref={containerRef}
-        className={`flex-1 min-h-0 relative select-none overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className={`flex-1 relative select-none overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
       >
-        {dimensions.width > 0 && dimensions.height > 0 && (
-          <svg
-            width="100%"
-            height="100%"
-            viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
-            className="block"
-          >
-            {/* Background */}
+        <svg
+          className="block absolute inset-0 w-full h-full"
+          viewBox={`0 0 ${effectiveWidth} ${effectiveHeight}`}
+          preserveAspectRatio="xMidYMin meet"
+        >
+          {/* Background */}
+          <rect
+            width={effectiveWidth}
+            height={effectiveHeight}
+            fill="#fafafa"
+          />
+
+          {/* Ruler area */}
+          <g>
             <rect
-              width={dimensions.width}
-              height={dimensions.height}
-              fill="#fafafa"
+              x={0}
+              y={0}
+              width={effectiveWidth}
+              height={30}
+              fill="#f5f5f5"
+            />
+            <line
+              x1={0}
+              y1={30}
+              x2={effectiveWidth}
+              y2={30}
+              stroke="#e5e5e5"
+              strokeWidth={1}
             />
 
-            {/* Ruler area */}
-            <g>
+            {/* Ruler ticks */}
+            {rulerTicks.map((tick, i) => (
+              <g key={i}>
+                <line
+                  x1={tick.x}
+                  y1={20}
+                  x2={tick.x}
+                  y2={30}
+                  stroke="#999"
+                  strokeWidth={1}
+                />
+                <text
+                  x={tick.x}
+                  y={16}
+                  textAnchor="middle"
+                  fontSize={10}
+                  fill="#666"
+                >
+                  {tick.label}
+                </text>
+              </g>
+            ))}
+          </g>
+
+          {/* Cytoband track */}
+          <g transform="translate(0, 32)">
+            <text x={8} y={12} fontSize={10} fill="#888" fontWeight={500}>
+              Cytobands
+            </text>
+            <g transform="translate(0, 14)">
+              {/* Chromosome outline */}
               <rect
                 x={0}
                 y={0}
-                width={dimensions.width}
-                height={30}
-                fill="#f5f5f5"
-              />
-              <line
-                x1={0}
-                y1={30}
-                x2={dimensions.width}
-                y2={30}
-                stroke="#e5e5e5"
+                width={effectiveWidth}
+                height={18}
+                rx={9}
+                fill="#f0f0f0"
+                stroke="#d0d0d0"
                 strokeWidth={1}
               />
+              {/* Cytoband segments */}
+              {visibleCytobands.map((band, i) => {
+                const x = Math.max(0, scale.scale(band.chromStart));
+                const xEnd = Math.min(
+                  effectiveWidth,
+                  scale.scale(band.chromEnd)
+                );
+                const width = Math.max(1, xEnd - x);
+                const isFirst =
+                  i === 0 || band.chromStart <= visibleRange.start;
+                const isLast =
+                  i === visibleCytobands.length - 1 ||
+                  band.chromEnd >= visibleRange.end;
 
-              {/* Ruler ticks */}
-              {rulerTicks.map((tick, i) => (
-                <g key={i}>
-                  <line
-                    x1={tick.x}
-                    y1={20}
-                    x2={tick.x}
-                    y2={30}
-                    stroke="#999"
-                    strokeWidth={1}
+                return (
+                  <rect
+                    key={`${band.name}-${i}`}
+                    x={x}
+                    y={1}
+                    width={width}
+                    height={16}
+                    rx={isFirst || isLast ? 8 : 0}
+                    fill={CYTOBAND_COLORS[band.stain]}
+                    stroke={band.stain === 'acen' ? '#991b1b' : 'none'}
+                    strokeWidth={band.stain === 'acen' ? 1 : 0}
                   />
-                  <text
-                    x={tick.x}
-                    y={16}
-                    textAnchor="middle"
-                    fontSize={10}
-                    fill="#666"
-                  >
-                    {tick.label}
-                  </text>
-                </g>
-              ))}
-            </g>
+                );
+              })}
+              {/* Band labels when zoomed in */}
+              {visibleCytobands.map((band, i) => {
+                const x = scale.scale(band.chromStart);
+                const xEnd = scale.scale(band.chromEnd);
+                const width = xEnd - x;
+                if (width < 30) return null;
 
-            {/* Cytoband track */}
-            <g transform="translate(0, 32)">
-              <text x={8} y={12} fontSize={10} fill="#888" fontWeight={500}>
-                Cytobands
-              </text>
-              <g transform="translate(0, 14)">
-                {/* Chromosome outline */}
+                return (
+                  <text
+                    key={`label-${band.name}-${i}`}
+                    x={x + width / 2}
+                    y={12}
+                    textAnchor="middle"
+                    fontSize={8}
+                    fill={band.stain.includes('gpos') ? '#fff' : '#666'}
+                    className="pointer-events-none"
+                  >
+                    {band.name}
+                  </text>
+                );
+              })}
+            </g>
+          </g>
+
+          {/* Ancestry Painting track */}
+          <g transform="translate(0, 68)">
+            <text x={8} y={12} fontSize={10} fill="#888" fontWeight={500}>
+              Ancestry {dataIsPhased ? '(Phased)' : ''}
+            </text>
+
+            {dataIsPhased ? (
+              /* Split view: Maternal on top, Paternal on bottom */
+              <g transform="translate(0, 18)">
+                {/* Maternal label with background */}
                 <rect
-                  x={0}
-                  y={0}
-                  width={dimensions.width}
-                  height={18}
-                  rx={9}
-                  fill="#f0f0f0"
-                  stroke="#d0d0d0"
-                  strokeWidth={1}
+                  x={4}
+                  y={-2}
+                  width={58}
+                  height={12}
+                  rx={2}
+                  fill="white"
+                  opacity={0.85}
                 />
-                {/* Cytoband segments */}
-                {visibleCytobands.map((band, i) => {
-                  const x = Math.max(0, scale.scale(band.chromStart));
+                <text x={8} y={8} fontSize={9} fill="#e91e63" fontWeight={600}>
+                  ♀ Maternal
+                </text>
+                {/* Maternal segments */}
+                <g transform="translate(0, 12)">
+                  {maternalSegments.map((segment, i) => {
+                    const x = Math.max(0, scale.scale(segment.start));
+                    const xEnd = Math.min(
+                      effectiveWidth,
+                      scale.scale(segment.end)
+                    );
+                    const width = Math.max(1, xEnd - x);
+                    const isHovered = ancestryTooltip?.segment === segment;
+
+                    return (
+                      <rect
+                        key={`mat-${i}`}
+                        x={x}
+                        y={0}
+                        width={width}
+                        height={14}
+                        fill={POPULATION_COLORS[segment.population]}
+                        opacity={isHovered ? 1 : 0.85}
+                        stroke={isHovered ? '#000' : 'none'}
+                        strokeWidth={isHovered ? 1 : 0}
+                        className="cursor-pointer transition-opacity"
+                        onMouseEnter={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseMove={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseLeave={() => setAncestryTooltip(null)}
+                      />
+                    );
+                  })}
+                </g>
+
+                {/* Paternal label with background */}
+                <rect
+                  x={4}
+                  y={30}
+                  width={54}
+                  height={12}
+                  rx={2}
+                  fill="white"
+                  opacity={0.85}
+                />
+                <text x={8} y={40} fontSize={9} fill="#2196f3" fontWeight={600}>
+                  ♂ Paternal
+                </text>
+                {/* Paternal segments */}
+                <g transform="translate(0, 44)">
+                  {paternalSegments.map((segment, i) => {
+                    const x = Math.max(0, scale.scale(segment.start));
+                    const xEnd = Math.min(
+                      effectiveWidth,
+                      scale.scale(segment.end)
+                    );
+                    const width = Math.max(1, xEnd - x);
+                    const isHovered = ancestryTooltip?.segment === segment;
+
+                    return (
+                      <rect
+                        key={`pat-${i}`}
+                        x={x}
+                        y={0}
+                        width={width}
+                        height={14}
+                        fill={POPULATION_COLORS[segment.population]}
+                        opacity={isHovered ? 1 : 0.85}
+                        stroke={isHovered ? '#000' : 'none'}
+                        strokeWidth={isHovered ? 1 : 0}
+                        className="cursor-pointer transition-opacity"
+                        onMouseEnter={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseMove={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseLeave={() => setAncestryTooltip(null)}
+                      />
+                    );
+                  })}
+                </g>
+              </g>
+            ) : (
+              /* Unphased view: single track */
+              <g transform="translate(0, 16)">
+                {maternalSegments.concat(paternalSegments).map((segment, i) => {
+                  const x = Math.max(0, scale.scale(segment.start));
                   const xEnd = Math.min(
-                    dimensions.width,
-                    scale.scale(band.chromEnd)
+                    effectiveWidth,
+                    scale.scale(segment.end)
                   );
                   const width = Math.max(1, xEnd - x);
-                  const isFirst =
-                    i === 0 || band.chromStart <= visibleRange.start;
-                  const isLast =
-                    i === visibleCytobands.length - 1 ||
-                    band.chromEnd >= visibleRange.end;
+                  const isHovered = ancestryTooltip?.segment === segment;
 
                   return (
                     <rect
-                      key={`${band.name}-${i}`}
+                      key={`anc-${i}`}
                       x={x}
-                      y={1}
+                      y={0}
                       width={width}
-                      height={16}
-                      rx={isFirst || isLast ? 8 : 0}
-                      fill={CYTOBAND_COLORS[band.stain]}
-                      stroke={band.stain === 'acen' ? '#991b1b' : 'none'}
-                      strokeWidth={band.stain === 'acen' ? 1 : 0}
-                    />
-                  );
-                })}
-                {/* Band labels when zoomed in */}
-                {visibleCytobands.map((band, i) => {
-                  const x = scale.scale(band.chromStart);
-                  const xEnd = scale.scale(band.chromEnd);
-                  const width = xEnd - x;
-                  if (width < 30) return null;
-
-                  return (
-                    <text
-                      key={`label-${band.name}-${i}`}
-                      x={x + width / 2}
-                      y={12}
-                      textAnchor="middle"
-                      fontSize={8}
-                      fill={band.stain.includes('gpos') ? '#fff' : '#666'}
-                      className="pointer-events-none"
-                    >
-                      {band.name}
-                    </text>
-                  );
-                })}
-              </g>
-            </g>
-
-            {/* Ancestry Painting track */}
-            <g transform="translate(0, 68)">
-              <text x={8} y={12} fontSize={10} fill="#888" fontWeight={500}>
-                Ancestry {dataIsPhased ? '(Phased)' : ''}
-              </text>
-
-              {dataIsPhased ? (
-                /* Split view: Maternal on top, Paternal on bottom */
-                <g transform="translate(0, 18)">
-                  {/* Maternal label with background */}
-                  <rect
-                    x={4}
-                    y={-2}
-                    width={58}
-                    height={12}
-                    rx={2}
-                    fill="white"
-                    opacity={0.85}
-                  />
-                  <text
-                    x={8}
-                    y={8}
-                    fontSize={9}
-                    fill="#e91e63"
-                    fontWeight={600}
-                  >
-                    ♀ Maternal
-                  </text>
-                  {/* Maternal segments */}
-                  <g transform="translate(0, 12)">
-                    {maternalSegments.map((segment, i) => {
-                      const x = Math.max(0, scale.scale(segment.start));
-                      const xEnd = Math.min(
-                        dimensions.width,
-                        scale.scale(segment.end)
-                      );
-                      const width = Math.max(1, xEnd - x);
-                      const isHovered = ancestryTooltip?.segment === segment;
-
-                      return (
-                        <rect
-                          key={`mat-${i}`}
-                          x={x}
-                          y={0}
-                          width={width}
-                          height={14}
-                          fill={POPULATION_COLORS[segment.population]}
-                          opacity={isHovered ? 1 : 0.85}
-                          stroke={isHovered ? '#000' : 'none'}
-                          strokeWidth={isHovered ? 1 : 0}
-                          className="cursor-pointer transition-opacity"
-                          onMouseEnter={e => {
-                            setAncestryTooltip({
-                              segment,
-                              position: { x: e.clientX, y: e.clientY },
-                            });
-                          }}
-                          onMouseMove={e => {
-                            setAncestryTooltip({
-                              segment,
-                              position: { x: e.clientX, y: e.clientY },
-                            });
-                          }}
-                          onMouseLeave={() => setAncestryTooltip(null)}
-                        />
-                      );
-                    })}
-                  </g>
-
-                  {/* Paternal label with background */}
-                  <rect
-                    x={4}
-                    y={30}
-                    width={54}
-                    height={12}
-                    rx={2}
-                    fill="white"
-                    opacity={0.85}
-                  />
-                  <text
-                    x={8}
-                    y={40}
-                    fontSize={9}
-                    fill="#2196f3"
-                    fontWeight={600}
-                  >
-                    ♂ Paternal
-                  </text>
-                  {/* Paternal segments */}
-                  <g transform="translate(0, 44)">
-                    {paternalSegments.map((segment, i) => {
-                      const x = Math.max(0, scale.scale(segment.start));
-                      const xEnd = Math.min(
-                        dimensions.width,
-                        scale.scale(segment.end)
-                      );
-                      const width = Math.max(1, xEnd - x);
-                      const isHovered = ancestryTooltip?.segment === segment;
-
-                      return (
-                        <rect
-                          key={`pat-${i}`}
-                          x={x}
-                          y={0}
-                          width={width}
-                          height={14}
-                          fill={POPULATION_COLORS[segment.population]}
-                          opacity={isHovered ? 1 : 0.85}
-                          stroke={isHovered ? '#000' : 'none'}
-                          strokeWidth={isHovered ? 1 : 0}
-                          className="cursor-pointer transition-opacity"
-                          onMouseEnter={e => {
-                            setAncestryTooltip({
-                              segment,
-                              position: { x: e.clientX, y: e.clientY },
-                            });
-                          }}
-                          onMouseMove={e => {
-                            setAncestryTooltip({
-                              segment,
-                              position: { x: e.clientX, y: e.clientY },
-                            });
-                          }}
-                          onMouseLeave={() => setAncestryTooltip(null)}
-                        />
-                      );
-                    })}
-                  </g>
-                </g>
-              ) : (
-                /* Unphased view: single track */
-                <g transform="translate(0, 16)">
-                  {maternalSegments
-                    .concat(paternalSegments)
-                    .map((segment, i) => {
-                      const x = Math.max(0, scale.scale(segment.start));
-                      const xEnd = Math.min(
-                        dimensions.width,
-                        scale.scale(segment.end)
-                      );
-                      const width = Math.max(1, xEnd - x);
-                      const isHovered = ancestryTooltip?.segment === segment;
-
-                      return (
-                        <rect
-                          key={`anc-${i}`}
-                          x={x}
-                          y={0}
-                          width={width}
-                          height={20}
-                          fill={POPULATION_COLORS[segment.population]}
-                          opacity={isHovered ? 1 : 0.85}
-                          stroke={isHovered ? '#000' : 'none'}
-                          strokeWidth={isHovered ? 1 : 0}
-                          className="cursor-pointer transition-opacity"
-                          onMouseEnter={e => {
-                            setAncestryTooltip({
-                              segment,
-                              position: { x: e.clientX, y: e.clientY },
-                            });
-                          }}
-                          onMouseMove={e => {
-                            setAncestryTooltip({
-                              segment,
-                              position: { x: e.clientX, y: e.clientY },
-                            });
-                          }}
-                          onMouseLeave={() => setAncestryTooltip(null)}
-                        />
-                      );
-                    })}
-                </g>
-              )}
-
-              {/* Improved Ancestry Legend - shows top populations with percentages */}
-              <g
-                transform={`translate(${dimensions.width - 480}, ${dataIsPhased ? 80 : 46})`}
-              >
-                {ancestryComposition
-                  .filter(c => c.percentage >= 2) // Only show populations >= 2%
-                  .slice(0, 6)
-                  .map((comp, i) => (
-                    <g
-                      key={comp.population}
-                      transform={`translate(${i * 80}, 0)`}
-                    >
-                      <rect
-                        x={0}
-                        y={0}
-                        width={10}
-                        height={10}
-                        rx={2}
-                        fill={
-                          POPULATION_COLORS[
-                            comp.population as AncestryPopulation
-                          ]
-                        }
-                      />
-                      <text
-                        x={13}
-                        y={8}
-                        fontSize={8}
-                        fill="#555"
-                        fontWeight={500}
-                      >
-                        {comp.percentage.toFixed(0)}%
-                      </text>
-                      <text x={13} y={17} fontSize={7} fill="#888">
-                        {comp.displayName.length > 10
-                          ? comp.displayName.slice(0, 9) + '…'
-                          : comp.displayName}
-                      </text>
-                    </g>
-                  ))}
-              </g>
-            </g>
-
-            {/* Your Variants (SNPs) track */}
-            <g transform="translate(0, 170)">
-              <rect
-                x={0}
-                y={0}
-                width={dimensions.width}
-                height={55}
-                fill="#fef2f2"
-              />
-              <text x={8} y={14} fontSize={11} fill="#888" fontWeight={500}>
-                Your Variants{' '}
-                {visibleSNPs.length > 0 && `(${visibleSNPs.length})`}
-              </text>
-
-              {visibleSNPs.length === 0 ? (
-                <text
-                  x={dimensions.width / 2}
-                  y={35}
-                  textAnchor="middle"
-                  fontSize={12}
-                  fill="#bbb"
-                >
-                  {effectiveZoom.bpPerPx > 500000
-                    ? 'Zoom in to see your variants'
-                    : 'No annotated variants in this region'}
-                </text>
-              ) : (
-                visibleSNPs.map(snp => {
-                  const x = scale.scale(snp.position);
-                  const isHovered = snpTooltip?.snp === snp;
-
-                  return (
-                    <g
-                      key={snp.rsid}
-                      className="cursor-pointer"
+                      height={20}
+                      fill={POPULATION_COLORS[segment.population]}
+                      opacity={isHovered ? 1 : 0.85}
+                      stroke={isHovered ? '#000' : 'none'}
+                      strokeWidth={isHovered ? 1 : 0}
+                      className="cursor-pointer transition-opacity"
                       onMouseEnter={e => {
-                        setSnpTooltip({
-                          snp,
+                        setAncestryTooltip({
+                          segment,
                           position: { x: e.clientX, y: e.clientY },
                         });
                       }}
                       onMouseMove={e => {
-                        setSnpTooltip({
-                          snp,
+                        setAncestryTooltip({
+                          segment,
                           position: { x: e.clientX, y: e.clientY },
                         });
                       }}
-                      onMouseLeave={() => setSnpTooltip(null)}
+                      onMouseLeave={() => setAncestryTooltip(null)}
+                    />
+                  );
+                })}
+              </g>
+            )}
+
+            {/* Improved Ancestry Legend - shows top populations with percentages */}
+            <g
+              transform={`translate(${effectiveWidth - 480}, ${dataIsPhased ? 80 : 46})`}
+            >
+              {ancestryComposition
+                .filter(c => c.percentage >= 2) // Only show populations >= 2%
+                .slice(0, 6)
+                .map((comp, i) => (
+                  <g
+                    key={comp.population}
+                    transform={`translate(${i * 80}, 0)`}
+                  >
+                    <rect
+                      x={0}
+                      y={0}
+                      width={10}
+                      height={10}
+                      rx={2}
+                      fill={
+                        POPULATION_COLORS[comp.population as AncestryPopulation]
+                      }
+                    />
+                    <text
+                      x={13}
+                      y={8}
+                      fontSize={8}
+                      fill="#555"
+                      fontWeight={500}
                     >
-                      {/* SNP marker - diamond shape */}
+                      {comp.percentage.toFixed(0)}%
+                    </text>
+                    <text x={13} y={17} fontSize={7} fill="#888">
+                      {comp.displayName.length > 10
+                        ? comp.displayName.slice(0, 9) + '…'
+                        : comp.displayName}
+                    </text>
+                  </g>
+                ))}
+            </g>
+          </g>
+
+          {/* Your Variants (SNPs) track */}
+          <g transform="translate(0, 170)">
+            <rect
+              x={0}
+              y={0}
+              width={effectiveWidth}
+              height={55}
+              fill="#fef2f2"
+            />
+            <text x={8} y={14} fontSize={11} fill="#888" fontWeight={500}>
+              Your Variants{' '}
+              {visibleSNPs.length > 0 && `(${visibleSNPs.length})`}
+            </text>
+
+            {visibleSNPs.length === 0 ? (
+              <text
+                x={effectiveWidth / 2}
+                y={35}
+                textAnchor="middle"
+                fontSize={12}
+                fill="#bbb"
+              >
+                {effectiveZoom.bpPerPx > 500000
+                  ? 'Zoom in to see your variants'
+                  : 'No annotated variants in this region'}
+              </text>
+            ) : (
+              visibleSNPs.map(snp => {
+                const x = scale.scale(snp.position);
+                const isHovered = snpTooltip?.snp === snp;
+
+                return (
+                  <g
+                    key={snp.rsid}
+                    className="cursor-pointer"
+                    onMouseEnter={e => {
+                      setSnpTooltip({
+                        snp,
+                        position: { x: e.clientX, y: e.clientY },
+                      });
+                    }}
+                    onMouseMove={e => {
+                      setSnpTooltip({
+                        snp,
+                        position: { x: e.clientX, y: e.clientY },
+                      });
+                    }}
+                    onMouseLeave={() => setSnpTooltip(null)}
+                  >
+                    {/* SNP marker - diamond shape */}
+                    <path
+                      d={`M${x} 22 L${x + 6} 30 L${x} 38 L${x - 6} 30 Z`}
+                      fill={SNP_COLORS[snp.category]}
+                      stroke={isHovered ? '#000' : 'white'}
+                      strokeWidth={isHovered ? 2 : 1}
+                      opacity={isHovered ? 1 : 0.9}
+                    />
+                    {/* Risk allele indicator */}
+                    {snp.hasRiskAllele && (
+                      <circle cx={x} cy={30} r={2} fill="white" />
+                    )}
+                    {/* Label when zoomed in */}
+                    {effectiveZoom.bpPerPx < 50000 && (
+                      <text
+                        x={x}
+                        y={48}
+                        textAnchor="middle"
+                        fontSize={8}
+                        fill="#666"
+                        className="pointer-events-none"
+                      >
+                        {snp.gene || snp.rsid}
+                      </text>
+                    )}
+                  </g>
+                );
+              })
+            )}
+
+            {/* SNP category legend */}
+            {visibleSNPs.length > 0 && (
+              <g transform={`translate(${effectiveWidth - 380}, 42)`}>
+                {(
+                  [
+                    { cat: 'trait', label: 'Trait' },
+                    { cat: 'health', label: 'Health' },
+                    { cat: 'pharmacogenomics', label: 'Drug' },
+                    { cat: 'neanderthal', label: 'Archaic' },
+                  ] as { cat: SNPCategory; label: string }[]
+                ).map((item, i) => (
+                  <g key={item.cat} transform={`translate(${i * 90}, 0)`}>
+                    <path
+                      d={`M0 0 L4 4 L0 8 L-4 4 Z`}
+                      fill={SNP_COLORS[item.cat]}
+                    />
+                    <text x={8} y={6} fontSize={8} fill="#888">
+                      {item.label}
+                    </text>
+                  </g>
+                ))}
+              </g>
+            )}
+          </g>
+
+          {/* Genes track */}
+          <g transform="translate(0, 230)">
+            <text x={8} y={14} fontSize={11} fill="#888" fontWeight={500}>
+              Trait Genes
+            </text>
+
+            {visibleGenes.length === 0 ? (
+              <text
+                x={effectiveWidth / 2}
+                y={50}
+                textAnchor="middle"
+                fontSize={12}
+                fill="#bbb"
+              >
+                {effectiveZoom.bpPerPx > 500000
+                  ? 'Zoom in to see genes'
+                  : 'No trait-associated genes in this region'}
+              </text>
+            ) : (
+              visibleGenes.map(gene => {
+                const x = scale.scale(gene.start);
+                const width = Math.max(4, scale.scale(gene.end) - x);
+                const displayName = getGeneDisplayName(
+                  gene.symbol,
+                  gene.nickname,
+                  viewMode
+                );
+
+                return (
+                  <g
+                    key={gene.id}
+                    className="cursor-pointer"
+                    onMouseEnter={e => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      setHoveredGene(gene.id, {
+                        x: rect.left + rect.width / 2,
+                        y: rect.top,
+                      });
+                    }}
+                    onMouseLeave={() => setHoveredGene(null)}
+                    onClick={() => selectGene(gene.id)}
+                  >
+                    <rect
+                      x={x}
+                      y={24}
+                      width={width}
+                      height={20}
+                      rx={3}
+                      fill={gene.color || '#3b82f6'}
+                      opacity={0.85}
+                      className="hover:opacity-100 transition-opacity"
+                    />
+                    {/* Strand arrow */}
+                    {width > 20 && (
                       <path
-                        d={`M${x} 22 L${x + 6} 30 L${x} 38 L${x - 6} 30 Z`}
-                        fill={SNP_COLORS[snp.category]}
-                        stroke={isHovered ? '#000' : 'white'}
-                        strokeWidth={isHovered ? 2 : 1}
-                        opacity={isHovered ? 1 : 0.9}
+                        d={
+                          gene.strand === '+'
+                            ? `M${x + width - 8} 30 l5 4 l-5 4`
+                            : `M${x + 8} 30 l-5 4 l5 4`
+                        }
+                        fill="white"
+                        opacity={0.6}
                       />
-                      {/* Risk allele indicator */}
-                      {snp.hasRiskAllele && (
-                        <circle cx={x} cy={30} r={2} fill="white" />
-                      )}
-                      {/* Label when zoomed in */}
-                      {effectiveZoom.bpPerPx < 50000 && (
-                        <text
+                    )}
+                    {/* Label */}
+                    {width > 50 && (
+                      <text
+                        x={x + width / 2}
+                        y={38}
+                        textAnchor="middle"
+                        fontSize={Math.min(10, width / 5)}
+                        fill="white"
+                        fontWeight={500}
+                        className="pointer-events-none"
+                      >
+                        {displayName.length > width / 6
+                          ? displayName.slice(0, Math.floor(width / 6)) + '…'
+                          : displayName}
+                      </text>
+                    )}
+                  </g>
+                );
+              })
+            )}
+          </g>
+
+          {/* Genomic Features track (HERVs, transposons, etc.) */}
+          <g transform="translate(0, 310)">
+            <rect
+              x={0}
+              y={0}
+              width={effectiveWidth}
+              height={80}
+              fill="#fef7ed"
+            />
+            <text x={8} y={14} fontSize={11} fill="#888" fontWeight={500}>
+              Genomic Oddities{' '}
+              {visibleFeatures.length > 0 && `(${visibleFeatures.length})`}
+            </text>
+
+            {visibleFeatures.length === 0 ? (
+              <text
+                x={effectiveWidth / 2}
+                y={45}
+                textAnchor="middle"
+                fontSize={12}
+                fill="#bbb"
+              >
+                {effectiveZoom.bpPerPx > 500000
+                  ? 'Zoom in to see genomic features'
+                  : 'No quirky features in this region'}
+              </text>
+            ) : (
+              visibleFeatures.map(feature => {
+                const x = scale.scale(feature.start);
+                const width = Math.max(6, scale.scale(feature.end) - x);
+                const displayName =
+                  viewMode === 'play' && feature.nickname
+                    ? feature.nickname
+                    : feature.name;
+
+                return (
+                  <g
+                    key={feature.id}
+                    className="cursor-pointer"
+                    onMouseEnter={e => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      setHoveredFeature(feature.id, {
+                        x: rect.left + rect.width / 2,
+                        y: rect.top,
+                      });
+                    }}
+                    onMouseLeave={() => setHoveredFeature(null)}
+                    onClick={() => selectFeature(feature.id)}
+                  >
+                    {/* Feature body */}
+                    <rect
+                      x={x}
+                      y={24}
+                      width={width}
+                      height={18}
+                      rx={feature.type === 'herv' ? 0 : 2}
+                      fill={feature.color}
+                      opacity={0.8}
+                      className="hover:opacity-100 transition-opacity"
+                    />
+                    {/* HERV LTR markers */}
+                    {feature.type === 'herv' && width > 12 && (
+                      <>
+                        <rect
                           x={x}
-                          y={48}
-                          textAnchor="middle"
-                          fontSize={8}
-                          fill="#666"
-                          className="pointer-events-none"
-                        >
-                          {snp.gene || snp.rsid}
-                        </text>
-                      )}
-                    </g>
-                  );
-                })
-              )}
-
-              {/* SNP category legend */}
-              {visibleSNPs.length > 0 && (
-                <g transform={`translate(${dimensions.width - 380}, 42)`}>
-                  {(
-                    [
-                      { cat: 'trait', label: 'Trait' },
-                      { cat: 'health', label: 'Health' },
-                      { cat: 'pharmacogenomics', label: 'Drug' },
-                      { cat: 'neanderthal', label: 'Archaic' },
-                    ] as { cat: SNPCategory; label: string }[]
-                  ).map((item, i) => (
-                    <g key={item.cat} transform={`translate(${i * 90}, 0)`}>
-                      <path
-                        d={`M0 0 L4 4 L0 8 L-4 4 Z`}
-                        fill={SNP_COLORS[item.cat]}
-                      />
-                      <text x={8} y={6} fontSize={8} fill="#888">
-                        {item.label}
-                      </text>
-                    </g>
-                  ))}
-                </g>
-              )}
-            </g>
-
-            {/* Genes track */}
-            <g transform="translate(0, 230)">
-              <text x={8} y={14} fontSize={11} fill="#888" fontWeight={500}>
-                Trait Genes
-              </text>
-
-              {visibleGenes.length === 0 ? (
-                <text
-                  x={dimensions.width / 2}
-                  y={50}
-                  textAnchor="middle"
-                  fontSize={12}
-                  fill="#bbb"
-                >
-                  {effectiveZoom.bpPerPx > 500000
-                    ? 'Zoom in to see genes'
-                    : 'No trait-associated genes in this region'}
-                </text>
-              ) : (
-                visibleGenes.map(gene => {
-                  const x = scale.scale(gene.start);
-                  const width = Math.max(4, scale.scale(gene.end) - x);
-                  const displayName = getGeneDisplayName(
-                    gene.symbol,
-                    gene.nickname,
-                    viewMode
-                  );
-
-                  return (
-                    <g
-                      key={gene.id}
-                      className="cursor-pointer"
-                      onMouseEnter={e => {
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        setHoveredGene(gene.id, {
-                          x: rect.left + rect.width / 2,
-                          y: rect.top,
-                        });
-                      }}
-                      onMouseLeave={() => setHoveredGene(null)}
-                      onClick={() => selectGene(gene.id)}
-                    >
-                      <rect
-                        x={x}
-                        y={24}
-                        width={width}
-                        height={20}
-                        rx={3}
-                        fill={gene.color || '#3b82f6'}
-                        opacity={0.85}
-                        className="hover:opacity-100 transition-opacity"
-                      />
-                      {/* Strand arrow */}
-                      {width > 20 && (
-                        <path
-                          d={
-                            gene.strand === '+'
-                              ? `M${x + width - 8} 30 l5 4 l-5 4`
-                              : `M${x + 8} 30 l-5 4 l5 4`
-                          }
-                          fill="white"
-                          opacity={0.6}
+                          y={24}
+                          width={3}
+                          height={18}
+                          fill={feature.color}
                         />
-                      )}
-                      {/* Label */}
-                      {width > 50 && (
-                        <text
-                          x={x + width / 2}
-                          y={38}
-                          textAnchor="middle"
-                          fontSize={Math.min(10, width / 5)}
-                          fill="white"
-                          fontWeight={500}
-                          className="pointer-events-none"
-                        >
-                          {displayName.length > width / 6
-                            ? displayName.slice(0, Math.floor(width / 6)) + '…'
-                            : displayName}
-                        </text>
-                      )}
-                    </g>
-                  );
-                })
-              )}
-            </g>
-
-            {/* Genomic Features track (HERVs, transposons, etc.) */}
-            <g transform="translate(0, 310)">
-              <rect
-                x={0}
-                y={0}
-                width={dimensions.width}
-                height={80}
-                fill="#fef7ed"
-              />
-              <text x={8} y={14} fontSize={11} fill="#888" fontWeight={500}>
-                Genomic Oddities{' '}
-                {visibleFeatures.length > 0 && `(${visibleFeatures.length})`}
-              </text>
-
-              {visibleFeatures.length === 0 ? (
-                <text
-                  x={dimensions.width / 2}
-                  y={45}
-                  textAnchor="middle"
-                  fontSize={12}
-                  fill="#bbb"
-                >
-                  {effectiveZoom.bpPerPx > 500000
-                    ? 'Zoom in to see genomic features'
-                    : 'No quirky features in this region'}
-                </text>
-              ) : (
-                visibleFeatures.map(feature => {
-                  const x = scale.scale(feature.start);
-                  const width = Math.max(6, scale.scale(feature.end) - x);
-                  const displayName =
-                    viewMode === 'play' && feature.nickname
-                      ? feature.nickname
-                      : feature.name;
-
-                  return (
-                    <g
-                      key={feature.id}
-                      className="cursor-pointer"
-                      onMouseEnter={e => {
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        setHoveredFeature(feature.id, {
-                          x: rect.left + rect.width / 2,
-                          y: rect.top,
-                        });
-                      }}
-                      onMouseLeave={() => setHoveredFeature(null)}
-                      onClick={() => selectFeature(feature.id)}
-                    >
-                      {/* Feature body */}
-                      <rect
-                        x={x}
-                        y={24}
-                        width={width}
-                        height={18}
-                        rx={feature.type === 'herv' ? 0 : 2}
-                        fill={feature.color}
-                        opacity={0.8}
-                        className="hover:opacity-100 transition-opacity"
-                      />
-                      {/* HERV LTR markers */}
-                      {feature.type === 'herv' && width > 12 && (
-                        <>
-                          <rect
-                            x={x}
-                            y={24}
-                            width={3}
-                            height={18}
-                            fill={feature.color}
-                          />
-                          <rect
-                            x={x + width - 3}
-                            y={24}
-                            width={3}
-                            height={18}
-                            fill={feature.color}
-                          />
-                        </>
-                      )}
-                      {/* Pseudogene "broken" indicator */}
-                      {feature.type === 'pseudogene' && width > 15 && (
-                        <g opacity={0.6}>
-                          <line
-                            x1={x + 4}
-                            y1={26}
-                            x2={x + 10}
-                            y2={40}
-                            stroke="white"
-                            strokeWidth={1.5}
-                          />
-                          <line
-                            x1={x + 10}
-                            y1={26}
-                            x2={x + 4}
-                            y2={40}
-                            stroke="white"
-                            strokeWidth={1.5}
-                          />
-                        </g>
-                      )}
-                      {/* Label */}
-                      {width > 50 && (
-                        <text
-                          x={x + width / 2}
-                          y={37}
-                          textAnchor="middle"
-                          fontSize={Math.min(9, width / 6)}
-                          fill="white"
-                          fontWeight={500}
-                          className="pointer-events-none"
-                          style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
-                        >
-                          {displayName.length > width / 6
-                            ? displayName.slice(0, Math.floor(width / 6)) +
-                              '...'
-                            : displayName}
-                        </text>
-                      )}
-                    </g>
-                  );
-                })
-              )}
-
-              {/* Feature type mini-legend */}
-              {visibleFeatures.length > 0 && (
-                <g transform={`translate(${dimensions.width - 420}, 52)`}>
-                  {[
-                    { type: 'herv', label: 'Virus', color: '#dc2626' },
-                    { type: 'line', label: 'LINEs', color: '#2563eb' },
-                    { type: 'pseudogene', label: 'Fossil', color: '#78716c' },
-                    { type: 'numt', label: 'Mito', color: '#14b8a6' },
-                    { type: 'har', label: 'HAR', color: '#f59e0b' },
-                    { type: 'neanderthal', label: 'Neand.', color: '#8b5cf6' },
-                    { type: 'gene_desert', label: 'Desert', color: '#fbbf24' },
-                  ].map((item, i) => (
-                    <g key={item.type} transform={`translate(${i * 60}, 0)`}>
-                      <rect
-                        x={0}
-                        y={0}
-                        width={8}
-                        height={8}
-                        rx={1}
-                        fill={item.color}
-                        opacity={0.8}
-                      />
-                      <text x={11} y={7} fontSize={7} fill="#888">
-                        {item.label}
+                        <rect
+                          x={x + width - 3}
+                          y={24}
+                          width={3}
+                          height={18}
+                          fill={feature.color}
+                        />
+                      </>
+                    )}
+                    {/* Pseudogene "broken" indicator */}
+                    {feature.type === 'pseudogene' && width > 15 && (
+                      <g opacity={0.6}>
+                        <line
+                          x1={x + 4}
+                          y1={26}
+                          x2={x + 10}
+                          y2={40}
+                          stroke="white"
+                          strokeWidth={1.5}
+                        />
+                        <line
+                          x1={x + 10}
+                          y1={26}
+                          x2={x + 4}
+                          y2={40}
+                          stroke="white"
+                          strokeWidth={1.5}
+                        />
+                      </g>
+                    )}
+                    {/* Label */}
+                    {width > 50 && (
+                      <text
+                        x={x + width / 2}
+                        y={37}
+                        textAnchor="middle"
+                        fontSize={Math.min(9, width / 6)}
+                        fill="white"
+                        fontWeight={500}
+                        className="pointer-events-none"
+                        style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+                      >
+                        {displayName.length > width / 6
+                          ? displayName.slice(0, Math.floor(width / 6)) + '...'
+                          : displayName}
                       </text>
-                    </g>
-                  ))}
-                </g>
-              )}
-            </g>
-          </svg>
-        )}
+                    )}
+                  </g>
+                );
+              })
+            )}
+
+            {/* Feature type mini-legend */}
+            {visibleFeatures.length > 0 && (
+              <g transform={`translate(${effectiveWidth - 420}, 52)`}>
+                {[
+                  { type: 'herv', label: 'Virus', color: '#dc2626' },
+                  { type: 'line', label: 'LINEs', color: '#2563eb' },
+                  { type: 'pseudogene', label: 'Fossil', color: '#78716c' },
+                  { type: 'numt', label: 'Mito', color: '#14b8a6' },
+                  { type: 'har', label: 'HAR', color: '#f59e0b' },
+                  { type: 'neanderthal', label: 'Neand.', color: '#8b5cf6' },
+                  { type: 'gene_desert', label: 'Desert', color: '#fbbf24' },
+                ].map((item, i) => (
+                  <g key={item.type} transform={`translate(${i * 60}, 0)`}>
+                    <rect
+                      x={0}
+                      y={0}
+                      width={8}
+                      height={8}
+                      rx={1}
+                      fill={item.color}
+                      opacity={0.8}
+                    />
+                    <text x={11} y={7} fontSize={7} fill="#888">
+                      {item.label}
+                    </text>
+                  </g>
+                ))}
+              </g>
+            )}
+          </g>
+        </svg>
       </div>
 
       {/* Navigation Bar - separate from tracks */}
