@@ -1,11 +1,13 @@
-import { type JSX, useMemo } from 'react';
+import { type JSX, useMemo, useCallback } from 'react';
 import { Header } from '@/components/Header';
 import { Sidebar } from '@/components/Sidebar';
 import { GenomeBrowser } from '@/components/GenomeBrowser';
+import { GenomeOverview } from '@/components/GenomeOverview';
 import {
   useAppStore,
   useSidePanel,
   useActiveChromosome,
+  useCurrentPage,
 } from '@/state/appState';
 import { CHROMOSOME_LENGTHS, CHROMOSOME_NAMES } from '@/types/core';
 
@@ -190,10 +192,26 @@ const generateChromosomeData = () => {
 export function App(): JSX.Element {
   const sidePanel = useSidePanel();
   const activeChromosome = useActiveChromosome();
+  const currentPage = useCurrentPage();
   const toggleSidePanel = useAppStore(state => state.toggleSidePanel);
   const setActiveChromosome = useAppStore(state => state.setActiveChromosome);
+  const setCurrentPage = useAppStore(state => state.setCurrentPage);
 
   const chromosomes = useMemo(() => generateChromosomeData(), []);
+
+  // Handle chromosome selection - switches to browser and selects chromosome
+  const handleSelectChromosome = useCallback(
+    (chromosomeId: string) => {
+      setActiveChromosome(chromosomeId);
+      setCurrentPage('browser');
+    },
+    [setActiveChromosome, setCurrentPage]
+  );
+
+  // Handle overview navigation
+  const handleNavigateToOverview = useCallback(() => {
+    setCurrentPage('overview');
+  }, [setCurrentPage]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -205,11 +223,17 @@ export function App(): JSX.Element {
         <Sidebar
           chromosomes={chromosomes}
           selectedChromosome={activeChromosome}
-          onSelectChromosome={setActiveChromosome}
+          onSelectChromosome={handleSelectChromosome}
+          onNavigateToOverview={handleNavigateToOverview}
+          currentPage={currentPage}
           collapsed={!sidePanel.isOpen}
         />
         <main className="flex-1 overflow-hidden">
-          <GenomeBrowser className="h-full" />
+          {currentPage === 'overview' ? (
+            <GenomeOverview onNavigateToChromosome={handleSelectChromosome} />
+          ) : (
+            <GenomeBrowser className="h-full" />
+          )}
         </main>
       </div>
     </div>

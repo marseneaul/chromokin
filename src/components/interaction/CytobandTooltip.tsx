@@ -5,8 +5,7 @@
 
 import { type JSX, useMemo, useEffect, useState } from 'react';
 import type { Cytoband } from '@/types/genome';
-import type { CopyLevel } from '@/types/core';
-import type { ViewMode } from '@/state/appState';
+import type { CopyLevel, ViewMode } from '@/types/core';
 import {
   getCytobandAnnotation,
   type NotableBandInfo,

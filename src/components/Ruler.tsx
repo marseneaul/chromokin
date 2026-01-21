@@ -160,7 +160,7 @@ export function Ruler({
 
       {/* Chromosome info */}
       <div className="absolute top-1 left-2 text-xs text-muted-foreground font-medium">
-        Chr {activeChromosome} • GRCh38
+        chr{activeChromosome} • GRCh38
       </div>
 
       {/* Scale indicator */}

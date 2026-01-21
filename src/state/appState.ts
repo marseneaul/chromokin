@@ -21,6 +21,11 @@ import { getTraitsDatabase } from '@/data/traitsLoader';
 import { getGenomicFeaturesDatabase } from '@/data/genomicFeaturesLoader';
 
 /**
+ * Page types for navigation
+ */
+export type PageType = 'overview' | 'browser';
+
+/**
  * Trait interaction state for hover/select behaviors
  */
 interface TraitInteractionState {
@@ -140,7 +145,8 @@ const defaultTraitInteraction: TraitInteractionState = {
 };
 
 // Initial state
-const initialState: AppState & TraitInteractionState = {
+const initialState: AppState &
+  TraitInteractionState & { currentPage: PageType } = {
   config: defaultConfig,
   viewMode: 'play',
   copyLevel: 5,
@@ -150,11 +156,16 @@ const initialState: AppState & TraitInteractionState = {
   sidePanel: defaultSidePanel,
   isLoading: false,
   error: null,
+  currentPage: 'overview',
   ...defaultTraitInteraction,
 };
 
 // State store interface
 interface AppStore extends AppState, TraitInteractionState {
+  // Page navigation
+  currentPage: PageType;
+  setCurrentPage: (page: PageType) => void;
+
   // Actions
   setViewMode: (mode: ViewMode) => void;
   setCopyLevel: (level: CopyLevel) => void;
@@ -209,6 +220,10 @@ export const useAppStore = create<AppStore>()(
   devtools(
     subscribeWithSelector((set, get) => ({
       ...initialState,
+
+      // Page navigation
+      setCurrentPage: (page: PageType) =>
+        set({ currentPage: page }, false, 'setCurrentPage'),
 
       // Basic setters
       setViewMode: (mode: ViewMode) =>
@@ -507,6 +522,9 @@ export const useActiveChromosome = () =>
 export const useSidePanel = () => useAppStore(state => state.sidePanel);
 export const useConfig = () => useAppStore(state => state.config);
 export const useTracks = () => useAppStore(state => state.config.tracks);
+export const useCurrentPage = () => useAppStore(state => state.currentPage);
+export const useSetCurrentPage = () =>
+  useAppStore(state => state.setCurrentPage);
 export const useZoomState = () =>
   useAppStore(state => {
     if (!state.activeChromosome) return null;

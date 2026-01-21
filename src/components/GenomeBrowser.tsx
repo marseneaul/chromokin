@@ -368,7 +368,7 @@ export function GenomeBrowser({
   const formatBp = (bp: number): string => {
     if (bp >= 1000000) return `${(bp / 1000000).toFixed(1)}M`;
     if (bp >= 1000) return `${(bp / 1000).toFixed(0)}K`;
-    return `${bp}`;
+    return `${bp.toFixed(0)}`;
   };
 
   // Generate ruler ticks
@@ -414,7 +414,7 @@ export function GenomeBrowser({
       {/* Toolbar */}
       <div className="flex items-center justify-between px-4 py-2 border-b bg-gray-50">
         <div className="text-sm font-medium text-gray-700">
-          Chr {activeChromosome} &middot; {formatBp(visibleRange.start)} -{' '}
+          chr{activeChromosome}:{formatBp(visibleRange.start)}-
           {formatBp(visibleRange.end)}
         </div>
         <div className="flex items-center gap-1">
@@ -448,18 +448,14 @@ export function GenomeBrowser({
       {/* Main browser area */}
       <div
         ref={containerRef}
-        className={`flex-1 relative select-none overflow-hidden ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className={`flex-1 relative select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
         onWheel={handleWheel}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
       >
-        <svg
-          className="block absolute inset-0 w-full h-full"
-          viewBox={`0 0 ${effectiveWidth} ${effectiveHeight}`}
-          preserveAspectRatio="xMidYMin meet"
-        >
+        <svg width={effectiveWidth} height={effectiveHeight} className="block">
           {/* Background */}
           <rect
             width={effectiveWidth}
@@ -473,14 +469,14 @@ export function GenomeBrowser({
               x={0}
               y={0}
               width={effectiveWidth}
-              height={16}
+              height={22}
               fill="#f5f5f5"
             />
             <line
               x1={0}
-              y1={16}
+              y1={22}
               x2={effectiveWidth}
-              y2={16}
+              y2={22}
               stroke="#e5e5e5"
               strokeWidth={1}
             />
@@ -490,17 +486,17 @@ export function GenomeBrowser({
               <g key={i}>
                 <line
                   x1={tick.x}
-                  y1={11}
+                  y1={15}
                   x2={tick.x}
-                  y2={16}
+                  y2={22}
                   stroke="#999"
                   strokeWidth={1}
                 />
                 <text
                   x={tick.x < 20 ? tick.x : tick.x}
-                  y={9}
+                  y={12}
                   textAnchor={tick.x < 20 ? 'start' : 'middle'}
-                  fontSize={7}
+                  fontSize={10}
                   fill="#666"
                 >
                   {tick.label}
@@ -510,18 +506,18 @@ export function GenomeBrowser({
           </g>
 
           {/* Cytoband track */}
-          <g transform="translate(0, 18)">
-            <text x={4} y={7} fontSize={7} fill="#888" fontWeight={500}>
+          <g transform="translate(0, 26)">
+            <text x={4} y={10} fontSize={10} fill="#888" fontWeight={500}>
               Cytobands
             </text>
-            <g transform="translate(0, 9)">
+            <g transform="translate(0, 14)">
               {/* Chromosome outline */}
               <rect
                 x={0}
                 y={0}
                 width={effectiveWidth}
-                height={10}
-                rx={5}
+                height={14}
+                rx={7}
                 fill="#f0f0f0"
                 stroke="#d0d0d0"
                 strokeWidth={1}
@@ -546,8 +542,8 @@ export function GenomeBrowser({
                     x={x}
                     y={1}
                     width={width}
-                    height={8}
-                    rx={isFirst || isLast ? 4 : 0}
+                    height={12}
+                    rx={isFirst || isLast ? 6 : 0}
                     fill={CYTOBAND_COLORS[band.stain]}
                     stroke={band.stain === 'acen' ? '#991b1b' : 'none'}
                     strokeWidth={band.stain === 'acen' ? 1 : 0}
@@ -583,15 +579,15 @@ export function GenomeBrowser({
                 const x = scale.scale(band.chromStart);
                 const xEnd = scale.scale(band.chromEnd);
                 const width = xEnd - x;
-                if (width < 25) return null;
+                if (width < 30) return null;
 
                 return (
                   <text
                     key={`label-${band.name}-${i}`}
                     x={x + width / 2}
-                    y={7}
+                    y={10}
                     textAnchor="middle"
-                    fontSize={6}
+                    fontSize={8}
                     fill={band.stain.includes('gpos') ? '#fff' : '#666'}
                     className="pointer-events-none"
                   >
@@ -603,29 +599,35 @@ export function GenomeBrowser({
           </g>
 
           {/* Ancestry Painting track */}
-          <g transform="translate(0, 40)">
-            <text x={4} y={7} fontSize={7} fill="#888" fontWeight={500}>
+          <g transform="translate(0, 58)">
+            <text x={4} y={10} fontSize={10} fill="#888" fontWeight={500}>
               Ancestry {dataIsPhased ? '(Phased)' : ''}
             </text>
 
             {dataIsPhased ? (
               /* Split view: Maternal on top, Paternal on bottom */
-              <g transform="translate(0, 10)">
+              <g transform="translate(0, 14)">
                 {/* Maternal label with background */}
                 <rect
                   x={2}
                   y={-1}
-                  width={50}
-                  height={10}
+                  width={60}
+                  height={14}
                   rx={2}
                   fill="white"
                   opacity={0.85}
                 />
-                <text x={4} y={7} fontSize={7} fill="#e91e63" fontWeight={600}>
+                <text
+                  x={4}
+                  y={10}
+                  fontSize={10}
+                  fill="#e91e63"
+                  fontWeight={600}
+                >
                   ♀ Maternal
                 </text>
                 {/* Maternal segments */}
-                <g transform="translate(0, 10)">
+                <g transform="translate(0, 14)">
                   {maternalSegments.map((segment, i) => {
                     const x = Math.max(0, scale.scale(segment.start));
                     const xEnd = Math.min(
@@ -641,7 +643,7 @@ export function GenomeBrowser({
                         x={x}
                         y={0}
                         width={width}
-                        height={10}
+                        height={14}
                         fill={POPULATION_COLORS[segment.population]}
                         opacity={isHovered ? 1 : 0.85}
                         stroke={isHovered ? '#000' : 'none'}
@@ -668,18 +670,24 @@ export function GenomeBrowser({
                 {/* Paternal label with background */}
                 <rect
                   x={2}
-                  y={22}
-                  width={48}
-                  height={10}
+                  y={30}
+                  width={60}
+                  height={14}
                   rx={2}
                   fill="white"
                   opacity={0.85}
                 />
-                <text x={4} y={30} fontSize={7} fill="#2196f3" fontWeight={600}>
+                <text
+                  x={4}
+                  y={41}
+                  fontSize={10}
+                  fill="#2196f3"
+                  fontWeight={600}
+                >
                   ♂ Paternal
                 </text>
                 {/* Paternal segments */}
-                <g transform="translate(0, 34)">
+                <g transform="translate(0, 46)">
                   {paternalSegments.map((segment, i) => {
                     const x = Math.max(0, scale.scale(segment.start));
                     const xEnd = Math.min(
@@ -695,7 +703,7 @@ export function GenomeBrowser({
                         x={x}
                         y={0}
                         width={width}
-                        height={10}
+                        height={14}
                         fill={POPULATION_COLORS[segment.population]}
                         opacity={isHovered ? 1 : 0.85}
                         stroke={isHovered ? '#000' : 'none'}
@@ -721,7 +729,7 @@ export function GenomeBrowser({
               </g>
             ) : (
               /* Unphased view: single track */
-              <g transform="translate(0, 12)">
+              <g transform="translate(0, 16)">
                 {maternalSegments.concat(paternalSegments).map((segment, i) => {
                   const x = Math.max(0, scale.scale(segment.start));
                   const xEnd = Math.min(
@@ -764,7 +772,7 @@ export function GenomeBrowser({
 
             {/* Improved Ancestry Legend - shows top populations with percentages */}
             <g
-              transform={`translate(${effectiveWidth - 350}, ${dataIsPhased ? 60 : 28})`}
+              transform={`translate(${effectiveWidth - 400}, ${dataIsPhased ? 76 : 36})`}
             >
               {ancestryComposition
                 .filter(c => c.percentage >= 2) // Only show populations >= 2%
@@ -772,28 +780,28 @@ export function GenomeBrowser({
                 .map((comp, i) => (
                   <g
                     key={comp.population}
-                    transform={`translate(${i * 70}, 0)`}
+                    transform={`translate(${i * 80}, 0)`}
                   >
                     <rect
                       x={0}
                       y={0}
-                      width={8}
-                      height={8}
-                      rx={1}
+                      width={10}
+                      height={10}
+                      rx={2}
                       fill={
                         POPULATION_COLORS[comp.population as AncestryPopulation]
                       }
                     />
                     <text
-                      x={10}
-                      y={6}
-                      fontSize={6}
+                      x={13}
+                      y={8}
+                      fontSize={9}
                       fill="#555"
                       fontWeight={500}
                     >
                       {comp.percentage.toFixed(0)}%
                     </text>
-                    <text x={10} y={13} fontSize={5} fill="#888">
+                    <text x={13} y={18} fontSize={7} fill="#888">
                       {comp.displayName.length > 8
                         ? comp.displayName.slice(0, 7) + '…'
                         : comp.displayName}
@@ -804,15 +812,15 @@ export function GenomeBrowser({
           </g>
 
           {/* Your Variants (SNPs) track */}
-          <g transform="translate(0, 120)">
+          <g transform="translate(0, 160)">
             <rect
               x={0}
               y={0}
               width={effectiveWidth}
-              height={40}
+              height={55}
               fill="#fef2f2"
             />
-            <text x={4} y={7} fontSize={7} fill="#888" fontWeight={500}>
+            <text x={4} y={12} fontSize={10} fill="#888" fontWeight={500}>
               Your Variants{' '}
               {visibleSNPs.length > 0 && `(${visibleSNPs.length})`}
             </text>
@@ -820,9 +828,9 @@ export function GenomeBrowser({
             {visibleSNPs.length === 0 ? (
               <text
                 x={effectiveWidth / 2}
-                y={22}
+                y={32}
                 textAnchor="middle"
-                fontSize={7}
+                fontSize={10}
                 fill="#bbb"
               >
                 {effectiveZoom.bpPerPx > 500000
@@ -854,7 +862,7 @@ export function GenomeBrowser({
                   >
                     {/* SNP marker - diamond shape */}
                     <path
-                      d={`M${x} 14 L${x + 5} 20 L${x} 26 L${x - 5} 20 Z`}
+                      d={`M${x} 18 L${x + 7} 27 L${x} 36 L${x - 7} 27 Z`}
                       fill={SNP_COLORS[snp.category]}
                       stroke={isHovered ? '#000' : 'white'}
                       strokeWidth={isHovered ? 1.5 : 0.5}
@@ -862,15 +870,15 @@ export function GenomeBrowser({
                     />
                     {/* Risk allele indicator */}
                     {snp.hasRiskAllele && (
-                      <circle cx={x} cy={20} r={1.5} fill="white" />
+                      <circle cx={x} cy={27} r={2} fill="white" />
                     )}
                     {/* Label when zoomed in */}
                     {effectiveZoom.bpPerPx < 50000 && (
                       <text
                         x={x}
-                        y={34}
+                        y={48}
                         textAnchor="middle"
-                        fontSize={6}
+                        fontSize={9}
                         fill="#666"
                         className="pointer-events-none"
                       >
@@ -884,7 +892,7 @@ export function GenomeBrowser({
 
             {/* SNP category legend */}
             {visibleSNPs.length > 0 && (
-              <g transform={`translate(${effectiveWidth - 280}, 30)`}>
+              <g transform={`translate(${effectiveWidth - 320}, 42)`}>
                 {(
                   [
                     { cat: 'trait', label: 'Trait' },
@@ -893,12 +901,12 @@ export function GenomeBrowser({
                     { cat: 'neanderthal', label: 'Archaic' },
                   ] as { cat: SNPCategory; label: string }[]
                 ).map((item, i) => (
-                  <g key={item.cat} transform={`translate(${i * 70}, 0)`}>
+                  <g key={item.cat} transform={`translate(${i * 80}, 0)`}>
                     <path
-                      d={`M0 0 L3 3 L0 6 L-3 3 Z`}
+                      d={`M0 0 L4 5 L0 10 L-4 5 Z`}
                       fill={SNP_COLORS[item.cat]}
                     />
-                    <text x={6} y={5} fontSize={6} fill="#888">
+                    <text x={8} y={8} fontSize={9} fill="#888">
                       {item.label}
                     </text>
                   </g>
@@ -908,17 +916,17 @@ export function GenomeBrowser({
           </g>
 
           {/* Genes track */}
-          <g transform="translate(0, 163)">
-            <text x={4} y={7} fontSize={7} fill="#888" fontWeight={500}>
+          <g transform="translate(0, 220)">
+            <text x={4} y={12} fontSize={10} fill="#888" fontWeight={500}>
               Trait Genes
             </text>
 
             {visibleGenes.length === 0 ? (
               <text
                 x={effectiveWidth / 2}
-                y={22}
+                y={32}
                 textAnchor="middle"
-                fontSize={7}
+                fontSize={10}
                 fill="#bbb"
               >
                 {effectiveZoom.bpPerPx > 500000
@@ -951,39 +959,39 @@ export function GenomeBrowser({
                   >
                     <rect
                       x={x}
-                      y={14}
+                      y={18}
                       width={width}
-                      height={14}
-                      rx={2}
+                      height={20}
+                      rx={3}
                       fill={gene.color || '#3b82f6'}
                       opacity={0.85}
                       className="hover:opacity-100 transition-opacity"
                     />
                     {/* Strand arrow */}
-                    {width > 16 && (
+                    {width > 20 && (
                       <path
                         d={
                           gene.strand === '+'
-                            ? `M${x + width - 6} 18 l4 3 l-4 3`
-                            : `M${x + 6} 18 l-4 3 l4 3`
+                            ? `M${x + width - 8} 24 l5 4 l-5 4`
+                            : `M${x + 8} 24 l-5 4 l5 4`
                         }
                         fill="white"
                         opacity={0.6}
                       />
                     )}
                     {/* Label */}
-                    {width > 40 && (
+                    {width > 50 && (
                       <text
                         x={x + width / 2}
-                        y={24}
+                        y={32}
                         textAnchor="middle"
-                        fontSize={Math.min(8, width / 6)}
+                        fontSize={Math.min(10, width / 5)}
                         fill="white"
                         fontWeight={500}
                         className="pointer-events-none"
                       >
-                        {displayName.length > width / 5
-                          ? displayName.slice(0, Math.floor(width / 5)) + '…'
+                        {displayName.length > width / 6
+                          ? displayName.slice(0, Math.floor(width / 6)) + '…'
                           : displayName}
                       </text>
                     )}
@@ -994,15 +1002,15 @@ export function GenomeBrowser({
           </g>
 
           {/* Genomic Features track (HERVs, transposons, etc.) */}
-          <g transform="translate(0, 200)">
+          <g transform="translate(0, 270)">
             <rect
               x={0}
               y={0}
               width={effectiveWidth}
-              height={55}
+              height={70}
               fill="#fef7ed"
             />
-            <text x={4} y={7} fontSize={7} fill="#888" fontWeight={500}>
+            <text x={4} y={12} fontSize={10} fill="#888" fontWeight={500}>
               Genomic Oddities{' '}
               {visibleFeatures.length > 0 && `(${visibleFeatures.length})`}
             </text>
@@ -1010,9 +1018,9 @@ export function GenomeBrowser({
             {visibleFeatures.length === 0 ? (
               <text
                 x={effectiveWidth / 2}
-                y={22}
+                y={38}
                 textAnchor="middle"
-                fontSize={7}
+                fontSize={10}
                 fill="#bbb"
               >
                 {effectiveZoom.bpPerPx > 500000
@@ -1022,7 +1030,7 @@ export function GenomeBrowser({
             ) : (
               visibleFeatures.map(feature => {
                 const x = scale.scale(feature.start);
-                const width = Math.max(6, scale.scale(feature.end) - x);
+                const width = Math.max(8, scale.scale(feature.end) - x);
                 const displayName =
                   viewMode === 'play' && feature.nickname
                     ? feature.nickname
@@ -1045,28 +1053,28 @@ export function GenomeBrowser({
                     {/* Feature body */}
                     <rect
                       x={x}
-                      y={14}
+                      y={18}
                       width={width}
-                      height={12}
-                      rx={feature.type === 'herv' ? 0 : 2}
+                      height={18}
+                      rx={feature.type === 'herv' ? 0 : 3}
                       fill={feature.color}
                       opacity={0.8}
                       className="hover:opacity-100 transition-opacity"
                     />
                     {/* HERV LTR markers */}
-                    {feature.type === 'herv' && width > 10 && (
+                    {feature.type === 'herv' && width > 14 && (
                       <>
                         <rect
                           x={x}
-                          y={14}
-                          width={2}
-                          height={12}
+                          y={18}
+                          width={3}
+                          height={18}
                           fill={feature.color}
                         />
                         <rect
-                          x={x + width - 2}
-                          y={14}
-                          width={2}
+                          x={x + width - 3}
+                          y={18}
+                          width={3}
                           height={12}
                           fill={feature.color}
                         />
@@ -1151,7 +1159,7 @@ export function GenomeBrowser({
       {/* Navigation Bar - separate from tracks */}
       <div className="flex items-center gap-3 px-4 py-2 bg-gray-100 border-t border-gray-200">
         <span className="text-xs text-gray-500 font-medium whitespace-nowrap">
-          Chr {activeChromosome}
+          chr{activeChromosome}
         </span>
         <div className="flex-1 relative h-6 bg-gray-200 rounded-full overflow-hidden">
           {/* Full chromosome background */}
