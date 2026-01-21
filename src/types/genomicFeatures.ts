@@ -23,6 +23,12 @@ export type GenomicFeatureType =
   | 'numt' // Nuclear mitochondrial DNA segment
   | 'har' // Human Accelerated Region
   | 'neanderthal' // Neanderthal introgression region
+  | 'denisovan' // Denisovan introgression region
+  | 'archaic' // Both Neanderthal and Denisovan DNA
+  | 'fusion' // Chromosomal fusion site
+  | 'disease_gene' // Well-known disease genes
+  | 'human_specific' // Human-specific features
+  | 'longevity' // Longevity-associated regions
   | 'gene_desert' // Large regions with no genes
   | 'other'; // Other interesting features
 

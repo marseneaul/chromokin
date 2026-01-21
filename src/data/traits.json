@@ -3185,6 +3185,384 @@
       "color": "#8B0000",
       "displayPriority": 1,
       "traitIds": ["hemochromatosis"]
+    },
+    {
+      "id": "ENSG00000141510",
+      "symbol": "TP53",
+      "name": "Tumor Protein P53",
+      "chromosome": "17",
+      "start": 7668402,
+      "end": 7687550,
+      "strand": "-",
+      "nickname": "The Guardian of the Genome",
+      "shortDescription": {
+        "level3": "Protects your cells from becoming cancer!",
+        "level4": "The most important tumor suppressor gene.",
+        "level5": "TP53 detects DNA damage and stops cells from dividing or triggers cell death.",
+        "level6": "TP53 encodes p53, a transcription factor responding to genotoxic stress.",
+        "level7": "p53 activates cell cycle arrest, senescence, or apoptosis in response to DNA damage.",
+        "level8": "p53 integrates stress signals via N-terminal phosphorylation, activating or repressing target genes via sequence-specific DNA binding."
+      },
+      "color": "#9932CC",
+      "displayPriority": 1,
+      "traitIds": ["cancer_risk"]
+    },
+    {
+      "id": "ENSG00000012048",
+      "symbol": "BRCA1",
+      "name": "BRCA1 DNA Repair",
+      "chromosome": "17",
+      "start": 43044295,
+      "end": 43125364,
+      "strand": "-",
+      "nickname": "The Breast Cancer Gene",
+      "shortDescription": {
+        "level3": "Helps fix broken DNA!",
+        "level4": "A gene that repairs DNA damage; mutations increase cancer risk.",
+        "level5": "BRCA1 repairs double-strand DNA breaks; mutations greatly increase breast cancer risk.",
+        "level6": "BRCA1 is a tumor suppressor essential for homologous recombination repair.",
+        "level7": "BRCA1 forms complexes with BARD1 for E3 ubiquitin ligase activity in DDR.",
+        "level8": "BRCA1 recruits to DSBs via ABRAXAS, facilitating end resection and RAD51 loading for HR repair."
+      },
+      "color": "#FF1493",
+      "displayPriority": 1,
+      "traitIds": ["breast_cancer_risk"]
+    },
+    {
+      "id": "ENSG00000139618",
+      "symbol": "BRCA2",
+      "name": "BRCA2 DNA Repair",
+      "chromosome": "13",
+      "start": 32315474,
+      "end": 32400266,
+      "strand": "+",
+      "nickname": "The Other Breast Cancer Gene",
+      "shortDescription": {
+        "level3": "Also helps fix broken DNA!",
+        "level4": "Works with BRCA1 to repair DNA damage.",
+        "level5": "BRCA2 directly loads RAD51 onto DNA for homologous recombination repair.",
+        "level6": "BRCA2 mutations confer high lifetime risk of breast and ovarian cancer.",
+        "level7": "BRCA2's BRC repeats bind RAD51 monomers to regulate filament formation.",
+        "level8": "BRCA2 delivers RAD51 to ssDNA, displacing RPA and promoting strand invasion during HR."
+      },
+      "color": "#FF69B4",
+      "displayPriority": 1,
+      "traitIds": ["breast_cancer_risk"]
+    },
+    {
+      "id": "ENSG00000107796",
+      "symbol": "ACTN3",
+      "name": "Alpha-Actinin 3",
+      "chromosome": "11",
+      "start": 66540627,
+      "end": 66565478,
+      "strand": "+",
+      "nickname": "The Speed Gene",
+      "shortDescription": {
+        "level3": "Makes fast-twitch muscles for sprinting!",
+        "level4": "Found in fast-twitch muscle fibers used for sprinting.",
+        "level5": "ACTN3 is expressed in type II fast muscle fibers; variants affect athletic performance.",
+        "level6": "The R577X variant causes ACTN3 deficiency, shifting muscle toward slow-twitch characteristics.",
+        "level7": "Almost all elite sprinters carry functional ACTN3; XX genotype is more common in endurance athletes.",
+        "level8": "ACTN3 absence shifts muscle metabolism toward oxidative, improving endurance but reducing power output."
+      },
+      "color": "#FF4500",
+      "displayPriority": 1,
+      "traitIds": ["athletic_performance"]
+    },
+    {
+      "id": "ENSG00000129675",
+      "symbol": "ARHGEF6",
+      "name": "Rac/Cdc42 Guanine Exchange Factor 6",
+      "chromosome": "X",
+      "start": 135810696,
+      "end": 136012379,
+      "strand": "+",
+      "nickname": "The Handedness Gene",
+      "shortDescription": {
+        "level3": "May affect whether you're left or right-handed!",
+        "level4": "One of the genes associated with handedness.",
+        "level5": "ARHGEF6 is one of several genes linked to left-handedness in GWAS studies.",
+        "level6": "Genetic studies implicate ARHGEF6 in brain lateralization affecting handedness.",
+        "level7": "ARHGEF6 variants show association with left-handedness in multiple populations.",
+        "level8": "ARHGEF6 Rho-GEF activity may affect neural development and hemispheric asymmetry."
+      },
+      "color": "#4169E1",
+      "displayPriority": 2,
+      "traitIds": ["handedness"]
+    },
+    {
+      "id": "ENSG00000134184",
+      "symbol": "GSTM1",
+      "name": "Glutathione S-Transferase Mu 1",
+      "chromosome": "1",
+      "start": 109687836,
+      "end": 109693883,
+      "strand": "-",
+      "nickname": "The Detox Gene",
+      "shortDescription": {
+        "level3": "Helps clean up bad stuff in your body!",
+        "level4": "A detoxification enzyme that removes harmful chemicals.",
+        "level5": "GSTM1 conjugates glutathione to toxins for excretion; many people lack it entirely.",
+        "level6": "GSTM1 null genotype (deletion) affects metabolism of carcinogens and drugs.",
+        "level7": "About 50% of Europeans have GSTM1 null; this affects response to some medications.",
+        "level8": "GSTM1 polymorphism affects Phase II metabolism of polycyclic aromatic hydrocarbons and aflatoxin."
+      },
+      "color": "#228B22",
+      "displayPriority": 1,
+      "traitIds": ["detoxification"]
+    },
+    {
+      "id": "ENSG00000102144",
+      "symbol": "PGK1",
+      "name": "Phosphoglycerate Kinase 1",
+      "chromosome": "X",
+      "start": 77930192,
+      "end": 77952994,
+      "strand": "+",
+      "nickname": "The Energy Gene",
+      "shortDescription": {
+        "level3": "Helps make energy for your cells!",
+        "level4": "A crucial enzyme in how cells produce energy.",
+        "level5": "PGK1 catalyzes an ATP-producing step in glycolysis.",
+        "level6": "PGK1 is essential for glycolysis, generating ATP from ADP.",
+        "level7": "PGK1 deficiency causes hemolytic anemia due to impaired RBC glycolysis.",
+        "level8": "PGK1 is one of two substrate-level phosphorylation enzymes in glycolysis."
+      },
+      "color": "#FFD700",
+      "displayPriority": 2,
+      "traitIds": ["energy_metabolism"]
+    },
+    {
+      "id": "ENSG00000101019",
+      "symbol": "UMOD",
+      "name": "Uromodulin",
+      "chromosome": "16",
+      "start": 20336316,
+      "end": 20363878,
+      "strand": "-",
+      "nickname": "The Kidney Defense Gene",
+      "shortDescription": {
+        "level3": "Protects your kidneys from infections!",
+        "level4": "The most abundant protein in healthy urine.",
+        "level5": "Uromodulin protects against urinary tract infections and kidney stones.",
+        "level6": "UMOD variants affect kidney function and risk of chronic kidney disease.",
+        "level7": "UMOD is associated with eGFR in GWAS; protective against UTI and nephrolithiasis.",
+        "level8": "Uromodulin forms aggregates trapping uropathogens and inhibiting calcium oxalate crystallization."
+      },
+      "color": "#20B2AA",
+      "displayPriority": 2,
+      "traitIds": ["kidney_function"]
+    },
+    {
+      "id": "ENSG00000198793",
+      "symbol": "MTOR",
+      "name": "Mechanistic Target of Rapamycin",
+      "chromosome": "1",
+      "start": 11106535,
+      "end": 11262551,
+      "strand": "-",
+      "nickname": "The Growth Controller",
+      "shortDescription": {
+        "level3": "Tells cells when to grow and divide!",
+        "level4": "A master regulator of cell growth and metabolism.",
+        "level5": "mTOR integrates nutrient and growth signals to control cell growth.",
+        "level6": "mTOR forms two complexes (mTORC1/2) regulating protein synthesis and autophagy.",
+        "level7": "mTORC1 inhibition extends lifespan in model organisms from yeast to mice.",
+        "level8": "mTOR senses amino acids via Rag GTPases and integrates with PI3K-Akt for growth control."
+      },
+      "color": "#8B008B",
+      "displayPriority": 1,
+      "traitIds": ["growth", "longevity"]
+    },
+    {
+      "id": "ENSG00000138413",
+      "symbol": "IDH1",
+      "name": "Isocitrate Dehydrogenase 1",
+      "chromosome": "2",
+      "start": 208236227,
+      "end": 208260712,
+      "strand": "-",
+      "nickname": "The Brain Tumor Gene",
+      "shortDescription": {
+        "level3": "Helps cells use energy!",
+        "level4": "An enzyme in energy metabolism often mutated in some brain tumors.",
+        "level5": "IDH1 mutations cause accumulation of a metabolite that alters cell behavior.",
+        "level6": "Mutant IDH1 produces 2-hydroxyglutarate, an oncometabolite causing epigenetic changes.",
+        "level7": "IDH1 R132H is common in low-grade gliomas and secondary GBM, conferring better prognosis.",
+        "level8": "Neomorphic IDH1 mutations produce D-2HG, inhibiting α-KG-dependent dioxygenases including TET2 and JmjC demethylases."
+      },
+      "color": "#708090",
+      "displayPriority": 2,
+      "traitIds": ["brain_tumor_risk"]
+    },
+    {
+      "id": "ENSG00000136997",
+      "symbol": "MYC",
+      "name": "MYC Proto-Oncogene",
+      "chromosome": "8",
+      "start": 127735434,
+      "end": 127742951,
+      "strand": "+",
+      "nickname": "The Master Growth Gene",
+      "shortDescription": {
+        "level3": "Tells cells to grow - too much can cause cancer!",
+        "level4": "A powerful gene that controls cell growth and division.",
+        "level5": "MYC is a transcription factor controlling cell proliferation; overactive in many cancers.",
+        "level6": "MYC regulates ~15% of all genes, controlling cell cycle, metabolism, and growth.",
+        "level7": "MYC amplification or translocation drives many cancers including Burkitt lymphoma.",
+        "level8": "MYC forms heterodimers with MAX to bind E-boxes, globally amplifying transcription of growth genes."
+      },
+      "color": "#DC143C",
+      "displayPriority": 1,
+      "traitIds": ["cancer_risk"]
+    },
+    {
+      "id": "ENSG00000181555",
+      "symbol": "SETD2",
+      "name": "SET Domain Containing 2",
+      "chromosome": "3",
+      "start": 47016466,
+      "end": 47164959,
+      "strand": "+",
+      "nickname": "The Gene Painter",
+      "shortDescription": {
+        "level3": "Puts marks on DNA packaging to control genes!",
+        "level4": "Modifies how DNA is packaged to control gene activity.",
+        "level5": "SETD2 adds methyl marks to histones that affect gene expression.",
+        "level6": "SETD2 is the sole H3K36me3 methyltransferase, marking actively transcribed genes.",
+        "level7": "SETD2 loss causes DNA repair defects and is common in clear cell renal carcinoma.",
+        "level8": "SETD2 H3K36me3 recruits MSH2-MSH6 for mismatch repair and DNMT3B for intragenic DNA methylation."
+      },
+      "color": "#483D8B",
+      "displayPriority": 2,
+      "traitIds": ["epigenetics"]
+    },
+    {
+      "id": "ENSG00000196368",
+      "symbol": "NUDT15",
+      "name": "Nudix Hydrolase 15",
+      "chromosome": "13",
+      "start": 48037817,
+      "end": 48051896,
+      "strand": "+",
+      "nickname": "The Thiopurine Sensitivity Gene",
+      "shortDescription": {
+        "level3": "Affects how you react to certain medicines!",
+        "level4": "Determines sensitivity to drugs used for leukemia and IBD.",
+        "level5": "NUDT15 variants cause severe toxicity to thiopurine drugs in some people.",
+        "level6": "Poor NUDT15 metabolizers require reduced thiopurine doses to avoid myelosuppression.",
+        "level7": "NUDT15 deficiency is common in East Asians; CPIC guidelines recommend testing before therapy.",
+        "level8": "NUDT15 hydrolyzes thiopurine active metabolites; deficiency leads to excessive TPMT-pathway metabolites."
+      },
+      "color": "#FF6B6B",
+      "displayPriority": 1,
+      "traitIds": ["drug_response"]
+    },
+    {
+      "id": "ENSG00000254647",
+      "symbol": "INS",
+      "name": "Insulin",
+      "chromosome": "11",
+      "start": 2159779,
+      "end": 2161341,
+      "strand": "-",
+      "nickname": "The Blood Sugar Gene",
+      "shortDescription": {
+        "level3": "Makes insulin to control your blood sugar!",
+        "level4": "The gene for insulin, which controls blood sugar levels.",
+        "level5": "INS encodes insulin; variants affect diabetes risk and type 1 diabetes susceptibility.",
+        "level6": "INS promoter variants affect expression levels and type 1 diabetes risk.",
+        "level7": "INS VNTR affects thymic insulin expression, influencing T cell tolerance and T1D risk.",
+        "level8": "The INS VNTR Class I allele reduces thymic insulin expression, impairing central tolerance to insulin epitopes."
+      },
+      "color": "#4682B4",
+      "displayPriority": 1,
+      "traitIds": ["diabetes_risk"]
+    },
+    {
+      "id": "ENSG00000151694",
+      "symbol": "ADAM17",
+      "name": "ADAM Metallopeptidase 17",
+      "chromosome": "2",
+      "start": 9467863,
+      "end": 9530629,
+      "strand": "-",
+      "nickname": "The Molecular Scissors",
+      "shortDescription": {
+        "level3": "Cuts proteins on cell surfaces!",
+        "level4": "An enzyme that releases signaling molecules from cells.",
+        "level5": "ADAM17 cleaves TNF-alpha and EGF family ligands from the cell surface.",
+        "level6": "ADAM17 is essential for shedding many growth factors and cytokines.",
+        "level7": "ADAM17 processes over 80 substrates including TNF-α, L-selectin, and EGFR ligands.",
+        "level8": "ADAM17 is regulated by phosphorylation and iRhom2 for substrate-selective shedding."
+      },
+      "color": "#B22222",
+      "displayPriority": 2,
+      "traitIds": ["inflammation"]
+    },
+    {
+      "id": "ENSG00000166501",
+      "symbol": "PRKAR1B",
+      "name": "Protein Kinase cAMP-Activated Regulatory Subunit 1B",
+      "chromosome": "7",
+      "start": 637777,
+      "end": 803612,
+      "strand": "+",
+      "nickname": "The Memory Storage Gene",
+      "shortDescription": {
+        "level3": "Helps your brain store memories!",
+        "level4": "Part of a signaling system important for learning.",
+        "level5": "PRKAR1B regulates PKA activity, crucial for long-term memory formation.",
+        "level6": "Mutations cause neurodegenerative disease with dementia.",
+        "level7": "PRKAR1B mutations cause carney complex and brain iron accumulation disorders.",
+        "level8": "PRKAR1B encodes RIβ, the predominant brain PKA regulatory subunit affecting synaptic plasticity."
+      },
+      "color": "#9370DB",
+      "displayPriority": 2,
+      "traitIds": ["memory", "neurodegeneration"]
+    },
+    {
+      "id": "ENSG00000105976",
+      "symbol": "MET",
+      "name": "MET Proto-Oncogene",
+      "chromosome": "7",
+      "start": 116672196,
+      "end": 116798386,
+      "strand": "+",
+      "nickname": "The Invasion Gene",
+      "shortDescription": {
+        "level3": "Helps cells move and grow!",
+        "level4": "A receptor that tells cells to move and multiply.",
+        "level5": "MET responds to HGF to promote cell growth, motility, and survival.",
+        "level6": "MET activation drives epithelial-mesenchymal transition and cancer metastasis.",
+        "level7": "MET amplification and mutations drive various cancers; it's a therapeutic target.",
+        "level8": "MET activation induces invasive growth program via GAB1-mediated PI3K and ERK signaling."
+      },
+      "color": "#CD5C5C",
+      "displayPriority": 2,
+      "traitIds": ["cancer_metastasis"]
+    },
+    {
+      "id": "ENSG00000135446",
+      "symbol": "CDK4",
+      "name": "Cyclin Dependent Kinase 4",
+      "chromosome": "12",
+      "start": 57747727,
+      "end": 57752540,
+      "strand": "-",
+      "nickname": "The Cell Cycle Accelerator",
+      "shortDescription": {
+        "level3": "Pushes cells to divide!",
+        "level4": "An enzyme that drives cells through the cell cycle.",
+        "level5": "CDK4 phosphorylates Rb protein to allow cell cycle progression.",
+        "level6": "CDK4 is often overactive in cancers; CDK4/6 inhibitors are used in breast cancer treatment.",
+        "level7": "Palbociclib and other CDK4/6 inhibitors have transformed HR+ breast cancer treatment.",
+        "level8": "CDK4-cyclin D phosphorylates Rb, releasing E2F to activate S-phase genes."
+      },
+      "color": "#FF7F50",
+      "displayPriority": 2,
+      "traitIds": ["cancer_risk", "drug_target"]
     }
   ]
 }
