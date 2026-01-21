@@ -12,14 +12,25 @@ import { getGenomicFeaturesDatabase } from '@/data/genomicFeaturesLoader';
 import type { AncestryComposition } from '@/types/genome';
 import type { EnhancedTraitRecord } from '@/types/traits';
 
-// Ancestry colors by category
+// Refined ancestry colors
 const ANCESTRY_COLORS: Record<string, string> = {
-  european: '#4B7BEC',
-  african: '#F7B731',
-  asian: '#26DE81',
-  american: '#FC5C65',
-  oceanian: '#A55EEA',
-  archaic: '#778CA3',
+  european: '#3b82f6',
+  african: '#f59e0b',
+  asian: '#10b981',
+  american: '#ef4444',
+  oceanian: '#8b5cf6',
+  archaic: '#64748b',
+};
+
+// Trait category colors for visual indicators
+const TRAIT_COLORS: Record<string, string> = {
+  eye_color: '#3b82f6',
+  caffeine: '#78350f',
+  cilantro: '#16a34a',
+  bitter_taste: '#dc2626',
+  lactose: '#0ea5e9',
+  muscle_type: '#7c3aed',
+  earwax: '#d97706',
 };
 
 interface GenomeOverviewProps {
@@ -102,105 +113,85 @@ export function GenomeOverview({
     return archaic?.percentage || 2.1; // Default for demo
   }, [composition]);
 
-  const bgClass = 'bg-gray-50';
-
   return (
-    <div className={`h-full overflow-y-auto ${bgClass}`}>
-      <div className="max-w-6xl mx-auto p-6 space-y-6">
-        {/* Hero Section */}
-        <HeroSection
-          stats={stats}
-          neanderthalPercent={neanderthalPercent}
-          copyLevel={copyLevel}
-        />
+    <div className="h-full overflow-y-auto bg-slate-50">
+      <div className="max-w-6xl mx-auto p-6 space-y-5">
+        {/* Header */}
+        <header className="mb-2">
+          <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">
+            {copyLevel <= 5 ? 'Your Genome' : 'Genome Overview'}
+          </h1>
+          <p className="text-sm text-gray-500 mt-1">
+            {copyLevel <= 5
+              ? 'Explore the unique code that makes you, you'
+              : 'Summary of your genetic data and annotations'}
+          </p>
+        </header>
 
-        {/* Ancestry Section */}
-        <AncestrySection composition={composition} copyLevel={copyLevel} />
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <StatCard
+            value={stats.totalGenes.toLocaleString()}
+            label={copyLevel <= 5 ? 'Genes Mapped' : 'Annotated Genes'}
+            color="#3b82f6"
+          />
+          <StatCard
+            value={stats.totalTraits.toLocaleString()}
+            label={copyLevel <= 5 ? 'Traits Analyzed' : 'Trait Associations'}
+            color="#10b981"
+          />
+          <StatCard
+            value={`${neanderthalPercent.toFixed(1)}%`}
+            label={copyLevel <= 5 ? 'Ancient DNA' : 'Archaic Ancestry'}
+            color="#8b5cf6"
+          />
+          <StatCard
+            value={stats.totalFeatures.toLocaleString()}
+            label={copyLevel <= 5 ? 'Genomic Features' : 'Structural Features'}
+            color="#f59e0b"
+          />
+        </div>
 
-        {/* Traits Section */}
-        <TraitsSection
-          traits={featuredTraits}
-          copyLevel={copyLevel}
-          onNavigateToChromosome={onNavigateToChromosome}
-        />
+        {/* Two-column layout for Ancestry and Traits */}
+        <div className="grid lg:grid-cols-2 gap-5">
+          <AncestrySection composition={composition} copyLevel={copyLevel} />
+          <TraitsSection
+            traits={featuredTraits}
+            copyLevel={copyLevel}
+            onNavigateToChromosome={onNavigateToChromosome}
+          />
+        </div>
 
         {/* Chromosome Gallery */}
         <ChromosomeGallery onSelectChromosome={onNavigateToChromosome} />
 
-        {/* Fun Facts */}
-        <FunFactsSection copyLevel={copyLevel} />
+        {/* Genome Facts */}
+        <GenomeFactsSection copyLevel={copyLevel} />
       </div>
     </div>
   );
 }
 
-// Hero Section Component
-interface HeroSectionProps {
-  stats: {
-    totalTraits: number;
-    totalGenes: number;
-    totalFeatures: number;
-    archaicCount: number;
-  };
-  neanderthalPercent: number;
-  copyLevel: number;
-}
-
-function HeroSection({
-  stats,
-  neanderthalPercent,
-  copyLevel,
-}: HeroSectionProps): JSX.Element {
-  const textClass = 'text-gray-900';
-  const subtextClass = 'text-gray-600';
-
-  const heroTitle = copyLevel <= 5 ? 'Your Genome' : 'Genome Overview';
-
-  return (
-    <div className="text-center mb-8">
-      <h1 className={`text-3xl font-bold mb-2 ${textClass}`}>{heroTitle}</h1>
-      <p className={`text-lg ${subtextClass}`}>
-        {copyLevel <= 5
-          ? 'Explore the unique code that makes you, you'
-          : 'Summary of your genetic data and annotations'}
-      </p>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-        <StatCard
-          value={stats.totalGenes.toLocaleString()}
-          label={copyLevel <= 5 ? 'Genes Mapped' : 'Annotated Genes'}
-        />
-        <StatCard
-          value={stats.totalTraits.toLocaleString()}
-          label={copyLevel <= 5 ? 'Fun Traits' : 'Trait Associations'}
-        />
-        <StatCard
-          value={`${neanderthalPercent.toFixed(1)}%`}
-          label={copyLevel <= 5 ? 'Ancient DNA' : 'Archaic Ancestry'}
-        />
-        <StatCard
-          value={stats.archaicCount.toLocaleString()}
-          label={copyLevel <= 5 ? 'Special Regions' : 'Genomic Features'}
-        />
-      </div>
-    </div>
-  );
-}
-
+// Stat Card Component
 interface StatCardProps {
   value: string;
   label: string;
+  color: string;
 }
 
-function StatCard({ value, label }: StatCardProps): JSX.Element {
-  const cardClass = 'bg-white border-gray-200 shadow-sm';
-  const valueClass = 'text-blue-600';
-  const labelClass = 'text-gray-600';
-
+function StatCard({ value, label, color }: StatCardProps): JSX.Element {
   return (
-    <div className={`p-4 rounded-lg border ${cardClass}`}>
-      <div className={`text-2xl font-bold ${valueClass}`}>{value}</div>
-      <div className={`text-sm ${labelClass}`}>{label}</div>
+    <div className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+      <div className="flex items-center gap-3">
+        <div
+          className="w-2 h-8 rounded-full"
+          style={{ backgroundColor: color }}
+        />
+        <div>
+          <div className="text-xl font-semibold text-gray-900">{value}</div>
+          <div className="text-xs text-gray-500">{label}</div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -215,56 +206,41 @@ function AncestrySection({
   composition,
   copyLevel,
 }: AncestrySectionProps): JSX.Element {
-  const cardClass = 'bg-white border-gray-200 shadow-sm';
-  const textClass = 'text-gray-900';
-  const subtextClass = 'text-gray-600';
-
   // Filter out archaic for the main display, sort by percentage
   const mainComposition = composition
     .filter(c => c.category !== 'archaic')
     .sort((a, b) => b.percentage - a.percentage);
 
-  const sectionTitle =
-    copyLevel <= 5 ? 'Where You Come From' : 'Ancestry Composition';
-
   return (
-    <div className={`p-6 rounded-lg border ${cardClass}`}>
-      <h2 className={`text-xl font-semibold mb-4 ${textClass}`}>
-        {sectionTitle}
+    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+      <h2 className="text-sm font-medium text-gray-900 mb-4">
+        {copyLevel <= 5 ? 'Your Ancestry' : 'Ancestry Composition'}
       </h2>
 
       <div className="space-y-3">
         {mainComposition.map(comp => (
-          <div key={comp.population} className="flex items-center gap-3">
-            <div
-              className="w-3 h-3 rounded-full flex-shrink-0"
-              style={{
-                backgroundColor: ANCESTRY_COLORS[comp.category] || '#888',
-              }}
-            />
-            <div className="flex-1">
-              <div className="flex justify-between items-center mb-1">
-                <span className={textClass}>{comp.displayName}</span>
-                <span className={`font-medium ${textClass}`}>
-                  {comp.percentage.toFixed(1)}%
-                </span>
-              </div>
-              <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-all duration-500"
-                  style={{
-                    width: `${comp.percentage}%`,
-                    backgroundColor: ANCESTRY_COLORS[comp.category] || '#888',
-                  }}
-                />
-              </div>
+          <div key={comp.population}>
+            <div className="flex justify-between items-center mb-1">
+              <span className="text-sm text-gray-700">{comp.displayName}</span>
+              <span className="text-sm font-medium text-gray-900">
+                {comp.percentage.toFixed(1)}%
+              </span>
+            </div>
+            <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+              <div
+                className="h-full rounded-full transition-all duration-500"
+                style={{
+                  width: `${comp.percentage}%`,
+                  backgroundColor: ANCESTRY_COLORS[comp.category] || '#94a3b8',
+                }}
+              />
             </div>
           </div>
         ))}
       </div>
 
       {copyLevel <= 5 && (
-        <p className={`mt-4 text-sm ${subtextClass}`}>
+        <p className="mt-4 text-xs text-gray-400">
           Your DNA tells a story of where your ancestors traveled over thousands
           of years.
         </p>
@@ -285,54 +261,41 @@ function TraitsSection({
   copyLevel,
   onNavigateToChromosome,
 }: TraitsSectionProps): JSX.Element {
-  const cardClass = 'bg-white border-gray-200 shadow-sm';
-  const textClass = 'text-gray-900';
-  const subtextClass = 'text-gray-600';
-
-  const sectionTitle =
-    copyLevel <= 5 ? 'What Makes You, You' : 'Trait Associations';
-
-  // Trait icons mapping
-  const traitIcons: Record<string, string> = {
-    eye_color: '👁️',
-    caffeine: '☕',
-    cilantro: '🌿',
-    bitter_taste: '😖',
-    lactose: '🥛',
-    muscle_type: '🏃',
-    earwax: '👂',
-  };
-
   return (
-    <div className={`p-6 rounded-lg border ${cardClass}`}>
-      <h2 className={`text-xl font-semibold mb-4 ${textClass}`}>
-        {sectionTitle}
+    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+      <h2 className="text-sm font-medium text-gray-900 mb-4">
+        {copyLevel <= 5 ? 'Your Traits' : 'Trait Associations'}
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 gap-2">
         {traits.map(trait => {
           const chromosome = trait.genes[0]?.chromosome || '1';
+          const color = TRAIT_COLORS[trait.id] || '#6b7280';
+
           return (
             <button
               key={trait.id}
               onClick={() => onNavigateToChromosome(chromosome)}
-              className="p-3 rounded-lg border text-left transition-all hover:scale-105 bg-gray-50 border-gray-200 hover:bg-gray-100"
+              className="flex items-center gap-3 p-2.5 rounded-md text-left transition-colors hover:bg-gray-50 group"
             >
-              <div className="text-2xl mb-1">
-                {traitIcons[trait.id] || '🧬'}
+              <div
+                className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                style={{ backgroundColor: color }}
+              />
+              <div className="min-w-0 flex-1">
+                <div className="text-sm text-gray-700 group-hover:text-gray-900 truncate">
+                  {trait.name}
+                </div>
+                <div className="text-xs text-gray-400">chr{chromosome}</div>
               </div>
-              <div className={`font-medium text-sm ${textClass}`}>
-                {trait.name}
-              </div>
-              <div className={`text-xs ${subtextClass}`}>chr{chromosome}</div>
             </button>
           );
         })}
       </div>
 
       {copyLevel <= 5 && (
-        <p className={`mt-4 text-sm ${subtextClass}`}>
-          Click any trait to explore the genes behind it in the genome browser.
+        <p className="mt-4 text-xs text-gray-400">
+          Click any trait to explore the genes behind it.
         </p>
       )}
     </div>
@@ -347,120 +310,111 @@ interface ChromosomeGalleryProps {
 function ChromosomeGallery({
   onSelectChromosome,
 }: ChromosomeGalleryProps): JSX.Element {
-  const cardClass = 'bg-white border-gray-200 shadow-sm';
-  const textClass = 'text-gray-900';
-  const subtextClass = 'text-gray-600';
-
   // Get max length for scaling
   const maxLength = Math.max(...Object.values(CHROMOSOME_LENGTHS));
 
-  // Chromosomes in order
+  // Chromosomes in order (exclude mitochondrial)
   const chromosomes = Object.keys(CHROMOSOME_LENGTHS).filter(c => c !== 'MT');
 
   return (
-    <div className={`p-6 rounded-lg border ${cardClass}`}>
-      <h2 className={`text-xl font-semibold mb-4 ${textClass}`}>
-        Explore Your Chromosomes
+    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+      <h2 className="text-sm font-medium text-gray-900 mb-4">
+        Chromosome Browser
       </h2>
 
-      <div className="grid grid-cols-6 md:grid-cols-12 gap-2">
+      <div className="flex items-end justify-between gap-1 h-16">
         {chromosomes.map(chr => {
           const length =
             CHROMOSOME_LENGTHS[chr as keyof typeof CHROMOSOME_LENGTHS];
           const heightPercent = (length / maxLength) * 100;
-          const minHeight = 30;
-          const maxHeight = 60;
+          const minHeight = 20;
+          const maxHeightPx = 56;
           const height =
-            minHeight + (heightPercent / 100) * (maxHeight - minHeight);
+            minHeight + (heightPercent / 100) * (maxHeightPx - minHeight);
 
           return (
             <button
               key={chr}
               onClick={() => onSelectChromosome(chr)}
-              className="flex flex-col items-center p-1 rounded transition-all hover:scale-110 hover:bg-gray-100"
+              className="flex-1 flex flex-col items-center group"
               title={`Chromosome ${chr} - ${(length / 1_000_000).toFixed(0)} Mb`}
             >
               <div
-                className="w-4 rounded-full bg-gradient-to-b from-blue-400 to-blue-600"
+                className="w-full max-w-[14px] rounded-sm bg-gradient-to-t from-blue-500 to-blue-400 group-hover:from-blue-600 group-hover:to-blue-500 transition-colors"
                 style={{ height: `${height}px` }}
               />
-              <span className={`text-xs mt-1 ${subtextClass}`}>{chr}</span>
+              <span className="text-[9px] text-gray-400 mt-1 group-hover:text-gray-600">
+                {chr}
+              </span>
             </button>
           );
         })}
       </div>
 
-      <p className={`mt-4 text-sm text-center ${subtextClass}`}>
+      <p className="mt-3 text-xs text-gray-400 text-center">
         Click any chromosome to explore it in detail
       </p>
     </div>
   );
 }
 
-// Fun Facts Section Component
-interface FunFactsSectionProps {
+// Genome Facts Section Component
+interface GenomeFactsSectionProps {
   copyLevel: number;
 }
 
-function FunFactsSection({ copyLevel }: FunFactsSectionProps): JSX.Element {
-  const cardClass = 'bg-white border-gray-200 shadow-sm';
-  const textClass = 'text-gray-900';
-  const subtextClass = 'text-gray-600';
-  const valueClass = 'text-blue-600';
-
+function GenomeFactsSection({
+  copyLevel,
+}: GenomeFactsSectionProps): JSX.Element {
   const facts = [
     {
-      value: '3 billion',
-      label:
-        copyLevel <= 5 ? 'Base pairs in your DNA' : 'Base pairs (nucleotides)',
-      detail: copyLevel <= 5 ? 'Would stretch 6 feet if uncoiled!' : null,
+      value: '3B',
+      label: copyLevel <= 5 ? 'Base pairs' : 'Nucleotides',
+      sublabel: copyLevel <= 5 ? '6 feet if uncoiled' : null,
     },
     {
       value: '99.9%',
-      label: copyLevel <= 5 ? 'Identical to all humans' : 'Sequence similarity',
-      detail: copyLevel <= 5 ? "We're all more alike than different" : null,
+      label: copyLevel <= 5 ? 'Shared with all humans' : 'Sequence similarity',
+      sublabel: null,
     },
     {
-      value: '~20,000',
-      label: copyLevel <= 5 ? 'Genes in your DNA' : 'Protein-coding genes',
-      detail: copyLevel <= 5 ? 'Fewer than a grape!' : null,
+      value: '~20K',
+      label: copyLevel <= 5 ? 'Protein-coding genes' : 'Gene count',
+      sublabel: copyLevel <= 5 ? 'Fewer than a grape' : null,
     },
     {
       value: '23',
-      label: copyLevel <= 5 ? 'Chromosome pairs' : 'Chromosome pairs (diploid)',
-      detail: copyLevel <= 5 ? 'Half from mom, half from dad' : null,
-    },
-    {
-      value: '50%',
-      label: 'From each parent',
-      detail: null,
+      label: 'Chromosome pairs',
+      sublabel: copyLevel <= 5 ? 'Half from each parent' : null,
     },
     {
       value: '~2%',
-      label: copyLevel <= 5 ? 'Neanderthal DNA (avg)' : 'Avg archaic admixture',
-      detail: copyLevel <= 5 ? 'Ancient relatives live on in us' : null,
+      label: copyLevel <= 5 ? 'Neanderthal DNA' : 'Archaic admixture',
+      sublabel: null,
+    },
+    {
+      value: '8%',
+      label: copyLevel <= 5 ? 'Viral DNA' : 'Endogenous retroviruses',
+      sublabel: copyLevel <= 5 ? 'Ancient viral remnants' : null,
     },
   ];
 
-  const sectionTitle =
-    copyLevel <= 5 ? 'Your Genome by Numbers' : 'Genomic Statistics';
-
   return (
-    <div className={`p-6 rounded-lg border ${cardClass}`}>
-      <h2 className={`text-xl font-semibold mb-4 ${textClass}`}>
-        {sectionTitle}
+    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+      <h2 className="text-sm font-medium text-gray-900 mb-4">
+        {copyLevel <= 5 ? 'Genome by Numbers' : 'Genomic Statistics'}
       </h2>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
         {facts.map((fact, i) => (
           <div key={i} className="text-center">
-            <div className={`text-2xl font-bold ${valueClass}`}>
+            <div className="text-lg font-semibold text-gray-900">
               {fact.value}
             </div>
-            <div className={`text-sm ${subtextClass}`}>{fact.label}</div>
-            {fact.detail && (
-              <div className={`text-xs mt-1 italic ${subtextClass}`}>
-                {fact.detail}
+            <div className="text-xs text-gray-500">{fact.label}</div>
+            {fact.sublabel && (
+              <div className="text-[10px] text-gray-400 mt-0.5">
+                {fact.sublabel}
               </div>
             )}
           </div>
