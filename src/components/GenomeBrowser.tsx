@@ -1118,8 +1118,9 @@ export function GenomeBrowser({
                     {width > 40 && (
                       <text
                         x={x + width / 2}
-                        y={23}
+                        y={27}
                         textAnchor="middle"
+                        dominantBaseline="middle"
                         fontSize={Math.min(7, width / 7)}
                         fill="white"
                         fontWeight={500}
