@@ -79,6 +79,11 @@ export function GenomeBrowser({
     position: { x: number; y: number };
   } | null>(null);
 
+  // Track hovered gene symbol for visual linking between tracks
+  const [hoveredGeneSymbol, setHoveredGeneSymbol] = useState<string | null>(
+    null
+  );
+
   const activeChromosome = useActiveChromosome();
   const zoomState = useZoomState();
   const setChromosomeZoom = useAppStore(state => state.setChromosomeZoom);
@@ -842,6 +847,11 @@ export function GenomeBrowser({
               visibleSNPs.map(snp => {
                 const x = scale.scale(snp.position);
                 const isHovered = snpTooltip?.snp === snp;
+                // Highlight if this SNP's gene matches the hovered gene (from gene track)
+                const isLinked =
+                  !isHovered &&
+                  hoveredGeneSymbol &&
+                  snp.gene === hoveredGeneSymbol;
 
                 return (
                   <g
@@ -852,6 +862,7 @@ export function GenomeBrowser({
                         snp,
                         position: { x: e.clientX, y: e.clientY },
                       });
+                      if (snp.gene) setHoveredGeneSymbol(snp.gene);
                     }}
                     onMouseMove={e => {
                       setSnpTooltip({
@@ -859,16 +870,22 @@ export function GenomeBrowser({
                         position: { x: e.clientX, y: e.clientY },
                       });
                     }}
-                    onMouseLeave={() => setSnpTooltip(null)}
+                    onMouseLeave={() => {
+                      setSnpTooltip(null);
+                      setHoveredGeneSymbol(null);
+                    }}
                     onClick={() => selectVariant(snp.rsid)}
                   >
                     {/* SNP marker - diamond shape */}
                     <path
                       d={`M${x} 18 L${x + 7} 27 L${x} 36 L${x - 7} 27 Z`}
                       fill={SNP_COLORS[snp.category]}
-                      stroke={isHovered ? '#000' : 'white'}
-                      strokeWidth={isHovered ? 1.5 : 0.5}
-                      opacity={isHovered ? 1 : 0.9}
+                      stroke={
+                        isHovered ? '#000' : isLinked ? '#3b82f6' : 'white'
+                      }
+                      strokeWidth={isHovered ? 1.5 : isLinked ? 2 : 0.5}
+                      opacity={isHovered || isLinked ? 1 : 0.9}
+                      className={isLinked ? 'animate-pulse' : ''}
                     />
                     {/* Risk allele indicator */}
                     {snp.hasRiskAllele && (
@@ -945,6 +962,8 @@ export function GenomeBrowser({
                   gene.nickname,
                   viewMode
                 );
+                // Highlight if this gene matches the hovered SNP's gene
+                const isLinkedToSnp = snpTooltip?.snp.gene === gene.symbol;
 
                 return (
                   <g
@@ -955,6 +974,7 @@ export function GenomeBrowser({
                         x: e.clientX,
                         y: e.clientY,
                       });
+                      setHoveredGeneSymbol(gene.symbol);
                     }}
                     onMouseMove={e => {
                       setHoveredGene(gene.id, {
@@ -962,7 +982,10 @@ export function GenomeBrowser({
                         y: e.clientY,
                       });
                     }}
-                    onMouseLeave={() => setHoveredGene(null)}
+                    onMouseLeave={() => {
+                      setHoveredGene(null);
+                      setHoveredGeneSymbol(null);
+                    }}
                     onClick={() => selectGene(gene.id)}
                   >
                     <rect
@@ -972,8 +995,14 @@ export function GenomeBrowser({
                       height={20}
                       rx={3}
                       fill={gene.color || '#3b82f6'}
-                      opacity={0.85}
-                      className="hover:opacity-100 transition-opacity"
+                      opacity={isLinkedToSnp ? 1 : 0.85}
+                      stroke={isLinkedToSnp ? '#ef4444' : 'none'}
+                      strokeWidth={isLinkedToSnp ? 2 : 0}
+                      className={
+                        isLinkedToSnp
+                          ? 'animate-pulse'
+                          : 'hover:opacity-100 transition-opacity'
+                      }
                     />
                     {/* Strand arrow */}
                     {width > 20 && (
