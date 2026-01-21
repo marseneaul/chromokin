@@ -284,7 +284,19 @@ function getFeatureTypeLabel(type: string): string {
     numt: 'Mitochondrial Ghost',
     har: 'Human Accelerated Region',
     neanderthal: 'Neanderthal DNA',
+    denisovan: 'Denisovan DNA',
     gene_desert: 'Gene Desert',
+    fusion: 'Fusion Site',
+    inversion: 'Inversion',
+    deletion: 'Deletion',
+    duplication: 'Duplication',
   };
-  return labels[type] || type;
+  // Fallback: capitalize and replace underscores with spaces
+  return (
+    labels[type] ||
+    type
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
+  );
 }
