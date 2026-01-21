@@ -1125,7 +1125,7 @@ export function GenomeBrowser({
 
             {/* Feature type mini-legend */}
             {visibleFeatures.length > 0 && (
-              <g transform={`translate(${effectiveWidth - 350}, 38)`}>
+              <g transform={`translate(${effectiveWidth - 420}, 52)`}>
                 {[
                   { type: 'herv', label: 'Virus', color: '#dc2626' },
                   { type: 'line', label: 'LINEs', color: '#2563eb' },
@@ -1135,17 +1135,17 @@ export function GenomeBrowser({
                   { type: 'neanderthal', label: 'Neand.', color: '#8b5cf6' },
                   { type: 'gene_desert', label: 'Desert', color: '#fbbf24' },
                 ].map((item, i) => (
-                  <g key={item.type} transform={`translate(${i * 50}, 0)`}>
+                  <g key={item.type} transform={`translate(${i * 60}, 0)`}>
                     <rect
                       x={0}
                       y={0}
-                      width={6}
-                      height={6}
-                      rx={1}
+                      width={10}
+                      height={10}
+                      rx={2}
                       fill={item.color}
                       opacity={0.8}
                     />
-                    <text x={8} y={5} fontSize={6} fill="#888">
+                    <text x={13} y={8} fontSize={9} fill="#888">
                       {item.label}
                     </text>
                   </g>

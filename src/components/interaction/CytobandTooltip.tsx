@@ -114,7 +114,7 @@ export function CytobandTooltip({
                 : `Band ${annotation.bandName}`}
             </h4>
             <p className={`text-xs ${subtextClass}`}>
-              Chr{annotation.chromosome} {annotation.armInfo.description}
+              chr{annotation.chromosome} {annotation.armInfo.description}
             </p>
           </div>
         </div>
