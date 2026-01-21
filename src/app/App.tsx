@@ -96,7 +96,7 @@ const generateChromosomeData = () => {
         'Helps nerves and organs wire up correctly, especially in the gut and kidneys.',
     },
     '11': {
-      displayName: 'Metabolic Manager',
+      displayName: 'The Metabolic Manager',
       description:
         'Holds insulin and major hemoglobin genes, key for blood sugar and oxygen transport.',
     },
@@ -156,7 +156,7 @@ const generateChromosomeData = () => {
         'Important in early development of the heart, immune system, and parts of the face.',
     },
     X: {
-      displayName: 'Double Trouble: Female Sex Chromosome',
+      displayName: 'The Double Trouble: Female Sex Chromosome',
       description:
         'Carries genes for muscle strength, blood clotting, color vision, and brain development.',
     },

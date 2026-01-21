@@ -21,7 +21,7 @@ ChromoKin is a browser-only TypeScript genome browser for visualizing human chro
 ### State Management (Two Systems)
 
 1. **Zustand Store** (`src/state/appState.ts`): Primary React state for UI
-   - Manages view mode (play/explorer/pro), active chromosome, zoom states, side panel
+   - Manages view mode (play/pro), active chromosome, zoom states, side panel
    - Uses `subscribeWithSelector` middleware for selective subscriptions
    - Export individual selector hooks (e.g., `useActiveChromosome`, `useSidePanel`) to prevent unnecessary re-renders
 
@@ -39,7 +39,7 @@ ChromoKin is a browser-only TypeScript genome browser for visualizing human chro
 
 ### Core Types (`src/types/core.ts`)
 
-- `ViewMode`: 'play' | 'explorer' | 'pro' - three user experience levels
+- `ViewMode`: 'play' | 'pro' - two user experience levels
 - `CopyLevel`: 3-8 grade reading levels for kid-friendly content
 - `TrackSpec`: Configuration for visualization tracks (genes, variants, traits)
 - `CHROMOSOME_LENGTHS` / `CHROMOSOME_NAMES`: GRCh38 reference data

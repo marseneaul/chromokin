@@ -948,10 +948,15 @@ export function GenomeBrowser({
                     key={gene.id}
                     className="cursor-pointer"
                     onMouseEnter={e => {
-                      const rect = e.currentTarget.getBoundingClientRect();
                       setHoveredGene(gene.id, {
-                        x: rect.left + rect.width / 2,
-                        y: rect.top,
+                        x: e.clientX,
+                        y: e.clientY,
+                      });
+                    }}
+                    onMouseMove={e => {
+                      setHoveredGene(gene.id, {
+                        x: e.clientX,
+                        y: e.clientY,
                       });
                     }}
                     onMouseLeave={() => setHoveredGene(null)}
@@ -1041,10 +1046,15 @@ export function GenomeBrowser({
                     key={feature.id}
                     className="cursor-pointer"
                     onMouseEnter={e => {
-                      const rect = e.currentTarget.getBoundingClientRect();
                       setHoveredFeature(feature.id, {
-                        x: rect.left + rect.width / 2,
-                        y: rect.top,
+                        x: e.clientX,
+                        y: e.clientY,
+                      });
+                    }}
+                    onMouseMove={e => {
+                      setHoveredFeature(feature.id, {
+                        x: e.clientX,
+                        y: e.clientY,
                       });
                     }}
                     onMouseLeave={() => setHoveredFeature(null)}

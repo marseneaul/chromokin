@@ -41,6 +41,5 @@ export interface GenomeViewerState {
 
 export interface LegacyAppState {
   genomeViewer: GenomeViewerState;
-  theme: 'light' | 'dark';
   isLoading: boolean;
 }

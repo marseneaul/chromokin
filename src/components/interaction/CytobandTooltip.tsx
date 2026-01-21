@@ -69,17 +69,11 @@ export function CytobandTooltip({
     return null;
   }
 
-  const bgClass =
-    viewMode === 'play'
-      ? 'bg-gradient-to-br from-sky-50 to-white border-sky-200'
-      : viewMode === 'explorer'
-        ? 'bg-white border-gray-200'
-        : 'bg-gray-900 border-gray-700';
-
-  const textClass = viewMode === 'pro' ? 'text-white' : 'text-gray-900';
-  const subtextClass = viewMode === 'pro' ? 'text-gray-400' : 'text-gray-500';
-  const descClass = viewMode === 'pro' ? 'text-gray-300' : 'text-gray-600';
-  const hintClass = viewMode === 'pro' ? 'text-gray-500' : 'text-gray-400';
+  const bgClass = 'bg-white border-gray-200';
+  const textClass = 'text-gray-900';
+  const subtextClass = 'text-gray-500';
+  const descClass = 'text-gray-600';
+  const hintClass = 'text-gray-400';
 
   return (
     <div
@@ -163,22 +157,16 @@ function NotableBandSection({
   copyLevel,
   viewMode,
 }: NotableBandSectionProps): JSX.Element {
-  const descClass = viewMode === 'pro' ? 'text-gray-300' : 'text-gray-600';
-  const tagBgClass =
-    viewMode === 'pro'
-      ? 'bg-gray-700 text-gray-300'
-      : 'bg-blue-100 text-blue-700';
-  const geneBgClass =
-    viewMode === 'pro'
-      ? 'bg-gray-700 text-gray-300'
-      : 'bg-green-100 text-green-700';
+  const descClass = 'text-gray-600';
+  const tagBgClass = 'bg-blue-100 text-blue-700';
+  const geneBgClass = 'bg-green-100 text-green-700';
 
   const description = getContentForLevel(notable.shortDescription, copyLevel);
   const funFact =
     viewMode === 'play' ? getContentForLevel(notable.funFact, copyLevel) : null;
 
   return (
-    <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+    <div className="mt-2 pt-2 border-t border-gray-200">
       {/* Description */}
       <p className={`text-sm leading-snug ${descClass}`}>{description}</p>
 
@@ -208,9 +196,7 @@ function NotableBandSection({
             </span>
           ))}
           {notable.notableGenes.length > 3 && (
-            <span
-              className={`text-xs px-1.5 py-0.5 rounded ${viewMode === 'pro' ? 'text-gray-500' : 'text-gray-400'}`}
-            >
+            <span className="text-xs px-1.5 py-0.5 rounded text-gray-400">
               +{notable.notableGenes.length - 3}
             </span>
           )}

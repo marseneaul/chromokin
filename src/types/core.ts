@@ -1,10 +1,10 @@
 /**
  * Core types for ChromoKin genome browser
- * Kid-first design with three distinct modes
+ * Two modes: simplified Play and full Pro
  */
 
 // View modes for different user experiences
-export type ViewMode = 'play' | 'explorer' | 'pro';
+export type ViewMode = 'play' | 'pro';
 
 // Reading level for kid-friendly content (3-8 grade levels)
 export type CopyLevel = 3 | 4 | 5 | 6 | 7 | 8;
@@ -57,7 +57,6 @@ export interface ChromoKinConfig {
   tracks: TrackSpec[];
   dataSources: DataSources;
   copyLevel: CopyLevel;
-  theme: 'light' | 'dark' | 'auto';
   accessibility: {
     highContrast: boolean;
     reducedMotion: boolean;

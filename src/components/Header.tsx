@@ -1,5 +1,5 @@
 import React, { type JSX } from 'react';
-import { Menu, Dna, Sun, Play, Search, Settings } from 'lucide-react';
+import { Menu, Dna, Play, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useViewMode, useAppStore } from '@/state/appState';
 import { type ViewMode } from '@/types/core';
@@ -14,13 +14,11 @@ const viewModeIcons: Record<
   React.ComponentType<{ className?: string }>
 > = {
   play: Play,
-  explorer: Search,
   pro: Settings,
 };
 
 const viewModeLabels: Record<ViewMode, string> = {
   play: 'Play Mode',
-  explorer: 'Explorer Mode',
   pro: 'Pro Mode',
 };
 
@@ -34,7 +32,7 @@ export function Header({
   const ViewModeIcon = viewModeIcons[viewMode];
 
   const cycleViewMode = (): void => {
-    const modes: ViewMode[] = ['play', 'explorer', 'pro'];
+    const modes: ViewMode[] = ['play', 'pro'];
     const currentIndex = modes.indexOf(viewMode);
     const nextIndex = (currentIndex + 1) % modes.length;
     setViewMode(modes[nextIndex]);
@@ -69,11 +67,6 @@ export function Header({
         >
           <ViewModeIcon className="h-4 w-4" />
           <span className="hidden sm:inline">{viewModeLabels[viewMode]}</span>
-        </Button>
-
-        <Button variant="ghost" size="icon" className="hover:bg-accent">
-          <Sun className="h-5 w-5" />
-          <span className="sr-only">Toggle theme</span>
         </Button>
 
         <div className="text-sm text-muted-foreground hidden md:block">

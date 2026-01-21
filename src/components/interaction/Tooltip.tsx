@@ -42,14 +42,14 @@ export function Tooltip(): JSX.Element | null {
     if (position && (hoveredGeneId || hoveredTraitId || hoveredFeatureId)) {
       const timer = setTimeout(() => {
         setIsVisible(true);
-        // Adjust position to stay in viewport - always position ABOVE to avoid blocking clicks
+        // Adjust position to stay in viewport - position BELOW cursor to not block view
         const tooltipWidth = 280;
-        const tooltipHeight = 140;
+        const tooltipHeight = 160;
         const padding = 10;
-        const minDistanceAbove = 60; // Minimum distance above the element
+        const offsetBelow = 20; // Small offset below cursor
 
         let x = position.x - tooltipWidth / 2;
-        let y = position.y - tooltipHeight - minDistanceAbove;
+        let y = position.y + offsetBelow;
 
         // Keep within viewport horizontally
         if (x < padding) x = padding;
@@ -57,16 +57,14 @@ export function Tooltip(): JSX.Element | null {
           x = window.innerWidth - tooltipWidth - padding;
         }
 
-        // If would go off top, position to the side instead of below
-        if (y < padding) {
-          // Position to the right of the element
-          x = position.x + 20;
-          y = Math.max(padding, position.y - tooltipHeight / 2);
+        // If would go off bottom, position above cursor instead
+        if (y + tooltipHeight > window.innerHeight - padding) {
+          y = position.y - tooltipHeight - 15;
+        }
 
-          // If that goes off right edge, position to the left
-          if (x + tooltipWidth > window.innerWidth - padding) {
-            x = position.x - tooltipWidth - 20;
-          }
+        // If still off screen (top), clamp to top
+        if (y < padding) {
+          y = padding;
         }
 
         setAdjustedPosition({ x, y });
@@ -186,18 +184,7 @@ export function Tooltip(): JSX.Element | null {
         top: adjustedPosition.y,
       }}
     >
-      <div
-        className={`
-          max-w-[280px] rounded-lg shadow-lg border p-3
-          ${
-            viewMode === 'play'
-              ? 'bg-gradient-to-br from-sky-50 to-white border-sky-200'
-              : viewMode === 'explorer'
-                ? 'bg-white border-gray-200'
-                : 'bg-gray-900 border-gray-700 text-white'
-          }
-        `}
-      >
+      <div className="max-w-[280px] rounded-lg shadow-lg border p-3 bg-white border-gray-200">
         {/* Header */}
         <div className="flex items-start gap-2 mb-2">
           <div
@@ -205,41 +192,23 @@ export function Tooltip(): JSX.Element | null {
             style={{ backgroundColor: content.color }}
           />
           <div className="flex-1 min-w-0">
-            <h4
-              className={`font-semibold text-sm ${
-                viewMode === 'pro' ? 'text-white' : 'text-gray-900'
-              }`}
-            >
+            <h4 className="font-semibold text-sm text-gray-900">
               {content.title}
             </h4>
             {content.subtitle && (
-              <p
-                className={`text-xs ${
-                  viewMode === 'pro' ? 'text-gray-400' : 'text-gray-500'
-                }`}
-              >
-                {content.subtitle}
-              </p>
+              <p className="text-xs text-gray-500">{content.subtitle}</p>
             )}
           </div>
         </div>
 
         {/* Description */}
-        <p
-          className={`text-sm leading-snug ${
-            viewMode === 'pro' ? 'text-gray-300' : 'text-gray-600'
-          }`}
-        >
+        <p className="text-sm leading-snug text-gray-600">
           {content.description}
         </p>
 
         {/* Details (coordinates) */}
         {content.details && (
-          <p
-            className={`text-xs mt-2 font-mono ${
-              viewMode === 'pro' ? 'text-gray-500' : 'text-gray-400'
-            }`}
-          >
+          <p className="text-xs mt-2 font-mono text-gray-400">
             {content.details}
           </p>
         )}
@@ -250,29 +219,13 @@ export function Tooltip(): JSX.Element | null {
             {content.traits.slice(0, 3).map(trait => (
               <span
                 key={trait}
-                className={`
-                  text-xs px-2 py-0.5 rounded-full
-                  ${
-                    viewMode === 'pro'
-                      ? 'bg-gray-700 text-gray-300'
-                      : 'bg-green-100 text-green-700'
-                  }
-                `}
+                className="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700"
               >
                 {trait}
               </span>
             ))}
             {content.traits.length > 3 && (
-              <span
-                className={`
-                  text-xs px-2 py-0.5 rounded-full
-                  ${
-                    viewMode === 'pro'
-                      ? 'bg-gray-700 text-gray-400'
-                      : 'bg-gray-100 text-gray-500'
-                  }
-                `}
-              >
+              <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
                 +{content.traits.length - 3} more
               </span>
             )}
@@ -288,11 +241,7 @@ export function Tooltip(): JSX.Element | null {
 
         {/* Active indicator for genomic features */}
         {'isActive' in content && content.isActive && (
-          <p
-            className={`text-xs mt-1 font-medium ${
-              viewMode === 'pro' ? 'text-amber-400' : 'text-amber-600'
-            }`}
-          >
+          <p className="text-xs mt-1 font-medium text-amber-600">
             Still active in the genome!
           </p>
         )}
@@ -301,23 +250,13 @@ export function Tooltip(): JSX.Element | null {
         {'ageEstimate' in content &&
           content.ageEstimate &&
           viewMode !== 'play' && (
-            <p
-              className={`text-xs mt-1 ${
-                viewMode === 'pro' ? 'text-gray-500' : 'text-gray-400'
-              }`}
-            >
+            <p className="text-xs mt-1 text-gray-400">
               Age: {content.ageEstimate}
             </p>
           )}
 
         {/* Click hint */}
-        <p
-          className={`text-xs mt-2 ${
-            viewMode === 'pro' ? 'text-gray-500' : 'text-gray-400'
-          }`}
-        >
-          Click for details
-        </p>
+        <p className="text-xs mt-2 text-gray-400">Click for details</p>
       </div>
     </div>
   );

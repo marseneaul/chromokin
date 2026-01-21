@@ -69,15 +69,6 @@ export function getViewModeSettings(viewMode: ViewMode): ViewModeSettings {
         panelStyle: 'modal',
         tooltipLevel: 'simple',
       };
-    case 'explorer':
-      return {
-        useNicknames: false,
-        showCoordinates: true,
-        showVariantDetails: true,
-        animationsEnabled: true,
-        panelStyle: 'slideout',
-        tooltipLevel: 'standard',
-      };
     case 'pro':
       return {
         useNicknames: false,

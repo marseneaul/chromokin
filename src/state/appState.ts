@@ -74,7 +74,6 @@ const defaultConfig: ChromoKinConfig = {
   ],
   viewMode: 'play',
   copyLevel: 5,
-  theme: 'light',
   tracks: [
     {
       id: 'genes',

@@ -4,7 +4,7 @@
  */
 
 import { type JSX, useEffect, useMemo } from 'react';
-import { useAppStore, useViewMode, useCopyLevel } from '@/state/appState';
+import { useAppStore, useCopyLevel } from '@/state/appState';
 import { CHROMOSOME_LENGTHS } from '@/types/core';
 import { getAncestryComposition } from '@/data/ancestryLoader';
 import { getTraitsDatabase, getDatabaseMetadata } from '@/data/traitsLoader';
@@ -29,7 +29,6 @@ interface GenomeOverviewProps {
 export function GenomeOverview({
   onNavigateToChromosome,
 }: GenomeOverviewProps): JSX.Element {
-  const viewMode = useViewMode();
   const copyLevel = useCopyLevel();
   const loadTraits = useAppStore(state => state.loadTraits);
   const loadGenomicFeatures = useAppStore(state => state.loadGenomicFeatures);
@@ -103,7 +102,7 @@ export function GenomeOverview({
     return archaic?.percentage || 2.1; // Default for demo
   }, [composition]);
 
-  const bgClass = viewMode === 'pro' ? 'bg-gray-900' : 'bg-gray-50';
+  const bgClass = 'bg-gray-50';
 
   return (
     <div className={`h-full overflow-y-auto ${bgClass}`}>
@@ -112,33 +111,24 @@ export function GenomeOverview({
         <HeroSection
           stats={stats}
           neanderthalPercent={neanderthalPercent}
-          viewMode={viewMode}
           copyLevel={copyLevel}
         />
 
         {/* Ancestry Section */}
-        <AncestrySection
-          composition={composition}
-          viewMode={viewMode}
-          copyLevel={copyLevel}
-        />
+        <AncestrySection composition={composition} copyLevel={copyLevel} />
 
         {/* Traits Section */}
         <TraitsSection
           traits={featuredTraits}
-          viewMode={viewMode}
           copyLevel={copyLevel}
           onNavigateToChromosome={onNavigateToChromosome}
         />
 
         {/* Chromosome Gallery */}
-        <ChromosomeGallery
-          viewMode={viewMode}
-          onSelectChromosome={onNavigateToChromosome}
-        />
+        <ChromosomeGallery onSelectChromosome={onNavigateToChromosome} />
 
         {/* Fun Facts */}
-        <FunFactsSection viewMode={viewMode} copyLevel={copyLevel} />
+        <FunFactsSection copyLevel={copyLevel} />
       </div>
     </div>
   );
@@ -153,18 +143,16 @@ interface HeroSectionProps {
     archaicCount: number;
   };
   neanderthalPercent: number;
-  viewMode: string;
   copyLevel: number;
 }
 
 function HeroSection({
   stats,
   neanderthalPercent,
-  viewMode,
   copyLevel,
 }: HeroSectionProps): JSX.Element {
-  const textClass = viewMode === 'pro' ? 'text-white' : 'text-gray-900';
-  const subtextClass = viewMode === 'pro' ? 'text-gray-400' : 'text-gray-600';
+  const textClass = 'text-gray-900';
+  const subtextClass = 'text-gray-600';
 
   const heroTitle = copyLevel <= 5 ? 'Your Genome' : 'Genome Overview';
 
@@ -181,22 +169,18 @@ function HeroSection({
         <StatCard
           value={stats.totalGenes.toLocaleString()}
           label={copyLevel <= 5 ? 'Genes Mapped' : 'Annotated Genes'}
-          viewMode={viewMode}
         />
         <StatCard
           value={stats.totalTraits.toLocaleString()}
           label={copyLevel <= 5 ? 'Fun Traits' : 'Trait Associations'}
-          viewMode={viewMode}
         />
         <StatCard
           value={`${neanderthalPercent.toFixed(1)}%`}
           label={copyLevel <= 5 ? 'Ancient DNA' : 'Archaic Ancestry'}
-          viewMode={viewMode}
         />
         <StatCard
           value={stats.archaicCount.toLocaleString()}
           label={copyLevel <= 5 ? 'Special Regions' : 'Genomic Features'}
-          viewMode={viewMode}
         />
       </div>
     </div>
@@ -206,16 +190,12 @@ function HeroSection({
 interface StatCardProps {
   value: string;
   label: string;
-  viewMode: string;
 }
 
-function StatCard({ value, label, viewMode }: StatCardProps): JSX.Element {
-  const cardClass =
-    viewMode === 'pro'
-      ? 'bg-gray-800 border-gray-700'
-      : 'bg-white border-gray-200 shadow-sm';
-  const valueClass = viewMode === 'pro' ? 'text-blue-400' : 'text-blue-600';
-  const labelClass = viewMode === 'pro' ? 'text-gray-400' : 'text-gray-600';
+function StatCard({ value, label }: StatCardProps): JSX.Element {
+  const cardClass = 'bg-white border-gray-200 shadow-sm';
+  const valueClass = 'text-blue-600';
+  const labelClass = 'text-gray-600';
 
   return (
     <div className={`p-4 rounded-lg border ${cardClass}`}>
@@ -228,21 +208,16 @@ function StatCard({ value, label, viewMode }: StatCardProps): JSX.Element {
 // Ancestry Section Component
 interface AncestrySectionProps {
   composition: AncestryComposition[];
-  viewMode: string;
   copyLevel: number;
 }
 
 function AncestrySection({
   composition,
-  viewMode,
   copyLevel,
 }: AncestrySectionProps): JSX.Element {
-  const cardClass =
-    viewMode === 'pro'
-      ? 'bg-gray-800 border-gray-700'
-      : 'bg-white border-gray-200 shadow-sm';
-  const textClass = viewMode === 'pro' ? 'text-white' : 'text-gray-900';
-  const subtextClass = viewMode === 'pro' ? 'text-gray-400' : 'text-gray-600';
+  const cardClass = 'bg-white border-gray-200 shadow-sm';
+  const textClass = 'text-gray-900';
+  const subtextClass = 'text-gray-600';
 
   // Filter out archaic for the main display, sort by percentage
   const mainComposition = composition
@@ -274,7 +249,7 @@ function AncestrySection({
                   {comp.percentage.toFixed(1)}%
                 </span>
               </div>
-              <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-500"
                   style={{
@@ -301,23 +276,18 @@ function AncestrySection({
 // Traits Section Component
 interface TraitsSectionProps {
   traits: EnhancedTraitRecord[];
-  viewMode: string;
   copyLevel: number;
   onNavigateToChromosome: (chromosome: string) => void;
 }
 
 function TraitsSection({
   traits,
-  viewMode,
   copyLevel,
   onNavigateToChromosome,
 }: TraitsSectionProps): JSX.Element {
-  const cardClass =
-    viewMode === 'pro'
-      ? 'bg-gray-800 border-gray-700'
-      : 'bg-white border-gray-200 shadow-sm';
-  const textClass = viewMode === 'pro' ? 'text-white' : 'text-gray-900';
-  const subtextClass = viewMode === 'pro' ? 'text-gray-400' : 'text-gray-600';
+  const cardClass = 'bg-white border-gray-200 shadow-sm';
+  const textClass = 'text-gray-900';
+  const subtextClass = 'text-gray-600';
 
   const sectionTitle =
     copyLevel <= 5 ? 'What Makes You, You' : 'Trait Associations';
@@ -346,11 +316,7 @@ function TraitsSection({
             <button
               key={trait.id}
               onClick={() => onNavigateToChromosome(chromosome)}
-              className={`p-3 rounded-lg border text-left transition-all hover:scale-105 ${
-                viewMode === 'pro'
-                  ? 'bg-gray-700 border-gray-600 hover:bg-gray-600'
-                  : 'bg-gray-50 border-gray-200 hover:bg-gray-100'
-              }`}
+              className="p-3 rounded-lg border text-left transition-all hover:scale-105 bg-gray-50 border-gray-200 hover:bg-gray-100"
             >
               <div className="text-2xl mb-1">
                 {traitIcons[trait.id] || '🧬'}
@@ -375,20 +341,15 @@ function TraitsSection({
 
 // Chromosome Gallery Component
 interface ChromosomeGalleryProps {
-  viewMode: string;
   onSelectChromosome: (chromosome: string) => void;
 }
 
 function ChromosomeGallery({
-  viewMode,
   onSelectChromosome,
 }: ChromosomeGalleryProps): JSX.Element {
-  const cardClass =
-    viewMode === 'pro'
-      ? 'bg-gray-800 border-gray-700'
-      : 'bg-white border-gray-200 shadow-sm';
-  const textClass = viewMode === 'pro' ? 'text-white' : 'text-gray-900';
-  const subtextClass = viewMode === 'pro' ? 'text-gray-400' : 'text-gray-600';
+  const cardClass = 'bg-white border-gray-200 shadow-sm';
+  const textClass = 'text-gray-900';
+  const subtextClass = 'text-gray-600';
 
   // Get max length for scaling
   const maxLength = Math.max(...Object.values(CHROMOSOME_LENGTHS));
@@ -416,9 +377,7 @@ function ChromosomeGallery({
             <button
               key={chr}
               onClick={() => onSelectChromosome(chr)}
-              className={`flex flex-col items-center p-1 rounded transition-all hover:scale-110 ${
-                viewMode === 'pro' ? 'hover:bg-gray-700' : 'hover:bg-gray-100'
-              }`}
+              className="flex flex-col items-center p-1 rounded transition-all hover:scale-110 hover:bg-gray-100"
               title={`Chromosome ${chr} - ${(length / 1_000_000).toFixed(0)} Mb`}
             >
               <div
@@ -440,21 +399,14 @@ function ChromosomeGallery({
 
 // Fun Facts Section Component
 interface FunFactsSectionProps {
-  viewMode: string;
   copyLevel: number;
 }
 
-function FunFactsSection({
-  viewMode,
-  copyLevel,
-}: FunFactsSectionProps): JSX.Element {
-  const cardClass =
-    viewMode === 'pro'
-      ? 'bg-gray-800 border-gray-700'
-      : 'bg-white border-gray-200 shadow-sm';
-  const textClass = viewMode === 'pro' ? 'text-white' : 'text-gray-900';
-  const subtextClass = viewMode === 'pro' ? 'text-gray-400' : 'text-gray-600';
-  const valueClass = viewMode === 'pro' ? 'text-blue-400' : 'text-blue-600';
+function FunFactsSection({ copyLevel }: FunFactsSectionProps): JSX.Element {
+  const cardClass = 'bg-white border-gray-200 shadow-sm';
+  const textClass = 'text-gray-900';
+  const subtextClass = 'text-gray-600';
+  const valueClass = 'text-blue-600';
 
   const facts = [
     {

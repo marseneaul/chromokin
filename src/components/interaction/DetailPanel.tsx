@@ -409,7 +409,7 @@ function SlideoutContent({
 }: {
   content: NonNullable<ReturnType<typeof getContent>>;
   copyLevel: number;
-  viewMode: 'play' | 'explorer' | 'pro';
+  viewMode: 'play' | 'pro';
   onClose: () => void;
 }) {
   const isPro = viewMode === 'pro';
