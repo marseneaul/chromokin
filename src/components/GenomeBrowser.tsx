@@ -570,7 +570,7 @@ export function GenomeBrowser({
 
           {/* Ancestry Painting track */}
           <g transform="translate(0, 40)">
-            <text x={4} y={8} fontSize={7} fill="#888" fontWeight={500}>
+            <text x={4} y={7} fontSize={7} fill="#888" fontWeight={500}>
               Ancestry {dataIsPhased ? '(Phased)' : ''}
             </text>
 
@@ -778,7 +778,7 @@ export function GenomeBrowser({
               height={40}
               fill="#fef2f2"
             />
-            <text x={4} y={10} fontSize={8} fill="#888" fontWeight={500}>
+            <text x={4} y={7} fontSize={7} fill="#888" fontWeight={500}>
               Your Variants{' '}
               {visibleSNPs.length > 0 && `(${visibleSNPs.length})`}
             </text>
@@ -786,9 +786,9 @@ export function GenomeBrowser({
             {visibleSNPs.length === 0 ? (
               <text
                 x={effectiveWidth / 2}
-                y={24}
+                y={22}
                 textAnchor="middle"
-                fontSize={9}
+                fontSize={7}
                 fill="#bbb"
               >
                 {effectiveZoom.bpPerPx > 500000
@@ -875,16 +875,16 @@ export function GenomeBrowser({
 
           {/* Genes track */}
           <g transform="translate(0, 163)">
-            <text x={4} y={10} fontSize={8} fill="#888" fontWeight={500}>
+            <text x={4} y={7} fontSize={7} fill="#888" fontWeight={500}>
               Trait Genes
             </text>
 
             {visibleGenes.length === 0 ? (
               <text
                 x={effectiveWidth / 2}
-                y={30}
+                y={22}
                 textAnchor="middle"
-                fontSize={9}
+                fontSize={7}
                 fill="#bbb"
               >
                 {effectiveZoom.bpPerPx > 500000
@@ -968,7 +968,7 @@ export function GenomeBrowser({
               height={55}
               fill="#fef7ed"
             />
-            <text x={4} y={10} fontSize={8} fill="#888" fontWeight={500}>
+            <text x={4} y={7} fontSize={7} fill="#888" fontWeight={500}>
               Genomic Oddities{' '}
               {visibleFeatures.length > 0 && `(${visibleFeatures.length})`}
             </text>
@@ -976,9 +976,9 @@ export function GenomeBrowser({
             {visibleFeatures.length === 0 ? (
               <text
                 x={effectiveWidth / 2}
-                y={30}
+                y={22}
                 textAnchor="middle"
-                fontSize={9}
+                fontSize={7}
                 fill="#bbb"
               >
                 {effectiveZoom.bpPerPx > 500000
