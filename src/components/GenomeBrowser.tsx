@@ -32,6 +32,7 @@ import { getAncestrySegmentsInRange, isPhased } from '@/data/ancestryLoader';
 import { getGeneDisplayName } from '@/lib/content';
 import { Tooltip } from '@/components/interaction/Tooltip';
 import { DetailPanel } from '@/components/interaction/DetailPanel';
+import { CytobandTooltip } from '@/components/interaction/CytobandTooltip';
 import {
   CYTOBAND_COLORS,
   POPULATION_COLORS,
@@ -43,6 +44,7 @@ import type {
   AncestryPopulation,
   AnnotatedSNP,
   SNPCategory,
+  Cytoband,
 } from '@/types/genome';
 import { getAncestryComposition } from '@/data/ancestryLoader';
 import { getSNPsInRange } from '@/data/snpLoader';
@@ -71,10 +73,18 @@ export function GenomeBrowser({
     position: { x: number; y: number };
   } | null>(null);
 
+  // Cytoband tooltip state
+  const [cytobandTooltip, setCytobandTooltip] = useState<{
+    band: Cytoband;
+    position: { x: number; y: number };
+  } | null>(null);
+
   const activeChromosome = useActiveChromosome();
   const zoomState = useZoomState();
   const setChromosomeZoom = useAppStore(state => state.setChromosomeZoom);
+  const zoomToRange = useAppStore(state => state.zoomToRange);
   const globalBpPerPx = useAppStore(state => state.globalBpPerPx);
+  const copyLevel = useAppStore(state => state.copyLevel);
   const viewMode = useAppStore(state => state.viewMode);
   const setHoveredGene = useAppStore(state => state.setHoveredGene);
   const setHoveredFeature = useAppStore(state => state.setHoveredFeature);
@@ -541,6 +551,30 @@ export function GenomeBrowser({
                     fill={CYTOBAND_COLORS[band.stain]}
                     stroke={band.stain === 'acen' ? '#991b1b' : 'none'}
                     strokeWidth={band.stain === 'acen' ? 1 : 0}
+                    className="cursor-pointer hover:brightness-110 transition-all"
+                    onMouseEnter={e => {
+                      setCytobandTooltip({
+                        band,
+                        position: { x: e.clientX, y: e.clientY },
+                      });
+                    }}
+                    onMouseMove={e => {
+                      setCytobandTooltip({
+                        band,
+                        position: { x: e.clientX, y: e.clientY },
+                      });
+                    }}
+                    onMouseLeave={() => setCytobandTooltip(null)}
+                    onClick={() => {
+                      if (activeChromosome) {
+                        zoomToRange(
+                          activeChromosome,
+                          band.chromStart,
+                          band.chromEnd,
+                          effectiveWidth
+                        );
+                      }
+                    }}
                   />
                 );
               })}
@@ -1323,6 +1357,16 @@ export function GenomeBrowser({
             </div>
           </div>
         </div>
+      )}
+
+      {/* Cytoband Tooltip */}
+      {cytobandTooltip && (
+        <CytobandTooltip
+          band={cytobandTooltip.band}
+          position={cytobandTooltip.position}
+          copyLevel={copyLevel}
+          viewMode={viewMode}
+        />
       )}
     </div>
   );

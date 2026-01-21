@@ -1,0 +1,683 @@
+{
+  "version": "1.0.0",
+  "stainDescriptions": {
+    "gneg": {
+      "name": "Light Band",
+      "color": "#ffffff",
+      "description": {
+        "level3": "Light colored parts of the chromosome - lots of genes here!",
+        "level4": "Light bands that are rich in genes and GC content.",
+        "level5": "G-negative bands are gene-rich regions that don't stain dark with Giemsa dye.",
+        "level6": "Euchromatic regions with high GC content, gene density, and transcriptional activity.",
+        "level7": "G-negative bands represent euchromatin with elevated GC content (~45%) and gene density.",
+        "level8": "G-negative bands correlate with early-replicating, transcriptionally active euchromatin rich in Alu elements."
+      }
+    },
+    "gpos25": {
+      "name": "Light Gray Band",
+      "color": "#c0c0c0",
+      "description": {
+        "level3": "A slightly dark band on the chromosome.",
+        "level4": "A lightly stained band with moderate gene content.",
+        "level5": "Light gray bands with intermediate properties between light and dark bands.",
+        "level6": "Intermediate chromatin with moderate gene density and GC content.",
+        "level7": "G-positive 25% bands show light Giemsa staining with intermediate characteristics.",
+        "level8": "25% Giemsa-positive bands represent transitional chromatin states between euchromatin and heterochromatin."
+      }
+    },
+    "gpos50": {
+      "name": "Medium Gray Band",
+      "color": "#808080",
+      "description": {
+        "level3": "A medium-dark band on the chromosome.",
+        "level4": "Medium stained bands with fewer genes than light bands.",
+        "level5": "Medium gray bands that stain moderately with Giemsa dye.",
+        "level6": "Heterochromatic regions with moderate AT-richness and reduced gene density.",
+        "level7": "G-positive 50% bands show moderate Giemsa staining and intermediate chromatin condensation.",
+        "level8": "50% G-positive bands display intermediate characteristics with moderate LINE element enrichment."
+      }
+    },
+    "gpos75": {
+      "name": "Dark Gray Band",
+      "color": "#404040",
+      "description": {
+        "level3": "A dark band on the chromosome - fewer genes here.",
+        "level4": "Dark bands with AT-rich DNA and fewer genes.",
+        "level5": "Dark gray bands that are gene-poor and rich in repetitive DNA.",
+        "level6": "Heterochromatic regions with low gene density, high AT content, and late replication timing.",
+        "level7": "G-positive 75% bands are AT-rich heterochromatin with elevated LINE-1 density.",
+        "level8": "75% G-positive bands represent late-replicating heterochromatin enriched in LINE elements and depleted in genes."
+      }
+    },
+    "gpos100": {
+      "name": "Black Band",
+      "color": "#000000",
+      "description": {
+        "level3": "The darkest bands - mostly 'junk DNA' but some is important!",
+        "level4": "The darkest bands with very few genes and lots of repetitive DNA.",
+        "level5": "Heavily stained bands that are very gene-poor and heterochromatic.",
+        "level6": "Constitutive heterochromatin with highest AT content and latest replication timing.",
+        "level7": "G-positive 100% bands represent constitutive heterochromatin with minimal coding content.",
+        "level8": "100% G-positive bands are AT-rich, late-replicating heterochromatin with highest LINE-1 density and lowest gene expression."
+      }
+    },
+    "acen": {
+      "name": "Centromere",
+      "color": "#cc3333",
+      "description": {
+        "level3": "The middle part that holds the chromosome together when cells divide!",
+        "level4": "The centromere - where the chromosome gets pulled apart during cell division.",
+        "level5": "The centromere region containing repetitive alpha satellite DNA essential for chromosome segregation.",
+        "level6": "Centromeric heterochromatin with alpha satellite arrays providing the foundation for kinetochore assembly.",
+        "level7": "Centromeric regions contain higher-order alpha satellite repeats that establish CENP-A chromatin domains.",
+        "level8": "Centromeric alpha satellite arrays (171bp monomers in HOR structure) recruit CENP-A nucleosomes for kinetochore function."
+      }
+    },
+    "gvar": {
+      "name": "Variable Region",
+      "color": "#dcdcdc",
+      "description": {
+        "level3": "A part of the chromosome that can be different sizes in different people!",
+        "level4": "Variable regions that differ in size between individuals - harmless variations.",
+        "level5": "Heterochromatic regions that show copy number variation between individuals.",
+        "level6": "Variable heterochromatin regions (e.g., 1qh, 9qh, 16qh) with polymorphic satellite DNA.",
+        "level7": "Heteromorphic regions with variable satellite III and beta satellite content between individuals.",
+        "level8": "Polymorphic heterochromatic variants contain variable tandem repeats considered benign structural variants."
+      }
+    },
+    "stalk": {
+      "name": "Stalk Region",
+      "color": "#708090",
+      "description": {
+        "level3": "The skinny part connecting the short arm to the chromosome body.",
+        "level4": "Stalk regions on acrocentric chromosomes (13, 14, 15, 21, 22) that contain ribosome genes.",
+        "level5": "Stalk regions containing ribosomal RNA genes (rDNA) found on acrocentric chromosomes.",
+        "level6": "Secondary constrictions containing rDNA arrays encoding 18S, 5.8S, and 28S ribosomal RNA.",
+        "level7": "Nucleolar organizer regions (NORs) containing ~400 copies of the 45kb rDNA repeat unit.",
+        "level8": "NOR stalks contain tandem rDNA repeats transcribed by RNA Pol I, forming nucleoli during interphase."
+      }
+    }
+  },
+  "notableBands": {
+    "1p36": {
+      "name": "1p36 Deletion Syndrome Region",
+      "chromosome": "1",
+      "bandPattern": "1p36",
+      "shortDescription": {
+        "level3": "Losing a piece here can cause learning problems and health issues.",
+        "level4": "A region where deletions cause 1p36 deletion syndrome - one of the most common deletion syndromes.",
+        "level5": "The 1p36 region - deletions here cause developmental delay, seizures, and distinctive facial features.",
+        "level6": "The 1p36 microdeletion syndrome region, the most common terminal deletion syndrome in humans.",
+        "level7": "1p36 deletions occur in ~1/5,000 births, causing intellectual disability, epilepsy, and cardiomyopathy.",
+        "level8": "1p36 deletions involve variable breakpoints; haploinsufficiency of SKI, GABRD, and other genes contributes to phenotype."
+      },
+      "associatedConditions": ["1p36 deletion syndrome"],
+      "notableGenes": ["SKI", "GABRD", "PRDM16", "TP73"],
+      "funFact": {
+        "level3": "This is the most common chromosome tip deletion that doctors find!",
+        "level4": "About 1 in 5,000 babies is born with a deletion in this region!",
+        "level5": "1p36 deletion syndrome is the most common subtelomeric deletion syndrome.",
+        "level6": "First described in 1981, now recognized as the most common terminal deletion syndrome.",
+        "level7": "Most 1p36 deletions are de novo (not inherited) and occur at varying breakpoints.",
+        "level8": "1p36 deletion phenotype variability correlates with deletion size and specific gene content."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 3
+    },
+    "2q13": {
+      "name": "Chromosome 2 Fusion Site",
+      "chromosome": "2",
+      "bandPattern": "2q13",
+      "shortDescription": {
+        "level3": "Where two ape chromosomes stuck together to make human chromosome 2!",
+        "level4": "The spot where two ancestral chromosomes fused - proof of human evolution!",
+        "level5": "The telomere-telomere fusion site showing where ancestral ape chromosomes merged.",
+        "level6": "Contains remnant telomeric sequences marking the fusion of ancestral chromosomes 2A and 2B.",
+        "level7": "Head-to-head telomeric repeats (TTAGGG)n mark the fusion point that created human chromosome 2.",
+        "level8": "The 2q13-14 fusion junction contains degenerate telomeric arrays diagnostic of ancestral chromosome fusion."
+      },
+      "associatedConditions": [],
+      "notableGenes": [],
+      "funFact": {
+        "level3": "This is why humans have 46 chromosomes but chimps have 48!",
+        "level4": "You can still see the old chromosome ends stuck in the middle!",
+        "level5": "The telomeric DNA 'fossils' here prove human and ape chromosomes share common ancestry.",
+        "level6": "The fusion occurred ~4-5 million years ago after human-chimp divergence.",
+        "level7": "This fusion site is one of the most compelling cytogenetic proofs of human evolution.",
+        "level8": "The 2q fusion site demonstrates that the human karyotype arose from a Robertsonian-like fusion event."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 3
+    },
+    "2q21": {
+      "name": "Ghost Centromere",
+      "chromosome": "2",
+      "bandPattern": "2q21",
+      "shortDescription": {
+        "level3": "An old chromosome center that doesn't work anymore!",
+        "level4": "A leftover centromere from the chromosome fusion - turned off but still visible.",
+        "level5": "The vestigial centromere from ancestral chromosome 2B, silenced after fusion.",
+        "level6": "Contains degraded alpha satellite sequences from the inactivated ancestral centromere.",
+        "level7": "Vestigial alphoid DNA lacking CENP-A deposition, representing the silenced 2B centromere.",
+        "level8": "The 2q21 vestigial centromere shows epigenetic silencing of formerly functional centromeric chromatin."
+      },
+      "associatedConditions": [],
+      "notableGenes": [],
+      "funFact": {
+        "level3": "When chromosomes merge, one centromere has to be turned off or the cell gets confused!",
+        "level4": "This 'ghost centromere' is evidence of the ancient chromosome fusion.",
+        "level5": "Having two active centromeres would tear the chromosome apart during cell division!",
+        "level6": "Dicentric chromosomes are unstable; one centromere must be inactivated.",
+        "level7": "Centromere inactivation was essential for the fusion chromosome to be stably inherited.",
+        "level8": "Rapid epigenetic centromere silencing enabled the fusion chromosome to achieve mitotic stability."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "4p16.3": {
+      "name": "Huntington's Disease Region",
+      "chromosome": "4",
+      "bandPattern": "4p16.3",
+      "shortDescription": {
+        "level3": "Where the Huntington's disease gene lives.",
+        "level4": "Contains the HTT gene - too many CAG repeats here cause Huntington's disease.",
+        "level5": "The HTT gene location - CAG repeat expansion causes Huntington's disease.",
+        "level6": "Contains HTT where CAG trinucleotide expansion (>36 repeats) causes Huntington's disease.",
+        "level7": "The HTT gene has CAG repeats encoding polyglutamine; expansion causes toxic aggregation.",
+        "level8": "HTT CAG expansion causes polyQ aggregation, transcriptional dysregulation, and selective striatal neurodegeneration."
+      },
+      "associatedConditions": [
+        "Huntington's disease",
+        "Wolf-Hirschhorn syndrome"
+      ],
+      "notableGenes": ["HTT", "WHSC1", "LETM1"],
+      "funFact": {
+        "level3": "The more repeats in this gene, the younger you get sick - it's very predictable!",
+        "level4": "Woody Guthrie, the famous folk singer, had Huntington's disease.",
+        "level5": "HD was one of the first genes mapped by linkage analysis before the genome was sequenced!",
+        "level6": "The HD gene was mapped in 1983 and cloned in 1993 after a 10-year search.",
+        "level7": "Huntington's shows anticipation - repeat length increases through paternal transmission.",
+        "level8": "HTT was mapped to 4p16.3 using restriction fragment length polymorphisms in Venezuelan families."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "5q35": {
+      "name": "Sotos Syndrome Region",
+      "chromosome": "5",
+      "bandPattern": "5q35",
+      "shortDescription": {
+        "level3": "Problems here can make kids grow really fast and really tall!",
+        "level4": "Contains the NSD1 gene - mutations cause Sotos syndrome (overgrowth).",
+        "level5": "The NSD1 gene location - haploinsufficiency causes Sotos syndrome with overgrowth.",
+        "level6": "NSD1 encodes a histone methyltransferase; loss causes Sotos syndrome with macrocephaly and overgrowth.",
+        "level7": "NSD1 haploinsufficiency via deletion or point mutation causes ~90% of Sotos syndrome cases.",
+        "level8": "NSD1 (H3K36 methyltransferase) loss disrupts epigenetic regulation causing accelerated growth and intellectual disability."
+      },
+      "associatedConditions": ["Sotos syndrome"],
+      "notableGenes": ["NSD1"],
+      "funFact": {
+        "level3": "Kids with this condition can be much taller than other kids their age!",
+        "level4": "Sotos syndrome causes 'overgrowth' - affected children are unusually tall with large heads.",
+        "level5": "NSD1 controls how fast you grow - losing one copy makes you grow too fast!",
+        "level6": "Japanese cases often have deletions; Western cases more often have point mutations.",
+        "level7": "The high deletion rate in Japan relates to flanking segmental duplications.",
+        "level8": "NAHR between flanking low-copy repeats causes the common ~2.2 Mb Sotos deletion in Japanese patients."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "6p21": {
+      "name": "HLA Complex",
+      "chromosome": "6",
+      "bandPattern": "6p21",
+      "shortDescription": {
+        "level3": "Your immune system ID card genes live here!",
+        "level4": "The HLA region - contains the genes that make you unique to your immune system.",
+        "level5": "The major histocompatibility complex (MHC/HLA) - the most polymorphic region in the human genome.",
+        "level6": "The HLA region spans ~4 Mb and contains genes for immune recognition and antigen presentation.",
+        "level7": "The MHC contains >200 genes including highly polymorphic HLA class I and II molecules.",
+        "level8": "The MHC region has the highest gene density in the genome with extensive LD and disease associations."
+      },
+      "associatedConditions": [
+        "Type 1 diabetes",
+        "Celiac disease",
+        "Rheumatoid arthritis",
+        "Multiple sclerosis"
+      ],
+      "notableGenes": ["HLA-A", "HLA-B", "HLA-C", "HLA-DRB1", "HLA-DQB1"],
+      "funFact": {
+        "level3": "These genes are why organ transplants need to be 'matched'!",
+        "level4": "The HLA genes are so diverse that almost everyone has a unique combination!",
+        "level5": "HLA genes determine transplant compatibility and autoimmune disease risk.",
+        "level6": "Some HLA alleles have been maintained by balancing selection for millions of years.",
+        "level7": "Trans-species polymorphism at HLA predates human-chimp divergence by millions of years.",
+        "level8": "HLA polymorphism is maintained by pathogen-driven balancing selection with >10,000 known alleles."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "7q31.2": {
+      "name": "Cystic Fibrosis Gene Region",
+      "chromosome": "7",
+      "bandPattern": "7q31.2",
+      "shortDescription": {
+        "level3": "Where the cystic fibrosis gene lives.",
+        "level4": "Contains CFTR - mutations here cause cystic fibrosis.",
+        "level5": "The CFTR gene - mutations cause cystic fibrosis, the most common lethal genetic disease in Caucasians.",
+        "level6": "CFTR encodes a chloride channel; loss-of-function mutations cause cystic fibrosis.",
+        "level7": "ΔF508 (deletion of phenylalanine 508) accounts for ~70% of CF alleles worldwide.",
+        "level8": "CFTR modulators (ivacaftor, lumacaftor) have transformed CF from fatal to treatable disease."
+      },
+      "associatedConditions": ["Cystic fibrosis", "CFTR-related disorders"],
+      "notableGenes": ["CFTR"],
+      "funFact": {
+        "level3": "About 1 in 25 white people carry a CF gene mutation but don't know it!",
+        "level4": "New medicines can now help many people with CF live much longer!",
+        "level5": "Carrying one CF mutation might have protected ancestors from cholera!",
+        "level6": "The heterozygote advantage theory suggests CF carriers resisted cholera or typhoid.",
+        "level7": "CFTR was cloned in 1989 using positional cloning - a landmark achievement.",
+        "level8": "CFTR cloning pioneered the positional cloning approach before the genome was sequenced."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "7q31": {
+      "name": "Language Gene Region",
+      "chromosome": "7",
+      "bandPattern": "7q31",
+      "shortDescription": {
+        "level3": "A gene here helps people learn to talk!",
+        "level4": "Contains FOXP2 - the 'language gene' important for speech and language.",
+        "level5": "FOXP2, the first gene linked to speech and language development.",
+        "level6": "FOXP2 encodes a transcription factor essential for language; mutations cause verbal dyspraxia.",
+        "level7": "FOXP2 mutations in the KE family revealed its role in speech motor control and language.",
+        "level8": "FOXP2 has two human-specific substitutions; Neanderthals shared these variants."
+      },
+      "associatedConditions": ["Developmental verbal dyspraxia"],
+      "notableGenes": ["FOXP2"],
+      "funFact": {
+        "level3": "This gene is sometimes called the 'talking gene'!",
+        "level4": "A family with mutations in this gene had trouble speaking and making mouth movements.",
+        "level5": "Neanderthals had the same FOXP2 version as modern humans!",
+        "level6": "FOXP2 mutations were discovered in the KE family, half of whom had severe speech problems.",
+        "level7": "FOXP2 underwent a selective sweep ~200,000 years ago in the human lineage.",
+        "level8": "FOXP2 regulates >300 genes in the brain including CNTNAP2 and SRPX2."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 3
+    },
+    "9p21": {
+      "name": "Heart Disease Risk Region",
+      "chromosome": "9",
+      "bandPattern": "9p21",
+      "shortDescription": {
+        "level3": "This spot affects your chances of heart disease!",
+        "level4": "A 'gene desert' that strongly affects heart disease risk - we're still figuring out how.",
+        "level5": "The 9p21 locus - the first and strongest GWAS hit for coronary artery disease.",
+        "level6": "Contains CDKN2A/B and ANRIL; variants affect cardiovascular and cancer risk through unclear mechanisms.",
+        "level7": "9p21 variants affect ANRIL lncRNA expression and cell proliferation, influencing atherosclerosis.",
+        "level8": "The 9p21 risk locus demonstrates that 'gene deserts' can harbor crucial regulatory elements."
+      },
+      "associatedConditions": [
+        "Coronary artery disease",
+        "Type 2 diabetes",
+        "Melanoma"
+      ],
+      "notableGenes": ["CDKN2A", "CDKN2B", "ANRIL"],
+      "funFact": {
+        "level3": "There are almost no regular genes here, but it still affects heart disease!",
+        "level4": "Scientists call this a 'gene desert' but it's not empty - there's hidden important stuff!",
+        "level5": "The 9p21 region shows that non-coding DNA can be just as important as genes!",
+        "level6": "~25% of people carry the high-risk 9p21 variant.",
+        "level7": "The 9p21 region was the first major GWAS discovery for coronary disease (2007).",
+        "level8": "9p21 GWAS discovery helped validate the common disease-common variant hypothesis."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "11p15": {
+      "name": "Beckwith-Wiedemann Region",
+      "chromosome": "11",
+      "bandPattern": "11p15",
+      "shortDescription": {
+        "level3": "An 'imprinted' region - it matters which parent it came from!",
+        "level4": "Contains genes that work differently depending on if they came from mom or dad.",
+        "level5": "A major imprinted region - genes here are expressed based on parental origin.",
+        "level6": "Contains imprinted genes (IGF2, H19, CDKN1C) with complex parent-of-origin effects.",
+        "level7": "Dysregulation causes Beckwith-Wiedemann (overgrowth) or Silver-Russell (undergrowth) syndromes.",
+        "level8": "The 11p15.5 imprinted cluster demonstrates reciprocal imprinting with growth effects."
+      },
+      "associatedConditions": [
+        "Beckwith-Wiedemann syndrome",
+        "Silver-Russell syndrome",
+        "Wilms tumor"
+      ],
+      "notableGenes": ["IGF2", "H19", "CDKN1C", "KCNQ1OT1"],
+      "funFact": {
+        "level3": "Some genes only work if they come from mom, others only from dad!",
+        "level4": "Problems here can make babies grow too big or too small!",
+        "level5": "This region shows why both mom and dad's contributions are necessary!",
+        "level6": "Parthenogenetic embryos fail because they lack paternal IGF2 expression.",
+        "level7": "11p15 imprinting involves differentially methylated regions established in the germline.",
+        "level8": "The 11p15 region contains two independently regulated imprinted domains (ICR1 and ICR2)."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "13q14": {
+      "name": "Retinoblastoma Gene Region",
+      "chromosome": "13",
+      "bandPattern": "13q14",
+      "shortDescription": {
+        "level3": "Where the first cancer gene was found!",
+        "level4": "Contains RB1 - the first tumor suppressor gene ever discovered.",
+        "level5": "The RB1 gene - its discovery founded our understanding of tumor suppressors.",
+        "level6": "RB1 loss causes retinoblastoma; its discovery established the two-hit hypothesis.",
+        "level7": "Knudson's two-hit model based on RB1 explained hereditary vs sporadic cancer.",
+        "level8": "RB1 cloning (1986) confirmed the two-hit hypothesis and defined tumor suppressor biology."
+      },
+      "associatedConditions": ["Retinoblastoma", "Osteosarcoma"],
+      "notableGenes": ["RB1"],
+      "funFact": {
+        "level3": "Scientists figured out how cancer genes work by studying this region!",
+        "level4": "The 'two-hit hypothesis' for cancer came from studying this gene!",
+        "level5": "RB1 was the first tumor suppressor gene cloned, revolutionizing cancer biology!",
+        "level6": "Alfred Knudson proposed his famous hypothesis in 1971; RB1 was cloned in 1986.",
+        "level7": "The Rb protein controls the G1/S cell cycle checkpoint.",
+        "level8": "RB1 encodes a pocket protein that sequesters E2F transcription factors until CDK phosphorylation."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "15q11-13": {
+      "name": "Prader-Willi/Angelman Region",
+      "chromosome": "15",
+      "bandPattern": "15q11",
+      "shortDescription": {
+        "level3": "Same missing piece causes different diseases depending on which parent it came from!",
+        "level4": "An imprinted region - the same deletion causes different syndromes based on parental origin.",
+        "level5": "Loss of paternal genes causes Prader-Willi; loss of maternal UBE3A causes Angelman syndrome.",
+        "level6": "The paradigm imprinted region demonstrating reciprocal parent-of-origin effects.",
+        "level7": "PWS results from loss of paternally expressed genes; AS from loss of maternal UBE3A.",
+        "level8": "Complex imprinting regulation involves PWS-IC, AS-IC, snoRNAs, and long non-coding RNAs."
+      },
+      "associatedConditions": ["Prader-Willi syndrome", "Angelman syndrome"],
+      "notableGenes": ["SNRPN", "UBE3A", "NDN", "MAGEL2"],
+      "funFact": {
+        "level3": "The same missing piece causes different problems depending on if it came from mom or dad!",
+        "level4": "This taught scientists that it matters WHICH parent you get certain genes from!",
+        "level5": "Prader-Willi causes constant hunger; Angelman causes happy demeanor with seizures.",
+        "level6": "These complementary syndromes proved genomic imprinting exists in humans.",
+        "level7": "~70% of cases are due to deletion; others from UPD or imprinting defects.",
+        "level8": "PWS/AS demonstrates how imprinting can be disease-relevant and that both parents contribute uniquely."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 3
+    },
+    "15q26": {
+      "name": "Eye Color Gene Region",
+      "chromosome": "15",
+      "bandPattern": "15q26",
+      "shortDescription": {
+        "level3": "This is where your eye color genes live!",
+        "level4": "Contains OCA2 and HERC2 - the main genes controlling eye color.",
+        "level5": "The OCA2/HERC2 region explains most human eye color variation.",
+        "level6": "HERC2 enhancer variants regulate OCA2 expression, determining blue vs brown eyes.",
+        "level7": "rs12913832 in HERC2 explains ~74% of eye color variation in Europeans.",
+        "level8": "The HERC2 intronic enhancer controls OCA2 transcription via differential chromatin looping."
+      },
+      "associatedConditions": ["Oculocutaneous albinism type 2"],
+      "notableGenes": ["OCA2", "HERC2"],
+      "funFact": {
+        "level3": "One tiny change in DNA can make your eyes blue instead of brown!",
+        "level4": "Blue eyes appeared only about 6,000-10,000 years ago near the Black Sea!",
+        "level5": "All blue-eyed people share a common ancestor from ~6,000-10,000 years ago!",
+        "level6": "The blue-eye variant arose once and spread through European populations.",
+        "level7": "Blue eyes may have been sexually selected in Northern European populations.",
+        "level8": "The OCA2/HERC2 blue-eye haplotype shows signatures of positive selection in Europeans."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 3
+    },
+    "16p13.3": {
+      "name": "Polycystic Kidney Disease Region",
+      "chromosome": "16",
+      "bandPattern": "16p13.3",
+      "shortDescription": {
+        "level3": "A gene here can cause kidney problems.",
+        "level4": "Contains PKD1 - mutations cause polycystic kidney disease.",
+        "level5": "PKD1 mutations cause autosomal dominant polycystic kidney disease.",
+        "level6": "PKD1 encodes polycystin-1; mutations cause ADPKD, the most common genetic kidney disease.",
+        "level7": "~85% of ADPKD is due to PKD1 mutations; cyst formation follows a two-hit model.",
+        "level8": "PKD1 has complex genomic structure with multiple pseudogenes complicating mutation detection."
+      },
+      "associatedConditions": ["Autosomal dominant polycystic kidney disease"],
+      "notableGenes": ["PKD1", "TSC2"],
+      "funFact": {
+        "level3": "This is one of the most common genetic diseases!",
+        "level4": "About 1 in 500-1,000 people have mutations in this gene!",
+        "level5": "PKD affects about 12 million people worldwide!",
+        "level6": "PKD1 and TSC2 are adjacent; contiguous gene deletion causes a severe combined phenotype.",
+        "level7": "ADPKD is the 4th most common cause of kidney failure requiring dialysis.",
+        "level8": "Tolvaptan (vasopressin receptor antagonist) can slow PKD progression."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "17p13.1": {
+      "name": "P53 Tumor Suppressor Region",
+      "chromosome": "17",
+      "bandPattern": "17p13.1",
+      "shortDescription": {
+        "level3": "The 'guardian of the genome' lives here!",
+        "level4": "Contains TP53 - the most important cancer-preventing gene.",
+        "level5": "TP53, the most frequently mutated gene in cancer, is located here.",
+        "level6": "TP53 encodes p53, the 'guardian of the genome' controlling cell cycle and apoptosis.",
+        "level7": "p53 is mutated in >50% of all cancers; Li-Fraumeni syndrome results from germline mutations.",
+        "level8": "p53 integrates stress signals via N-terminal phosphorylation to activate or repress target genes."
+      },
+      "associatedConditions": ["Li-Fraumeni syndrome", "Most cancers"],
+      "notableGenes": ["TP53"],
+      "funFact": {
+        "level3": "This gene is called the 'guardian of the genome' because it protects against cancer!",
+        "level4": "More than half of all cancers have problems with this gene!",
+        "level5": "P53 was voted 'Molecule of the Year' in 1993!",
+        "level6": "Elephants have 20 copies of TP53, which may explain their low cancer rate.",
+        "level7": "p53 was initially thought to be an oncogene before being recognized as a tumor suppressor.",
+        "level8": "The discovery that wild-type p53 is a tumor suppressor revolutionized cancer biology."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "17q21": {
+      "name": "BRCA1 Region",
+      "chromosome": "17",
+      "bandPattern": "17q21",
+      "shortDescription": {
+        "level3": "An important gene for preventing breast cancer lives here.",
+        "level4": "Contains BRCA1 - mutations greatly increase breast and ovarian cancer risk.",
+        "level5": "BRCA1, a major hereditary breast/ovarian cancer gene, is located here.",
+        "level6": "BRCA1 is a tumor suppressor essential for DNA repair; mutations confer 70% lifetime breast cancer risk.",
+        "level7": "BRCA1 participates in homologous recombination; deficiency enables PARP inhibitor therapy.",
+        "level8": "BRCA1 recruits to DSBs via ABRAXAS complex, promoting end resection and RAD51 loading."
+      },
+      "associatedConditions": ["Hereditary breast and ovarian cancer"],
+      "notableGenes": ["BRCA1"],
+      "funFact": {
+        "level3": "Angelina Jolie has a BRCA1 mutation and told everyone to raise awareness!",
+        "level4": "Knowing about BRCA1 mutations lets people take action to prevent cancer!",
+        "level5": "About 1 in 400 people carry a BRCA1 mutation.",
+        "level6": "Founder mutations are common in Ashkenazi Jewish (1 in 40) and Icelandic populations.",
+        "level7": "BRCA1 was cloned in 1994 after intense competition between research groups.",
+        "level8": "BRCA1 patenting led to the landmark Supreme Court case Association for Molecular Pathology v. Myriad."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "21q22": {
+      "name": "Down Syndrome Critical Region",
+      "chromosome": "21",
+      "bandPattern": "21q22",
+      "shortDescription": {
+        "level3": "Having three copies of this region causes Down syndrome.",
+        "level4": "The Down syndrome critical region - extra copies cause the characteristic features.",
+        "level5": "The DSCR contains genes whose triplication contributes to Down syndrome phenotypes.",
+        "level6": "Gene triplication in this region causes intellectual disability and congenital heart defects.",
+        "level7": "DSCR1 and DYRK1A are key dosage-sensitive genes contributing to the DS phenotype.",
+        "level8": "The DSCR hypothesis suggests a subset of 21q genes drive most DS phenotypes."
+      },
+      "associatedConditions": ["Down syndrome"],
+      "notableGenes": ["DSCR1", "DYRK1A", "APP", "SOD1"],
+      "funFact": {
+        "level3": "Down syndrome happens when there are 3 copies of chromosome 21 instead of 2!",
+        "level4": "Down syndrome is the most common chromosomal condition in humans.",
+        "level5": "About 1 in 700 babies is born with Down syndrome.",
+        "level6": "APP (Amyloid Precursor Protein) triplication causes early Alzheimer's in DS individuals.",
+        "level7": "John Langdon Down described the syndrome in 1866; Jérôme Lejeune identified trisomy 21 in 1959.",
+        "level8": "Mouse models with segmental trisomy have helped identify critical genes for specific DS phenotypes."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 3
+    },
+    "22q11.2": {
+      "name": "DiGeorge Syndrome Region",
+      "chromosome": "22",
+      "bandPattern": "22q11.2",
+      "shortDescription": {
+        "level3": "Losing a piece here affects the heart, face, and immune system.",
+        "level4": "The DiGeorge/velocardiofacial syndrome region - one of the most common microdeletions.",
+        "level5": "22q11.2 deletion causes DiGeorge syndrome with heart defects, immune problems, and cleft palate.",
+        "level6": "The 22q11.2 deletion syndrome (incidence ~1/4,000) is caused by NAHR between flanking LCRs.",
+        "level7": "TBX1 haploinsufficiency causes most cardiac and pharyngeal features.",
+        "level8": "The 3 Mb deletion contains ~40 genes; variable expressivity relates to modifier genes and stochastic effects."
+      },
+      "associatedConditions": [
+        "DiGeorge syndrome",
+        "Velocardiofacial syndrome",
+        "22q11.2 duplication syndrome"
+      ],
+      "notableGenes": ["TBX1", "COMT", "PRODH"],
+      "funFact": {
+        "level3": "This deletion is also linked to higher risk of mental health problems.",
+        "level4": "About 1 in 4,000 people is born with this deletion!",
+        "level5": "22q11.2 deletion is the second most common chromosomal abnormality after Down syndrome!",
+        "level6": "~25% of 22q11.2 deletion carriers develop schizophrenia.",
+        "level7": "COMT haploinsufficiency may contribute to psychiatric manifestations.",
+        "level8": "The 22q11.2 region is prone to NAHR due to flanking low-copy repeats (LCR22s)."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "Xp21.2": {
+      "name": "Duchenne Muscular Dystrophy Region",
+      "chromosome": "X",
+      "bandPattern": "Xp21.2",
+      "shortDescription": {
+        "level3": "The biggest gene in the human body lives here!",
+        "level4": "Contains DMD - the largest human gene, mutations cause muscular dystrophy.",
+        "level5": "The DMD gene spans 2.2 Mb - when mutated, muscles progressively weaken.",
+        "level6": "DMD (dystrophin) is the largest human gene at 2.2 Mb with 79 exons.",
+        "level7": "Frame-shifting mutations cause Duchenne MD; in-frame deletions cause milder Becker MD.",
+        "level8": "Dystrophin links F-actin to the dystroglycan complex; its absence causes sarcolemmal instability."
+      },
+      "associatedConditions": [
+        "Duchenne muscular dystrophy",
+        "Becker muscular dystrophy"
+      ],
+      "notableGenes": ["DMD"],
+      "funFact": {
+        "level3": "This gene is so big it takes 16 hours just to read it!",
+        "level4": "Because it's on the X chromosome, mostly boys are affected.",
+        "level5": "DMD is so large that it takes 16 hours to transcribe from DNA to RNA!",
+        "level6": "The gene's huge size makes it a large target for mutations - 1/3 are de novo.",
+        "level7": "Exon-skipping therapies can restore the reading frame for specific mutations.",
+        "level8": "Gene therapy using micro-dystrophin constructs is in clinical trials."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "Xq27.3": {
+      "name": "Fragile X Region",
+      "chromosome": "X",
+      "bandPattern": "Xq27.3",
+      "shortDescription": {
+        "level3": "Too many DNA repeats here can cause learning problems.",
+        "level4": "Contains FMR1 - repeat expansion causes Fragile X syndrome.",
+        "level5": "FMR1 CGG repeat expansion causes Fragile X, the most common inherited intellectual disability.",
+        "level6": "CGG expansion >200 repeats causes methylation and silencing of FMR1, causing Fragile X.",
+        "level7": "Full mutations cause loss of FMRP; premutations can cause FXTAS and ovarian insufficiency.",
+        "level8": "FMRP regulates mRNA transport and local synaptic translation via mGluR5 signaling."
+      },
+      "associatedConditions": [
+        "Fragile X syndrome",
+        "FXTAS",
+        "Premature ovarian insufficiency"
+      ],
+      "notableGenes": ["FMR1"],
+      "funFact": {
+        "level3": "The chromosome looks 'fragile' or broken at this spot under a microscope!",
+        "level4": "The gene got its name because the X chromosome looks fragile at that spot!",
+        "level5": "Premutation carriers (55-200 repeats) can develop different problems than full mutations!",
+        "level6": "~1 in 150 females and 1 in 450 males carry premutations.",
+        "level7": "The repeat expands through maternal transmission but rarely through paternal.",
+        "level8": "CGG repeat expansion involves replication slippage and MSH2-dependent instability."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    },
+    "Xq28": {
+      "name": "Color Vision Gene Region",
+      "chromosome": "X",
+      "bandPattern": "Xq28",
+      "shortDescription": {
+        "level3": "Your red and green color vision genes are here!",
+        "level4": "Contains the red and green color vision genes - rearrangements cause color blindness.",
+        "level5": "The OPN1LW and OPN1MW genes for red and green vision - unequal crossing over causes color blindness.",
+        "level6": "Tandemly arrayed red/green opsin genes are prone to NAHR causing color vision defects.",
+        "level7": "~8% of males have red-green color vision deficiency due to gene deletion or hybrid formation.",
+        "level8": "Opsin gene copy number and arrangement determines the specific color vision phenotype."
+      },
+      "associatedConditions": [
+        "Red-green color blindness",
+        "Blue cone monochromacy"
+      ],
+      "notableGenes": ["OPN1LW", "OPN1MW", "F8", "MECP2"],
+      "funFact": {
+        "level3": "About 1 in 12 boys is colorblind - and this is why!",
+        "level4": "Girls are rarely colorblind because they have two X chromosomes as backup!",
+        "level5": "Some women have FOUR types of color vision cones due to variations here!",
+        "level6": "Heterozygous females may have tetrachromatic vision with enhanced color discrimination.",
+        "level7": "Gene conversion between red and green opsins generates hybrid genes with altered spectral sensitivity.",
+        "level8": "Opsin gene cluster evolution demonstrates how tandem duplications create variation and disease."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 3
+    },
+    "Yp11.3": {
+      "name": "Sex Determining Region",
+      "chromosome": "Y",
+      "bandPattern": "Yp11.3",
+      "shortDescription": {
+        "level3": "The gene that makes boys into boys!",
+        "level4": "Contains SRY - the master switch that triggers male development.",
+        "level5": "SRY is the testis-determining factor - it initiates male development.",
+        "level6": "SRY encodes a transcription factor that triggers the male developmental cascade.",
+        "level7": "SRY activates SOX9 expression, which then maintains testis development.",
+        "level8": "SRY evolved from SOX3 through gene translocation and functional divergence ~166 MYA."
+      },
+      "associatedConditions": ["Swyer syndrome", "46,XX testicular DSD"],
+      "notableGenes": ["SRY"],
+      "funFact": {
+        "level3": "This tiny gene decides if someone becomes a boy or a girl!",
+        "level4": "Without this gene, everyone would develop as female by default!",
+        "level5": "SRY is only ~900 bp long but has a huge effect!",
+        "level6": "XX individuals with translocated SRY develop as males.",
+        "level7": "SRY acts as a genetic switch during week 7 of development.",
+        "level8": "The default mammalian developmental pathway is female; SRY actively overrides this."
+      },
+      "kidFriendly": true,
+      "minCopyLevel": 4
+    }
+  }
+}
