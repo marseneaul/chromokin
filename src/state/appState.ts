@@ -40,6 +40,7 @@ interface TraitInteractionState {
   selectedGeneId: string | null;
   selectedTraitId: string | null;
   selectedFeatureId: string | null;
+  selectedVariantId: string | null;
   detailPanelOpen: boolean;
 }
 
@@ -140,6 +141,7 @@ const defaultTraitInteraction: TraitInteractionState = {
   selectedGeneId: null,
   selectedTraitId: null,
   selectedFeatureId: null,
+  selectedVariantId: null,
   detailPanelOpen: false,
 };
 
@@ -210,6 +212,7 @@ interface AppStore extends AppState, TraitInteractionState {
   selectGene: (geneId: string | null) => void;
   selectTrait: (traitId: string | null) => void;
   selectFeature: (featureId: string | null) => void;
+  selectVariant: (variantId: string | null) => void;
   closeDetailPanel: () => void;
   clearInteractions: () => void;
 }
@@ -473,12 +476,23 @@ export const useAppStore = create<AppStore>()(
           'selectFeature'
         ),
 
+      selectVariant: (variantId: string | null) =>
+        set(
+          {
+            selectedVariantId: variantId,
+            detailPanelOpen: variantId !== null,
+          },
+          false,
+          'selectVariant'
+        ),
+
       closeDetailPanel: () =>
         set(
           {
             selectedGeneId: null,
             selectedTraitId: null,
             selectedFeatureId: null,
+            selectedVariantId: null,
             detailPanelOpen: false,
           },
           false,
@@ -495,6 +509,7 @@ export const useAppStore = create<AppStore>()(
             selectedGeneId: null,
             selectedTraitId: null,
             selectedFeatureId: null,
+            selectedVariantId: null,
             detailPanelOpen: false,
           },
           false,
@@ -585,6 +600,8 @@ export const useSelectedTraitId = () =>
   useAppStore(state => state.selectedTraitId);
 export const useSelectedFeatureId = () =>
   useAppStore(state => state.selectedFeatureId);
+export const useSelectedVariantId = () =>
+  useAppStore(state => state.selectedVariantId);
 export const useDetailPanelOpen = () =>
   useAppStore(state => state.detailPanelOpen);
 
@@ -601,6 +618,7 @@ export const useSetHoveredFeature = () =>
 export const useSelectGene = () => useAppStore(state => state.selectGene);
 export const useSelectTrait = () => useAppStore(state => state.selectTrait);
 export const useSelectFeature = () => useAppStore(state => state.selectFeature);
+export const useSelectVariant = () => useAppStore(state => state.selectVariant);
 export const useCloseDetailPanel = () =>
   useAppStore(state => state.closeDetailPanel);
 export const useClearInteractions = () =>

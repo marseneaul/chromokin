@@ -90,6 +90,7 @@ export function GenomeBrowser({
   const setHoveredFeature = useAppStore(state => state.setHoveredFeature);
   const selectGene = useAppStore(state => state.selectGene);
   const selectFeature = useAppStore(state => state.selectFeature);
+  const selectVariant = useAppStore(state => state.selectVariant);
   const traitsLoaded = useTraitsLoaded();
   const loadTraits = useLoadTraits();
   const genomicFeaturesLoaded = useGenomicFeaturesLoaded();
@@ -859,6 +860,7 @@ export function GenomeBrowser({
                       });
                     }}
                     onMouseLeave={() => setSnpTooltip(null)}
+                    onClick={() => selectVariant(snp.rsid)}
                   >
                     {/* SNP marker - diamond shape */}
                     <path
@@ -918,7 +920,8 @@ export function GenomeBrowser({
           {/* Genes track */}
           <g transform="translate(0, 220)">
             <text x={4} y={12} fontSize={10} fill="#888" fontWeight={500}>
-              Trait Genes
+              Trait Genes{' '}
+              {visibleGenes.length > 0 && `(${visibleGenes.length})`}
             </text>
 
             {visibleGenes.length === 0 ? (

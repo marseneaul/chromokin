@@ -23,12 +23,15 @@ import {
   useSelectedGeneId,
   useSelectedTraitId,
   useSelectedFeatureId,
+  useSelectedVariantId,
   useCloseDetailPanel,
   useCopyLevel,
   useViewMode,
   useTraitsDatabase,
   useGenomicFeaturesDatabase,
 } from '@/state/appState';
+import { getSNPByRsid } from '@/data/snpLoader';
+import type { AnnotatedSNP } from '@/types/genome';
 import {
   getContentForLevel,
   formatPosition,
@@ -44,6 +47,7 @@ export function DetailPanel(): JSX.Element | null {
   const selectedGeneId = useSelectedGeneId();
   const selectedTraitId = useSelectedTraitId();
   const selectedFeatureId = useSelectedFeatureId();
+  const selectedVariantId = useSelectedVariantId();
   const closePanel = useCloseDetailPanel();
   const copyLevel = useCopyLevel();
   const viewMode = useViewMode();
@@ -117,11 +121,25 @@ export function DetailPanel(): JSX.Element | null {
       };
     }
 
+    if (selectedVariantId) {
+      const variant = getSNPByRsid(selectedVariantId);
+      if (!variant) return null;
+
+      const displayName = variant.name || variant.rsid;
+
+      return {
+        type: 'variant' as const,
+        variant,
+        displayName,
+      };
+    }
+
     return null;
   }, [
     selectedGeneId,
     selectedTraitId,
     selectedFeatureId,
+    selectedVariantId,
     traitsDatabase,
     genomicFeaturesDatabase,
     viewMode,
@@ -327,6 +345,80 @@ function PlayModeContent({
             {feature.ageEstimate &&
               ` - approximately ${feature.ageEstimate} old`}
             .
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (content.type === 'variant') {
+    const { variant, displayName } = content;
+
+    return (
+      <div className="p-6">
+        <div className="flex justify-between items-start mb-4">
+          <div className="flex items-center gap-3">
+            <div
+              className="w-12 h-12 rounded-lg flex items-center justify-center"
+              style={{
+                backgroundColor: getVariantCategoryColor(variant.category),
+              }}
+            >
+              <Dna className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-gray-900">{displayName}</h2>
+              <p className="text-sm text-gray-500">{variant.rsid}</p>
+            </div>
+          </div>
+          <Button variant="ghost" size="sm" onClick={onClose}>
+            <X className="w-5 h-5" />
+          </Button>
+        </div>
+
+        {variant.traitAssociation && (
+          <p className="text-gray-700 text-lg leading-relaxed mb-6">
+            {variant.traitAssociation}
+          </p>
+        )}
+
+        {/* Your genotype */}
+        <div className="bg-blue-50 rounded-xl p-4 mb-4">
+          <h3 className="font-semibold text-blue-800 mb-2 flex items-center gap-2">
+            <Dna className="w-4 h-4" />
+            Your Genotype
+          </h3>
+          <p className="text-2xl font-mono font-bold text-blue-700">
+            {variant.genotype}
+          </p>
+          {variant.hasRiskAllele && (
+            <p className="text-sm text-blue-600 mt-1">
+              You carry the effect allele ({variant.riskAllele})
+            </p>
+          )}
+        </div>
+
+        {/* Fun fact */}
+        {variant.funFact && (
+          <div className="bg-amber-50 rounded-xl p-4 mb-4">
+            <h3 className="font-semibold text-amber-800 mb-2 flex items-center gap-2">
+              <Sparkles className="w-4 h-4" />
+              Fun Fact
+            </h3>
+            <p className="text-amber-700">{variant.funFact}</p>
+          </div>
+        )}
+
+        {/* Location info */}
+        <div className="bg-gray-50 rounded-xl p-4">
+          <h3 className="font-semibold text-gray-800 mb-2 flex items-center gap-2">
+            <Info className="w-4 h-4" />
+            Location
+          </h3>
+          <p className="text-gray-700">
+            Chromosome {variant.chromosome} at position{' '}
+            {variant.position.toLocaleString()}
+            {variant.gene && ` (in gene ${variant.gene})`}
           </p>
         </div>
       </div>
@@ -626,6 +718,136 @@ function SlideoutContent({
     );
   }
 
+  if (content.type === 'variant') {
+    const { variant, displayName } = content;
+
+    return (
+      <div className="h-full flex flex-col">
+        {/* Header */}
+        <div className="p-4 border-b flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div
+              className="w-8 h-8 rounded flex items-center justify-center"
+              style={{
+                backgroundColor: getVariantCategoryColor(variant.category),
+              }}
+            >
+              <Dna className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <h2 className={`font-semibold ${isPro ? 'font-mono' : ''}`}>
+                {isPro ? variant.rsid : displayName}
+              </h2>
+              {!isPro && variant.name && (
+                <p className="text-xs text-gray-500">{variant.rsid}</p>
+              )}
+            </div>
+          </div>
+          <Button variant="ghost" size="sm" onClick={onClose}>
+            <X className="w-4 h-4" />
+          </Button>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 overflow-auto p-4 space-y-4">
+          {/* Genotype */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-500 mb-1">
+              Your Genotype
+            </h3>
+            <p className="text-2xl font-mono font-bold text-blue-600">
+              {variant.genotype}
+            </p>
+            {variant.hasRiskAllele && (
+              <p className="text-xs text-gray-500 mt-1">
+                Carries effect allele ({variant.riskAllele})
+              </p>
+            )}
+          </div>
+
+          {/* Trait Association */}
+          {variant.traitAssociation && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-500 mb-1">
+                Association
+              </h3>
+              <p className={`text-sm ${isPro ? 'text-xs' : ''}`}>
+                {variant.traitAssociation}
+              </p>
+            </div>
+          )}
+
+          {/* Location */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-500 mb-1">Location</h3>
+            <p className={`text-sm ${isPro ? 'font-mono text-xs' : ''}`}>
+              chr{variant.chromosome}:{variant.position.toLocaleString()}
+            </p>
+            {variant.gene && (
+              <p className="text-xs text-gray-400 mt-1">Gene: {variant.gene}</p>
+            )}
+          </div>
+
+          {/* Population Frequency */}
+          {variant.globalFrequency !== undefined && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-500 mb-1">
+                Population Frequency
+              </h3>
+              <p className="text-sm">
+                {(variant.globalFrequency * 100).toFixed(1)}% globally
+                {variant.isRare && (
+                  <span className="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded">
+                    Rare
+                  </span>
+                )}
+              </p>
+            </div>
+          )}
+
+          {/* Fun Fact */}
+          {variant.funFact && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-500 mb-1">
+                Fun Fact
+              </h3>
+              <p className={`text-sm ${isPro ? 'text-xs' : ''}`}>
+                {variant.funFact}
+              </p>
+            </div>
+          )}
+
+          {/* External links (Pro mode) */}
+          {isPro && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-500 mb-2">
+                External Resources
+              </h3>
+              <div className="space-y-1">
+                <a
+                  href={`https://www.ncbi.nlm.nih.gov/snp/${variant.rsid}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-blue-600 hover:underline flex items-center gap-1"
+                >
+                  dbSNP <ExternalLink className="w-3 h-3" />
+                </a>
+                <a
+                  href={`https://www.snpedia.com/index.php/${variant.rsid}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-blue-600 hover:underline flex items-center gap-1"
+                >
+                  SNPedia <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   // Trait content for slideout
   const { trait, genes } = content;
 
@@ -763,7 +985,13 @@ type FeatureContent = {
   displayName: string;
 };
 
-type ContentType = GeneContent | TraitContent | FeatureContent;
+type VariantContent = {
+  type: 'variant';
+  variant: AnnotatedSNP;
+  displayName: string;
+};
+
+type ContentType = GeneContent | TraitContent | FeatureContent | VariantContent;
 
 function getContent(): ContentType | null {
   return null; // Type helper only
@@ -775,6 +1003,18 @@ function getCategoryColor(category: string): string {
     sensory: '#8b5cf6',
     health: '#10b981',
     fun: '#f59e0b',
+  };
+  return colors[category] || '#6b7280';
+}
+
+function getVariantCategoryColor(category: string): string {
+  const colors: Record<string, string> = {
+    trait: '#8b5cf6', // Purple - physical traits
+    health: '#ef4444', // Red - health related
+    pharmacogenomics: '#f59e0b', // Amber - drug response
+    neanderthal: '#6b7280', // Gray - archaic
+    ancestry: '#3b82f6', // Blue - ancestry markers
+    other: '#10b981', // Green - other
   };
   return colors[category] || '#6b7280';
 }
