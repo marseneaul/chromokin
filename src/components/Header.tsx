@@ -1,6 +1,7 @@
 import React, { type JSX } from 'react';
 import { Menu, Dna, Play, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { GlobalSearch } from '@/components/search';
 import { useViewMode, useAppStore } from '@/state/appState';
 import { type ViewMode } from '@/types/core';
 
@@ -55,6 +56,11 @@ export function Header({
           <Dna className="h-8 w-8 text-primary" />
           <h1 className="text-2xl font-bold rainbow-text">ChromoKin</h1>
         </div>
+      </div>
+
+      {/* Global Search */}
+      <div className="flex-1 max-w-md mx-4">
+        <GlobalSearch />
       </div>
 
       <div className="flex items-center gap-2">
