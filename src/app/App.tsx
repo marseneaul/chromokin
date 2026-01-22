@@ -3,6 +3,7 @@ import { Header } from '@/components/Header';
 import { Sidebar } from '@/components/Sidebar';
 import { GenomeBrowser } from '@/components/GenomeBrowser';
 import { GenomeOverview } from '@/components/GenomeOverview';
+import { TourProvider, TourOverlay, WelcomeModal } from '@/components/tour';
 import {
   useAppStore,
   useSidePanel,
@@ -217,29 +218,44 @@ export function App(): JSX.Element {
     setCurrentPage('overview');
   }, [setCurrentPage]);
 
+  // Handle tour navigation between pages
+  const handleTourNavigate = useCallback(
+    (page: 'overview' | 'browser', chromosome?: string) => {
+      if (page === 'browser' && chromosome) {
+        setActiveChromosome(chromosome);
+      }
+      setCurrentPage(page);
+    },
+    [setActiveChromosome, setCurrentPage]
+  );
+
   return (
-    <div className="min-h-screen bg-background">
-      <Header
-        onToggleSidebar={toggleSidePanel}
-        sidebarCollapsed={!sidePanel.isOpen}
-      />
-      <div className="flex h-[calc(100vh-4rem)]">
-        <Sidebar
-          chromosomes={chromosomes}
-          selectedChromosome={activeChromosome}
-          onSelectChromosome={handleSelectChromosome}
-          onNavigateToOverview={handleNavigateToOverview}
-          currentPage={currentPage}
-          collapsed={!sidePanel.isOpen}
+    <TourProvider onNavigate={handleTourNavigate}>
+      <div className="min-h-screen bg-background">
+        <Header
+          onToggleSidebar={toggleSidePanel}
+          sidebarCollapsed={!sidePanel.isOpen}
         />
-        <main className="flex-1 overflow-hidden">
-          {currentPage === 'overview' ? (
-            <GenomeOverview onNavigateToChromosome={handleSelectChromosome} />
-          ) : (
-            <GenomeBrowser className="h-full" />
-          )}
-        </main>
+        <div className="flex h-[calc(100vh-4rem)]">
+          <Sidebar
+            chromosomes={chromosomes}
+            selectedChromosome={activeChromosome}
+            onSelectChromosome={handleSelectChromosome}
+            onNavigateToOverview={handleNavigateToOverview}
+            currentPage={currentPage}
+            collapsed={!sidePanel.isOpen}
+          />
+          <main className="flex-1 overflow-hidden">
+            {currentPage === 'overview' ? (
+              <GenomeOverview onNavigateToChromosome={handleSelectChromosome} />
+            ) : (
+              <GenomeBrowser className="h-full" />
+            )}
+          </main>
+        </div>
+        <TourOverlay />
+        <WelcomeModal />
       </div>
-    </div>
+    </TourProvider>
   );
 }

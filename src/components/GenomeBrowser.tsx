@@ -423,7 +423,7 @@ export function GenomeBrowser({
           chr{activeChromosome}:{formatBp(visibleRange.start)}-
           {formatBp(visibleRange.end)}
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1" data-tour="zoom-controls">
           <Button
             variant="ghost"
             size="icon"
@@ -460,6 +460,7 @@ export function GenomeBrowser({
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
+        data-tour="browser-tracks"
       >
         <svg width={effectiveWidth} height={effectiveHeight} className="block">
           {/* Background */}

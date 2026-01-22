@@ -212,7 +212,10 @@ function AncestrySection({
     .sort((a, b) => b.percentage - a.percentage);
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+    <div
+      className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm"
+      data-tour="ancestry-section"
+    >
       <h2 className="text-sm font-medium text-gray-900 mb-4">
         {copyLevel <= 5 ? 'Your Ancestry' : 'Ancestry Composition'}
       </h2>
@@ -262,7 +265,10 @@ function TraitsSection({
   onNavigateToChromosome,
 }: TraitsSectionProps): JSX.Element {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+    <div
+      className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm"
+      data-tour="traits-section"
+    >
       <h2 className="text-sm font-medium text-gray-900 mb-4">
         {copyLevel <= 5 ? 'Your Traits' : 'Trait Associations'}
       </h2>
@@ -317,7 +323,10 @@ function ChromosomeGallery({
   const chromosomes = Object.keys(CHROMOSOME_LENGTHS).filter(c => c !== 'MT');
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm">
+    <div
+      className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm"
+      data-tour="chromosome-gallery"
+    >
       <h2 className="text-sm font-medium text-gray-900 mb-4">
         Chromosome Browser
       </h2>
