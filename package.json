@@ -51,7 +51,7 @@
   "dependencies": {
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
-    "lucide-react": "^0.292.0",
+    "lucide-react": "^0.469.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwind-merge": "^2.0.0",
