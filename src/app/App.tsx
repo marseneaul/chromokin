@@ -9,6 +9,7 @@ import {
   useActiveChromosome,
   useCurrentPage,
 } from '@/state/appState';
+import { useUrlSync } from '@/hooks/useUrlSync';
 import { CHROMOSOME_LENGTHS, CHROMOSOME_NAMES } from '@/types/core';
 
 // Generate chromosome data from constants
@@ -190,6 +191,9 @@ const generateChromosomeData = () => {
 };
 
 export function App(): JSX.Element {
+  // Sync URL with app state for shareable links
+  useUrlSync();
+
   const sidePanel = useSidePanel();
   const activeChromosome = useActiveChromosome();
   const currentPage = useCurrentPage();
