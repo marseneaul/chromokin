@@ -28,7 +28,11 @@ import { Scale } from '@/scales/scale';
 import { getGenesInRange } from '@/data/traitsLoader';
 import { getFeaturesInRange } from '@/data/genomicFeaturesLoader';
 import { getCytobandsInRange } from '@/data/genomeLoader';
-import { getAncestrySegmentsInRange, isPhased } from '@/data/ancestryLoader';
+import {
+  getAncestrySegmentsInRange,
+  isPhased,
+  getChromosomeAncestryComposition,
+} from '@/data/ancestryLoader';
 import { getGeneDisplayName } from '@/lib/content';
 import { Tooltip } from '@/components/interaction/Tooltip';
 import { DetailPanel } from '@/components/interaction/DetailPanel';
@@ -38,15 +42,14 @@ import {
   POPULATION_COLORS,
   POPULATION_DISPLAY_NAMES,
   SNP_COLORS,
+  ANCESTRY_COLORS,
 } from '@/types/genome';
 import type {
   AncestrySegment,
-  AncestryPopulation,
   AnnotatedSNP,
   SNPCategory,
   Cytoband,
 } from '@/types/genome';
-import { getAncestryComposition } from '@/data/ancestryLoader';
 import { getSNPsInRange } from '@/data/snpLoader';
 
 interface GenomeBrowserProps {
@@ -368,10 +371,11 @@ export function GenomeBrowser({
   // Check if data is phased
   const dataIsPhased = isPhased();
 
-  // Get overall ancestry composition for legend
+  // Get chromosome-specific ancestry composition for legend
   const ancestryComposition = useMemo(() => {
-    return getAncestryComposition();
-  }, []);
+    if (!activeChromosome) return [];
+    return getChromosomeAncestryComposition(activeChromosome);
+  }, [activeChromosome]);
 
   // Helper to format segment size
   const formatSegmentSize = (start: number, end: number): string => {
@@ -788,7 +792,7 @@ export function GenomeBrowser({
               </g>
             )}
 
-            {/* Improved Ancestry Legend - shows top populations with percentages */}
+            {/* Improved Ancestry Legend - shows top populations with percentages for this chromosome */}
             <g
               transform={`translate(${effectiveWidth - 400}, ${dataIsPhased ? 76 : 36})`}
             >
@@ -796,19 +800,14 @@ export function GenomeBrowser({
                 .filter(c => c.percentage >= 2) // Only show populations >= 2%
                 .slice(0, 5)
                 .map((comp, i) => (
-                  <g
-                    key={comp.population}
-                    transform={`translate(${i * 80}, 0)`}
-                  >
+                  <g key={comp.category} transform={`translate(${i * 80}, 0)`}>
                     <rect
                       x={0}
                       y={0}
                       width={10}
                       height={10}
                       rx={2}
-                      fill={
-                        POPULATION_COLORS[comp.population as AncestryPopulation]
-                      }
+                      fill={ANCESTRY_COLORS[comp.category] || '#94a3b8'}
                     />
                     <text
                       x={13}

@@ -3,7 +3,8 @@
  * Shows stats, ancestry, traits, and entry points to browser
  */
 
-import { type JSX, useEffect, useMemo } from 'react';
+import { type JSX, useEffect, useMemo, useState } from 'react';
+import { ChevronDown, ChevronUp, Users } from 'lucide-react';
 import {
   useAppStore,
   useCopyLevel,
@@ -17,8 +18,10 @@ import {
 import { getTraitsDatabase, getDatabaseMetadata } from '@/data/traitsLoader';
 import { getGenomicFeaturesDatabase } from '@/data/genomicFeaturesLoader';
 import { AncestryUpload } from '@/components/ancestry';
+import { SUB_POP_NAMES, SUB_TO_SUPER_POP } from '@/data/ancestry';
 import type { AncestryComposition } from '@/types/genome';
 import type { EnhancedTraitRecord } from '@/types/traits';
+import type { SubPopulation } from '@/data/ancestry';
 
 // Refined ancestry colors (includes both demo and inference categories)
 const ANCESTRY_COLORS: Record<string, string> = {
@@ -31,6 +34,15 @@ const ANCESTRY_COLORS: Record<string, string> = {
   native_american: '#ef4444',
   oceanian: '#8b5cf6',
   archaic: '#64748b',
+};
+
+// Super-population colors for sub-population display
+const SUPER_POP_COLORS: Record<string, string> = {
+  EUR: '#3b82f6',
+  AFR: '#f59e0b',
+  EAS: '#10b981',
+  SAS: '#14b8a6',
+  AMR: '#ef4444',
 };
 
 // Trait category colors for visual indicators
@@ -234,10 +246,35 @@ function AncestrySection({
   hasUserData,
   userAncestryData,
 }: AncestrySectionProps): JSX.Element {
+  const [showDetails, setShowDetails] = useState(false);
+
   // Filter out archaic for the main display, sort by percentage
   const mainComposition = composition
     .filter(c => c.category !== 'archaic')
     .sort((a, b) => b.percentage - a.percentage);
+
+  // Check if we have enhanced reference panel data
+  const hasEnhancedData = userAncestryData?.subPopulationProportions;
+  const inferenceMethod = userAncestryData?.inferenceMethod;
+
+  // Get sorted sub-populations for display
+  const sortedSubPops = useMemo(() => {
+    if (!userAncestryData?.subPopulationProportions) return [];
+    return (
+      Object.entries(userAncestryData.subPopulationProportions) as [
+        SubPopulation,
+        number,
+      ][]
+    )
+      .filter(([_, pct]) => pct >= 0.005) // At least 0.5%
+      .sort((a, b) => b[1] - a[1]);
+  }, [userAncestryData?.subPopulationProportions]);
+
+  // Get top nearest neighbors
+  const topNeighbors = useMemo(() => {
+    if (!userAncestryData?.nearestNeighbors) return [];
+    return userAncestryData.nearestNeighbors.slice(0, 5);
+  }, [userAncestryData?.nearestNeighbors]);
 
   return (
     <div
@@ -248,16 +285,23 @@ function AncestrySection({
         <h2 className="text-sm font-medium text-gray-900">
           {copyLevel <= 5 ? 'Your Ancestry' : 'Ancestry Composition'}
         </h2>
-        {hasUserData && (
-          <span className="text-xs px-2 py-0.5 bg-green-100 text-green-800 rounded-full">
-            Your Data
-          </span>
-        )}
-        {!hasUserData && (
-          <span className="text-xs px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">
-            Demo
-          </span>
-        )}
+        <div className="flex items-center gap-2">
+          {hasUserData && hasEnhancedData && (
+            <span className="text-xs px-2 py-0.5 bg-purple-100 text-purple-800 rounded-full">
+              Enhanced
+            </span>
+          )}
+          {hasUserData && (
+            <span className="text-xs px-2 py-0.5 bg-green-100 text-green-800 rounded-full">
+              Your Data
+            </span>
+          )}
+          {!hasUserData && (
+            <span className="text-xs px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">
+              Demo
+            </span>
+          )}
+        </div>
       </div>
 
       {mainComposition.length > 0 ? (
@@ -289,6 +333,87 @@ function AncestrySection({
         <p className="text-sm text-gray-500 py-2">No ancestry data available</p>
       )}
 
+      {/* Enhanced details toggle */}
+      {hasUserData && hasEnhancedData && sortedSubPops.length > 0 && (
+        <button
+          onClick={() => setShowDetails(!showDetails)}
+          className="mt-4 w-full flex items-center justify-between py-2 px-3 bg-slate-50 hover:bg-slate-100 rounded-lg text-xs text-slate-600 transition-colors"
+        >
+          <span className="font-medium">
+            {showDetails ? 'Hide' : 'Show'} detailed breakdown (
+            {sortedSubPops.length} populations)
+          </span>
+          {showDetails ? (
+            <ChevronUp className="w-4 h-4" />
+          ) : (
+            <ChevronDown className="w-4 h-4" />
+          )}
+        </button>
+      )}
+
+      {/* Detailed sub-population breakdown */}
+      {showDetails && sortedSubPops.length > 0 && (
+        <div className="mt-3 pt-3 border-t border-gray-100">
+          <h3 className="text-xs font-medium text-gray-700 mb-3">
+            Population Breakdown
+          </h3>
+          <div className="space-y-2">
+            {sortedSubPops.map(([pop, pct]) => {
+              const superPop = SUB_TO_SUPER_POP[pop];
+              const color = SUPER_POP_COLORS[superPop] || '#94a3b8';
+              const percentage = pct * 100;
+
+              return (
+                <div key={pop} className="flex items-center gap-2">
+                  <div
+                    className="w-2 h-2 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: color }}
+                  />
+                  <span className="text-xs text-gray-600 flex-1 truncate">
+                    {SUB_POP_NAMES[pop]}
+                  </span>
+                  <span className="text-xs font-medium text-gray-800 tabular-nums">
+                    {percentage.toFixed(1)}%
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Nearest neighbors */}
+          {topNeighbors.length > 0 && (
+            <div className="mt-4 pt-3 border-t border-gray-100">
+              <h3 className="text-xs font-medium text-gray-700 mb-2 flex items-center gap-1.5">
+                <Users className="w-3.5 h-3.5" />
+                Most Similar Reference Individuals
+              </h3>
+              <div className="space-y-1.5">
+                {topNeighbors.map((neighbor, idx) => (
+                  <div
+                    key={neighbor.id}
+                    className="flex items-center gap-2 text-xs"
+                  >
+                    <span className="text-gray-400 w-4">{idx + 1}.</span>
+                    <div
+                      className="w-2 h-2 rounded-full flex-shrink-0"
+                      style={{
+                        backgroundColor:
+                          SUPER_POP_COLORS[neighbor.superPopulation] ||
+                          '#94a3b8',
+                      }}
+                    />
+                    <span className="text-gray-600">{neighbor.population}</span>
+                    <span className="text-gray-400 ml-auto">
+                      {(neighbor.similarity * 100).toFixed(1)}% match
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* User data info */}
       {hasUserData && userAncestryData && (
         <div className="mt-4 pt-3 border-t border-gray-100">
@@ -300,6 +425,12 @@ function AncestrySection({
                 ? 'AncestryDNA'
                 : ''}{' '}
             data
+            {inferenceMethod === 'hybrid' && (
+              <span className="text-purple-600">
+                {' '}
+                using 1000 Genomes reference panel
+              </span>
+            )}
           </p>
         </div>
       )}

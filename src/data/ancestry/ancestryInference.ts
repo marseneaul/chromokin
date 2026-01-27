@@ -19,6 +19,11 @@ import type {
 } from '@/types/genome';
 import type { ParsedSNPFile } from './snpFileParser';
 import aimsData from './ancestryAIMs_expanded.json';
+import {
+  inferWithReferencePanel,
+  isReferencePanelAvailable,
+  type ReferencePanelResult,
+} from './referenceBasedInference';
 
 // Population codes used in inference
 export type InferencePopulation = 'EUR' | 'AFR' | 'EAS' | 'SAS' | 'AMR';
@@ -344,6 +349,184 @@ export function inferAncestry(
 }
 
 /**
+ * Admixture inference using Expectation-Maximization (EM) algorithm
+ *
+ * Unlike maximum likelihood which assigns 100% to most likely population,
+ * this estimates mixture proportions (e.g., 85% EUR, 10% AMR, 5% AFR).
+ *
+ * Algorithm:
+ * 1. Initialize with uniform proportions (20% each)
+ * 2. E-step: For each marker, compute P(ancestry | genotype, current proportions)
+ * 3. M-step: Update proportions = average of expected ancestries across markers
+ * 4. Repeat until convergence
+ */
+export function inferAdmixture(
+  parsedFile: ParsedSNPFile,
+  options: {
+    maxIterations?: number;
+    convergenceThreshold?: number;
+    minInformativeness?: number;
+  } = {}
+): AncestryInferenceResult {
+  const {
+    maxIterations = 100,
+    convergenceThreshold = 0.0001,
+    minInformativeness = 0.05,
+  } = options;
+
+  const populations: InferencePopulation[] = [
+    'EUR',
+    'AFR',
+    'EAS',
+    'SAS',
+    'AMR',
+  ];
+  const K = populations.length;
+
+  // Collect usable markers
+  const usableMarkers: Array<{
+    marker: AIMMarker;
+    genotype: string;
+    likelihoods: number[];
+  }> = [];
+
+  for (const marker of aims.markers) {
+    const userSNP = parsedFile.snps.get(marker.rsid);
+    if (!userSNP || userSNP.genotype === '--') continue;
+
+    const informativeness = calculateInformativeness(marker.frequencies);
+    if (informativeness < minInformativeness) continue;
+
+    // Pre-compute likelihoods for each population
+    const likelihoods: number[] = [];
+    for (const pop of populations) {
+      const altFreq = marker.frequencies[pop];
+      const refFreq = 1 - altFreq;
+      const likelihood = genotypeLikelihood(
+        userSNP.genotype,
+        marker.ref,
+        marker.alt,
+        refFreq
+      );
+      likelihoods.push(likelihood);
+    }
+
+    // Only use if at least one population has non-trivial likelihood
+    if (likelihoods.some(l => l > 0.01)) {
+      usableMarkers.push({ marker, genotype: userSNP.genotype, likelihoods });
+    }
+  }
+
+  const M = usableMarkers.length;
+  if (M === 0) {
+    // No usable markers, return uniform
+    const uniformProp = 1 / K;
+    return {
+      proportions: {
+        EUR: uniformProp,
+        AFR: uniformProp,
+        EAS: uniformProp,
+        SAS: uniformProp,
+        AMR: uniformProp,
+      },
+      confidence: 'low',
+      markersUsed: 0,
+      markersAvailable: aims.markers.length,
+      composition: [],
+    };
+  }
+
+  // Initialize proportions uniformly
+  let proportions = new Float64Array(K).fill(1 / K);
+
+  // EM iterations
+  const responsibilities = new Float64Array(K);
+
+  for (let iter = 0; iter < maxIterations; iter++) {
+    // E-step: compute expected ancestries (responsibilities) for each marker
+    const newProportions = new Float64Array(K).fill(0);
+
+    for (const { likelihoods } of usableMarkers) {
+      // Compute P(ancestry_k | genotype) ∝ P(genotype | ancestry_k) * P(ancestry_k)
+      let totalResponsibility = 0;
+      for (let k = 0; k < K; k++) {
+        responsibilities[k] = likelihoods[k] * proportions[k];
+        totalResponsibility += responsibilities[k];
+      }
+
+      // Normalize and accumulate
+      if (totalResponsibility > 0) {
+        for (let k = 0; k < K; k++) {
+          newProportions[k] += responsibilities[k] / totalResponsibility;
+        }
+      }
+    }
+
+    // M-step: update proportions (average of responsibilities)
+    let totalProp = 0;
+    for (let k = 0; k < K; k++) {
+      newProportions[k] /= M;
+      totalProp += newProportions[k];
+    }
+
+    // Normalize to ensure sum = 1
+    for (let k = 0; k < K; k++) {
+      newProportions[k] /= totalProp;
+    }
+
+    // Check convergence
+    let maxDiff = 0;
+    for (let k = 0; k < K; k++) {
+      maxDiff = Math.max(maxDiff, Math.abs(newProportions[k] - proportions[k]));
+    }
+
+    proportions = newProportions;
+
+    if (maxDiff < convergenceThreshold) {
+      break;
+    }
+  }
+
+  // Convert to result format
+  const proportionRecord: Record<InferencePopulation, number> = {
+    EUR: proportions[0],
+    AFR: proportions[1],
+    EAS: proportions[2],
+    SAS: proportions[3],
+    AMR: proportions[4],
+  };
+
+  // Determine confidence based on markers used
+  let confidence: 'high' | 'moderate' | 'low';
+  if (M >= 500) {
+    confidence = 'high';
+  } else if (M >= 100) {
+    confidence = 'moderate';
+  } else {
+    confidence = 'low';
+  }
+
+  // Create human-readable composition
+  const composition: AncestryComposition[] = populations
+    .map((pop, idx) => ({
+      population: pop.toLowerCase() as never,
+      category: POPULATION_TO_CATEGORY[pop],
+      percentage: Math.round(proportions[idx] * 1000) / 10,
+      displayName: POPULATION_DISPLAY_NAMES[pop],
+    }))
+    .filter(c => c.percentage >= 0.5)
+    .sort((a, b) => b.percentage - a.percentage);
+
+  return {
+    proportions: proportionRecord,
+    confidence,
+    markersUsed: M,
+    markersAvailable: aims.markers.length,
+    composition,
+  };
+}
+
+/**
  * Infer ancestry from a Map of SNPs (convenience function)
  */
 export function inferAncestryFromSNPs(
@@ -421,4 +604,47 @@ export function formatAncestryResult(result: AncestryInferenceResult): string {
   }
 
   return lines.join('\n');
+}
+
+/**
+ * Smart inference that uses 1000 Genomes reference panel if available,
+ * otherwise falls back to EM admixture algorithm.
+ *
+ * The reference panel provides more accurate results by:
+ * 1. Using k-NN to find similar individuals in reference database
+ * 2. Using empirical genotype frequencies instead of Hardy-Weinberg assumptions
+ * 3. Providing detailed 26 sub-population breakdown (not just 5 super-populations)
+ */
+export async function inferAdmixtureWithReferencePanel(
+  parsedFile: ParsedSNPFile,
+  options: {
+    preferReferencePanel?: boolean;
+    k?: number;
+  } = {}
+): Promise<AncestryInferenceResult | ReferencePanelResult> {
+  const { preferReferencePanel = true, k = 100 } = options;
+
+  if (preferReferencePanel) {
+    try {
+      const panelAvailable = await isReferencePanelAvailable();
+      if (panelAvailable) {
+        return await inferWithReferencePanel(parsedFile, {
+          k,
+          method: 'hybrid',
+        });
+      }
+    } catch {
+      // Fall through to EM
+    }
+  }
+
+  // Fallback to standard EM admixture
+  return inferAdmixture(parsedFile);
+}
+
+/**
+ * Check if enhanced reference panel inference is available
+ */
+export async function checkReferencePanelAvailable(): Promise<boolean> {
+  return isReferencePanelAvailable();
 }

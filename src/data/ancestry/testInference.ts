@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url';
 import {
   parseSNPFile,
   inferAncestry,
+  inferAdmixture,
   countAvailableAIMs,
   formatAncestryResult,
   inferLocalAncestry,
@@ -61,13 +62,28 @@ async function testFile(filename: string) {
     console.log(`  Missing: ${aimStats.missing.join(', ')}`);
   }
 
-  // Run ancestry inference
-  console.log('\nRunning ancestry inference...');
-  const startInfer = Date.now();
-  const result = inferAncestry(parsed, { includeMarkerDetails: true });
-  const inferTime = Date.now() - startInfer;
+  // Run maximum likelihood inference (for comparison)
+  console.log('\nRunning MAXIMUM LIKELIHOOD ancestry inference...');
+  const startML = Date.now();
+  const mlResult = inferAncestry(parsed, { includeMarkerDetails: true });
+  const mlTime = Date.now() - startML;
 
-  console.log(`  Inference time: ${inferTime}ms`);
+  console.log(`  Inference time: ${mlTime}ms`);
+  console.log(`  Markers used: ${mlResult.markersUsed}`);
+  console.log('  ML proportions (most likely single population):');
+  for (const [pop, prop] of Object.entries(mlResult.proportions)) {
+    if (prop > 0.001) {
+      console.log(`    ${pop}: ${(prop * 100).toFixed(2)}%`);
+    }
+  }
+
+  // Run EM-based admixture inference
+  console.log('\nRunning EM ADMIXTURE inference...');
+  const startAdmix = Date.now();
+  const result = inferAdmixture(parsed);
+  const admixTime = Date.now() - startAdmix;
+
+  console.log(`  Inference time: ${admixTime}ms`);
   console.log(`  Markers used: ${result.markersUsed}`);
   console.log(`  Confidence: ${result.confidence}`);
 
@@ -75,15 +91,15 @@ async function testFile(filename: string) {
   console.log('\n' + formatAncestryResult(result));
 
   // Show raw proportions
-  console.log('\nRaw proportions:');
+  console.log('\nAdmixture proportions:');
   for (const [pop, prop] of Object.entries(result.proportions)) {
     console.log(`  ${pop}: ${(prop * 100).toFixed(2)}%`);
   }
 
-  // Show most informative markers if available
-  if (result.markerDetails && result.markerDetails.length > 0) {
+  // Show most informative markers if available (from ML result)
+  if (mlResult.markerDetails && mlResult.markerDetails.length > 0) {
     console.log('\nTop 10 most informative markers used:');
-    const topMarkers = result.markerDetails
+    const topMarkers = mlResult.markerDetails
       .sort((a, b) => b.informativeness - a.informativeness)
       .slice(0, 10);
 

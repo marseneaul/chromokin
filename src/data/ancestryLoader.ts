@@ -282,3 +282,65 @@ export function getChromosomeAncestryBreakdown(
 
   return breakdown;
 }
+
+// Display name mapping for ancestry categories
+const CATEGORY_DISPLAY_NAMES: Record<AncestryCategory, string> = {
+  european: 'European',
+  east_asian: 'East Asian',
+  african: 'African',
+  native_american: 'Native American',
+  middle_eastern: 'Middle Eastern',
+  south_asian: 'South Asian',
+  oceanian: 'Oceanian',
+  archaic: 'Archaic',
+  unassigned: 'Unassigned',
+};
+
+/**
+ * Get ancestry composition for a specific chromosome
+ * Returns percentages based on segment lengths on that chromosome
+ */
+export function getChromosomeAncestryComposition(
+  chromosome: string
+): AncestryComposition[] {
+  const segments = getAncestrySegmentsForChromosome(chromosome);
+
+  if (segments.length === 0) {
+    return [];
+  }
+
+  // Calculate total length and length per category
+  let totalLength = 0;
+  const categoryLengths = new Map<AncestryCategory, number>();
+
+  for (const segment of segments) {
+    const length = segment.end - segment.start;
+    totalLength += length;
+
+    const current = categoryLengths.get(segment.category) || 0;
+    categoryLengths.set(segment.category, current + length);
+  }
+
+  if (totalLength === 0) {
+    return [];
+  }
+
+  // Convert to AncestryComposition array
+  const composition: AncestryComposition[] = [];
+
+  for (const [category, length] of categoryLengths.entries()) {
+    const percentage = (length / totalLength) * 100;
+    if (percentage >= 0.5) {
+      // Only include >= 0.5%
+      composition.push({
+        population: category as unknown as AncestryPopulation, // Use category as population for color mapping
+        category,
+        percentage,
+        displayName: CATEGORY_DISPLAY_NAMES[category] || category,
+      });
+    }
+  }
+
+  // Sort by percentage descending
+  return composition.sort((a, b) => b.percentage - a.percentage);
+}

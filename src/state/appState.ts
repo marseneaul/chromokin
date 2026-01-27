@@ -18,6 +18,7 @@ import {
 import type { TraitsDatabase } from '@/types/traits';
 import type { GenomicFeaturesDatabase } from '@/types/genomicFeatures';
 import type { AncestryComposition, AncestrySegment } from '@/types/genome';
+import type { SubPopulation, NearestNeighbor } from '@/data/ancestry';
 import { getTraitsDatabase } from '@/data/traitsLoader';
 import { getGenomicFeaturesDatabase } from '@/data/genomicFeaturesLoader';
 
@@ -35,6 +36,11 @@ export interface UserAncestryData {
   globalConfidence: 'high' | 'moderate' | 'low';
   markersUsed: number;
   processedAt: string;
+
+  // Enhanced reference panel fields (optional - present when 1000G panel is available)
+  subPopulationProportions?: Record<SubPopulation, number>;
+  nearestNeighbors?: NearestNeighbor[];
+  inferenceMethod?: 'knn' | 'empirical-em' | 'hybrid' | 'em';
 }
 
 /**

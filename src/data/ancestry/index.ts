@@ -17,6 +17,9 @@ export {
 
 export {
   inferAncestry,
+  inferAdmixture,
+  inferAdmixtureWithReferencePanel,
+  checkReferencePanelAvailable,
   inferAncestryFromSNPs,
   getAIMMarkers,
   countAvailableAIMs,
@@ -36,3 +39,15 @@ export {
   inferLocalAncestryHMM,
   type HMMLocalAncestryResult,
 } from './hmmAncestryInference';
+
+export {
+  inferWithReferencePanel,
+  isReferencePanelAvailable,
+  loadReferencePanel,
+  getSubPopulationComposition,
+  SUB_TO_SUPER_POP,
+  SUB_POP_NAMES,
+  type SubPopulation,
+  type NearestNeighbor,
+  type ReferencePanelResult,
+} from './referenceBasedInference';

@@ -15,9 +15,10 @@ import {
 } from '@/state/appState';
 import {
   parseSNPFile,
-  inferAncestry,
   inferLocalAncestryHMM,
+  inferAdmixtureWithReferencePanel,
   type ParsedSNPFile,
+  type ReferencePanelResult,
 } from '@/data/ancestry';
 import type { AncestryComposition } from '@/types/genome';
 
@@ -74,9 +75,15 @@ export function AncestryUpload({
           );
         }
 
-        // Run global ancestry inference
-        setProcessingStage('Analyzing global ancestry...');
-        const globalResult = inferAncestry(parsed);
+        // Run admixture inference with reference panel if available
+        setProcessingStage('Analyzing ancestry admixture...');
+        const globalResult = await inferAdmixtureWithReferencePanel(parsed);
+
+        // Check if we got enhanced reference panel results
+        const hasReferencePanel = 'subPopulationProportions' in globalResult;
+        if (hasReferencePanel) {
+          setProcessingStage('Using 1000 Genomes reference panel...');
+        }
 
         // Run HMM-based local ancestry inference (uses global as prior)
         setProcessingStage('Running HMM ancestry inference...');
@@ -97,6 +104,17 @@ export function AncestryUpload({
           globalConfidence: globalResult.confidence,
           markersUsed: globalResult.markersUsed,
           processedAt: new Date().toISOString(),
+          // Add reference panel data if available
+          ...(hasReferencePanel && {
+            subPopulationProportions: (globalResult as ReferencePanelResult)
+              .subPopulationProportions,
+            nearestNeighbors: (globalResult as ReferencePanelResult)
+              .nearestNeighbors,
+            inferenceMethod: (globalResult as ReferencePanelResult).method,
+          }),
+          ...(!hasReferencePanel && {
+            inferenceMethod: 'em' as const,
+          }),
         };
 
         setUserAncestryData(userData);
