@@ -796,9 +796,83 @@ const CATEGORY_TO_SUPER_POP: Record<string, InferencePopulation> = {
 };
 
 /**
- * Refine ancestry segments with sub-population assignments using the reference panel.
- * For each segment, calculates similarity to reference individuals within that
- * super-population and assigns the most likely sub-population.
+ * Pre-computed sub-population allele frequencies for likelihood-based inference.
+ * Lazily initialized on first use.
+ */
+let subPopFrequencyCache: Map<
+  string,
+  Map<SubPopulation, { freq: number; count: number }>
+> | null = null;
+
+/**
+ * Compute and cache sub-population allele frequencies from the reference panel.
+ */
+async function getSubPopFrequencies(): Promise<
+  Map<string, Map<SubPopulation, { freq: number; count: number }>>
+> {
+  if (subPopFrequencyCache) {
+    return subPopFrequencyCache;
+  }
+
+  const { panel, metadata } = await loadReferencePanel();
+  const { rsids } = panel.metadata;
+
+  // Group samples by sub-population
+  const samplesBySubPop = new Map<SubPopulation, number[]>();
+  for (const info of metadata.sampleInfo) {
+    const pop = info.population as SubPopulation;
+    if (!samplesBySubPop.has(pop)) {
+      samplesBySubPop.set(pop, []);
+    }
+    samplesBySubPop.get(pop)!.push(info.index);
+  }
+
+  // Calculate frequencies for each marker and sub-population
+  const freqs = new Map<
+    string,
+    Map<SubPopulation, { freq: number; count: number }>
+  >();
+
+  for (const rsid of rsids) {
+    const genotypeStr = panel.genotypes[rsid];
+    if (!genotypeStr) continue;
+
+    const markerFreqs = new Map<
+      SubPopulation,
+      { freq: number; count: number }
+    >();
+
+    for (const [subPop, samples] of samplesBySubPop.entries()) {
+      let altCount = 0;
+      let totalAlleles = 0;
+
+      for (const idx of samples) {
+        const d = genotypeStr[idx];
+        if (d !== '9') {
+          altCount += parseInt(d, 10);
+          totalAlleles += 2;
+        }
+      }
+
+      if (totalAlleles > 0) {
+        markerFreqs.set(subPop, {
+          freq: altCount / totalAlleles,
+          count: totalAlleles / 2,
+        });
+      }
+    }
+
+    freqs.set(rsid, markerFreqs);
+  }
+
+  subPopFrequencyCache = freqs;
+  return freqs;
+}
+
+/**
+ * Refine ancestry segments with sub-population assignments using likelihood-based inference.
+ * Uses sub-population-specific allele frequencies to compute the most likely sub-population
+ * for each segment, which is more accurate than simple IBS similarity.
  */
 export async function refineSegmentsWithSubPopulations(
   segments: import('@/types/genome').AncestrySegment[],
@@ -810,15 +884,16 @@ export async function refineSegmentsWithSubPopulations(
     return segments; // Return unchanged if no panel
   }
 
-  const { panel, metadata } = await loadReferencePanel();
-  const { rsids, sampleIds: _sampleIds } = panel.metadata;
+  const { panel } = await loadReferencePanel();
+  const { rsids } = panel.metadata;
+
+  // Get pre-computed sub-population frequencies
+  const subPopFreqs = await getSubPopFrequencies();
 
   // Build marker lookup by chromosome and position
-  const markerMap = new Map<string, (typeof aims.markers)[0]>();
   const markersByChrom = new Map<string, typeof aims.markers>();
 
   for (const marker of aims.markers) {
-    markerMap.set(marker.rsid, marker);
     if (!markersByChrom.has(marker.chromosome)) {
       markersByChrom.set(marker.chromosome, []);
     }
@@ -834,16 +909,6 @@ export async function refineSegmentsWithSubPopulations(
   const rsidToIndex = new Map<string, number>();
   for (let i = 0; i < rsids.length; i++) {
     rsidToIndex.set(rsids[i], i);
-  }
-
-  // Build sample index by population
-  const samplesByPop = new Map<SubPopulation, number[]>();
-  for (const info of metadata.sampleInfo) {
-    const pop = info.population as SubPopulation;
-    if (!samplesByPop.has(pop)) {
-      samplesByPop.set(pop, []);
-    }
-    samplesByPop.get(pop)!.push(info.index);
   }
 
   // Process each segment
@@ -877,8 +942,7 @@ export async function refineSegmentsWithSubPopulations(
     }
 
     // Get user dosages for segment markers
-    const userDosages: number[] = [];
-    const markerIndices: number[] = [];
+    const userGenotypes: Array<{ rsid: string; dosage: number }> = [];
 
     for (const marker of segmentMarkers) {
       const userSNP = parsedFile.snps.get(marker.rsid);
@@ -891,88 +955,87 @@ export async function refineSegmentsWithSubPopulations(
           marker.alt
         );
         if (dosage >= 0) {
-          userDosages.push(dosage);
-          markerIndices.push(panelIndex);
+          userGenotypes.push({ rsid: marker.rsid, dosage });
         }
       }
     }
 
-    if (userDosages.length < 3) {
+    if (userGenotypes.length < 3) {
       refinedSegments.push(segment);
       continue;
     }
 
-    // Calculate similarity to each sub-population
-    const subPopScores: Array<{ pop: SubPopulation; score: number }> = [];
-
+    // Calculate log-likelihood for each sub-population using allele frequencies
+    const logLikelihoods: Map<SubPopulation, number> = new Map();
     for (const subPop of subPops) {
-      const sampleIndices = samplesByPop.get(subPop) || [];
-      if (sampleIndices.length === 0) continue;
+      logLikelihoods.set(subPop, 0);
+    }
 
-      let totalSimilarity = 0;
-      let sampleCount = 0;
+    for (const { rsid, dosage } of userGenotypes) {
+      const markerFreqs = subPopFreqs.get(rsid);
+      if (!markerFreqs) continue;
 
-      // Sample up to 20 individuals for efficiency
-      const samplesToCheck =
-        sampleIndices.length <= 20
-          ? sampleIndices
-          : sampleIndices
-              .slice()
-              .sort(() => Math.random() - 0.5)
-              .slice(0, 20);
+      for (const subPop of subPops) {
+        const freqData = markerFreqs.get(subPop);
+        if (!freqData || freqData.count < 5) continue;
 
-      for (const sampleIdx of samplesToCheck) {
-        let matches = 0;
-        let comparisons = 0;
+        // Add small pseudocount to avoid log(0)
+        const p = Math.max(0.001, Math.min(0.999, freqData.freq));
 
-        for (let i = 0; i < markerIndices.length; i++) {
-          const panelIdx = markerIndices[i];
-          const rsid = rsids[panelIdx];
-          const genotypeStr = panel.genotypes[rsid];
-
-          if (genotypeStr) {
-            const refDosageChar = genotypeStr[sampleIdx];
-            if (refDosageChar !== '9') {
-              const refDosage = parseInt(refDosageChar, 10);
-              // IBS similarity: 2 - |diff|
-              matches += 2 - Math.abs(userDosages[i] - refDosage);
-              comparisons += 2;
-            }
-          }
+        // P(genotype | allele freq) under Hardy-Weinberg equilibrium
+        let prob: number;
+        if (dosage === 0) {
+          prob = (1 - p) * (1 - p);
+        } else if (dosage === 1) {
+          prob = 2 * p * (1 - p);
+        } else {
+          prob = p * p;
         }
 
-        if (comparisons > 0) {
-          totalSimilarity += matches / comparisons;
-          sampleCount++;
-        }
-      }
-
-      if (sampleCount > 0) {
-        subPopScores.push({
-          pop: subPop,
-          score: totalSimilarity / sampleCount,
-        });
+        logLikelihoods.set(
+          subPop,
+          (logLikelihoods.get(subPop) || 0) + Math.log(prob)
+        );
       }
     }
 
-    // Find best sub-population
-    if (subPopScores.length > 0) {
-      subPopScores.sort((a, b) => b.score - a.score);
-      const best = subPopScores[0];
+    // Convert log-likelihoods to probabilities using softmax
+    const maxLL = Math.max(...logLikelihoods.values());
+    const expScores: Map<SubPopulation, number> = new Map();
+    let totalExp = 0;
 
-      // Calculate confidence as ratio of best to second best
-      let subPopConfidence = best.score;
-      if (subPopScores.length > 1) {
-        const secondBest = subPopScores[1];
-        // Confidence is higher when best is clearly better than second
-        subPopConfidence = Math.min(1, best.score / (secondBest.score + 0.001));
+    for (const subPop of subPops) {
+      const ll = logLikelihoods.get(subPop) || -Infinity;
+      const expScore = Math.exp(ll - maxLL);
+      expScores.set(subPop, expScore);
+      totalExp += expScore;
+    }
+
+    // Find best sub-population
+    let bestPop: SubPopulation | null = null;
+    let bestProb = 0;
+    let secondBestProb = 0;
+
+    for (const subPop of subPops) {
+      const prob = (expScores.get(subPop) || 0) / totalExp;
+      if (prob > bestProb) {
+        secondBestProb = bestProb;
+        bestProb = prob;
+        bestPop = subPop;
+      } else if (prob > secondBestProb) {
+        secondBestProb = prob;
       }
+    }
+
+    if (bestPop) {
+      // Confidence based on how much better the best is than second best
+      const confidence = bestProb - secondBestProb;
 
       refinedSegments.push({
         ...segment,
-        subPopulation: best.pop,
-        subPopulationName: SUB_POP_NAMES[best.pop],
-        subPopulationConfidence: subPopConfidence,
+        subPopulation: bestPop,
+        subPopulationName: SUB_POP_NAMES[bestPop],
+        subPopulationConfidence: Math.min(1, Math.max(0, confidence * 2 + 0.5)),
       });
     } else {
       refinedSegments.push(segment);
