@@ -41,6 +41,16 @@ export interface UserAncestryData {
   subPopulationProportions?: Record<SubPopulation, number>;
   nearestNeighbors?: NearestNeighbor[];
   inferenceMethod?: 'knn' | 'empirical-em' | 'hybrid' | 'em';
+
+  // Phased ancestry data (optional - present when phasing is enabled)
+  isPhased?: boolean;
+  haplotypeASegments?: AncestrySegment[];
+  haplotypeBSegments?: AncestrySegment[];
+  haplotypeAByChromosome?: Map<string, AncestrySegment[]>;
+  haplotypeBByChromosome?: Map<string, AncestrySegment[]>;
+  haplotypeAComposition?: AncestryComposition[];
+  haplotypeBComposition?: AncestryComposition[];
+  phasingConfidence?: number;
 }
 
 /**

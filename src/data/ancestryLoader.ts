@@ -117,10 +117,14 @@ function initializeAncestry(): void {
   segmentsByParent = new Map();
   segmentsByParent.set('maternal', []);
   segmentsByParent.set('paternal', []);
+  segmentsByParent.set('haplotypeA', []);
+  segmentsByParent.set('haplotypeB', []);
   segmentsByParent.set('unphased', []);
 
   for (const segment of segments) {
-    segmentsByParent.get(segment.parent)!.push(segment);
+    if (segmentsByParent.has(segment.parent)) {
+      segmentsByParent.get(segment.parent)!.push(segment);
+    }
   }
 }
 
@@ -206,15 +210,61 @@ export function getPaternalSegments(chromosome: string): AncestrySegment[] {
 
 /**
  * Check if the data is phased
- * User-uploaded data is always unphased (we can't determine without reference)
+ * Returns true if user data has phased haplotypes or if demo profile is phased
  */
 export function isPhased(): boolean {
   const userData = getUserAncestryData();
   if (userData) {
-    return false; // User data is always unphased
+    return userData.isPhased || false;
   }
   initializeAncestry();
   return profile?.isPhased || false;
+}
+
+/**
+ * Get haplotype A segments for a chromosome (phased data)
+ */
+export function getHaplotypeASegments(chromosome: string): AncestrySegment[] {
+  const userData = getUserAncestryData();
+  if (userData && userData.isPhased && userData.haplotypeAByChromosome) {
+    return userData.haplotypeAByChromosome.get(chromosome) || [];
+  }
+  // Fall back to filtering from all segments
+  return getAncestrySegmentsForChromosome(chromosome).filter(
+    seg => seg.parent === 'haplotypeA'
+  );
+}
+
+/**
+ * Get haplotype B segments for a chromosome (phased data)
+ */
+export function getHaplotypeBSegments(chromosome: string): AncestrySegment[] {
+  const userData = getUserAncestryData();
+  if (userData && userData.isPhased && userData.haplotypeBByChromosome) {
+    return userData.haplotypeBByChromosome.get(chromosome) || [];
+  }
+  // Fall back to filtering from all segments
+  return getAncestrySegmentsForChromosome(chromosome).filter(
+    seg => seg.parent === 'haplotypeB'
+  );
+}
+
+/**
+ * Get haplotype-specific ancestry composition
+ */
+export function getHaplotypeComposition(
+  haplotype: 'A' | 'B'
+): AncestryComposition[] {
+  const userData = getUserAncestryData();
+  if (userData && userData.isPhased) {
+    if (haplotype === 'A' && userData.haplotypeAComposition) {
+      return userData.haplotypeAComposition;
+    }
+    if (haplotype === 'B' && userData.haplotypeBComposition) {
+      return userData.haplotypeBComposition;
+    }
+  }
+  return [];
 }
 
 /**

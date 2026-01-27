@@ -4,6 +4,8 @@
  * Provides tools to:
  * 1. Parse 23andMe and AncestryDNA raw data files
  * 2. Infer continental ancestry proportions from SNP data
+ * 3. Statistical phasing using Li & Stephens HMM
+ * 4. Phased ancestry inference (separate tracks per haplotype)
  */
 
 export {
@@ -52,3 +54,15 @@ export {
   type NearestNeighbor,
   type ReferencePanelResult,
 } from './referenceBasedInference';
+
+export {
+  phaseUserGenotypes,
+  isPhasedPanelAvailable,
+  loadPhasedPanel,
+  type PhasingResult,
+} from './phasingInference';
+
+export {
+  inferPhasedAncestry,
+  type PhasedAncestryResult,
+} from './phasedAncestryInference';

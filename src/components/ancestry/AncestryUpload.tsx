@@ -18,6 +18,9 @@ import {
   inferLocalAncestryHMM,
   inferAdmixtureWithReferencePanel,
   refineSegmentsWithSubPopulations,
+  isPhasedPanelAvailable,
+  phaseUserGenotypes,
+  inferPhasedAncestry,
   type ParsedSNPFile,
   type ReferencePanelResult,
 } from '@/data/ancestry';
@@ -115,6 +118,54 @@ export function AncestryUpload({
         // Convert to AncestryComposition format
         const composition: AncestryComposition[] = globalResult.composition;
 
+        // Try phasing if the phased reference panel is available
+        let phasingData: {
+          isPhased: boolean;
+          haplotypeASegments?: typeof refinedSegments;
+          haplotypeBSegments?: typeof refinedSegments;
+          haplotypeAByChromosome?: Map<string, typeof refinedSegments>;
+          haplotypeBByChromosome?: Map<string, typeof refinedSegments>;
+          haplotypeAComposition?: AncestryComposition[];
+          haplotypeBComposition?: AncestryComposition[];
+          phasingConfidence?: number;
+        } = { isPhased: false };
+
+        const phasedPanelAvailable = await isPhasedPanelAvailable();
+        if (phasedPanelAvailable) {
+          try {
+            setProcessingStage(
+              'Phasing chromosomes (this may take a few minutes)...'
+            );
+            const phasingResult = await phaseUserGenotypes(parsed);
+
+            setProcessingStage('Running phased ancestry inference...');
+            const phasedAncestryResult = inferPhasedAncestry(
+              parsed,
+              phasingResult,
+              globalResult
+            );
+
+            phasingData = {
+              isPhased: true,
+              haplotypeASegments: phasedAncestryResult.haplotypeASegments,
+              haplotypeBSegments: phasedAncestryResult.haplotypeBSegments,
+              haplotypeAByChromosome:
+                phasedAncestryResult.haplotypeAByChromosome,
+              haplotypeBByChromosome:
+                phasedAncestryResult.haplotypeBByChromosome,
+              haplotypeAComposition: phasedAncestryResult.haplotypeAComposition,
+              haplotypeBComposition: phasedAncestryResult.haplotypeBComposition,
+              phasingConfidence: phasingResult.averageConfidence,
+            };
+          } catch (phasingError) {
+            // Phasing failed - continue with unphased results
+            console.warn(
+              'Phasing failed, using unphased results:',
+              phasingError
+            );
+          }
+        }
+
         // Create user ancestry data
         const userData: UserAncestryData = {
           source: parsed.source as '23andme' | 'ancestry' | 'unknown',
@@ -138,6 +189,8 @@ export function AncestryUpload({
           ...(!hasReferencePanel && {
             inferenceMethod: 'em' as const,
           }),
+          // Add phasing data if available
+          ...phasingData,
         };
 
         setUserAncestryData(userData);
@@ -289,6 +342,17 @@ export function AncestryUpload({
           <p>
             {userAncestryData.segments.length} chromosomal segments identified
           </p>
+          {userAncestryData.isPhased && (
+            <p className="text-blue-600">
+              Phased: Haplotype A & B tracks available
+              {userAncestryData.phasingConfidence !== undefined && (
+                <span className="text-gray-400 ml-1">
+                  ({Math.round(userAncestryData.phasingConfidence * 100)}%
+                  confidence)
+                </span>
+              )}
+            </p>
+          )}
         </div>
       </div>
     );

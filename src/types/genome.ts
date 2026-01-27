@@ -97,8 +97,17 @@ export type AncestryCategory =
 
 /**
  * Parent of origin for phased data
+ *
+ * - 'maternal' / 'paternal': Known parental origin (requires parental data)
+ * - 'haplotypeA' / 'haplotypeB': Phased but unknown parental origin (statistical phasing only)
+ * - 'unphased': Combined/unphased data
  */
-export type ParentOfOrigin = 'maternal' | 'paternal' | 'unphased';
+export type ParentOfOrigin =
+  | 'maternal'
+  | 'paternal'
+  | 'haplotypeA'
+  | 'haplotypeB'
+  | 'unphased';
 
 /**
  * A single ancestry segment on a chromosome

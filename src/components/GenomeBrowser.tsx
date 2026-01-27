@@ -32,7 +32,10 @@ import {
   getAncestrySegmentsInRange,
   isPhased,
   getChromosomeAncestryComposition,
+  getHaplotypeASegments,
+  getHaplotypeBSegments,
 } from '@/data/ancestryLoader';
+import { useUserAncestryData } from '@/state/appState';
 import { getGeneDisplayName } from '@/lib/content';
 import { Tooltip } from '@/components/interaction/Tooltip';
 import { DetailPanel } from '@/components/interaction/DetailPanel';
@@ -368,8 +371,27 @@ export function GenomeBrowser({
     );
   }, [activeChromosome, visibleRange]);
 
+  // Get phased haplotype segments (from statistical phasing)
+  const userAncestryData = useUserAncestryData();
+  const haplotypeASegments = useMemo(() => {
+    if (!activeChromosome || !userAncestryData?.isPhased) return [];
+    const allSegments = getHaplotypeASegments(activeChromosome);
+    return allSegments.filter(
+      seg => seg.end > visibleRange.start && seg.start < visibleRange.end
+    );
+  }, [activeChromosome, visibleRange, userAncestryData?.isPhased]);
+
+  const haplotypeBSegments = useMemo(() => {
+    if (!activeChromosome || !userAncestryData?.isPhased) return [];
+    const allSegments = getHaplotypeBSegments(activeChromosome);
+    return allSegments.filter(
+      seg => seg.end > visibleRange.start && seg.start < visibleRange.end
+    );
+  }, [activeChromosome, visibleRange, userAncestryData?.isPhased]);
+
   // Check if data is phased
   const dataIsPhased = isPhased();
+  const isStatisticallyPhased = userAncestryData?.isPhased || false;
 
   // Get chromosome-specific ancestry composition for legend
   const ancestryComposition = useMemo(() => {
@@ -623,11 +645,134 @@ export function GenomeBrowser({
           {/* Ancestry Painting track */}
           <g transform="translate(0, 58)">
             <text x={4} y={10} fontSize={10} fill="#888" fontWeight={500}>
-              Ancestry {dataIsPhased ? '(Phased)' : ''}
+              Ancestry {dataIsPhased || isStatisticallyPhased ? '(Phased)' : ''}
             </text>
 
-            {dataIsPhased ? (
-              /* Split view: Maternal on top, Paternal on bottom */
+            {isStatisticallyPhased ? (
+              /* Statistical phasing view: Haplotype A on top, Haplotype B on bottom */
+              <g transform="translate(0, 14)">
+                {/* Haplotype A label with background */}
+                <rect
+                  x={2}
+                  y={-1}
+                  width={70}
+                  height={14}
+                  rx={2}
+                  fill="white"
+                  opacity={0.85}
+                />
+                <text
+                  x={4}
+                  y={10}
+                  fontSize={10}
+                  fill="#7c3aed"
+                  fontWeight={600}
+                >
+                  Haplotype A
+                </text>
+                {/* Haplotype A segments */}
+                <g transform="translate(0, 14)">
+                  {haplotypeASegments.map((segment, i) => {
+                    const x = Math.max(0, scale.scale(segment.start));
+                    const xEnd = Math.min(
+                      effectiveWidth,
+                      scale.scale(segment.end)
+                    );
+                    const width = Math.max(1, xEnd - x);
+                    const isHovered = ancestryTooltip?.segment === segment;
+
+                    return (
+                      <rect
+                        key={`hapA-${i}`}
+                        x={x}
+                        y={0}
+                        width={width}
+                        height={14}
+                        fill={POPULATION_COLORS[segment.population]}
+                        opacity={isHovered ? 1 : 0.85}
+                        stroke={isHovered ? '#000' : 'none'}
+                        strokeWidth={isHovered ? 1 : 0}
+                        className="cursor-pointer transition-opacity"
+                        onMouseEnter={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseMove={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseLeave={() => setAncestryTooltip(null)}
+                      />
+                    );
+                  })}
+                </g>
+
+                {/* Haplotype B label with background */}
+                <rect
+                  x={2}
+                  y={30}
+                  width={70}
+                  height={14}
+                  rx={2}
+                  fill="white"
+                  opacity={0.85}
+                />
+                <text
+                  x={4}
+                  y={41}
+                  fontSize={10}
+                  fill="#0891b2"
+                  fontWeight={600}
+                >
+                  Haplotype B
+                </text>
+                {/* Haplotype B segments */}
+                <g transform="translate(0, 46)">
+                  {haplotypeBSegments.map((segment, i) => {
+                    const x = Math.max(0, scale.scale(segment.start));
+                    const xEnd = Math.min(
+                      effectiveWidth,
+                      scale.scale(segment.end)
+                    );
+                    const width = Math.max(1, xEnd - x);
+                    const isHovered = ancestryTooltip?.segment === segment;
+
+                    return (
+                      <rect
+                        key={`hapB-${i}`}
+                        x={x}
+                        y={0}
+                        width={width}
+                        height={14}
+                        fill={POPULATION_COLORS[segment.population]}
+                        opacity={isHovered ? 1 : 0.85}
+                        stroke={isHovered ? '#000' : 'none'}
+                        strokeWidth={isHovered ? 1 : 0}
+                        className="cursor-pointer transition-opacity"
+                        onMouseEnter={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseMove={e => {
+                          setAncestryTooltip({
+                            segment,
+                            position: { x: e.clientX, y: e.clientY },
+                          });
+                        }}
+                        onMouseLeave={() => setAncestryTooltip(null)}
+                      />
+                    );
+                  })}
+                </g>
+              </g>
+            ) : dataIsPhased ? (
+              /* Parental phasing view: Maternal on top, Paternal on bottom */
               <g transform="translate(0, 14)">
                 {/* Maternal label with background */}
                 <rect
@@ -1312,21 +1457,34 @@ export function GenomeBrowser({
             {/* Details */}
             <div className="space-y-1 text-xs">
               <div className="flex justify-between">
-                <span className="text-gray-500">Inherited from:</span>
+                <span className="text-gray-500">
+                  {ancestryTooltip.segment.parent === 'haplotypeA' ||
+                  ancestryTooltip.segment.parent === 'haplotypeB'
+                    ? 'Chromosome copy:'
+                    : 'Inherited from:'}
+                </span>
                 <span
                   className={`font-medium ${
                     ancestryTooltip.segment.parent === 'maternal'
                       ? 'text-pink-600'
                       : ancestryTooltip.segment.parent === 'paternal'
                         ? 'text-blue-600'
-                        : 'text-gray-600'
+                        : ancestryTooltip.segment.parent === 'haplotypeA'
+                          ? 'text-violet-600'
+                          : ancestryTooltip.segment.parent === 'haplotypeB'
+                            ? 'text-cyan-600'
+                            : 'text-gray-600'
                   }`}
                 >
                   {ancestryTooltip.segment.parent === 'maternal'
                     ? '♀ Mother'
                     : ancestryTooltip.segment.parent === 'paternal'
                       ? '♂ Father'
-                      : 'Unknown'}
+                      : ancestryTooltip.segment.parent === 'haplotypeA'
+                        ? 'Haplotype A'
+                        : ancestryTooltip.segment.parent === 'haplotypeB'
+                          ? 'Haplotype B'
+                          : 'Unknown'}
                 </span>
               </div>
               <div className="flex justify-between">
