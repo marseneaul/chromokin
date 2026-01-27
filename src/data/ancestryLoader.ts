@@ -1,6 +1,7 @@
 /**
  * Ancestry data loader
  * Loads and indexes ancestry composition and segment data
+ * Supports both demo data and user-uploaded data
  */
 
 import type {
@@ -11,7 +12,15 @@ import type {
   AncestryPopulation,
   ParentOfOrigin,
 } from '@/types/genome';
+import { useAppStore, type UserAncestryData } from '@/state/appState';
 import ancestryData from './ancestryDemo.json';
+
+/**
+ * Get user ancestry data from app state (if available)
+ */
+function getUserAncestryData(): UserAncestryData | null {
+  return useAppStore.getState().userAncestryData;
+}
 
 interface RawSegment {
   chromosome: string;
@@ -125,18 +134,35 @@ export function getGeneticProfile(): GeneticProfile | null {
 
 /**
  * Get ancestry composition (overall percentages)
+ * Returns user data if available, otherwise demo data
  */
 export function getAncestryComposition(): AncestryComposition[] {
+  const userData = getUserAncestryData();
+  if (userData) {
+    return userData.composition;
+  }
   initializeAncestry();
   return profile?.ancestryComposition || [];
 }
 
 /**
+ * Check if user ancestry data is loaded
+ */
+export function hasUserAncestryData(): boolean {
+  return getUserAncestryData() !== null;
+}
+
+/**
  * Get all ancestry segments for a chromosome
+ * Returns user data if available, otherwise demo data
  */
 export function getAncestrySegmentsForChromosome(
   chromosome: string
 ): AncestrySegment[] {
+  const userData = getUserAncestryData();
+  if (userData) {
+    return userData.segmentsByChromosome.get(chromosome) || [];
+  }
   initializeAncestry();
   return segmentsByChromosome?.get(chromosome) || [];
 }
@@ -180,8 +206,13 @@ export function getPaternalSegments(chromosome: string): AncestrySegment[] {
 
 /**
  * Check if the data is phased
+ * User-uploaded data is always unphased (we can't determine without reference)
  */
 export function isPhased(): boolean {
+  const userData = getUserAncestryData();
+  if (userData) {
+    return false; // User data is always unphased
+  }
   initializeAncestry();
   return profile?.isPhased || false;
 }

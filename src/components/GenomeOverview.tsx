@@ -4,20 +4,31 @@
  */
 
 import { type JSX, useEffect, useMemo } from 'react';
-import { useAppStore, useCopyLevel } from '@/state/appState';
+import {
+  useAppStore,
+  useCopyLevel,
+  useUserAncestryData,
+} from '@/state/appState';
 import { CHROMOSOME_LENGTHS } from '@/types/core';
-import { getAncestryComposition } from '@/data/ancestryLoader';
+import {
+  getAncestryComposition,
+  hasUserAncestryData,
+} from '@/data/ancestryLoader';
 import { getTraitsDatabase, getDatabaseMetadata } from '@/data/traitsLoader';
 import { getGenomicFeaturesDatabase } from '@/data/genomicFeaturesLoader';
+import { AncestryUpload } from '@/components/ancestry';
 import type { AncestryComposition } from '@/types/genome';
 import type { EnhancedTraitRecord } from '@/types/traits';
 
-// Refined ancestry colors
+// Refined ancestry colors (includes both demo and inference categories)
 const ANCESTRY_COLORS: Record<string, string> = {
   european: '#3b82f6',
   african: '#f59e0b',
   asian: '#10b981',
+  east_asian: '#10b981',
+  south_asian: '#14b8a6',
   american: '#ef4444',
+  native_american: '#ef4444',
   oceanian: '#8b5cf6',
   archaic: '#64748b',
 };
@@ -48,14 +59,22 @@ export function GenomeOverview({
     state => state.genomicFeaturesLoaded
   );
 
+  // User ancestry data (reactive)
+  const userAncestryData = useUserAncestryData();
+
   // Load data on mount
   useEffect(() => {
     if (!traitsLoaded) loadTraits();
     if (!genomicFeaturesLoaded) loadGenomicFeatures();
   }, [traitsLoaded, genomicFeaturesLoaded, loadTraits, loadGenomicFeatures]);
 
-  // Get data
-  const composition = useMemo(() => getAncestryComposition(), []);
+  // Get data - composition is reactive to user data changes
+  const composition = useMemo(
+    () => getAncestryComposition(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [userAncestryData]
+  );
+  const hasUserData = hasUserAncestryData();
   const traitsDb = useMemo(() => getTraitsDatabase(), []);
   const featuresDb = useMemo(() => getGenomicFeaturesDatabase(), []);
   const dbMeta = useMemo(() => getDatabaseMetadata(), []);
@@ -154,7 +173,12 @@ export function GenomeOverview({
 
         {/* Two-column layout for Ancestry and Traits */}
         <div className="grid lg:grid-cols-2 gap-5">
-          <AncestrySection composition={composition} copyLevel={copyLevel} />
+          <AncestrySection
+            composition={composition}
+            copyLevel={copyLevel}
+            hasUserData={hasUserData}
+            userAncestryData={userAncestryData}
+          />
           <TraitsSection
             traits={featuredTraits}
             copyLevel={copyLevel}
@@ -200,11 +224,15 @@ function StatCard({ value, label, color }: StatCardProps): JSX.Element {
 interface AncestrySectionProps {
   composition: AncestryComposition[];
   copyLevel: number;
+  hasUserData: boolean;
+  userAncestryData: ReturnType<typeof useUserAncestryData>;
 }
 
 function AncestrySection({
   composition,
   copyLevel,
+  hasUserData,
+  userAncestryData,
 }: AncestrySectionProps): JSX.Element {
   // Filter out archaic for the main display, sort by percentage
   const mainComposition = composition
@@ -216,34 +244,80 @@ function AncestrySection({
       className="bg-white rounded-lg border border-gray-200 p-5 shadow-sm"
       data-tour="ancestry-section"
     >
-      <h2 className="text-sm font-medium text-gray-900 mb-4">
-        {copyLevel <= 5 ? 'Your Ancestry' : 'Ancestry Composition'}
-      </h2>
-
-      <div className="space-y-3">
-        {mainComposition.map(comp => (
-          <div key={comp.population}>
-            <div className="flex justify-between items-center mb-1">
-              <span className="text-sm text-gray-700">{comp.displayName}</span>
-              <span className="text-sm font-medium text-gray-900">
-                {comp.percentage.toFixed(1)}%
-              </span>
-            </div>
-            <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-              <div
-                className="h-full rounded-full transition-all duration-500"
-                style={{
-                  width: `${comp.percentage}%`,
-                  backgroundColor: ANCESTRY_COLORS[comp.category] || '#94a3b8',
-                }}
-              />
-            </div>
-          </div>
-        ))}
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-sm font-medium text-gray-900">
+          {copyLevel <= 5 ? 'Your Ancestry' : 'Ancestry Composition'}
+        </h2>
+        {hasUserData && (
+          <span className="text-xs px-2 py-0.5 bg-green-100 text-green-800 rounded-full">
+            Your Data
+          </span>
+        )}
+        {!hasUserData && (
+          <span className="text-xs px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full">
+            Demo
+          </span>
+        )}
       </div>
 
-      {copyLevel <= 5 && (
-        <p className="mt-4 text-xs text-gray-400">
+      {mainComposition.length > 0 ? (
+        <div className="space-y-3">
+          {mainComposition.map(comp => (
+            <div key={comp.population || comp.category}>
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-sm text-gray-700">
+                  {comp.displayName}
+                </span>
+                <span className="text-sm font-medium text-gray-900">
+                  {comp.percentage.toFixed(1)}%
+                </span>
+              </div>
+              <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                <div
+                  className="h-full rounded-full transition-all duration-500"
+                  style={{
+                    width: `${Math.min(comp.percentage, 100)}%`,
+                    backgroundColor:
+                      ANCESTRY_COLORS[comp.category] || '#94a3b8',
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="text-sm text-gray-500 py-2">No ancestry data available</p>
+      )}
+
+      {/* User data info */}
+      {hasUserData && userAncestryData && (
+        <div className="mt-4 pt-3 border-t border-gray-100">
+          <p className="text-xs text-gray-500">
+            Based on {userAncestryData.markersUsed} ancestry markers from your{' '}
+            {userAncestryData.source === '23andme'
+              ? '23andMe'
+              : userAncestryData.source === 'ancestry'
+                ? 'AncestryDNA'
+                : ''}{' '}
+            data
+          </p>
+        </div>
+      )}
+
+      {/* Upload section when no user data */}
+      {!hasUserData && (
+        <div className="mt-4 pt-3 border-t border-gray-100">
+          <p className="text-xs text-gray-500 mb-3">
+            {copyLevel <= 5
+              ? 'Upload your DNA file to see your real ancestry'
+              : 'Upload raw data from 23andMe or AncestryDNA'}
+          </p>
+          <AncestryUpload compact />
+        </div>
+      )}
+
+      {copyLevel <= 5 && !hasUserData && (
+        <p className="mt-3 text-xs text-gray-400">
           Your DNA tells a story of where your ancestors traveled over thousands
           of years.
         </p>

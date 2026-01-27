@@ -17,8 +17,25 @@ import {
 } from '@/types/core';
 import type { TraitsDatabase } from '@/types/traits';
 import type { GenomicFeaturesDatabase } from '@/types/genomicFeatures';
+import type { AncestryComposition, AncestrySegment } from '@/types/genome';
 import { getTraitsDatabase } from '@/data/traitsLoader';
 import { getGenomicFeaturesDatabase } from '@/data/genomicFeaturesLoader';
+
+/**
+ * User ancestry data from uploaded file
+ */
+export interface UserAncestryData {
+  source: '23andme' | 'ancestry' | 'unknown';
+  fileName: string;
+  snpCount: number;
+  buildVersion: string;
+  composition: AncestryComposition[];
+  segments: AncestrySegment[];
+  segmentsByChromosome: Map<string, AncestrySegment[]>;
+  globalConfidence: 'high' | 'moderate' | 'low';
+  markersUsed: number;
+  processedAt: string;
+}
 
 /**
  * Page types for navigation
@@ -42,6 +59,10 @@ interface TraitInteractionState {
   selectedFeatureId: string | null;
   selectedVariantId: string | null;
   detailPanelOpen: boolean;
+  // User ancestry data
+  userAncestryData: UserAncestryData | null;
+  userAncestryLoading: boolean;
+  userAncestryError: string | null;
 }
 
 // Default configuration
@@ -143,6 +164,9 @@ const defaultTraitInteraction: TraitInteractionState = {
   selectedFeatureId: null,
   selectedVariantId: null,
   detailPanelOpen: false,
+  userAncestryData: null,
+  userAncestryLoading: false,
+  userAncestryError: null,
 };
 
 // Initial state
@@ -215,6 +239,12 @@ interface AppStore extends AppState, TraitInteractionState {
   selectVariant: (variantId: string | null) => void;
   closeDetailPanel: () => void;
   clearInteractions: () => void;
+
+  // User ancestry actions
+  setUserAncestryLoading: (loading: boolean) => void;
+  setUserAncestryData: (data: UserAncestryData) => void;
+  setUserAncestryError: (error: string | null) => void;
+  clearUserAncestryData: () => void;
 }
 
 // Create the store
@@ -515,6 +545,39 @@ export const useAppStore = create<AppStore>()(
           false,
           'clearInteractions'
         ),
+
+      // User ancestry actions
+      setUserAncestryLoading: (loading: boolean) =>
+        set({ userAncestryLoading: loading }, false, 'setUserAncestryLoading'),
+
+      setUserAncestryData: (data: UserAncestryData) =>
+        set(
+          {
+            userAncestryData: data,
+            userAncestryLoading: false,
+            userAncestryError: null,
+          },
+          false,
+          'setUserAncestryData'
+        ),
+
+      setUserAncestryError: (error: string | null) =>
+        set(
+          { userAncestryError: error, userAncestryLoading: false },
+          false,
+          'setUserAncestryError'
+        ),
+
+      clearUserAncestryData: () =>
+        set(
+          {
+            userAncestryData: null,
+            userAncestryLoading: false,
+            userAncestryError: null,
+          },
+          false,
+          'clearUserAncestryData'
+        ),
     })),
     {
       name: 'chromokin-app-store',
@@ -623,6 +686,22 @@ export const useCloseDetailPanel = () =>
   useAppStore(state => state.closeDetailPanel);
 export const useClearInteractions = () =>
   useAppStore(state => state.clearInteractions);
+
+// User ancestry selectors
+export const useUserAncestryData = () =>
+  useAppStore(state => state.userAncestryData);
+export const useUserAncestryLoading = () =>
+  useAppStore(state => state.userAncestryLoading);
+export const useUserAncestryError = () =>
+  useAppStore(state => state.userAncestryError);
+export const useSetUserAncestryData = () =>
+  useAppStore(state => state.setUserAncestryData);
+export const useSetUserAncestryLoading = () =>
+  useAppStore(state => state.setUserAncestryLoading);
+export const useSetUserAncestryError = () =>
+  useAppStore(state => state.setUserAncestryError);
+export const useClearUserAncestryData = () =>
+  useAppStore(state => state.clearUserAncestryData);
 
 // Development helpers
 if (process.env.NODE_ENV === 'development') {

@@ -1,0 +1,3949 @@
+{
+  "metadata": {
+    "description": "Ancestry Informative Markers (AIMs) with population allele frequencies",
+    "source": "1000 Genomes Project Phase 3, gnomAD, Kidd et al. 2014, Kosoy et al. 2009",
+    "buildVersion": "GRCh37",
+    "populations": {
+      "EUR": "European (CEU, GBR, TSI, IBS, FIN)",
+      "AFR": "African (YRI, LWK, GWD, MSL, ESN)",
+      "EAS": "East Asian (CHB, JPT, CHS, CDX, KHV)",
+      "SAS": "South Asian (GIH, PJL, BEB, STU, ITU)",
+      "AMR": "Native American / Latino (MXL, PUR, CLM, PEL)"
+    },
+    "totalMarkers": 384,
+    "version": "2.0"
+  },
+  "markers": [
+    {
+      "rsid": "rs2814778",
+      "chromosome": "1",
+      "position": 159174683,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.99,
+        "AFR": 0.01,
+        "EAS": 0.99,
+        "SAS": 0.99,
+        "AMR": 0.85
+      },
+      "note": "Duffy null - strongest African marker"
+    },
+    {
+      "rsid": "rs1426654",
+      "chromosome": "15",
+      "position": 48426484,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.99,
+        "AFR": 0.07,
+        "EAS": 0.02,
+        "SAS": 0.85,
+        "AMR": 0.6
+      },
+      "note": "SLC24A5 skin pigmentation"
+    },
+    {
+      "rsid": "rs16891982",
+      "chromosome": "5",
+      "position": 33951693,
+      "ref": "C",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.95,
+        "AFR": 0.02,
+        "EAS": 0.005,
+        "SAS": 0.1,
+        "AMR": 0.45
+      },
+      "note": "SLC45A2 skin pigmentation"
+    },
+    {
+      "rsid": "rs12913832",
+      "chromosome": "15",
+      "position": 28365618,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.72,
+        "AFR": 0.01,
+        "EAS": 0.01,
+        "SAS": 0.05,
+        "AMR": 0.35
+      },
+      "note": "HERC2 blue eyes"
+    },
+    {
+      "rsid": "rs1800414",
+      "chromosome": "15",
+      "position": 28197037,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.005,
+        "AFR": 0.002,
+        "EAS": 0.65,
+        "SAS": 0.12,
+        "AMR": 0.15
+      },
+      "note": "OCA2 East Asian"
+    },
+    {
+      "rsid": "rs3827760",
+      "chromosome": "2",
+      "position": 109513601,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.005,
+        "AFR": 0.003,
+        "EAS": 0.88,
+        "SAS": 0.05,
+        "AMR": 0.45
+      },
+      "note": "EDAR hair/teeth"
+    },
+    {
+      "rsid": "rs4988235",
+      "chromosome": "2",
+      "position": 136608646,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.75,
+        "AFR": 0.1,
+        "EAS": 0.01,
+        "SAS": 0.3,
+        "AMR": 0.35
+      },
+      "note": "Lactase persistence"
+    },
+    {
+      "rsid": "rs1042602",
+      "chromosome": "11",
+      "position": 88911696,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.005,
+        "EAS": 0.002,
+        "SAS": 0.15,
+        "AMR": 0.2
+      },
+      "note": "TYR pigmentation"
+    },
+    {
+      "rsid": "rs6119471",
+      "chromosome": "20",
+      "position": 33218090,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.005,
+        "AFR": 0.85,
+        "EAS": 0.01,
+        "SAS": 0.02,
+        "AMR": 0.12
+      },
+      "note": "ASIP African marker"
+    },
+    {
+      "rsid": "rs671",
+      "chromosome": "12",
+      "position": 112241766,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.001,
+        "AFR": 0.001,
+        "EAS": 0.28,
+        "SAS": 0.02,
+        "AMR": 0.03
+      },
+      "note": "ALDH2 alcohol flush"
+    },
+    {
+      "rsid": "rs1229984",
+      "chromosome": "4",
+      "position": 100239319,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.04,
+        "AFR": 0.02,
+        "EAS": 0.7,
+        "SAS": 0.25,
+        "AMR": 0.12
+      },
+      "note": "ADH1B alcohol metabolism"
+    },
+    {
+      "rsid": "rs17822931",
+      "chromosome": "16",
+      "position": 48258198,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.02,
+        "EAS": 0.95,
+        "SAS": 0.3,
+        "AMR": 0.35
+      },
+      "note": "ABCC11 earwax type"
+    },
+    {
+      "rsid": "rs1805007",
+      "chromosome": "16",
+      "position": 89919709,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.002,
+        "EAS": 0.001,
+        "SAS": 0.005,
+        "AMR": 0.06
+      },
+      "note": "MC1R red hair"
+    },
+    {
+      "rsid": "rs1805008",
+      "chromosome": "16",
+      "position": 89919722,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.09,
+        "AFR": 0.001,
+        "EAS": 0.001,
+        "SAS": 0.003,
+        "AMR": 0.04
+      },
+      "note": "MC1R red hair"
+    },
+    {
+      "rsid": "rs2250072",
+      "chromosome": "9",
+      "position": 16855426,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.25,
+        "AFR": 0.75,
+        "EAS": 0.15,
+        "SAS": 0.3,
+        "AMR": 0.4
+      },
+      "note": "BNC2 African signal"
+    },
+    {
+      "rsid": "rs1800404",
+      "chromosome": "15",
+      "position": 28260991,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.95,
+        "EAS": 0.08,
+        "SAS": 0.45,
+        "AMR": 0.55
+      },
+      "note": "OCA2 African marker"
+    },
+    {
+      "rsid": "rs6058017",
+      "chromosome": "20",
+      "position": 33215515,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.1,
+        "AFR": 0.82,
+        "EAS": 0.05,
+        "SAS": 0.15,
+        "AMR": 0.25
+      },
+      "note": "ASIP African"
+    },
+    {
+      "rsid": "rs2402130",
+      "chromosome": "14",
+      "position": 92773663,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.7,
+        "EAS": 0.25,
+        "SAS": 0.45,
+        "AMR": 0.5
+      },
+      "note": "SLC24A4 hair/eye"
+    },
+    {
+      "rsid": "rs12203592",
+      "chromosome": "6",
+      "position": 396321,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.02,
+        "EAS": 0.01,
+        "SAS": 0.03,
+        "AMR": 0.08
+      },
+      "note": "IRF4 freckles"
+    },
+    {
+      "rsid": "rs2228479",
+      "chromosome": "16",
+      "position": 89985940,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.08,
+        "AFR": 0.01,
+        "EAS": 0.45,
+        "SAS": 0.15,
+        "AMR": 0.1
+      },
+      "note": "MC1R East Asian"
+    },
+    {
+      "rsid": "rs1667394",
+      "chromosome": "15",
+      "position": 28530182,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.72,
+        "AFR": 0.15,
+        "EAS": 0.1,
+        "SAS": 0.25,
+        "AMR": 0.4
+      },
+      "note": "OCA2 European"
+    },
+    {
+      "rsid": "rs7183877",
+      "chromosome": "15",
+      "position": 28399935,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.85,
+        "EAS": 0.05,
+        "SAS": 0.35,
+        "AMR": 0.45
+      },
+      "note": "HERC2 African"
+    },
+    {
+      "rsid": "rs1129038",
+      "chromosome": "15",
+      "position": 28356013,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.7,
+        "AFR": 0.05,
+        "EAS": 0.03,
+        "SAS": 0.12,
+        "AMR": 0.35
+      },
+      "note": "HERC2 blue eyes"
+    },
+    {
+      "rsid": "rs916977",
+      "chromosome": "15",
+      "position": 28347869,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.72,
+        "AFR": 0.08,
+        "EAS": 0.05,
+        "SAS": 0.15,
+        "AMR": 0.38
+      },
+      "note": "HERC2 eye color"
+    },
+    {
+      "rsid": "rs1470608",
+      "chromosome": "15",
+      "position": 28288121,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.88,
+        "EAS": 0.1,
+        "SAS": 0.42,
+        "AMR": 0.5
+      },
+      "note": "OCA2 African"
+    },
+    {
+      "rsid": "rs4778138",
+      "chromosome": "15",
+      "position": 28335820,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.65,
+        "AFR": 0.1,
+        "EAS": 0.15,
+        "SAS": 0.3,
+        "AMR": 0.38
+      },
+      "note": "HERC2 eye color"
+    },
+    {
+      "rsid": "rs1572018",
+      "chromosome": "5",
+      "position": 33971691,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.88,
+        "AFR": 0.15,
+        "EAS": 0.08,
+        "SAS": 0.25,
+        "AMR": 0.55
+      },
+      "note": "SLC45A2 European"
+    },
+    {
+      "rsid": "rs26722",
+      "chromosome": "5",
+      "position": 33963870,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.9,
+        "AFR": 0.12,
+        "EAS": 0.05,
+        "SAS": 0.22,
+        "AMR": 0.52
+      },
+      "note": "SLC45A2 European"
+    },
+    {
+      "rsid": "rs35395",
+      "chromosome": "5",
+      "position": 33952296,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.08,
+        "AFR": 0.8,
+        "EAS": 0.92,
+        "SAS": 0.65,
+        "AMR": 0.4
+      },
+      "note": "SLC45A2 non-European"
+    },
+    {
+      "rsid": "rs2070600",
+      "chromosome": "6",
+      "position": 32151443,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.01,
+        "EAS": 0.35,
+        "SAS": 0.15,
+        "AMR": 0.08
+      },
+      "note": "AGER East Asian"
+    },
+    {
+      "rsid": "rs3184504",
+      "chromosome": "12",
+      "position": 111884608,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.08,
+        "EAS": 0.02,
+        "SAS": 0.12,
+        "AMR": 0.25
+      },
+      "note": "SH2B3 European"
+    },
+    {
+      "rsid": "rs6060369",
+      "chromosome": "20",
+      "position": 33219603,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.08,
+        "AFR": 0.78,
+        "EAS": 0.05,
+        "SAS": 0.22,
+        "AMR": 0.28
+      },
+      "note": "ASIP African"
+    },
+    {
+      "rsid": "rs6059655",
+      "chromosome": "20",
+      "position": 33233866,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.72,
+        "EAS": 0.02,
+        "SAS": 0.18,
+        "AMR": 0.22
+      },
+      "note": "ASIP African"
+    },
+    {
+      "rsid": "rs885479",
+      "chromosome": "16",
+      "position": 89986546,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.01,
+        "EAS": 0.72,
+        "SAS": 0.22,
+        "AMR": 0.18
+      },
+      "note": "MC1R East Asian"
+    },
+    {
+      "rsid": "rs174547",
+      "chromosome": "11",
+      "position": 61570783,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.95,
+        "EAS": 0.65,
+        "SAS": 0.6,
+        "AMR": 0.55
+      },
+      "note": "FADS1 fatty acids"
+    },
+    {
+      "rsid": "rs2236212",
+      "chromosome": "11",
+      "position": 61550128,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.32,
+        "AFR": 0.92,
+        "EAS": 0.6,
+        "SAS": 0.55,
+        "AMR": 0.52
+      },
+      "note": "FADS African"
+    },
+    {
+      "rsid": "rs6497268",
+      "chromosome": "15",
+      "position": 48419839,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.68,
+        "AFR": 0.12,
+        "EAS": 0.08,
+        "SAS": 0.22,
+        "AMR": 0.4
+      },
+      "note": "SLC24A5 region"
+    },
+    {
+      "rsid": "rs6499244",
+      "chromosome": "16",
+      "position": 48232040,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.1,
+        "AFR": 0.02,
+        "EAS": 0.88,
+        "SAS": 0.28,
+        "AMR": 0.3
+      },
+      "note": "ABCC11 East Asian"
+    },
+    {
+      "rsid": "rs2294008",
+      "chromosome": "8",
+      "position": 128424800,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.45,
+        "AFR": 0.08,
+        "EAS": 0.78,
+        "SAS": 0.55,
+        "AMR": 0.4
+      },
+      "note": "PSCA differentiated"
+    },
+    {
+      "rsid": "rs1079597",
+      "chromosome": "11",
+      "position": 113270828,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.02,
+        "EAS": 0.45,
+        "SAS": 0.25,
+        "AMR": 0.15
+      },
+      "note": "DRD2 East Asian"
+    },
+    {
+      "rsid": "rs1393350",
+      "chromosome": "11",
+      "position": 88650694,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.05,
+        "EAS": 0.02,
+        "SAS": 0.08,
+        "AMR": 0.12
+      },
+      "note": "TYR European"
+    },
+    {
+      "rsid": "rs1126809",
+      "chromosome": "11",
+      "position": 89017961,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.05,
+        "EAS": 0.02,
+        "SAS": 0.1,
+        "AMR": 0.15
+      },
+      "note": "TYR European"
+    },
+    {
+      "rsid": "rs642742",
+      "chromosome": "20",
+      "position": 33312971,
+      "ref": "T",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.85,
+        "AFR": 0.15,
+        "EAS": 0.65,
+        "SAS": 0.6,
+        "AMR": 0.55
+      }
+    },
+    {
+      "rsid": "rs10843104",
+      "chromosome": "12",
+      "position": 88554893,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.7,
+        "EAS": 0.2,
+        "SAS": 0.25,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs1800407",
+      "chromosome": "15",
+      "position": 28230318,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.08,
+        "AFR": 0.005,
+        "EAS": 0.002,
+        "SAS": 0.02,
+        "AMR": 0.05
+      }
+    },
+    {
+      "rsid": "rs4959270",
+      "chromosome": "6",
+      "position": 457748,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.55,
+        "AFR": 0.28,
+        "EAS": 0.12,
+        "SAS": 0.35,
+        "AMR": 0.4
+      }
+    },
+    {
+      "rsid": "rs7495174",
+      "chromosome": "15",
+      "position": 28344238,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.88,
+        "AFR": 0.12,
+        "EAS": 0.25,
+        "SAS": 0.4,
+        "AMR": 0.55
+      }
+    },
+    {
+      "rsid": "rs1834640",
+      "chromosome": "15",
+      "position": 28356859,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.7,
+        "AFR": 0.08,
+        "EAS": 0.05,
+        "SAS": 0.15,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs260690",
+      "chromosome": "6",
+      "position": 396321,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.4,
+        "AFR": 0.72,
+        "EAS": 0.18,
+        "SAS": 0.45,
+        "AMR": 0.5
+      }
+    },
+    {
+      "rsid": "rs1408799",
+      "chromosome": "9",
+      "position": 12709305,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.75,
+        "AFR": 0.5,
+        "EAS": 0.85,
+        "SAS": 0.7,
+        "AMR": 0.65
+      }
+    },
+
+    {
+      "rsid": "rs310644",
+      "chromosome": "11",
+      "position": 47345203,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.5,
+        "AFR": 0.25,
+        "EAS": 0.72,
+        "SAS": 0.55,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs3796332",
+      "chromosome": "2",
+      "position": 238288964,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.6,
+        "EAS": 0.08,
+        "SAS": 0.3,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs1834619",
+      "chromosome": "10",
+      "position": 79815437,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.68,
+        "EAS": 0.12,
+        "SAS": 0.38,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs2070959",
+      "chromosome": "12",
+      "position": 55895692,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.52,
+        "AFR": 0.2,
+        "EAS": 0.78,
+        "SAS": 0.58,
+        "AMR": 0.48
+      }
+    },
+    {
+      "rsid": "rs4383992",
+      "chromosome": "5",
+      "position": 149339972,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.72,
+        "EAS": 0.18,
+        "SAS": 0.42,
+        "AMR": 0.48
+      }
+    },
+    {
+      "rsid": "rs960709",
+      "chromosome": "2",
+      "position": 25174423,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.62,
+        "AFR": 0.25,
+        "EAS": 0.48,
+        "SAS": 0.52,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs10265937",
+      "chromosome": "7",
+      "position": 11509422,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.08,
+        "EAS": 0.62,
+        "SAS": 0.42,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs11545434",
+      "chromosome": "5",
+      "position": 33987450,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.88,
+        "AFR": 0.08,
+        "EAS": 0.02,
+        "SAS": 0.18,
+        "AMR": 0.48
+      }
+    },
+    {
+      "rsid": "rs4867236",
+      "chromosome": "5",
+      "position": 33924731,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.85,
+        "EAS": 0.95,
+        "SAS": 0.72,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs10777129",
+      "chromosome": "12",
+      "position": 55916077,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.18,
+        "EAS": 0.75,
+        "SAS": 0.55,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs7196459",
+      "chromosome": "16",
+      "position": 89771171,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.8,
+        "AFR": 0.55,
+        "EAS": 0.25,
+        "SAS": 0.58,
+        "AMR": 0.62
+      }
+    },
+    {
+      "rsid": "rs872071",
+      "chromosome": "8",
+      "position": 130635137,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.38,
+        "AFR": 0.72,
+        "EAS": 0.25,
+        "SAS": 0.48,
+        "AMR": 0.52
+      }
+    },
+    {
+      "rsid": "rs2269426",
+      "chromosome": "6",
+      "position": 31431780,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.58,
+        "EAS": 0.08,
+        "SAS": 0.28,
+        "AMR": 0.32
+      }
+    },
+    {
+      "rsid": "rs7349332",
+      "chromosome": "7",
+      "position": 44161545,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.58,
+        "AFR": 0.22,
+        "EAS": 0.72,
+        "SAS": 0.55,
+        "AMR": 0.48
+      }
+    },
+    {
+      "rsid": "rs2503770",
+      "chromosome": "10",
+      "position": 79819937,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.25,
+        "AFR": 0.65,
+        "EAS": 0.15,
+        "SAS": 0.38,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs4911686",
+      "chromosome": "20",
+      "position": 33318535,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.58,
+        "AFR": 0.18,
+        "EAS": 0.45,
+        "SAS": 0.5,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs11574547",
+      "chromosome": "11",
+      "position": 68855363,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.32,
+        "AFR": 0.02,
+        "EAS": 0.55,
+        "SAS": 0.35,
+        "AMR": 0.28
+      }
+    },
+
+    {
+      "rsid": "rs1871534",
+      "chromosome": "11",
+      "position": 69379161,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.3,
+        "AFR": 0.65,
+        "EAS": 0.15,
+        "SAS": 0.4,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs7657799",
+      "chromosome": "4",
+      "position": 82327197,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.25,
+        "AFR": 0.7,
+        "EAS": 0.18,
+        "SAS": 0.35,
+        "AMR": 0.4
+      }
+    },
+    {
+      "rsid": "rs10843112",
+      "chromosome": "12",
+      "position": 88557893,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.72,
+        "EAS": 0.22,
+        "SAS": 0.35,
+        "AMR": 0.38
+      }
+    },
+    {
+      "rsid": "rs11150606",
+      "chromosome": "16",
+      "position": 89818732,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.02,
+        "EAS": 0.25,
+        "SAS": 0.08,
+        "AMR": 0.08
+      }
+    },
+    {
+      "rsid": "rs2733832",
+      "chromosome": "9",
+      "position": 16865594,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.75,
+        "EAS": 0.22,
+        "SAS": 0.48,
+        "AMR": 0.52
+      }
+    },
+    {
+      "rsid": "rs10424065",
+      "chromosome": "19",
+      "position": 5926230,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.4,
+        "AFR": 0.08,
+        "EAS": 0.65,
+        "SAS": 0.45,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs2240203",
+      "chromosome": "6",
+      "position": 31543031,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.55,
+        "EAS": 0.08,
+        "SAS": 0.25,
+        "AMR": 0.3
+      }
+    },
+
+    {
+      "rsid": "rs4778241",
+      "chromosome": "15",
+      "position": 28338713,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.58,
+        "AFR": 0.08,
+        "EAS": 0.12,
+        "SAS": 0.25,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs7170852",
+      "chromosome": "15",
+      "position": 28386626,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.55,
+        "AFR": 0.1,
+        "EAS": 0.08,
+        "SAS": 0.2,
+        "AMR": 0.32
+      }
+    },
+    {
+      "rsid": "rs728405",
+      "chromosome": "1",
+      "position": 159175123,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.52,
+        "AFR": 0.12,
+        "EAS": 0.4,
+        "SAS": 0.38,
+        "AMR": 0.32
+      }
+    },
+
+    {
+      "rsid": "rs4553629",
+      "chromosome": "10",
+      "position": 79822100,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.68,
+        "EAS": 0.18,
+        "SAS": 0.4,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs4670767",
+      "chromosome": "2",
+      "position": 171866938,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.15,
+        "EAS": 0.68,
+        "SAS": 0.5,
+        "AMR": 0.4
+      }
+    },
+    {
+      "rsid": "rs7131056",
+      "chromosome": "11",
+      "position": 89011046,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.55,
+        "AFR": 0.22,
+        "EAS": 0.8,
+        "SAS": 0.58,
+        "AMR": 0.48
+      }
+    },
+    {
+      "rsid": "rs10843090",
+      "chromosome": "12",
+      "position": 55893842,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.18,
+        "EAS": 0.72,
+        "SAS": 0.55,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs730570",
+      "chromosome": "1",
+      "position": 159175922,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.55,
+        "AFR": 0.12,
+        "EAS": 0.42,
+        "SAS": 0.38,
+        "AMR": 0.32
+      }
+    },
+    {
+      "rsid": "rs1015362",
+      "chromosome": "20",
+      "position": 33280356,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.72,
+        "EAS": 0.22,
+        "SAS": 0.48,
+        "AMR": 0.52
+      }
+    },
+    {
+      "rsid": "rs10809808",
+      "chromosome": "9",
+      "position": 16862150,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.58,
+        "AFR": 0.28,
+        "EAS": 0.48,
+        "SAS": 0.52,
+        "AMR": 0.45
+      }
+    },
+
+    {
+      "rsid": "rs3768056",
+      "chromosome": "15",
+      "position": 28515217,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.7,
+        "AFR": 0.15,
+        "EAS": 0.12,
+        "SAS": 0.28,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs4778232",
+      "chromosome": "15",
+      "position": 28343714,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.62,
+        "AFR": 0.08,
+        "EAS": 0.12,
+        "SAS": 0.25,
+        "AMR": 0.35
+      }
+    },
+
+    {
+      "rsid": "rs6056125",
+      "chromosome": "20",
+      "position": 52268520,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.45,
+        "AFR": 0.8,
+        "EAS": 0.32,
+        "SAS": 0.55,
+        "AMR": 0.58
+      }
+    },
+
+    {
+      "rsid": "rs2039587",
+      "chromosome": "6",
+      "position": 31548863,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.62,
+        "EAS": 0.1,
+        "SAS": 0.32,
+        "AMR": 0.38
+      }
+    },
+    {
+      "rsid": "rs12641981",
+      "chromosome": "4",
+      "position": 100233346,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.08,
+        "AFR": 0.04,
+        "EAS": 0.62,
+        "SAS": 0.22,
+        "AMR": 0.15
+      }
+    },
+    {
+      "rsid": "rs9843226",
+      "chromosome": "3",
+      "position": 49161070,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.55,
+        "AFR": 0.22,
+        "EAS": 0.72,
+        "SAS": 0.5,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs11191659",
+      "chromosome": "10",
+      "position": 104599127,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.7,
+        "EAS": 0.22,
+        "SAS": 0.45,
+        "AMR": 0.5
+      }
+    },
+
+    {
+      "rsid": "rs4240879",
+      "chromosome": "3",
+      "position": 49149328,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.58,
+        "AFR": 0.25,
+        "EAS": 0.75,
+        "SAS": 0.52,
+        "AMR": 0.48
+      }
+    },
+
+    {
+      "rsid": "rs4911414",
+      "chromosome": "20",
+      "position": 33306011,
+      "ref": "T",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.62,
+        "AFR": 0.18,
+        "EAS": 0.48,
+        "SAS": 0.52,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs1800292",
+      "chromosome": "11",
+      "position": 89284802,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.02,
+        "EAS": 0.02,
+        "SAS": 0.05,
+        "AMR": 0.08
+      }
+    },
+    {
+      "rsid": "rs35051352",
+      "chromosome": "6",
+      "position": 132114990,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.02,
+        "AFR": 0.48,
+        "EAS": 0.01,
+        "SAS": 0.1,
+        "AMR": 0.12
+      }
+    },
+
+    {
+      "rsid": "rs174570",
+      "chromosome": "11",
+      "position": 61583677,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.08,
+        "EAS": 0.55,
+        "SAS": 0.42,
+        "AMR": 0.35
+      }
+    },
+
+    {
+      "rsid": "rs2524299",
+      "chromosome": "6",
+      "position": 31322891,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.55,
+        "EAS": 0.08,
+        "SAS": 0.25,
+        "AMR": 0.3
+      }
+    },
+    {
+      "rsid": "rs2844682",
+      "chromosome": "6",
+      "position": 31269029,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.6,
+        "EAS": 0.1,
+        "SAS": 0.3,
+        "AMR": 0.35
+      }
+    },
+
+    {
+      "rsid": "rs2378249",
+      "chromosome": "20",
+      "position": 33281945,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.6,
+        "EAS": 0.08,
+        "SAS": 0.25,
+        "AMR": 0.3
+      }
+    },
+    {
+      "rsid": "rs183671",
+      "chromosome": "15",
+      "position": 28388826,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.75,
+        "AFR": 0.05,
+        "EAS": 0.08,
+        "SAS": 0.2,
+        "AMR": 0.4
+      }
+    },
+    {
+      "rsid": "rs2424984",
+      "chromosome": "20",
+      "position": 33342285,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.45,
+        "AFR": 0.8,
+        "EAS": 0.3,
+        "SAS": 0.55,
+        "AMR": 0.6
+      }
+    },
+    {
+      "rsid": "rs11636232",
+      "chromosome": "15",
+      "position": 28340820,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.32,
+        "AFR": 0.02,
+        "EAS": 0.25,
+        "SAS": 0.18,
+        "AMR": 0.2
+      }
+    },
+
+    {
+      "rsid": "rs10756819",
+      "chromosome": "9",
+      "position": 16858084,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.6,
+        "AFR": 0.25,
+        "EAS": 0.45,
+        "SAS": 0.5,
+        "AMR": 0.45
+      }
+    },
+
+    {
+      "rsid": "rs2032582",
+      "chromosome": "7",
+      "position": 87531302,
+      "ref": "G",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.12,
+        "EAS": 0.6,
+        "SAS": 0.48,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs1045642",
+      "chromosome": "7",
+      "position": 87509329,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.5,
+        "AFR": 0.18,
+        "EAS": 0.6,
+        "SAS": 0.52,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs10264272",
+      "chromosome": "7",
+      "position": 99270539,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.001,
+        "AFR": 0.18,
+        "EAS": 0.001,
+        "SAS": 0.005,
+        "AMR": 0.02
+      }
+    },
+    {
+      "rsid": "rs4149056",
+      "chromosome": "12",
+      "position": 21331549,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.02,
+        "EAS": 0.12,
+        "SAS": 0.08,
+        "AMR": 0.08
+      }
+    },
+
+    {
+      "rsid": "rs1801131",
+      "chromosome": "1",
+      "position": 11854476,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.32,
+        "AFR": 0.12,
+        "EAS": 0.22,
+        "SAS": 0.28,
+        "AMR": 0.25
+      }
+    },
+    {
+      "rsid": "rs1801133",
+      "chromosome": "1",
+      "position": 11856378,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.12,
+        "EAS": 0.32,
+        "SAS": 0.15,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs1805009",
+      "chromosome": "16",
+      "position": 89919746,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.02,
+        "AFR": 0.001,
+        "EAS": 0.001,
+        "SAS": 0.002,
+        "AMR": 0.01
+      }
+    },
+    {
+      "rsid": "rs1800401",
+      "chromosome": "15",
+      "position": 28235773,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.06,
+        "AFR": 0.01,
+        "EAS": 0.18,
+        "SAS": 0.08,
+        "AMR": 0.08
+      }
+    },
+    {
+      "rsid": "rs1545397",
+      "chromosome": "15",
+      "position": 28196640,
+      "ref": "A",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.02,
+        "AFR": 0.01,
+        "EAS": 0.58,
+        "SAS": 0.12,
+        "AMR": 0.15
+      }
+    },
+
+    {
+      "rsid": "rs1800629",
+      "chromosome": "6",
+      "position": 31575254,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.08,
+        "EAS": 0.02,
+        "SAS": 0.05,
+        "AMR": 0.08
+      }
+    },
+    {
+      "rsid": "rs1800795",
+      "chromosome": "7",
+      "position": 22766645,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.08,
+        "EAS": 0.02,
+        "SAS": 0.12,
+        "AMR": 0.25
+      }
+    },
+    {
+      "rsid": "rs1800896",
+      "chromosome": "1",
+      "position": 206946897,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.25,
+        "EAS": 0.02,
+        "SAS": 0.18,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs20417",
+      "chromosome": "1",
+      "position": 186681426,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.3,
+        "EAS": 0.02,
+        "SAS": 0.08,
+        "AMR": 0.18
+      }
+    },
+    {
+      "rsid": "rs5275",
+      "chromosome": "1",
+      "position": 186654107,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.38,
+        "AFR": 0.65,
+        "EAS": 0.35,
+        "SAS": 0.42,
+        "AMR": 0.48
+      }
+    },
+
+    {
+      "rsid": "rs1800587",
+      "chromosome": "2",
+      "position": 113594867,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.32,
+        "AFR": 0.05,
+        "EAS": 0.01,
+        "SAS": 0.08,
+        "AMR": 0.18
+      }
+    },
+    {
+      "rsid": "rs2234693",
+      "chromosome": "6",
+      "position": 152129077,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.45,
+        "AFR": 0.18,
+        "EAS": 0.48,
+        "SAS": 0.42,
+        "AMR": 0.38
+      }
+    },
+    {
+      "rsid": "rs3025039",
+      "chromosome": "6",
+      "position": 43752536,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.14,
+        "AFR": 0.32,
+        "EAS": 0.1,
+        "SAS": 0.18,
+        "AMR": 0.22
+      }
+    },
+
+    {
+      "rsid": "rs7903146",
+      "chromosome": "10",
+      "position": 114758349,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.3,
+        "AFR": 0.28,
+        "EAS": 0.03,
+        "SAS": 0.32,
+        "AMR": 0.25
+      }
+    },
+    {
+      "rsid": "rs12255372",
+      "chromosome": "10",
+      "position": 114808902,
+      "ref": "G",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.28,
+        "EAS": 0.02,
+        "SAS": 0.25,
+        "AMR": 0.22
+      }
+    },
+    {
+      "rsid": "rs7901695",
+      "chromosome": "10",
+      "position": 114754071,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.32,
+        "AFR": 0.3,
+        "EAS": 0.05,
+        "SAS": 0.35,
+        "AMR": 0.28
+      }
+    },
+    {
+      "rsid": "rs290481",
+      "chromosome": "20",
+      "position": 52737594,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.25,
+        "EAS": 0.72,
+        "SAS": 0.55,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs290487",
+      "chromosome": "20",
+      "position": 52732361,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.22,
+        "EAS": 0.68,
+        "SAS": 0.5,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs11708067",
+      "chromosome": "3",
+      "position": 123082398,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.05,
+        "EAS": 0.08,
+        "SAS": 0.12,
+        "AMR": 0.12
+      }
+    },
+
+    {
+      "rsid": "rs9939609",
+      "chromosome": "16",
+      "position": 53820527,
+      "ref": "T",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.52,
+        "EAS": 0.12,
+        "SAS": 0.32,
+        "AMR": 0.28
+      }
+    },
+    {
+      "rsid": "rs1421085",
+      "chromosome": "16",
+      "position": 53800954,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.08,
+        "EAS": 0.12,
+        "SAS": 0.28,
+        "AMR": 0.25
+      }
+    },
+    {
+      "rsid": "rs1558902",
+      "chromosome": "16",
+      "position": 53803574,
+      "ref": "T",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.52,
+        "EAS": 0.12,
+        "SAS": 0.32,
+        "AMR": 0.28
+      }
+    },
+
+    {
+      "rsid": "rs6983267",
+      "chromosome": "8",
+      "position": 128413305,
+      "ref": "T",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.52,
+        "AFR": 0.95,
+        "EAS": 0.42,
+        "SAS": 0.48,
+        "AMR": 0.6
+      }
+    },
+    {
+      "rsid": "rs16901979",
+      "chromosome": "8",
+      "position": 128355618,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.55,
+        "EAS": 0.02,
+        "SAS": 0.08,
+        "AMR": 0.15
+      }
+    },
+    {
+      "rsid": "rs1447295",
+      "chromosome": "8",
+      "position": 128531689,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.08,
+        "EAS": 0.28,
+        "SAS": 0.18,
+        "AMR": 0.15
+      }
+    },
+
+    {
+      "rsid": "rs429358",
+      "chromosome": "19",
+      "position": 45411941,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.25,
+        "EAS": 0.08,
+        "SAS": 0.08,
+        "AMR": 0.1
+      }
+    },
+    {
+      "rsid": "rs7412",
+      "chromosome": "19",
+      "position": 45412079,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.08,
+        "AFR": 0.08,
+        "EAS": 0.1,
+        "SAS": 0.05,
+        "AMR": 0.05
+      }
+    },
+    {
+      "rsid": "rs769449",
+      "chromosome": "19",
+      "position": 45410002,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.22,
+        "EAS": 0.08,
+        "SAS": 0.12,
+        "AMR": 0.12
+      }
+    },
+
+    {
+      "rsid": "rs2187668",
+      "chromosome": "6",
+      "position": 32713862,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.02,
+        "EAS": 0.01,
+        "SAS": 0.05,
+        "AMR": 0.08
+      }
+    },
+    {
+      "rsid": "rs7454108",
+      "chromosome": "6",
+      "position": 32681787,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.2,
+        "AFR": 0.02,
+        "EAS": 0.01,
+        "SAS": 0.08,
+        "AMR": 0.1
+      }
+    },
+    {
+      "rsid": "rs2395182",
+      "chromosome": "6",
+      "position": 32515560,
+      "ref": "T",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.55,
+        "AFR": 0.65,
+        "EAS": 0.75,
+        "SAS": 0.62,
+        "AMR": 0.58
+      }
+    },
+
+    {
+      "rsid": "rs13277113",
+      "chromosome": "8",
+      "position": 11433418,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.32,
+        "EAS": 0.12,
+        "SAS": 0.22,
+        "AMR": 0.25
+      }
+    },
+    {
+      "rsid": "rs4963128",
+      "chromosome": "12",
+      "position": 51341888,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.05,
+        "EAS": 0.22,
+        "SAS": 0.28,
+        "AMR": 0.25
+      }
+    },
+    {
+      "rsid": "rs3024505",
+      "chromosome": "1",
+      "position": 206939904,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.16,
+        "AFR": 0.05,
+        "EAS": 0.01,
+        "SAS": 0.05,
+        "AMR": 0.1
+      }
+    },
+
+    {
+      "rsid": "rs1799945",
+      "chromosome": "6",
+      "position": 26091179,
+      "ref": "C",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.02,
+        "EAS": 0.02,
+        "SAS": 0.05,
+        "AMR": 0.08
+      }
+    },
+    {
+      "rsid": "rs1800562",
+      "chromosome": "6",
+      "position": 26093141,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.001,
+        "EAS": 0.001,
+        "SAS": 0.001,
+        "AMR": 0.02
+      }
+    },
+
+    {
+      "rsid": "rs2282679",
+      "chromosome": "4",
+      "position": 72608383,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.08,
+        "EAS": 0.12,
+        "SAS": 0.18,
+        "AMR": 0.2
+      }
+    },
+    {
+      "rsid": "rs10741657",
+      "chromosome": "11",
+      "position": 14893764,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.38,
+        "AFR": 0.22,
+        "EAS": 0.5,
+        "SAS": 0.42,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs12785878",
+      "chromosome": "11",
+      "position": 71167449,
+      "ref": "G",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.55,
+        "EAS": 0.72,
+        "SAS": 0.48,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs6013897",
+      "chromosome": "20",
+      "position": 52773893,
+      "ref": "T",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.7,
+        "EAS": 0.12,
+        "SAS": 0.32,
+        "AMR": 0.38
+      }
+    },
+
+    {
+      "rsid": "rs2066844",
+      "chromosome": "16",
+      "position": 50745926,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.001,
+        "EAS": 0.001,
+        "SAS": 0.002,
+        "AMR": 0.02
+      }
+    },
+    {
+      "rsid": "rs2066845",
+      "chromosome": "16",
+      "position": 50756540,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.02,
+        "AFR": 0.001,
+        "EAS": 0.001,
+        "SAS": 0.001,
+        "AMR": 0.01
+      }
+    },
+    {
+      "rsid": "rs2066847",
+      "chromosome": "16",
+      "position": 50763781,
+      "ref": "-",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.02,
+        "AFR": 0.001,
+        "EAS": 0.001,
+        "SAS": 0.001,
+        "AMR": 0.01
+      }
+    },
+
+    {
+      "rsid": "rs10830963",
+      "chromosome": "11",
+      "position": 92708710,
+      "ref": "C",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.3,
+        "AFR": 0.05,
+        "EAS": 0.45,
+        "SAS": 0.42,
+        "AMR": 0.25
+      }
+    },
+    {
+      "rsid": "rs1387153",
+      "chromosome": "11",
+      "position": 92673828,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.08,
+        "EAS": 0.42,
+        "SAS": 0.38,
+        "AMR": 0.22
+      }
+    },
+
+    {
+      "rsid": "rs662799",
+      "chromosome": "11",
+      "position": 116663707,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.02,
+        "AFR": 0.25,
+        "EAS": 0.32,
+        "SAS": 0.15,
+        "AMR": 0.1
+      }
+    },
+    {
+      "rsid": "rs964184",
+      "chromosome": "11",
+      "position": 116648917,
+      "ref": "C",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.32,
+        "EAS": 0.35,
+        "SAS": 0.22,
+        "AMR": 0.18
+      }
+    },
+    {
+      "rsid": "rs10889353",
+      "chromosome": "1",
+      "position": 63120602,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.38,
+        "AFR": 0.15,
+        "EAS": 0.52,
+        "SAS": 0.42,
+        "AMR": 0.35
+      }
+    },
+
+    {
+      "rsid": "rs7566605",
+      "chromosome": "2",
+      "position": 118836624,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.25,
+        "AFR": 0.65,
+        "EAS": 0.35,
+        "SAS": 0.42,
+        "AMR": 0.45
+      }
+    },
+    {
+      "rsid": "rs987237",
+      "chromosome": "10",
+      "position": 64684038,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.12,
+        "EAS": 0.02,
+        "SAS": 0.08,
+        "AMR": 0.12
+      }
+    },
+    {
+      "rsid": "rs2943641",
+      "chromosome": "2",
+      "position": 227101411,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.18,
+        "EAS": 0.6,
+        "SAS": 0.45,
+        "AMR": 0.38
+      }
+    },
+
+    {
+      "rsid": "rs12979860",
+      "chromosome": "19",
+      "position": 39738787,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.62,
+        "AFR": 0.32,
+        "EAS": 0.95,
+        "SAS": 0.65,
+        "AMR": 0.55
+      }
+    },
+    {
+      "rsid": "rs8099917",
+      "chromosome": "19",
+      "position": 39743165,
+      "ref": "T",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.42,
+        "EAS": 0.05,
+        "SAS": 0.22,
+        "AMR": 0.28
+      }
+    },
+
+    {
+      "rsid": "rs333",
+      "chromosome": "3",
+      "position": 46414947,
+      "ref": "GTCAGTATCAATTCTGGAAGAATTTCCAGACA",
+      "alt": "-",
+      "frequencies": {
+        "EUR": 0.1,
+        "AFR": 0.001,
+        "EAS": 0.001,
+        "SAS": 0.001,
+        "AMR": 0.05
+      }
+    },
+
+    {
+      "rsid": "rs4680",
+      "chromosome": "22",
+      "position": 19963748,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.32,
+        "EAS": 0.28,
+        "SAS": 0.38,
+        "AMR": 0.4
+      }
+    },
+    {
+      "rsid": "rs6265",
+      "chromosome": "11",
+      "position": 27679916,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.02,
+        "EAS": 0.45,
+        "SAS": 0.28,
+        "AMR": 0.18
+      }
+    },
+    {
+      "rsid": "rs1800497",
+      "chromosome": "11",
+      "position": 113400106,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.08,
+        "EAS": 0.45,
+        "SAS": 0.32,
+        "AMR": 0.25
+      }
+    },
+    {
+      "rsid": "rs1799971",
+      "chromosome": "6",
+      "position": 154360797,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.02,
+        "EAS": 0.4,
+        "SAS": 0.22,
+        "AMR": 0.15
+      }
+    },
+    {
+      "rsid": "rs1800955",
+      "chromosome": "11",
+      "position": 113475529,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.58,
+        "EAS": 0.62,
+        "SAS": 0.52,
+        "AMR": 0.48
+      }
+    },
+
+    {
+      "rsid": "rs6311",
+      "chromosome": "13",
+      "position": 47471478,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.45,
+        "AFR": 0.28,
+        "EAS": 0.38,
+        "SAS": 0.42,
+        "AMR": 0.4
+      }
+    },
+    {
+      "rsid": "rs6313",
+      "chromosome": "13",
+      "position": 47469940,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.25,
+        "EAS": 0.35,
+        "SAS": 0.38,
+        "AMR": 0.38
+      }
+    },
+    {
+      "rsid": "rs1800532",
+      "chromosome": "12",
+      "position": 72356347,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.4,
+        "AFR": 0.18,
+        "EAS": 0.55,
+        "SAS": 0.42,
+        "AMR": 0.38
+      }
+    },
+    {
+      "rsid": "rs53576",
+      "chromosome": "3",
+      "position": 8762685,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.62,
+        "AFR": 0.48,
+        "EAS": 0.65,
+        "SAS": 0.58,
+        "AMR": 0.55
+      }
+    },
+
+    {
+      "rsid": "rs1815739",
+      "chromosome": "11",
+      "position": 66560624,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.12,
+        "EAS": 0.52,
+        "SAS": 0.38,
+        "AMR": 0.32
+      }
+    },
+    {
+      "rsid": "rs1799752",
+      "chromosome": "17",
+      "position": 61566031,
+      "ref": "-",
+      "alt": "ALU",
+      "frequencies": {
+        "EUR": 0.5,
+        "AFR": 0.38,
+        "EAS": 0.68,
+        "SAS": 0.55,
+        "AMR": 0.48
+      }
+    },
+    {
+      "rsid": "rs7799039",
+      "chromosome": "7",
+      "position": 127882681,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.12,
+        "EAS": 0.08,
+        "SAS": 0.18,
+        "AMR": 0.25
+      }
+    },
+
+    {
+      "rsid": "rs713598",
+      "chromosome": "7",
+      "position": 141673345,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.45,
+        "AFR": 0.1,
+        "EAS": 0.05,
+        "SAS": 0.25,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs1726866",
+      "chromosome": "7",
+      "position": 141673233,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.12,
+        "EAS": 0.08,
+        "SAS": 0.28,
+        "AMR": 0.38
+      }
+    },
+    {
+      "rsid": "rs10246939",
+      "chromosome": "7",
+      "position": 141672604,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.15,
+        "EAS": 0.1,
+        "SAS": 0.3,
+        "AMR": 0.38
+      }
+    },
+
+    {
+      "rsid": "rs4481887",
+      "chromosome": "1",
+      "position": 247638898,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.4,
+        "AFR": 0.18,
+        "EAS": 0.35,
+        "SAS": 0.32,
+        "AMR": 0.3
+      }
+    },
+    {
+      "rsid": "rs72921001",
+      "chromosome": "11",
+      "position": 6902578,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.05,
+        "EAS": 0.02,
+        "SAS": 0.08,
+        "AMR": 0.1
+      }
+    },
+    {
+      "rsid": "rs2294239",
+      "chromosome": "11",
+      "position": 6902633,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.08,
+        "EAS": 0.12,
+        "SAS": 0.15,
+        "AMR": 0.18
+      }
+    },
+
+    {
+      "rsid": "rs2802292",
+      "chromosome": "6",
+      "position": 109006988,
+      "ref": "G",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.22,
+        "EAS": 0.45,
+        "SAS": 0.38,
+        "AMR": 0.32
+      }
+    },
+    {
+      "rsid": "rs1050450",
+      "chromosome": "3",
+      "position": 49360844,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.32,
+        "AFR": 0.08,
+        "EAS": 0.12,
+        "SAS": 0.18,
+        "AMR": 0.22
+      }
+    },
+
+    {
+      "rsid": "rs334",
+      "chromosome": "11",
+      "position": 5248232,
+      "ref": "A",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.001,
+        "AFR": 0.1,
+        "EAS": 0.001,
+        "SAS": 0.008,
+        "AMR": 0.005
+      }
+    },
+    {
+      "rsid": "rs1610216",
+      "chromosome": "1",
+      "position": 159205564,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.02,
+        "AFR": 0.65,
+        "EAS": 0.01,
+        "SAS": 0.05,
+        "AMR": 0.08
+      }
+    },
+
+    {
+      "rsid": "rs763780",
+      "chromosome": "1",
+      "position": 200003391,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.02,
+        "EAS": 0.22,
+        "SAS": 0.12,
+        "AMR": 0.08
+      }
+    },
+    {
+      "rsid": "rs2066807",
+      "chromosome": "2",
+      "position": 191097087,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.08,
+        "AFR": 0.02,
+        "EAS": 0.28,
+        "SAS": 0.15,
+        "AMR": 0.1
+      }
+    },
+
+    {
+      "rsid": "rs11568820",
+      "chromosome": "12",
+      "position": 47902615,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.05,
+        "EAS": 0.02,
+        "SAS": 0.08,
+        "AMR": 0.12
+      }
+    },
+    {
+      "rsid": "rs7975232",
+      "chromosome": "12",
+      "position": 47879112,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.45,
+        "AFR": 0.3,
+        "EAS": 0.48,
+        "SAS": 0.42,
+        "AMR": 0.4
+      }
+    },
+    {
+      "rsid": "rs731236",
+      "chromosome": "12",
+      "position": 47844974,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.38,
+        "AFR": 0.22,
+        "EAS": 0.92,
+        "SAS": 0.55,
+        "AMR": 0.48
+      }
+    },
+
+    {
+      "rsid": "rs1050828",
+      "chromosome": "X",
+      "position": 153764217,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.001,
+        "AFR": 0.25,
+        "EAS": 0.001,
+        "SAS": 0.02,
+        "AMR": 0.02
+      }
+    },
+    {
+      "rsid": "rs1050829",
+      "chromosome": "X",
+      "position": 153764050,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.001,
+        "AFR": 0.3,
+        "EAS": 0.001,
+        "SAS": 0.02,
+        "AMR": 0.02
+      }
+    },
+
+    {
+      "rsid": "rs2187668",
+      "chromosome": "6",
+      "position": 32628851,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.02,
+        "EAS": 0.01,
+        "SAS": 0.05,
+        "AMR": 0.08
+      }
+    },
+
+    {
+      "rsid": "rs4977756",
+      "chromosome": "9",
+      "position": 22124478,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.52,
+        "AFR": 0.42,
+        "EAS": 0.58,
+        "SAS": 0.5,
+        "AMR": 0.48
+      }
+    },
+    {
+      "rsid": "rs10757278",
+      "chromosome": "9",
+      "position": 22124478,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.5,
+        "AFR": 0.58,
+        "EAS": 0.45,
+        "SAS": 0.48,
+        "AMR": 0.52
+      }
+    },
+    {
+      "rsid": "rs2383206",
+      "chromosome": "9",
+      "position": 22115027,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.55,
+        "EAS": 0.42,
+        "SAS": 0.45,
+        "AMR": 0.5
+      }
+    },
+
+    {
+      "rsid": "rs1333049",
+      "chromosome": "9",
+      "position": 22125504,
+      "ref": "C",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.6,
+        "EAS": 0.55,
+        "SAS": 0.52,
+        "AMR": 0.5
+      }
+    },
+    {
+      "rsid": "rs10811661",
+      "chromosome": "9",
+      "position": 22134094,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.82,
+        "AFR": 0.58,
+        "EAS": 0.55,
+        "SAS": 0.72,
+        "AMR": 0.68
+      }
+    },
+
+    {
+      "rsid": "rs1344706",
+      "chromosome": "2",
+      "position": 185803444,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.22,
+        "EAS": 0.48,
+        "SAS": 0.38,
+        "AMR": 0.32
+      }
+    },
+    {
+      "rsid": "rs2007044",
+      "chromosome": "5",
+      "position": 60187563,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.25,
+        "EAS": 0.55,
+        "SAS": 0.45,
+        "AMR": 0.38
+      }
+    },
+    {
+      "rsid": "rs6984242",
+      "chromosome": "8",
+      "position": 60576141,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.38,
+        "AFR": 0.62,
+        "EAS": 0.25,
+        "SAS": 0.42,
+        "AMR": 0.48
+      }
+    },
+
+    {
+      "rsid": "rs6718526",
+      "chromosome": "2",
+      "position": 238298041,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.65,
+        "EAS": 0.12,
+        "SAS": 0.35,
+        "AMR": 0.4
+      }
+    },
+    {
+      "rsid": "rs1229966",
+      "chromosome": "2",
+      "position": 239041934,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.62,
+        "EAS": 0.15,
+        "SAS": 0.38,
+        "AMR": 0.42
+      }
+    },
+
+    {
+      "rsid": "rs12896399",
+      "chromosome": "14",
+      "position": 92882826,
+      "ref": "G",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.55,
+        "AFR": 0.08,
+        "EAS": 0.12,
+        "SAS": 0.25,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs1805005",
+      "chromosome": "16",
+      "position": 89919209,
+      "ref": "G",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.02,
+        "EAS": 0.01,
+        "SAS": 0.05,
+        "AMR": 0.08
+      }
+    },
+    {
+      "rsid": "rs1805006",
+      "chromosome": "16",
+      "position": 89919347,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.02,
+        "AFR": 0.001,
+        "EAS": 0.001,
+        "SAS": 0.002,
+        "AMR": 0.01
+      }
+    },
+    {
+      "rsid": "rs2228478",
+      "chromosome": "16",
+      "position": 89985927,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.01,
+        "EAS": 0.12,
+        "SAS": 0.08,
+        "AMR": 0.05
+      }
+    },
+
+    {
+      "rsid": "rs4778137",
+      "chromosome": "15",
+      "position": 28330618,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.65,
+        "AFR": 0.12,
+        "EAS": 0.18,
+        "SAS": 0.32,
+        "AMR": 0.4
+      }
+    },
+    {
+      "rsid": "rs1800703",
+      "chromosome": "15",
+      "position": 28267060,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.75,
+        "EAS": 0.08,
+        "SAS": 0.35,
+        "AMR": 0.42
+      }
+    },
+
+    {
+      "rsid": "rs28777",
+      "chromosome": "5",
+      "position": 33958959,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.92,
+        "AFR": 0.15,
+        "EAS": 0.05,
+        "SAS": 0.25,
+        "AMR": 0.55
+      }
+    },
+    {
+      "rsid": "rs13289",
+      "chromosome": "5",
+      "position": 33959176,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.88,
+        "AFR": 0.12,
+        "EAS": 0.02,
+        "SAS": 0.2,
+        "AMR": 0.5
+      }
+    },
+
+    {
+      "rsid": "rs12896971",
+      "chromosome": "15",
+      "position": 28357871,
+      "ref": "G",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.72,
+        "AFR": 0.08,
+        "EAS": 0.05,
+        "SAS": 0.18,
+        "AMR": 0.38
+      }
+    },
+    {
+      "rsid": "rs3935591",
+      "chromosome": "6",
+      "position": 396339,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.02,
+        "EAS": 0.01,
+        "SAS": 0.05,
+        "AMR": 0.1
+      }
+    },
+
+    {
+      "rsid": "rs6420484",
+      "chromosome": "5",
+      "position": 33959959,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.85,
+        "AFR": 0.1,
+        "EAS": 0.02,
+        "SAS": 0.18,
+        "AMR": 0.48
+      }
+    },
+    {
+      "rsid": "rs4329148",
+      "chromosome": "5",
+      "position": 33960330,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.88,
+        "AFR": 0.12,
+        "EAS": 0.03,
+        "SAS": 0.22,
+        "AMR": 0.52
+      }
+    },
+
+    {
+      "rsid": "rs10962599",
+      "chromosome": "9",
+      "position": 16839490,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.58,
+        "EAS": 0.08,
+        "SAS": 0.28,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs10810635",
+      "chromosome": "9",
+      "position": 16810207,
+      "ref": "T",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.62,
+        "EAS": 0.12,
+        "SAS": 0.35,
+        "AMR": 0.4
+      }
+    },
+
+    {
+      "rsid": "rs2424913",
+      "chromosome": "20",
+      "position": 33356134,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.58,
+        "AFR": 0.18,
+        "EAS": 0.48,
+        "SAS": 0.5,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs6060017",
+      "chromosome": "20",
+      "position": 33256407,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.68,
+        "EAS": 0.02,
+        "SAS": 0.18,
+        "AMR": 0.22
+      }
+    },
+
+    {
+      "rsid": "rs12441727",
+      "chromosome": "15",
+      "position": 28429838,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.68,
+        "AFR": 0.12,
+        "EAS": 0.08,
+        "SAS": 0.22,
+        "AMR": 0.38
+      }
+    },
+    {
+      "rsid": "rs11855019",
+      "chromosome": "15",
+      "position": 28458920,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.72,
+        "AFR": 0.15,
+        "EAS": 0.1,
+        "SAS": 0.28,
+        "AMR": 0.42
+      }
+    },
+
+    {
+      "rsid": "rs1079597",
+      "chromosome": "11",
+      "position": 113270828,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.2,
+        "AFR": 0.03,
+        "EAS": 0.48,
+        "SAS": 0.28,
+        "AMR": 0.18
+      }
+    },
+
+    {
+      "rsid": "rs2395029",
+      "chromosome": "6",
+      "position": 31431780,
+      "ref": "T",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.01,
+        "EAS": 0.001,
+        "SAS": 0.02,
+        "AMR": 0.03
+      }
+    },
+
+    {
+      "rsid": "rs2227631",
+      "chromosome": "7",
+      "position": 101126058,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.05,
+        "EAS": 0.55,
+        "SAS": 0.32,
+        "AMR": 0.22
+      }
+    },
+    {
+      "rsid": "rs2239185",
+      "chromosome": "12",
+      "position": 47865028,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.38,
+        "AFR": 0.18,
+        "EAS": 0.52,
+        "SAS": 0.42,
+        "AMR": 0.35
+      }
+    },
+
+    {
+      "rsid": "rs10237473",
+      "chromosome": "7",
+      "position": 75615006,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.62,
+        "EAS": 0.15,
+        "SAS": 0.35,
+        "AMR": 0.42
+      }
+    },
+    {
+      "rsid": "rs1403848",
+      "chromosome": "7",
+      "position": 75622377,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.32,
+        "AFR": 0.65,
+        "EAS": 0.18,
+        "SAS": 0.4,
+        "AMR": 0.45
+      }
+    },
+
+    {
+      "rsid": "rs11855019",
+      "chromosome": "15",
+      "position": 28458920,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.72,
+        "AFR": 0.15,
+        "EAS": 0.1,
+        "SAS": 0.28,
+        "AMR": 0.42
+      }
+    },
+
+    {
+      "rsid": "rs2016520",
+      "chromosome": "6",
+      "position": 35382560,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.52,
+        "EAS": 0.22,
+        "SAS": 0.32,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs3757354",
+      "chromosome": "5",
+      "position": 33978804,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.9,
+        "AFR": 0.15,
+        "EAS": 0.05,
+        "SAS": 0.25,
+        "AMR": 0.52
+      }
+    },
+
+    {
+      "rsid": "rs6962772",
+      "chromosome": "7",
+      "position": 75658552,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.68,
+        "EAS": 0.22,
+        "SAS": 0.45,
+        "AMR": 0.5
+      }
+    },
+    {
+      "rsid": "rs17773430",
+      "chromosome": "7",
+      "position": 75676958,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.55,
+        "EAS": 0.08,
+        "SAS": 0.28,
+        "AMR": 0.35
+      }
+    },
+
+    {
+      "rsid": "rs10119",
+      "chromosome": "5",
+      "position": 134859564,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.38,
+        "AFR": 0.15,
+        "EAS": 0.55,
+        "SAS": 0.42,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs6879617",
+      "chromosome": "5",
+      "position": 134857596,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.18,
+        "EAS": 0.58,
+        "SAS": 0.45,
+        "AMR": 0.38
+      }
+    },
+
+    {
+      "rsid": "rs3768563",
+      "chromosome": "15",
+      "position": 28505982,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.65,
+        "AFR": 0.12,
+        "EAS": 0.08,
+        "SAS": 0.25,
+        "AMR": 0.38
+      }
+    },
+
+    {
+      "rsid": "rs4245739",
+      "chromosome": "1",
+      "position": 204518842,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.05,
+        "EAS": 0.02,
+        "SAS": 0.12,
+        "AMR": 0.18
+      }
+    },
+
+    {
+      "rsid": "rs2372536",
+      "chromosome": "21",
+      "position": 44483251,
+      "ref": "C",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.32,
+        "AFR": 0.18,
+        "EAS": 0.45,
+        "SAS": 0.38,
+        "AMR": 0.32
+      }
+    },
+
+    {
+      "rsid": "rs2066702",
+      "chromosome": "11",
+      "position": 5226774,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.002,
+        "AFR": 0.12,
+        "EAS": 0.001,
+        "SAS": 0.02,
+        "AMR": 0.02
+      }
+    },
+    {
+      "rsid": "rs2305160",
+      "chromosome": "5",
+      "position": 33963684,
+      "ref": "C",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.88,
+        "AFR": 0.1,
+        "EAS": 0.02,
+        "SAS": 0.18,
+        "AMR": 0.48
+      }
+    },
+
+    {
+      "rsid": "rs4773092",
+      "chromosome": "13",
+      "position": 95039721,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.55,
+        "EAS": 0.1,
+        "SAS": 0.3,
+        "AMR": 0.35
+      }
+    },
+
+    {
+      "rsid": "rs17401966",
+      "chromosome": "6",
+      "position": 142706209,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.02,
+        "EAS": 0.38,
+        "SAS": 0.15,
+        "AMR": 0.08
+      }
+    },
+
+    {
+      "rsid": "rs3743872",
+      "chromosome": "12",
+      "position": 55808950,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.08,
+        "EAS": 0.55,
+        "SAS": 0.35,
+        "AMR": 0.25
+      }
+    },
+    {
+      "rsid": "rs1426654",
+      "chromosome": "15",
+      "position": 48426484,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.99,
+        "AFR": 0.06,
+        "EAS": 0.01,
+        "SAS": 0.88,
+        "AMR": 0.58
+      }
+    },
+
+    {
+      "rsid": "rs6451722",
+      "chromosome": "5",
+      "position": 134835031,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.45,
+        "AFR": 0.22,
+        "EAS": 0.62,
+        "SAS": 0.5,
+        "AMR": 0.42
+      }
+    },
+
+    {
+      "rsid": "rs192655",
+      "chromosome": "6",
+      "position": 31321649,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.58,
+        "EAS": 0.08,
+        "SAS": 0.28,
+        "AMR": 0.35
+      }
+    },
+    {
+      "rsid": "rs3117222",
+      "chromosome": "6",
+      "position": 31320813,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.2,
+        "AFR": 0.62,
+        "EAS": 0.12,
+        "SAS": 0.35,
+        "AMR": 0.4
+      }
+    },
+
+    {
+      "rsid": "rs9379084",
+      "chromosome": "6",
+      "position": 7231843,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.08,
+        "AFR": 0.02,
+        "EAS": 0.25,
+        "SAS": 0.12,
+        "AMR": 0.08
+      }
+    },
+
+    {
+      "rsid": "rs3757318",
+      "chromosome": "6",
+      "position": 151955457,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.02,
+        "EAS": 0.22,
+        "SAS": 0.1,
+        "AMR": 0.05
+      }
+    },
+
+    {
+      "rsid": "rs1800566",
+      "chromosome": "16",
+      "position": 69745145,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.52,
+        "EAS": 0.45,
+        "SAS": 0.35,
+        "AMR": 0.32
+      }
+    },
+
+    {
+      "rsid": "rs3803662",
+      "chromosome": "16",
+      "position": 52586341,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.52,
+        "EAS": 0.48,
+        "SAS": 0.4,
+        "AMR": 0.35
+      }
+    },
+
+    {
+      "rsid": "rs2230199",
+      "chromosome": "19",
+      "position": 6718387,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.2,
+        "AFR": 0.02,
+        "EAS": 0.01,
+        "SAS": 0.05,
+        "AMR": 0.12
+      }
+    },
+
+    {
+      "rsid": "rs4646994",
+      "chromosome": "17",
+      "position": 61558907,
+      "ref": "-",
+      "alt": "ACATTTCACCACATCTCTTTCTCTCTCTGCCAACCATTATGTATTTTAAACTAAACTGTTGCTCTGATGGGATGAAAATAAACATTTTACAAAATATGAATGTGGTGTTTTAATGTGAAGTAATAATGAAAAGTTTTCCAAGGTCACCCCTCCTTCCCCCACACACACCCATCCCCTGCCTGTCTCCAAACTGCCACTCCTCCCCTTGAATGTGATAAAAAACTGAGACCCACTTCTCCCTTGCCAACCTTTGAGATGAGAGAGAAGAGAGAGAGAGAGAGAGAGAGAGATGTGGTGAAATGTATAAACTTGTGCTGAA",
+      "frequencies": {
+        "EUR": 0.48,
+        "AFR": 0.35,
+        "EAS": 0.65,
+        "SAS": 0.52,
+        "AMR": 0.45
+      }
+    },
+
+    {
+      "rsid": "rs6277",
+      "chromosome": "11",
+      "position": 113412737,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.15,
+        "EAS": 0.08,
+        "SAS": 0.25,
+        "AMR": 0.32
+      }
+    },
+    {
+      "rsid": "rs2283265",
+      "chromosome": "11",
+      "position": 113412650,
+      "ref": "G",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.05,
+        "EAS": 0.02,
+        "SAS": 0.08,
+        "AMR": 0.12
+      }
+    },
+
+    {
+      "rsid": "rs1876828",
+      "chromosome": "8",
+      "position": 67348372,
+      "ref": "C",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.08,
+        "EAS": 0.35,
+        "SAS": 0.22,
+        "AMR": 0.15
+      }
+    },
+
+    {
+      "rsid": "rs806378",
+      "chromosome": "6",
+      "position": 88908721,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.72,
+        "EAS": 0.25,
+        "SAS": 0.45,
+        "AMR": 0.5
+      }
+    },
+    {
+      "rsid": "rs806380",
+      "chromosome": "6",
+      "position": 88911960,
+      "ref": "T",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.68,
+        "EAS": 0.18,
+        "SAS": 0.4,
+        "AMR": 0.45
+      }
+    },
+
+    {
+      "rsid": "rs1042714",
+      "chromosome": "5",
+      "position": 148206440,
+      "ref": "C",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.22,
+        "EAS": 0.08,
+        "SAS": 0.28,
+        "AMR": 0.32
+      }
+    },
+
+    {
+      "rsid": "rs2472304",
+      "chromosome": "15",
+      "position": 74993031,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.62,
+        "AFR": 0.25,
+        "EAS": 0.7,
+        "SAS": 0.55,
+        "AMR": 0.48
+      }
+    },
+
+    {
+      "rsid": "rs4803419",
+      "chromosome": "19",
+      "position": 9071055,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.02,
+        "EAS": 0.32,
+        "SAS": 0.12,
+        "AMR": 0.08
+      }
+    },
+
+    {
+      "rsid": "rs2802860",
+      "chromosome": "1",
+      "position": 236995847,
+      "ref": "C",
+      "alt": "T",
+      "frequencies": {
+        "EUR": 0.42,
+        "AFR": 0.72,
+        "EAS": 0.32,
+        "SAS": 0.5,
+        "AMR": 0.55
+      }
+    },
+
+    {
+      "rsid": "rs4986893",
+      "chromosome": "10",
+      "position": 94781858,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.001,
+        "AFR": 0.001,
+        "EAS": 0.05,
+        "SAS": 0.02,
+        "AMR": 0.01
+      }
+    },
+    {
+      "rsid": "rs4244285",
+      "chromosome": "10",
+      "position": 94781859,
+      "ref": "G",
+      "alt": "A",
+      "frequencies": {
+        "EUR": 0.15,
+        "AFR": 0.18,
+        "EAS": 0.3,
+        "SAS": 0.35,
+        "AMR": 0.15
+      }
+    },
+
+    {
+      "rsid": "rs8192709",
+      "chromosome": "22",
+      "position": 42526694,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.02,
+        "AFR": 0.15,
+        "EAS": 0.01,
+        "SAS": 0.05,
+        "AMR": 0.05
+      }
+    },
+
+    {
+      "rsid": "rs20541",
+      "chromosome": "5",
+      "position": 131995964,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.22,
+        "AFR": 0.12,
+        "EAS": 0.38,
+        "SAS": 0.28,
+        "AMR": 0.22
+      }
+    },
+
+    {
+      "rsid": "rs3804100",
+      "chromosome": "4",
+      "position": 154626117,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.08,
+        "AFR": 0.02,
+        "EAS": 0.25,
+        "SAS": 0.12,
+        "AMR": 0.08
+      }
+    },
+
+    {
+      "rsid": "rs2229094",
+      "chromosome": "6",
+      "position": 31540784,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.62,
+        "EAS": 0.38,
+        "SAS": 0.42,
+        "AMR": 0.45
+      }
+    },
+
+    {
+      "rsid": "rs2296160",
+      "chromosome": "19",
+      "position": 6681946,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.28,
+        "AFR": 0.1,
+        "EAS": 0.02,
+        "SAS": 0.12,
+        "AMR": 0.18
+      }
+    },
+
+    {
+      "rsid": "rs6552828",
+      "chromosome": "4",
+      "position": 38785013,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.18,
+        "AFR": 0.55,
+        "EAS": 0.1,
+        "SAS": 0.3,
+        "AMR": 0.35
+      }
+    },
+
+    {
+      "rsid": "rs10484554",
+      "chromosome": "6",
+      "position": 31367561,
+      "ref": "T",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.12,
+        "AFR": 0.48,
+        "EAS": 0.05,
+        "SAS": 0.22,
+        "AMR": 0.28
+      }
+    },
+
+    {
+      "rsid": "rs6887695",
+      "chromosome": "5",
+      "position": 158765377,
+      "ref": "G",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.35,
+        "AFR": 0.55,
+        "EAS": 0.48,
+        "SAS": 0.42,
+        "AMR": 0.4
+      }
+    },
+
+    {
+      "rsid": "rs11742570",
+      "chromosome": "5",
+      "position": 33984730,
+      "ref": "A",
+      "alt": "G",
+      "frequencies": {
+        "EUR": 0.92,
+        "AFR": 0.15,
+        "EAS": 0.05,
+        "SAS": 0.25,
+        "AMR": 0.55
+      }
+    },
+
+    {
+      "rsid": "rs12720356",
+      "chromosome": "19",
+      "position": 10469975,
+      "ref": "A",
+      "alt": "C",
+      "frequencies": {
+        "EUR": 0.05,
+        "AFR": 0.01,
+        "EAS": 0.001,
+        "SAS": 0.02,
+        "AMR": 0.03
+      }
+    }
+  ]
+}

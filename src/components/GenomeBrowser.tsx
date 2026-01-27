@@ -354,6 +354,17 @@ export function GenomeBrowser({
     );
   }, [activeChromosome, visibleRange]);
 
+  // Get unphased segments (for user-uploaded data)
+  const unphasedSegments = useMemo(() => {
+    if (!activeChromosome) return [];
+    return getAncestrySegmentsInRange(
+      activeChromosome,
+      visibleRange.start,
+      visibleRange.end,
+      'unphased'
+    );
+  }, [activeChromosome, visibleRange]);
+
   // Check if data is phased
   const dataIsPhased = isPhased();
 
@@ -737,7 +748,7 @@ export function GenomeBrowser({
             ) : (
               /* Unphased view: single track */
               <g transform="translate(0, 16)">
-                {maternalSegments.concat(paternalSegments).map((segment, i) => {
+                {unphasedSegments.map((segment, i) => {
                   const x = Math.max(0, scale.scale(segment.start));
                   const xEnd = Math.min(
                     effectiveWidth,
