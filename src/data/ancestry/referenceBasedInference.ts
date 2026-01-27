@@ -776,3 +776,208 @@ export function getSubPopulationComposition(
     }))
     .sort((a, b) => b.percentage - a.percentage);
 }
+
+// Map super-populations to their sub-populations
+const SUPER_TO_SUB_POPS: Record<InferencePopulation, SubPopulation[]> = {
+  EUR: ['CEU', 'TSI', 'FIN', 'GBR', 'IBS'],
+  AFR: ['YRI', 'LWK', 'GWD', 'MSL', 'ESN', 'ASW', 'ACB'],
+  EAS: ['CHB', 'JPT', 'CHS', 'CDX', 'KHV'],
+  SAS: ['GIH', 'PJL', 'BEB', 'STU', 'ITU'],
+  AMR: ['MXL', 'PUR', 'CLM', 'PEL'],
+};
+
+// Map category names to super-populations
+const CATEGORY_TO_SUPER_POP: Record<string, InferencePopulation> = {
+  european: 'EUR',
+  african: 'AFR',
+  east_asian: 'EAS',
+  south_asian: 'SAS',
+  native_american: 'AMR',
+};
+
+/**
+ * Refine ancestry segments with sub-population assignments using the reference panel.
+ * For each segment, calculates similarity to reference individuals within that
+ * super-population and assigns the most likely sub-population.
+ */
+export async function refineSegmentsWithSubPopulations(
+  segments: import('@/types/genome').AncestrySegment[],
+  parsedFile: import('./snpFileParser').ParsedSNPFile
+): Promise<import('@/types/genome').AncestrySegment[]> {
+  // Check if reference panel is available
+  const panelAvailable = await isReferencePanelAvailable();
+  if (!panelAvailable) {
+    return segments; // Return unchanged if no panel
+  }
+
+  const { panel, metadata } = await loadReferencePanel();
+  const { rsids, sampleIds: _sampleIds } = panel.metadata;
+
+  // Build marker lookup by chromosome and position
+  const markerMap = new Map<string, (typeof aims.markers)[0]>();
+  const markersByChrom = new Map<string, typeof aims.markers>();
+
+  for (const marker of aims.markers) {
+    markerMap.set(marker.rsid, marker);
+    if (!markersByChrom.has(marker.chromosome)) {
+      markersByChrom.set(marker.chromosome, []);
+    }
+    markersByChrom.get(marker.chromosome)!.push(marker);
+  }
+
+  // Sort markers by position within each chromosome
+  for (const markers of markersByChrom.values()) {
+    markers.sort((a, b) => a.position - b.position);
+  }
+
+  // Build rsid to index mapping
+  const rsidToIndex = new Map<string, number>();
+  for (let i = 0; i < rsids.length; i++) {
+    rsidToIndex.set(rsids[i], i);
+  }
+
+  // Build sample index by population
+  const samplesByPop = new Map<SubPopulation, number[]>();
+  for (const info of metadata.sampleInfo) {
+    const pop = info.population as SubPopulation;
+    if (!samplesByPop.has(pop)) {
+      samplesByPop.set(pop, []);
+    }
+    samplesByPop.get(pop)!.push(info.index);
+  }
+
+  // Process each segment
+  const refinedSegments: import('@/types/genome').AncestrySegment[] = [];
+
+  for (const segment of segments) {
+    // Get the super-population for this segment
+    const superPop = CATEGORY_TO_SUPER_POP[segment.category];
+    if (!superPop) {
+      refinedSegments.push(segment);
+      continue;
+    }
+
+    // Get sub-populations to compare against
+    const subPops = SUPER_TO_SUB_POPS[superPop];
+    if (!subPops || subPops.length === 0) {
+      refinedSegments.push(segment);
+      continue;
+    }
+
+    // Find markers in this segment's region
+    const chromMarkers = markersByChrom.get(segment.chromosome) || [];
+    const segmentMarkers = chromMarkers.filter(
+      m => m.position >= segment.start && m.position <= segment.end
+    );
+
+    if (segmentMarkers.length < 3) {
+      // Not enough markers to refine
+      refinedSegments.push(segment);
+      continue;
+    }
+
+    // Get user dosages for segment markers
+    const userDosages: number[] = [];
+    const markerIndices: number[] = [];
+
+    for (const marker of segmentMarkers) {
+      const userSNP = parsedFile.snps.get(marker.rsid);
+      const panelIndex = rsidToIndex.get(marker.rsid);
+
+      if (userSNP && panelIndex !== undefined) {
+        const dosage = userGenotypeToDosage(
+          userSNP.genotype,
+          marker.ref,
+          marker.alt
+        );
+        if (dosage >= 0) {
+          userDosages.push(dosage);
+          markerIndices.push(panelIndex);
+        }
+      }
+    }
+
+    if (userDosages.length < 3) {
+      refinedSegments.push(segment);
+      continue;
+    }
+
+    // Calculate similarity to each sub-population
+    const subPopScores: Array<{ pop: SubPopulation; score: number }> = [];
+
+    for (const subPop of subPops) {
+      const sampleIndices = samplesByPop.get(subPop) || [];
+      if (sampleIndices.length === 0) continue;
+
+      let totalSimilarity = 0;
+      let sampleCount = 0;
+
+      // Sample up to 20 individuals for efficiency
+      const samplesToCheck =
+        sampleIndices.length <= 20
+          ? sampleIndices
+          : sampleIndices
+              .slice()
+              .sort(() => Math.random() - 0.5)
+              .slice(0, 20);
+
+      for (const sampleIdx of samplesToCheck) {
+        let matches = 0;
+        let comparisons = 0;
+
+        for (let i = 0; i < markerIndices.length; i++) {
+          const panelIdx = markerIndices[i];
+          const rsid = rsids[panelIdx];
+          const genotypeStr = panel.genotypes[rsid];
+
+          if (genotypeStr) {
+            const refDosageChar = genotypeStr[sampleIdx];
+            if (refDosageChar !== '9') {
+              const refDosage = parseInt(refDosageChar, 10);
+              // IBS similarity: 2 - |diff|
+              matches += 2 - Math.abs(userDosages[i] - refDosage);
+              comparisons += 2;
+            }
+          }
+        }
+
+        if (comparisons > 0) {
+          totalSimilarity += matches / comparisons;
+          sampleCount++;
+        }
+      }
+
+      if (sampleCount > 0) {
+        subPopScores.push({
+          pop: subPop,
+          score: totalSimilarity / sampleCount,
+        });
+      }
+    }
+
+    // Find best sub-population
+    if (subPopScores.length > 0) {
+      subPopScores.sort((a, b) => b.score - a.score);
+      const best = subPopScores[0];
+
+      // Calculate confidence as ratio of best to second best
+      let subPopConfidence = best.score;
+      if (subPopScores.length > 1) {
+        const secondBest = subPopScores[1];
+        // Confidence is higher when best is clearly better than second
+        subPopConfidence = Math.min(1, best.score / (secondBest.score + 0.001));
+      }
+
+      refinedSegments.push({
+        ...segment,
+        subPopulation: best.pop,
+        subPopulationName: SUB_POP_NAMES[best.pop],
+        subPopulationConfidence: subPopConfidence,
+      });
+    } else {
+      refinedSegments.push(segment);
+    }
+  }
+
+  return refinedSegments;
+}

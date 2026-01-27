@@ -793,39 +793,48 @@ export function GenomeBrowser({
             )}
 
             {/* Improved Ancestry Legend - shows top populations with percentages for this chromosome */}
-            <g
-              transform={`translate(${effectiveWidth - 400}, ${dataIsPhased ? 76 : 36})`}
-            >
-              {ancestryComposition
+            {(() => {
+              const legendItems = ancestryComposition
                 .filter(c => c.percentage >= 2) // Only show populations >= 2%
-                .slice(0, 5)
-                .map((comp, i) => (
-                  <g key={comp.category} transform={`translate(${i * 80}, 0)`}>
-                    <rect
-                      x={0}
-                      y={0}
-                      width={10}
-                      height={10}
-                      rx={2}
-                      fill={ANCESTRY_COLORS[comp.category] || '#94a3b8'}
-                    />
-                    <text
-                      x={13}
-                      y={8}
-                      fontSize={9}
-                      fill="#555"
-                      fontWeight={500}
+                .slice(0, 5);
+              const itemWidth = 95;
+              const legendWidth = legendItems.length * itemWidth;
+              return (
+                <g
+                  transform={`translate(${effectiveWidth - legendWidth - 8}, ${dataIsPhased ? 76 : 36})`}
+                >
+                  {legendItems.map((comp, i) => (
+                    <g
+                      key={comp.category}
+                      transform={`translate(${i * itemWidth}, 0)`}
                     >
-                      {comp.percentage.toFixed(0)}%
-                    </text>
-                    <text x={13} y={18} fontSize={7} fill="#888">
-                      {comp.displayName.length > 8
-                        ? comp.displayName.slice(0, 7) + '…'
-                        : comp.displayName}
-                    </text>
-                  </g>
-                ))}
-            </g>
+                      <rect
+                        x={0}
+                        y={0}
+                        width={10}
+                        height={10}
+                        rx={2}
+                        fill={ANCESTRY_COLORS[comp.category] || '#94a3b8'}
+                      />
+                      <text
+                        x={13}
+                        y={8}
+                        fontSize={9}
+                        fill="#555"
+                        fontWeight={500}
+                      >
+                        {comp.percentage.toFixed(0)}%
+                      </text>
+                      <text x={13} y={18} fontSize={7} fill="#888">
+                        {comp.displayName.length > 14
+                          ? comp.displayName.slice(0, 13) + '…'
+                          : comp.displayName}
+                      </text>
+                    </g>
+                  ))}
+                </g>
+              );
+            })()}
           </g>
 
           {/* Your Variants (SNPs) track */}
@@ -1263,18 +1272,42 @@ export function GenomeBrowser({
                 className="w-4 h-4 rounded"
                 style={{
                   backgroundColor:
+                    ANCESTRY_COLORS[ancestryTooltip.segment.category] ||
                     POPULATION_COLORS[ancestryTooltip.segment.population],
                 }}
               />
               <div>
                 <div className="font-semibold text-sm text-gray-900">
-                  {POPULATION_DISPLAY_NAMES[ancestryTooltip.segment.population]}
+                  {ancestryTooltip.segment.subPopulationName ||
+                    POPULATION_DISPLAY_NAMES[
+                      ancestryTooltip.segment.population
+                    ] ||
+                    ancestryTooltip.segment.category.replace('_', ' ')}
                 </div>
                 <div className="text-xs text-gray-500 capitalize">
-                  {ancestryTooltip.segment.category.replace('_', ' ')}
+                  {ancestryTooltip.segment.subPopulation
+                    ? ancestryTooltip.segment.category.replace('_', ' ')
+                    : ''}
                 </div>
               </div>
             </div>
+
+            {/* Sub-population badge */}
+            {ancestryTooltip.segment.subPopulation && (
+              <div className="mb-2 flex items-center gap-1.5">
+                <span className="text-xs px-1.5 py-0.5 bg-purple-100 text-purple-700 rounded font-medium">
+                  {ancestryTooltip.segment.subPopulation}
+                </span>
+                {ancestryTooltip.segment.subPopulationConfidence && (
+                  <span className="text-xs text-gray-500">
+                    {(
+                      ancestryTooltip.segment.subPopulationConfidence * 100
+                    ).toFixed(0)}
+                    % match
+                  </span>
+                )}
+              </div>
+            )}
 
             {/* Details */}
             <div className="space-y-1 text-xs">
@@ -1284,12 +1317,16 @@ export function GenomeBrowser({
                   className={`font-medium ${
                     ancestryTooltip.segment.parent === 'maternal'
                       ? 'text-pink-600'
-                      : 'text-blue-600'
+                      : ancestryTooltip.segment.parent === 'paternal'
+                        ? 'text-blue-600'
+                        : 'text-gray-600'
                   }`}
                 >
                   {ancestryTooltip.segment.parent === 'maternal'
                     ? '♀ Mother'
-                    : '♂ Father'}
+                    : ancestryTooltip.segment.parent === 'paternal'
+                      ? '♂ Father'
+                      : 'Unknown'}
                 </span>
               </div>
               <div className="flex justify-between">
@@ -1323,6 +1360,7 @@ export function GenomeBrowser({
                 style={{
                   width: `${ancestryTooltip.segment.confidence * 100}%`,
                   backgroundColor:
+                    ANCESTRY_COLORS[ancestryTooltip.segment.category] ||
                     POPULATION_COLORS[ancestryTooltip.segment.population],
                 }}
               />

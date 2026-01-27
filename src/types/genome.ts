@@ -112,6 +112,10 @@ export interface AncestrySegment {
   category: AncestryCategory;
   confidence: number; // 0-1
   parent: ParentOfOrigin;
+  // Optional sub-population from 1000 Genomes reference panel (e.g., 'GBR', 'TSI')
+  subPopulation?: string;
+  subPopulationName?: string;
+  subPopulationConfidence?: number;
 }
 
 /**

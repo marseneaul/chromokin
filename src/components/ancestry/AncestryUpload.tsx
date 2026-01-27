@@ -17,6 +17,7 @@ import {
   parseSNPFile,
   inferLocalAncestryHMM,
   inferAdmixtureWithReferencePanel,
+  refineSegmentsWithSubPopulations,
   type ParsedSNPFile,
   type ReferencePanelResult,
 } from '@/data/ancestry';
@@ -89,6 +90,28 @@ export function AncestryUpload({
         setProcessingStage('Running HMM ancestry inference...');
         const localResult = inferLocalAncestryHMM(parsed, globalResult);
 
+        // Refine segments with sub-populations if reference panel is available
+        let refinedSegments = localResult.segments;
+        if (hasReferencePanel) {
+          setProcessingStage('Refining with sub-populations...');
+          refinedSegments = await refineSegmentsWithSubPopulations(
+            localResult.segments,
+            parsed
+          );
+        }
+
+        // Rebuild segmentsByChromosome with refined segments
+        const refinedSegmentsByChromosome = new Map<
+          string,
+          typeof refinedSegments
+        >();
+        for (const segment of refinedSegments) {
+          if (!refinedSegmentsByChromosome.has(segment.chromosome)) {
+            refinedSegmentsByChromosome.set(segment.chromosome, []);
+          }
+          refinedSegmentsByChromosome.get(segment.chromosome)!.push(segment);
+        }
+
         // Convert to AncestryComposition format
         const composition: AncestryComposition[] = globalResult.composition;
 
@@ -99,8 +122,8 @@ export function AncestryUpload({
           snpCount: parsed.snpCount,
           buildVersion: parsed.buildVersion,
           composition,
-          segments: localResult.segments,
-          segmentsByChromosome: localResult.segmentsByChromosome,
+          segments: refinedSegments,
+          segmentsByChromosome: refinedSegmentsByChromosome,
           globalConfidence: globalResult.confidence,
           markersUsed: globalResult.markersUsed,
           processedAt: new Date().toISOString(),

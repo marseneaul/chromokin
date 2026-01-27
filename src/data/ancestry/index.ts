@@ -45,6 +45,7 @@ export {
   isReferencePanelAvailable,
   loadReferencePanel,
   getSubPopulationComposition,
+  refineSegmentsWithSubPopulations,
   SUB_TO_SUPER_POP,
   SUB_POP_NAMES,
   type SubPopulation,
